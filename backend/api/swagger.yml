@@ -1,0 +1,325 @@
+openapi: 3.0.0
+info:
+  title: Simple Big Graph
+  description: |
+    RESTful graph API
+
+    - [Source Code](https://github.com/dgoldstein1/graphApi)
+  version: "2.0.0"
+servers:
+  - url: https://links-biggraph.herokuapp.com/
+    description: heroku deployment
+
+
+paths:
+  /edges:
+    post:
+      summary: Add edges to graph. Creates neighbor nodes if they do not already exist.
+      requestBody:
+        description: Optional description in *Markdown*
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - neighbors
+              properties:
+                neighbors:
+                  type: array
+                  items:
+                    type: string
+      parameters:
+        - in: query
+          name: node
+          schema:
+            type: string
+          required: true
+          description: Name of node to retrieve neighbors
+      responses:
+        '200':
+          description: A JSON array of neighbors
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdgesResponse'
+
+        '404':
+          description: node does not exist
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdgesResponse'
+
+        '500':
+          description: An error message.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /neighbors:
+    get:
+      summary: Returns a list of neighboring nodes.
+      parameters:
+        - in: query
+          name: node
+          schema:
+            type: string
+          required: true
+          description: Name of node to retrieve neighbors
+        - in: query
+          name: limit
+          schema:
+            type: number
+          required: false
+          description: max number of results
+      responses:
+        '200':
+          description: A JSON array of neighbors
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: string
+        '500':
+          description: An error message.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+
+
+
+  /shortestPath:
+    get:
+      summary: Returns all shortest paths between two nodes, if exists.
+
+      parameters:
+        - in: query
+          name: start
+          schema:
+            type: string
+          required: true
+          description: Name of the starting node.
+        - in: query
+          name: end
+          schema:
+            type: string
+          required: true
+          description: Name of the ending node.
+        - in: query
+          name: n
+          schema:
+            type: number
+          required: false
+          description: number of completely unique paths to return. Must be less than 100
+        - in: query
+          name: timeout
+          schema:
+            type: number
+          required: false
+          description: Max execution time in milliseconds. Defaults to 3000ms
+
+      responses:
+        '200':
+          description: Array of paths (array of integers)
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: array
+                  items:
+                    type: string
+        '500':
+          description: An error message.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+
+  /top:
+    get:
+      summary: Retrieves top N for each type of supported centrality measure
+      parameters:
+        - in: query
+          name: n
+          schema:
+            type: number
+          required: false
+          description: number of top things to fetch for. Default is 10, max is 50
+      responses:
+      
+        '200':
+          description: JSON map of node id to centrality info. If could not retrieve node, gives error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TopInfo'
+        '500':
+          description: An error message.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+
+  /centrality:
+    post:
+      summary: Retrieves centrality measures for given nodes
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              description: array of ids to fetch centrality for
+              type: array
+              items:
+                type: string
+
+      responses:
+        '200':
+          description: JSON map of node id to centrality info. If could not retrieve node, gives error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id1:
+                    type: object
+                    schema:
+                    $ref: '#/components/schemas/NodeCentralityInfo'
+                  id2:
+                    type: object
+                    schema:
+                    $ref: '#/components/schemas/NodeCentralityInfo'
+                  idN:
+                    type: object
+                    schema:
+                    $ref: '#/components/schemas/NodeCentralityInfo'
+
+
+        '500':
+          description: An error message.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+
+                    
+  /metrics:
+    get:
+      summary: Prometheus Metrics.
+      responses:
+        '200':
+          description: Prometheus metrics. For more information see [data model](https://prometheus.io/docs/concepts/data_model/).
+        '500':
+          description: An error message.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+
+
+  /info:
+    get:
+      responses:
+        '200':
+          description: Prints out information, such as number of nodes, edges, etc.
+          content:
+            text/plain:
+              schema:
+                type: string
+                example: 'Python type PNGraph: Directed
+                          Nodes:                    4
+                          Edges:                    3
+                          Zero Deg Nodes:           0
+                          Zero InDeg Nodes:         1
+                          Zero OutDeg Nodes:        2
+                          NonZero In-Out Deg Nodes: 1
+                          Unique directed edges:    3
+                          Unique undirected edges:  3
+                          Self Edges:               0
+                          BiDir Edges:              0
+                          Closed triangles:         0
+                          Open triangles:           2
+                          Frac. of closed triads:   0.000000
+                          Connected component size: 1.000000
+                          Strong conn. comp. size:  0.250000
+                          Approx. full diameter:    3
+                          90% effective diameter:  2.200000'
+        '500':
+          description: Error message
+          content:
+            text/plain:
+              schema:
+                type: string
+                example: "Error writing temporary info file"
+
+  /save:
+    get:
+      summary: Saves current graph to GRAPH_SAVE_PATH and streams file. Note that this endpoint can take 1+ minutes.
+      responses:
+        '200':
+          description: File stream of graph as a [TF file](https://snap.stanford.edu/snappy/doc/reference/streams.html#TFIn).
+        '500':
+          description: An error message.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+
+components:
+  schemas:
+
+    NodeCentralityInfo:
+      type: object
+      properties:
+        degree:
+          description: number of out edges / node in graph - 1
+          type: number
+        closeness:
+          description: mean shortest path across all nodes in graph
+          type: number
+
+    TopInfo:
+      type: object
+      properties:
+        pageRank:
+          description: top and bottom N nodes ranked on degree centrality + influence of neighbors
+          type: array
+          items:
+            $ref: '#/components/schemas/TopNNode'
+
+    TopNNode:
+      type: object
+      properties:
+        id:
+          description: node id
+          type: string
+        rank:
+          description: rank of node
+          type: number
+
+        val:
+          description: value of metric
+          type: number
+
+
+    EdgesResponse:
+      type: object
+      properties:
+        neighborsAdded:
+          description: new neighbors added to the current node (which were not currently there)
+          type: array
+          items:
+            type: string
+    Error:
+      type: object
+      properties:
+        code:
+          type: integer
+          description: The code of the error.
+        error:
+          type: string
+          description: Explanation of the error.
