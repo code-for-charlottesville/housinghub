@@ -1,10 +1,15 @@
-#!/usr/bin/python
+#
+#  Copyright 2017 Otto Seiskari
+#  Licensed under the Apache License, Version 2.0.
+#  See http://www.apache.org/licenses/LICENSE-2.0 for the full text.
+#
+#  This file is based on
+#  https://github.com/swagger-api/swagger-ui/blob/4f1772f6544699bc748299bd65f7ae2112777abc/dist/index.html
+#  (Copyright 2017 SmartBear Software, Licensed under Apache 2.0)
+#
 """
-Taken from: https://gist.github.com/oseiskar/dbd51a3727fc96dcf5ed189fca491fb3
 Usage:
-    
     python swagger-yaml-to-html.py < /path/to/api.yaml > doc.html
-
 """
 import yaml, json, sys
 
@@ -29,7 +34,6 @@ TEMPLATE = """
     {
       box-sizing: inherit;
     }
-
     body {
       margin:0;
       background: #fafafa;
@@ -37,16 +41,12 @@ TEMPLATE = """
   </style>
 </head>
 <body>
-
 <div id="swagger-ui"></div>
-
 <script src="https://cdnjs.cloudflare.com/ajax/libs/swagger-ui/3.2.2/swagger-ui-bundle.js"> </script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/swagger-ui/3.2.2/swagger-ui-standalone-preset.js"> </script>
 <script>
 window.onload = function() {
-
   var spec = %s;
-
   // Build a system
   const ui = SwaggerUIBundle({
     spec: spec,
@@ -61,14 +61,12 @@ window.onload = function() {
     ],
     layout: "StandaloneLayout"
   })
-
   window.ui = ui
 }
 </script>
 </body>
-
 </html>
 """
 
-spec = yaml.load(sys.stdin)
+spec = yaml.load(sys.stdin, Loader=yaml.FullLoader)
 sys.stdout.write(TEMPLATE % json.dumps(spec))
