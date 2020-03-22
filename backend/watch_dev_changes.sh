@@ -7,5 +7,5 @@ inotifywait -e modify,create,delete -r ./ && \
 	clear && \
 	yapf -ri ./**/*.py && \
 	autoflake --in-place --remove-unused-variables ./**/*.py && \
-	pytest
+	coverage run -m pytest
 done
