@@ -7,12 +7,24 @@ RESTful graph API to handle analysis on millions of nodes
 
 ## Setup
 
-- Set the python version to `2.7`
-- Install [Flask v1](http://flask.pocoo.org/docs/1.0/installation/)
-- Install dependencies
-```sh
-sudo pip install pipenv
+- install pxython 3.6.x
+- install virtual env
+- configure environment and install dependencies
+
+```bash
+python3 -m venv venv
+. venv/bin/activate
 ```
+
+## Run
+
+```sh
+export FLASK_APP=src/server.py
+export DYNAMO_DB_ENDPOINT=test
+export PORT=5000
+flask run
+```
+
 
 ## Test
 
@@ -26,25 +38,14 @@ See code coverage:
 coverage run -m pytest
 ```
 
-## Run
-
-```sh
-export FLASK_APP=src/server.py
-export GRAPH_SAVE_PATH="/tmp/test_graph.graph"
-flask run
-# make an example request to add an edge 5 --> 3
-curl -d '{"neighbors" : [3]}' -H "Content-Type: application/json" -X POST http://localhost:5000/edges?node=5
-```
-
 ## Config
 
 See [config](config.cfg) for a complete example of configuration settings. Relative paths start from the `src` directory.
 
 Var | Meaning
 --- | --- |
-`METRICS_PORT` | Port where metrics are running on server
-`GRAPH_SAVE_PATH`  | Name of file to load in and save graph. Relative path from root directory.
-`SHORTEST_PATH_TIMEOUT` | Maximum time allowed in finding shortest path between two nodes.
+`PORT` | Port the server should run on
+`DYNAMO_DB_ENDPOINT` | Endpoint of the running Dynamic DB
 
 As a docker container, there is a cron job which saves the graph on an interval. This is configured by the environment variable `GRAPH_SAVE_INTERVAL`. `GRAPH_DATA_PATH` is where the data should be mounted. Defaults to `/data`.
 
