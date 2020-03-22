@@ -6,6 +6,7 @@ import navigatorHandlers
 import landlordHandlers
 import propertyHandlers
 import os
+import logging
 
 # flask setup
 app = Flask(__name__)

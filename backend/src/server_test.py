@@ -1,8 +1,5 @@
 import unittest
-
 from server import app
-
-MAX_INT = 999999999.0
 
 
 class TestServer(unittest.TestCase):
