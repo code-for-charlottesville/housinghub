@@ -3,6 +3,8 @@ from flask_restful import Resource, Api
 import requests
 import db
 import navigatorHandlers
+import landlordHandlers
+import propertyHandlers
 import os
 
 # flask setup
@@ -48,6 +50,42 @@ supportedCrudEndpoints = [{
     }, {
         "method": "DELETE",
         "handler": navigatorHandlers.deleteNavigator
+    }]
+}, {
+    "name":
+    "landlord",
+    "path":
+    "/landlord",
+    "methods": [{
+        "method": "GET",
+        "handler": landlordHandlers.getLandlord
+    }, {
+        "method": "POST",
+        "handler": landlordHandlers.postLandlord
+    }, {
+        "method": "PUT",
+        "handler": landlordHandlers.putLandlord
+    }, {
+        "method": "DELETE",
+        "handler": landlordHandlers.deleteLandlord
+    }]
+}, {
+    "name":
+    "property",
+    "path":
+    "/property",
+    "methods": [{
+        "method": "GET",
+        "handler": propertyHandlers.getProperty
+    }, {
+        "method": "POST",
+        "handler": propertyHandlers.postProperty
+    }, {
+        "method": "PUT",
+        "handler": propertyHandlers.putProperty
+    }, {
+        "method": "DELETE",
+        "handler": propertyHandlers.deleteProperty
     }]
 }]
 
