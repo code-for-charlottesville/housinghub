@@ -1,16 +1,21 @@
-# graphApi
-RESTful graph API to handle analysis on millions of nodes
+# Housing Hub REST Backend 
 
+RESTful API to handle storage, retrieval, and searching of landlords, navigators, and property.
 
 ## Setup
 
-- install pxython 3.6.x
-- install virtual env
-- configure environment and install dependencies
+- [install python 3.6.x](https://realpython.com/installing-python/)
+- configure dev environment:
 
 ```bash
 python3 -m venv venv
 . venv/bin/activate
+```
+
+- install dependencies:
+
+```bash
+pip install -r requirements.yaml
 ```
 
 ## Run
@@ -22,6 +27,13 @@ export PORT=5000
 flask run
 ```
 
+## Development
+
+Development can be easier with the `./watch_dev_changes.sh` script. Run the script in a running terminal while making code changes. On each save of a file, the script will 
+
+- format code
+- remove unneeded variables
+- run tests
 
 ## Test
 
@@ -33,6 +45,7 @@ pytest
 See code coverage:
 ```sh
 coverage run -m pytest
+open htlmcov/index.html
 ```
 
 ## Config
@@ -44,12 +57,12 @@ Var | Meaning
 `PORT` | Port the server should run on
 `DYNAMO_DB_ENDPOINT` | Endpoint of the running Dynamic DB
 
-As a docker container, there is a cron job which saves the graph on an interval. This is configured by the environment variable `GRAPH_SAVE_INTERVAL`. `GRAPH_DATA_PATH` is where the data should be mounted. Defaults to `/data`.
+## Docker
 
-## Benchmarking
-
-  - tested to safely handle < 100 concurrent requests @ <100ms latency
-  - start to get failures aroudn 200 concurrent requests, latency climbs to 500 ms
+```bash
+docker build . -t codeforcharlottesville/housinghubapi
+docker run -p 5000:5000 corcharlottesville/housinghubapi
+```
 
 ## Code Formatting
 
