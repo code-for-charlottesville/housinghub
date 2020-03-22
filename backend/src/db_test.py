@@ -7,10 +7,10 @@ class TestDBMethods(unittest.TestCase):
     def setUp(self):
         logging.getLogger().setLevel(logging.ERROR)
 
-    def test_connectToDb():
+    def test_connectToDb(self):
         db.DB("tcp://dynamo-endpoint")
 
     def test_queryDb(self):
-        db = db.DB("tcp://dynamo-endpoint")
-        result = db.queryDb("test")
+        db1 = db.DB("tcp://dynamo-endpoint")
+        result = db1.queryDb("test")
         self.assertEqual(result, None)

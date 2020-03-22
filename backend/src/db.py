@@ -8,7 +8,7 @@ class DB:
         self.dbEndpoint = dbEndpoint
         # long-compute time values can be saved in class
         try:
-
+            self.connectToDb()
             logging.debug("Loaded db '{}' successfully".format(dbEndpoint))
         except IOError as e:
             logging.error(
