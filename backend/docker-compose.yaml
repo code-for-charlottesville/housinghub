@@ -2,16 +2,9 @@ version: "3.7"
 services:
 
   graph:
-    image: dgoldstein1/biggraph:latest
+    image: codeforcharlottesville/housinghubapi
     ports:
       - 5000:5000
-      - 8001:8001
     environment:
-      - GRAPH_SAVE_PATH=/data/docker-compose.graph
-      - USE_S3=false
-      - AWS_GRAPH_PATH=s3://links-deployment/synonyms/biggraph/current_graph.graph
-      - AWS_SYNC_DIRECTORY=s3://links-deployment/synonyms/biggraph
-      - AWS_ACCESS_KEY_ID=
-      - AWS_SECRET_ACCESS_KEY=
-      - AWS_DEFAULT_REGION=us-east-1
-      - GRAPH_SAVE_INTERVAL=10
+      - DYNAMO_DB_ENDPOINT=test:test
+      - PORT=5000
