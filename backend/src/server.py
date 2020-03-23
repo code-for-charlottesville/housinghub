@@ -2,9 +2,9 @@ from flask import Flask, request, jsonify, send_file, redirect, Response
 from flask_restful import Resource, Api
 import requests
 import db
-import navigatorHandlers
-import landlordHandlers
-import propertyHandlers
+import navigatorhandlers
+import landlordhandlers
+import propertyhandlers
 import os
 import logging
 
@@ -41,16 +41,16 @@ supportedCrudEndpoints = [{
     "/navigator",
     "methods": [{
         "method": "GET",
-        "handler": navigatorHandlers.getNavigator
+        "handler": navigatorhandlers.getNavigator
     }, {
         "method": "POST",
-        "handler": navigatorHandlers.postNavigator
+        "handler": navigatorhandlers.postNavigator
     }, {
         "method": "PUT",
-        "handler": navigatorHandlers.putNavigator
+        "handler": navigatorhandlers.putNavigator
     }, {
         "method": "DELETE",
-        "handler": navigatorHandlers.deleteNavigator
+        "handler": navigatorhandlers.deleteNavigator
     }]
 }, {
     "name":
@@ -59,16 +59,16 @@ supportedCrudEndpoints = [{
     "/landlord",
     "methods": [{
         "method": "GET",
-        "handler": landlordHandlers.getLandlord
+        "handler": landlordhandlers.getLandlord
     }, {
         "method": "POST",
-        "handler": landlordHandlers.postLandlord
+        "handler": landlordhandlers.postLandlord
     }, {
         "method": "PUT",
-        "handler": landlordHandlers.putLandlord
+        "handler": landlordhandlers.putLandlord
     }, {
         "method": "DELETE",
-        "handler": landlordHandlers.deleteLandlord
+        "handler": landlordhandlers.deleteLandlord
     }]
 }, {
     "name":
@@ -77,16 +77,16 @@ supportedCrudEndpoints = [{
     "/property",
     "methods": [{
         "method": "GET",
-        "handler": propertyHandlers.getProperty
+        "handler": propertyhandlers.getProperty
     }, {
         "method": "POST",
-        "handler": propertyHandlers.postProperty
+        "handler": propertyhandlers.postProperty
     }, {
         "method": "PUT",
-        "handler": propertyHandlers.putProperty
+        "handler": propertyhandlers.putProperty
     }, {
         "method": "DELETE",
-        "handler": propertyHandlers.deleteProperty
+        "handler": propertyhandlers.deleteProperty
     }]
 }]
 

@@ -1,7 +1,9 @@
 while true; do
 
 # setup testing configuration
-export GRAPH_SAVE_PATH="$(pwd)/out/test1.graph"
+export FLASK_APP=src/server.py
+export DYNAMO_DB_ENDPOINT=test
+export PORT=5000
 
 inotifywait -e modify,create,delete -r ./ && \
 	clear && \
