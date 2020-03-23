@@ -1,0 +1,330 @@
+openapi: 3.0.0
+info:
+  description: >
+    Backend to access navigator, landlord, and property information from dynamo
+    DB
+  version: "0.1.0"
+  title: Housing Hub REST Api
+  contact:
+    email: jkropko@codeforcharlottesville.org
+  license:
+    name: GPL-3.0
+
+paths:
+  /navigator:
+    get:
+      summary: Retrieves a navigator from the backend DB
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: The id of the navigator to retrieve
+          schema:
+            type: string
+      responses:
+        '200':
+          description: A navigator object
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Navigator'
+        '500':
+          description: An error message.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+
+    post:
+      summary: Creates navigator if does not already exist.
+      requestBody:
+        required: true
+        content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Navigator'
+
+      responses:
+        '200':
+          description: Newly created navigator
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Navigator'
+        '500':
+          description: An error message.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+
+    put:
+      summary: Update existing navigator.
+      requestBody:
+        required: true
+        content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Navigator'
+
+      responses:
+        '200':
+          description: Newly updated navigator
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Navigator'
+        '500':
+          description: An error message.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+
+
+    delete:
+      summary: Delete existing navigator.
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: The id of the navigator to retrieve
+          schema:
+            type: string
+
+      responses:
+        '200':
+          description: Newly deleted navigator
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Navigator'
+        '500':
+          description: An error message.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /landlord:
+    get:
+      summary: Retrieves a landlord from the backend DB
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: The id of the landlord to retrieve
+          schema:
+            type: string
+      responses:
+        '200':
+          description: A landlord object
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Landlord'
+        '500':
+          description: An error message.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+
+    post:
+      summary: Creates landlord if does not already exist.
+      requestBody:
+        required: true
+        content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Landlord'
+
+      responses:
+        '200':
+          description: Newly created landlord
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Landlord'
+        '500':
+          description: An error message.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+
+    put:
+      summary: Update existing landlord.
+      requestBody:
+        required: true
+        content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Landlord'
+
+      responses:
+        '200':
+          description: Newly updated landlord
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Landlord'
+        '500':
+          description: An error message.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+
+
+    delete:
+      summary: Delete existing landlord.
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: The id of the landlord to retrieve
+          schema:
+            type: string
+
+      responses:
+        '200':
+          description: Newly deleted landlord
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Navigator'
+        '500':
+          description: An error message.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+
+  /property:
+    get:
+      summary: Retrieves a property from the backend DB
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: The id of the property to retrieve
+          schema:
+            type: string
+      responses:
+        '200':
+          description: A property object
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Property'
+        '500':
+          description: An error message.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+
+    post:
+      summary: Creates property if does not already exist.
+      requestBody:
+        required: true
+        content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Property'
+
+      responses:
+        '200':
+          description: Newly created property
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Property'
+        '500':
+          description: An error message.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+
+    put:
+      summary: Update existing property.
+      requestBody:
+        required: true
+        content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Property'
+
+      responses:
+        '200':
+          description: Newly updated property
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Property'
+        '500':
+          description: An error message.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+
+
+    delete:
+      summary: Delete existing property.
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: The id of the property to retrieve
+          schema:
+            type: string
+
+      responses:
+        '200':
+          description: Newly deleted property
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Navigator'
+        '500':
+          description: An error message.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+
+
+components:
+  schemas:
+
+    Error:
+      type: object
+      properties:
+        code:
+          type: integer
+          description: The code of the error.
+        error:
+          type: string
+          description: Explanation of the error.
+    Navigator:
+      type: object
+      properties:
+        id:
+          type: string
+          description: The ID of the navigator
+
+    Landlord:
+      type: object
+      properties:
+        id:
+          type: string
+          description: The ID of the landlord
+
+    Property:
+      type: object
+      properties:
+        id:
+          type: string
+          description: The ID of the property
