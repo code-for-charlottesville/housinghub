@@ -19,12 +19,12 @@ db = db.DB(os.environ['DYNAMO_DB_ENDPOINT'])
 ##########
 
 
-def serveDocs():
+def server_docs():
     """Serves docs to browser"""
     return send_file("../api/index.html")
 
 
-def errOut(code, error):
+def err_out(code, error):
     """util function for returning non 2xx responses"""
     logging.error(error)
     return jsonify(code=code, error=error), code
@@ -41,16 +41,16 @@ supportedCrudEndpoints = [{
     "/navigator",
     "methods": [{
         "method": "GET",
-        "handler": navigatorhandlers.getNavigator
+        "handler": navigatorhandlers.get_navigator
     }, {
         "method": "POST",
-        "handler": navigatorhandlers.postNavigator
+        "handler": navigatorhandlers.post_navigator
     }, {
         "method": "PUT",
-        "handler": navigatorhandlers.putNavigator
+        "handler": navigatorhandlers.put_navigator
     }, {
         "method": "DELETE",
-        "handler": navigatorhandlers.deleteNavigator
+        "handler": navigatorhandlers.delete_navigator
     }]
 }, {
     "name":
@@ -59,16 +59,16 @@ supportedCrudEndpoints = [{
     "/landlord",
     "methods": [{
         "method": "GET",
-        "handler": landlordhandlers.getLandlord
+        "handler": landlordhandlers.get_landlord
     }, {
         "method": "POST",
-        "handler": landlordhandlers.postLandlord
+        "handler": landlordhandlers.post_landlord
     }, {
         "method": "PUT",
-        "handler": landlordhandlers.putLandlord
+        "handler": landlordhandlers.put_landlord
     }, {
         "method": "DELETE",
-        "handler": landlordhandlers.deleteLandlord
+        "handler": landlordhandlers.delete_landlord
     }]
 }, {
     "name":
@@ -77,16 +77,16 @@ supportedCrudEndpoints = [{
     "/property",
     "methods": [{
         "method": "GET",
-        "handler": propertyhandlers.getProperty
+        "handler": propertyhandlers.get_property
     }, {
         "method": "POST",
-        "handler": propertyhandlers.postProperty
+        "handler": propertyhandlers.post_property
     }, {
         "method": "PUT",
-        "handler": propertyhandlers.putProperty
+        "handler": propertyhandlers.put_property
     }, {
         "method": "DELETE",
-        "handler": propertyhandlers.deleteProperty
+        "handler": propertyhandlers.delete_property
     }]
 }]
 
@@ -98,7 +98,7 @@ for endpt in supportedCrudEndpoints:
                          methods=[m.get("method")])
 
 # docs
-app.add_url_rule('/', "swagger docs", serveDocs)
+app.add_url_rule('/', "swagger docs", server_docs)
 
 if __name__ == '__main__':
     app.run(debug=True)

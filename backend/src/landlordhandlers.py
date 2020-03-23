@@ -3,21 +3,21 @@ import requests
 from flask import send_file, request, jsonify
 
 
-def getLandlord():
+def get_landlord():
     """finds and returns a Landlord in the DB"""
-    return server.errOut(500, "not implemented")
+    return server.err_out(500, "not implemented")
 
 
-def postLandlord():
+def post_landlord():
     """adds a new Landlord to the database and returns response"""
-    return server.errOut(500, "not implemented")
+    return server.err_out(500, "not implemented")
 
 
-def putLandlord():
+def put_landlord():
     """updates a Landlord in the DB and returns the updated object"""
-    return server.errOut(500, "not implemented")
+    return server.err_out(500, "not implemented")
 
 
-def deleteLandlord():
+def delete_landlord():
     """deletes a Landlord in the DB and returns the deleted object"""
-    return server.errOut(500, "not implemented")
+    return server.err_out(500, "not implemented")

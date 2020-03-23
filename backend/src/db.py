@@ -8,7 +8,7 @@ class DB:
         self.dbEndpoint = dbEndpoint
         # long-compute time values can be saved in class
         try:
-            self.connectToDb()
+            self.connect_to_db()
             logging.debug("Loaded db '{}' successfully".format(dbEndpoint))
         except IOError as e:
             logging.error(
@@ -16,9 +16,9 @@ class DB:
                     e, dbEndpoint))
             raise e
 
-    def connectToDb(self):
+    def connect_to_db(self):
         """attemps initial connection to DB. Throws error on failure"""
-    def queryDb(self, q):
+    def query_db(self, q):
         """
         queries DB
         q (string) - query to be passed to DB

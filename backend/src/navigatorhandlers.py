@@ -3,21 +3,21 @@ import requests
 from flask import send_file, request, jsonify
 
 
-def getNavigator():
+def get_navigator():
     """finds and returns a navigator in the DB"""
-    return server.errOut(500, "not implemented")
+    return server.err_out(500, "not implemented")
 
 
-def postNavigator():
+def post_navigator():
     """adds a new navigator to the database and returns response"""
-    return server.errOut(500, "not implemented")
+    return server.err_out(500, "not implemented")
 
 
-def putNavigator():
+def put_navigator():
     """updates a navigator in the DB and returns the updated object"""
-    return server.errOut(500, "not implemented")
+    return server.err_out(500, "not implemented")
 
 
-def deleteNavigator():
+def delete_navigator():
     """deletes a navigator in the DB and returns the deleted object"""
-    return server.errOut(500, "not implemented")
+    return server.err_out(500, "not implemented")

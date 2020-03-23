@@ -12,5 +12,5 @@ class TestDBMethods(unittest.TestCase):
 
     def test_queryDb(self):
         db1 = db.DB("tcp://dynamo-endpoint")
-        result = db1.queryDb("test")
+        result = db1.query_db("test")
         self.assertEqual(result, None)
