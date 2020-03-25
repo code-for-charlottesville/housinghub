@@ -5,6 +5,7 @@ import db
 import navigatorhandlers
 import landlordhandlers
 import propertyhandlers
+import authhandlers
 import os
 import logging
 
@@ -87,6 +88,42 @@ supportedCrudEndpoints = [{
     }, {
         "method": "DELETE",
         "handler": propertyhandlers.delete_property
+    }]
+}, {
+    "name":
+    "register a new user",
+    "path":
+    "/auth/register",
+    "methods": [{
+        "method": "POST",
+        "handler": authhandlers.register_new_user
+    }]
+}, {
+    "name":
+    "login an existing user",
+    "path":
+    "/auth/login",
+    "methods": [{
+        "method": "POST",
+        "handler": authhandlers.login
+    }]
+}, {
+    "name":
+    "get the status of a user",
+    "path":
+    "/auth/status",
+    "methods": [{
+        "method": "GET",
+        "handler": authhandlers.get_login_status
+    }]
+}, {
+    "name":
+    "log out a user",
+    "path":
+    "/auth/logout",
+    "methods": [{
+        "method": "GET",
+        "handler": authhandlers.logout
     }]
 }]
 
