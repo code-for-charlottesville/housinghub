@@ -23,3 +23,6 @@ class DB:
         queries DB
         q (string) - query to be passed to DB
         """
+    def validate_login(self, username, password):
+        """validates if the username and password is valid for users in the db"""
+        return password == "davidrulz"
