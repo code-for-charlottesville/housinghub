@@ -2,6 +2,8 @@
 
 RESTful API to handle storage, retrieval, and searching of landlords, navigators, and property.
 
+*Note: this is only for unix operating systems*
+
 ## Setup
 
 - [install python 3.6.x](https://realpython.com/installing-python/)
@@ -15,7 +17,7 @@ python3 -m venv venv
 - install dependencies:
 
 ```bash
-pip install -r requirements.yaml
+pip install -r requirements.txt
 ```
 
 ## Run
@@ -24,7 +26,12 @@ pip install -r requirements.yaml
 export FLASK_APP=src/server.py
 export DYNAMO_DB_ENDPOINT=test
 export PORT=5000
+python api/swagger-yaml-to-html.py < api/swagger.yml > api/index.html
 flask run
+```
+
+```bash
+curl -XPOST -H "content-type: application/json" -d '{"username" : "david", "password" : "davidrulz"}' http://localhost:5000/navigator
 ```
 
 ## Development
@@ -61,7 +68,7 @@ Var | Meaning
 
 ```bash
 docker build . -t codeforcharlottesville/housinghubapi
-docker run -p 5000:5000 corcharlottesville/housinghubapi
+docker run -p 5000:5000 codeforcharlottesville/housinghubapi
 ```
 
 ## Code Formatting
@@ -74,6 +81,5 @@ yapf -ri ./**/*.py
 ## Generating New Documentation
 
 ```sh
-pip install PyYAML
 python api/swagger-yaml-to-html.py < api/swagger.yml > api/index.html
 ```

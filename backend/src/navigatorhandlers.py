@@ -10,6 +10,7 @@ def get_navigator():
 
 def post_navigator():
     """adds a new navigator to the database and returns response"""
+    print request.get_json()
     return server.err_out(500, "not implemented")
 
 

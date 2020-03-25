@@ -5,7 +5,7 @@ from flask import send_file, request, jsonify
 
 def get_property():
     """finds and returns a Property in the DB"""
-    return server.err_out(500, "not implemented")
+    return server.err_out(500, "hello world")
 
 
 def post_property():
