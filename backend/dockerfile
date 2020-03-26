@@ -1,3 +1,4 @@
+# syntax=docker/dockerfile:experimental
 from jfloff/alpine-python:3.6-slim
 #run apt-get update
 workdir /usr/housinghub
