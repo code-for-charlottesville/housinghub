@@ -67,8 +67,8 @@ Var | Meaning
 ## Docker
 
 ```bash
-docker build . -t codeforcharlottesville/housinghubapi
-docker run -p 5000:5000 codeforcharlottesville/housinghubapi
+docker build . -t codeforcharlottesville/housinghubapi:alpine-3.6-slim
+docker run -p 5000:5000 codeforcharlottesville/housinghubapi:alpine-3.6-slim
 ```
 
 ## Code Formatting

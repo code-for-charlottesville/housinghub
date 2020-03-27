@@ -1,5 +1,5 @@
-from python:3.6
-run apt-get update
+from jfloff/alpine-python:3.6-slim
+#run apt-get update
 workdir /usr/housinghub
 run python3 --version
 
