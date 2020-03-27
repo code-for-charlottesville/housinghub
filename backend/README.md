@@ -80,8 +80,8 @@ export DOCKER_BUILDKIT=1
 Then you can build and run the docker image:
 
 ```bash
-docker build . -t codeforcharlottesville/housinghubapi:alpine-3.6-slim
-docker run -p 5000:5000 codeforcharlottesville/housinghubapi:alpine-3.6-slim
+docker build . -t codeforcharlottesville/housinghubapi
+docker run -p 5000:5000 codeforcharlottesville/housinghubapi
 ```
 
 ## Code Formatting
