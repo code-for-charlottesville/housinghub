@@ -1,3 +1,4 @@
+# syntax=docker/dockerfile:experimental
 from jfloff/alpine-python:3.6-slim
 #run apt-get update
 workdir /usr/housinghub
@@ -5,7 +6,8 @@ run python3 --version
 
 # copy app and copy dependencies
 copy . /usr/housinghub
-run pip install -r requirements.txt
+#run pip install -r requirements.txt
+RUN --mount=type=cache,target=/root/.cache/pip pip install -r requirements.txt
 
 # generate documentation
 run python api/swagger-yaml-to-html.py < api/swagger.yml > api/index.html

@@ -1,7 +1,7 @@
 import server
 import requests
 from flask import send_file, request, jsonify
-import jwt
+# import jwt
 
 
 def register_new_user():
@@ -28,7 +28,8 @@ def login():
         return server.err_out(401, "incorrect username or password")
     # create a JWT token and return to front end
     future_time = datetime.utcnow() + timedelta(hours=5)
-    payload = jwt.encode({'exp': future_time}, 'secret')
+    # payload = jwt.encode({'exp': future_time}, 'secret')
+    payload = "temp"
     return jsonify({'jwt': payload})
 
 
