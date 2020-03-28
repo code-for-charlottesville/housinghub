@@ -2,7 +2,7 @@ import server
 import requests
 from flask import send_file, request, jsonify
 from datetime import datetime, timezone, timedelta
-# import jwt
+import jwt
 
 
 def register_new_user():
@@ -28,10 +28,7 @@ def login():
     if not isValidCred:
         return server.err_out(401, "incorrect username or password")
     # create a JWT token and return to front end
-    future_time = datetime.now(timezone.utc) + timedelta(hours=5)
-    # payload = jwt.encode({'exp': future_time}, 'secret')
-    payload = "temp"
-    return jsonify({'jwt': payload})
+    return jsonify({'jwt': _encodeJWT()})
 
 
 def logout():
@@ -42,3 +39,11 @@ def logout():
 def get_login_status():
     """see if a user is currently logged in"""
     return server.err_out(500, "not implemented")
+
+
+def _encodeJWT():
+    """encodes JWT, returns as string"""
+    futureTime = datetime.now(
+        timezone.utc) + timedelta(seconds=server.tokenExpSeconds)
+    return str(
+        jwt.encode({'exp': futureTime}, server.tokenSecret, algorithm='HS256'))

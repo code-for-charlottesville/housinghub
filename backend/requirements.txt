@@ -1,10 +1,11 @@
 aniso8601==8.0.0
 attrs==19.3.0
 certifi==2019.11.28
+cffi==1.14.0
 chardet==3.0.4
 click==7.1.1
 coverage==5.0.4
-DateTime==4.3
+cryptography==2.8
 Flask==1.1.1
 Flask-RESTful==0.3.8
 HTMLParser==0.0.2
@@ -17,6 +18,7 @@ more-itertools==8.2.0
 packaging==20.3
 pluggy==0.13.1
 py==1.8.1
+pycparser==2.20
 pyparsing==2.4.6
 pytest==5.4.1
 pytest-cov==2.8.1

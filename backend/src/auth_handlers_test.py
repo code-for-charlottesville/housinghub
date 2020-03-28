@@ -20,7 +20,8 @@ class TestAuthHandlers(unittest.TestCase):
                                      'password': 'davidrulz'
                                  })
         self.assertEqual(response.status_code, 200)
-        self.assertEqual(response.get_json(), {'jwt': 'testjwttoken'})
+        self.assertIsNotNone(response.get_json().get("jwt"))
+        self.assertEqual(response.get_json().get("error"), None)
         # username is not valid
         response = self.app.post("/auth/login",
                                  json={
