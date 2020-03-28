@@ -1,6 +1,7 @@
 import server
 import requests
 from flask import send_file, request, jsonify
+from datetime import datetime, timezone, timedelta
 # import jwt
 
 
@@ -27,7 +28,7 @@ def login():
     if not isValidCred:
         return server.err_out(401, "incorrect username or password")
     # create a JWT token and return to front end
-    future_time = datetime.utcnow() + timedelta(hours=5)
+    future_time = datetime.now(timezone.utc) + timedelta(hours=5)
     # payload = jwt.encode({'exp': future_time}, 'secret')
     payload = "temp"
     return jsonify({'jwt': payload})
