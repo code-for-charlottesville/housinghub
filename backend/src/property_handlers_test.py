@@ -26,7 +26,7 @@ class TestPropertyHandlers(unittest.TestCase):
         self.assertEqual(app.debug, False)
 
     def test_get_property(self):
-        response = self.app.get("/property?id=test", headers=authHeaders)
+        response = self.app.get("/property?id=test", headers=self.authHeaders)
         self.assertEqual(response.status_code, 500)
         self.assertEqual(response.get_json(), {
             'code': 500,
