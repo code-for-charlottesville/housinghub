@@ -142,10 +142,13 @@ app.add_url_rule('/', "swagger docs", serve_docs)
 # auth
 @app.before_request
 def auth_wrapper():
-    if (request.path).startswith("/property"):
-        (uInfo, err) = auth.validateIncomingRequest(request)
-        if err is not None:
-            return err_out(401, err)
+    # dont authenticate auth endpoints
+    if (request.path.startswith("/auth/")):
+        return
+    # assert that there is a validate incoming request
+    (uInfo, err) = auth.validateIncomingRequest(request)
+    if err is not None:
+        return err_out(401, err)
 
 
 if __name__ == '__main__':
