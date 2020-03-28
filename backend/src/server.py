@@ -13,7 +13,7 @@ import logging
 app = Flask(__name__)
 app.config.from_pyfile('../config.cfg')
 # db setup
-db = db.DB(os.environ['DYNAMO_DB_ENDPOINT'])
+db = db.DB(os.environ['DB_ENDPOINT'])
 
 ##########
 ## util ##

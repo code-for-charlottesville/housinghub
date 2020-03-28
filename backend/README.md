@@ -24,7 +24,7 @@ pip install -r requirements.txt
 
 ```sh
 export FLASK_APP=src/server.py
-export DYNAMO_DB_ENDPOINT=test
+export DB_ENDPOINT=test
 export PORT=5000
 python api/swagger-yaml-to-html.py < api/swagger.yml > api/index.html
 flask run
@@ -62,7 +62,7 @@ See [config](config.cfg) for a complete example of configuration settings. Relat
 Var | Meaning
 --- | --- |
 `PORT` | Port the server should run on
-`DYNAMO_DB_ENDPOINT` | Endpoint of the running Dynamic DB
+`DB_ENDPOINT` | Endpoint of the DB
 
 ## Docker
 

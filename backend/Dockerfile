@@ -19,7 +19,7 @@ run echo 'HOST = "0.0.0.0"' >> config.cfg
 run echo 'DEBUG = True' >> config.cfg
 run cat config.cfg
 # configure saving
-env DYNAMO_DB_ENDPOINT "tcp://test"
+env DB_ENDPOINT "tcp://test"
 env PORT "5000"
 # run app
 CMD ./docker_start.sh

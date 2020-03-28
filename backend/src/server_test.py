@@ -6,7 +6,7 @@ class TestServer(unittest.TestCase):
 
     # executed prior to each test
     def setUp(self):
-        app.config['DYNAMO_DB_ENDPOINT'] = "tcp://dynamodb"
+        app.config['DB_ENDPOINT'] = "tcp://dynamodb"
         self.app = app.test_client()
         self.assertEqual(app.debug, False)
 
