@@ -63,6 +63,8 @@ Var | Meaning
 --- | --- |
 `PORT` | Port the server should run on
 `DB_ENDPOINT` | Endpoint of the DB
+`TOKEN_EXP_SECONDS` | How long tokens are good for in seconds. Default is 10800s
+`TOKEN_SECRET` | Server secret to encode / decode jwt tokens
 
 ## Docker
 

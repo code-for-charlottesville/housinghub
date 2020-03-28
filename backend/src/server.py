@@ -9,11 +9,20 @@ import auth_handlers
 import os
 import logging
 
-# flask setup
 app = Flask(__name__)
 app.config.from_pyfile('../config.cfg')
 # db setup
 db = db.DB(os.environ['DB_ENDPOINT'])
+
+# global config
+tokenSecret = os.environ['TOKEN_SECRET']
+tokenExpSeconds = 10800
+try:
+    tokenExpSeconds = int(os.environ['TOKEN_EXP_SECONDS'])
+except KeyError:
+    logging.debug(
+        "TOKEN_EXP_SECONDS not set in environment, defaulting to {} seconds".
+        format(tokenExpSeconds))
 
 ##########
 ## util ##
