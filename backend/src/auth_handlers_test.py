@@ -1,9 +1,11 @@
 import unittest
-from server import app
+from server import app, tokenSecret, tokenEncryptAlg
 import os
 import jwt
 from user import User
 from auth_handlers import encodeJWT
+from datetime import datetime, timezone, timedelta
+from jwt import encode
 
 
 class TestAuthHandlers(unittest.TestCase):
@@ -58,3 +60,27 @@ class TestAuthHandlers(unittest.TestCase):
 
         self.assertEqual(response.get_json().get("error"), None)
         self.assertEqual(response.status_code, 200)
+        # Auth header does not exist
+        response = self.app.get("/auth/status",
+                                headers=dict(XXXXX='Bearer ' + jwt))
+        self.assertEqual(response.status_code, 401)
+        # Auth header not in right format
+        response = self.app.get("/auth/status",
+                                headers=dict(Authorization='Bearer XXX xXX' +
+                                             jwt))
+        self.assertEqual(response.status_code, 401)
+        # Token has expired
+        pastTime = datetime.now(timezone.utc) - timedelta(seconds=100)
+        print(pastTime)
+        rawBytes = encode(
+            {
+                'exp': pastTime,
+                'uid': user.uid,
+                "name": "{} {}".format(user.first_name, user.last_name)
+            },
+            tokenSecret,
+            algorithm=tokenEncryptAlg)
+        jwt = str(rawBytes, 'utf-8')
+        response = self.app.get("/auth/status",
+                                headers=dict(Authorization='Bearer ' + jwt))
+        self.assertEqual(response.status_code, 401)

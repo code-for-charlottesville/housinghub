@@ -45,7 +45,7 @@ def validateIncomingRequest(request):
         returns (jwt(string), err(string))
     """
     auth_header = request.headers.get('Authorization')
-    if auth_header == "":
+    if auth_header is None:
         return (None, "Authorization header not found in request")
     # get bearer
     spl = auth_header.split(" ")
