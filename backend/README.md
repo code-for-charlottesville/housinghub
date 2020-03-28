@@ -25,11 +25,14 @@ pip install -r requirements.txt
 ```sh
 export FLASK_APP=src/server.py
 export DB_ENDPOINT=test
+export TOKEN_EXP_SECONDS=300
+export TOKEN_SECRET=randompassword
 export PORT=5000
 python api/swagger-yaml-to-html.py < api/swagger.yml > api/index.html
 flask run
 ```
 
+in a new tab, make an example request:
 ```bash
 curl -XPOST -H "content-type: application/json" -d '{"username" : "david", "password" : "davidrulz"}' http://localhost:5000/navigator
 ```

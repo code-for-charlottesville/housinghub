@@ -1,5 +1,7 @@
 import unittest
 from server import app
+import os
+import jwt
 
 
 class TestAuthHandlers(unittest.TestCase):
@@ -20,8 +22,11 @@ class TestAuthHandlers(unittest.TestCase):
                                      'password': 'davidrulz'
                                  })
         self.assertEqual(response.status_code, 200)
-        self.assertIsNotNone(response.get_json().get("jwt"))
-        self.assertEqual(response.get_json().get("error"), None)
+        # assert able to decode jwt
+        t = response.get_json().get("jwt")
+        jwtDecoded = jwt.decode(t,
+                                os.environ['TOKEN_SECRET'],
+                                algorithms='HS256')
         # username is not valid
         response = self.app.post("/auth/login",
                                  json={
