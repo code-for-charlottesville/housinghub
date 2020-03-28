@@ -16,7 +16,7 @@ class User:
     def __init__(self, info={}):
         """attempts to connect to db, throws exception on error"""
         # create new fields
-        self.uuid = uuid.uuid1()
+        self.uid = str(uuid.uuid1())
         self.registered_on = datetime.datetime.now()
         # throws key error when required information does not exist
         self.email = info["email"]
