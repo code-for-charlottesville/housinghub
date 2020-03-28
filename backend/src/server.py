@@ -130,27 +130,23 @@ supportedCrudEndpoints = [{
 
 for endpt in supportedCrudEndpoints:
     for m in endpt.get("methods"):
-
-        handler = m.get("handler")
-
-        if (endpt.get("path").startswith("/property")):
-
-            def wrapper(**kwargs):
-                (uInfo, err) = auth.validateIncomingRequest(request)
-                if err is not None:
-                    return err_out(401, err)
-                # kwargs['jwtPayload'] = jwtPayload
-                return m.get("handler")(**kwargs)
-
-            handler = wrapper
-
         app.add_url_rule(endpt.get("path"),
                          "{} a {}".format(m.get("method"), endpt.get("name")),
-                         handler,
+                         m.get("handler"),
                          methods=[m.get("method")])
 
 # docs
 app.add_url_rule('/', "swagger docs", serve_docs)
+
+
+# auth
+@app.before_request
+def auth_wrapper():
+    if (request.path).startswith("/property"):
+        (uInfo, err) = auth.validateIncomingRequest(request)
+        if err is not None:
+            return err_out(401, err)
+
 
 if __name__ == '__main__':
     app.run(debug=True)

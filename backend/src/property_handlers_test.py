@@ -34,7 +34,9 @@ class TestPropertyHandlers(unittest.TestCase):
         })
 
     def test_post_property(self):
-        response = self.app.post("/property", json={'name': 'test'})
+        response = self.app.post("/property",
+                                 json={'name': 'test'},
+                                 headers=self.authHeaders)
         self.assertEqual(response.status_code, 500)
         self.assertEqual(response.get_json(), {
             'code': 500,
@@ -42,7 +44,9 @@ class TestPropertyHandlers(unittest.TestCase):
         })
 
     def test_put_property(self):
-        response = self.app.put("/property?td=test", json={'name': 'test'})
+        response = self.app.put("/property?td=test",
+                                json={'name': 'test'},
+                                headers=self.authHeaders)
         self.assertEqual(response.status_code, 500)
         self.assertEqual(response.get_json(), {
             'code': 500,
@@ -50,7 +54,8 @@ class TestPropertyHandlers(unittest.TestCase):
         })
 
     def test_delete_property(self):
-        response = self.app.delete("/property?id=test")
+        response = self.app.delete("/property?id=test",
+                                   headers=self.authHeaders)
         self.assertEqual(response.status_code, 500)
         self.assertEqual(response.get_json(), {
             'code': 500,
