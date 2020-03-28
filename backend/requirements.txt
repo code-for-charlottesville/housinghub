@@ -19,6 +19,7 @@ packaging==20.3
 pluggy==0.13.1
 py==1.8.1
 pycparser==2.20
+PyJWT==1.7.1
 pyparsing==2.4.6
 pytest==5.4.1
 pytest-cov==2.8.1
