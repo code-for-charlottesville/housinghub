@@ -1,8 +1,21 @@
 import unittest
 from server import app
+from user import User
+from auth_handlers import encodeJWT
 
 
 class TestPropertyHandlers(unittest.TestCase):
+
+    user = User({
+        "first_name": "david",
+        "last_name": "goldstein",
+        "user_name": "david1",
+        "email": "temp@gmail.com",
+        "username": "david",
+        "password": "davidrulz",
+    })
+    jwt = encodeJWT(user)
+    authHeaders = dict(Authorization='Bearer ' + jwt)
 
     # executed prior to each test
     def setUp(self):
@@ -13,7 +26,7 @@ class TestPropertyHandlers(unittest.TestCase):
         self.assertEqual(app.debug, False)
 
     def test_get_property(self):
-        response = self.app.get("/property?id=test")
+        response = self.app.get("/property?id=test", headers=authHeaders)
         self.assertEqual(response.status_code, 500)
         self.assertEqual(response.get_json(), {
             'code': 500,

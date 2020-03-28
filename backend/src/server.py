@@ -5,7 +5,7 @@ import db
 import navigator_handlers
 import landlord_handlers
 import property_handlers
-import auth_handlers
+import auth_handlers as auth
 import os
 import logging
 
@@ -30,7 +30,7 @@ except KeyError:
 ##########
 
 
-def server_docs():
+def serve_docs():
     """Serves docs to browser"""
     return send_file("../api/index.html")
 
@@ -106,7 +106,7 @@ supportedCrudEndpoints = [{
     "/auth/register",
     "methods": [{
         "method": "POST",
-        "handler": auth_handlers.register_new_user
+        "handler": auth.register_new_user
     }]
 }, {
     "name":
@@ -115,7 +115,7 @@ supportedCrudEndpoints = [{
     "/auth/login",
     "methods": [{
         "method": "POST",
-        "handler": auth_handlers.login
+        "handler": auth.login
     }]
 }, {
     "name":
@@ -124,19 +124,29 @@ supportedCrudEndpoints = [{
     "/auth/status",
     "methods": [{
         "method": "GET",
-        "handler": auth_handlers.get_login_status
+        "handler": auth.get_login_status
     }]
 }]
 
 for endpt in supportedCrudEndpoints:
     for m in endpt.get("methods"):
+
+        def wrapper(**kwargs):
+            if (endpt.get("path").startswith("/auth/")):
+                return m.get("handler")(**kwargs)
+
+            (uInfo, err) = auth.validateIncomingRequest(request)
+            if err is not None:
+                return err_out(401, err)
+            return m.get("handler")(jwtPayload=uInfo, **kwargs)
+
         app.add_url_rule(endpt.get("path"),
                          "{} a {}".format(m.get("method"), endpt.get("name")),
-                         m.get("handler"),
+                         wrapper,
                          methods=[m.get("method")])
 
 # docs
-app.add_url_rule('/', "swagger docs", server_docs)
+app.add_url_rule('/', "swagger docs", serve_docs)
 
 if __name__ == '__main__':
     app.run(debug=True)
