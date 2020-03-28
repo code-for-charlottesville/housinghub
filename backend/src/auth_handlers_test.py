@@ -42,7 +42,7 @@ class TestAuthHandlers(unittest.TestCase):
             'error': "incorrect username or password"
         })
 
-    def test_logout(self):
+    def test_status(self):
         # create new user
         user = User({
             "first_name": "david",
@@ -53,6 +53,8 @@ class TestAuthHandlers(unittest.TestCase):
             "password": "davidrulz",
         })
         jwt = encodeJWT(user)
-        response = self.app.get("/auth/logout",
+        response = self.app.get("/auth/status",
                                 headers=dict(Authorization='Bearer ' + jwt))
+
+        self.assertEqual(response.get_json().get("error"), None)
         self.assertEqual(response.status_code, 200)

@@ -17,6 +17,7 @@ db = db.DB(os.environ['DB_ENDPOINT'])
 # global config
 tokenSecret = os.environ['TOKEN_SECRET']
 tokenExpSeconds = 10800
+tokenEncryptAlg = 'HS256'
 try:
     tokenExpSeconds = int(os.environ['TOKEN_EXP_SECONDS'])
 except KeyError:
@@ -124,15 +125,6 @@ supportedCrudEndpoints = [{
     "methods": [{
         "method": "GET",
         "handler": auth_handlers.get_login_status
-    }]
-}, {
-    "name":
-    "log out a user",
-    "path":
-    "/auth/logout",
-    "methods": [{
-        "method": "GET",
-        "handler": auth_handlers.logout
     }]
 }]
 

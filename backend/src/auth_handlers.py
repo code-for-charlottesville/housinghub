@@ -2,7 +2,7 @@ import server
 import requests
 from flask import send_file, request, jsonify
 from datetime import datetime, timezone, timedelta
-import jwt
+from jwt import encode, decode, ExpiredSignatureError
 
 
 def register_new_user():
@@ -31,14 +31,46 @@ def login():
     return jsonify({'jwt': encodeJWT(user)})
 
 
-def logout():
-    """logout existing user"""
-    return server.err_out(500, "not implemented")
-
-
 def get_login_status():
     """see if a user is currently logged in"""
-    return server.err_out(500, "not implemented")
+    (payload, err) = validateIncomingRequest(request)
+    if err is not None:
+        return server.err_out(401, err)
+    return jsonify(payload)
+
+
+def validateIncomingRequest(request):
+    """
+        extracts jwt token from flask request object, then decodes JWT
+        returns (jwt(string), err(string))
+    """
+    auth_header = request.headers.get('Authorization')
+    if auth_header == "":
+        return (None, "Authorization header not found in request")
+    # get bearer
+    spl = auth_header.split(" ")
+    if len(spl) != 2:
+        return (
+            None,
+            "Token header must be in form: 'Authorization: Bearer $JWT_TOKEN but was: '{}'"
+            .format(auth_header))
+    return decodeJWT(spl[1])
+
+
+def decodeJWT(jwt):
+    """decodes jwt
+        takes in jwt (string)
+        returns (payload(dict), error(string))
+    """
+    t = None
+    err = None
+    try:
+        t = decode(jwt,
+                   server.tokenSecret,
+                   algorithms=[server.tokenEncryptAlg])
+    except ExpiredSignatureError:
+        err = "token has expired"
+    return (t, err)
 
 
 def encodeJWT(user):
@@ -48,12 +80,12 @@ def encodeJWT(user):
     """
     futureTime = datetime.now(
         timezone.utc) + timedelta(seconds=server.tokenExpSeconds)
-    rawBytes = jwt.encode(
+    rawBytes = encode(
         {
             'exp': futureTime,
             'uid': user.uid,
             "name": "{} {}".format(user.first_name, user.last_name)
         },
         server.tokenSecret,
-        algorithm='HS256')
+        algorithm=server.tokenEncryptAlg)
     return str(rawBytes, 'utf-8')
