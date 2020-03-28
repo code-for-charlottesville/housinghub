@@ -2,7 +2,7 @@ import server
 import requests
 from flask import send_file, request, jsonify
 from datetime import datetime, timezone, timedelta
-from jwt import encode, decode, ExpiredSignatureError
+from jwt import encode, decode, ExpiredSignatureError, exceptions as jwtExceptions
 
 
 def register_new_user():
@@ -64,12 +64,15 @@ def decodeJWT(jwt):
     """
     t = None
     err = None
+    print()
     try:
         t = decode(jwt,
                    server.tokenSecret,
                    algorithms=[server.tokenEncryptAlg])
     except ExpiredSignatureError:
         err = "token has expired"
+    except jwtExceptions.DecodeError:
+        err = "token is invalid"
     return (t, err)
 
 

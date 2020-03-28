@@ -69,6 +69,11 @@ class TestAuthHandlers(unittest.TestCase):
                                 headers=dict(Authorization='Bearer XXX xXX' +
                                              jwt))
         self.assertEqual(response.status_code, 401)
+        # invalid jwt
+        response = self.app.get(
+            "/auth/status",
+            headers=dict(Authorization='Bearer f2039fj20398fsohdfohjisdef'))
+        self.assertEqual(response.status_code, 401)
         # Token has expired
         pastTime = datetime.now(timezone.utc) - timedelta(seconds=100)
         print(pastTime)
