@@ -24,11 +24,11 @@ def login():
     u = request.get_json().get("username")
     p = request.get_json().get("password")
     # validate that user and password is valid
-    isValidCred = server.db.validate_login(u, p)
-    if not isValidCred:
-        return server.err_out(401, "incorrect username or password")
+    (user, err) = server.db.validate_login(u, p)
+    if err is not None:
+        return server.err_out(401, err)
     # create a JWT token and return to front end
-    return jsonify({'jwt': _encodeJWT()})
+    return jsonify({'jwt': _encodeJWT(user)})
 
 
 def logout():
@@ -41,9 +41,20 @@ def get_login_status():
     return server.err_out(500, "not implemented")
 
 
-def _encodeJWT():
-    """encodes JWT, returns as string"""
+def _encodeJWT(user):
+    """encodes JWT
+        takes user class.User as argument
+        returns encoded jwt as string
+    """
     futureTime = datetime.now(
         timezone.utc) + timedelta(seconds=server.tokenExpSeconds)
-    return str(
-        jwt.encode({'exp': futureTime}, server.tokenSecret, algorithm='HS256'))
+    rawBytes = jwt.encode(
+        {
+            'exp': futureTime,
+            'uid': user.get("id"),
+            "name": "{} {}".format(user.get("first_name"),
+                                   user.get("last_name"))
+        },
+        server.tokenSecret,
+        algorithm='HS256')
+    return str(rawBytes, 'utf-8')
