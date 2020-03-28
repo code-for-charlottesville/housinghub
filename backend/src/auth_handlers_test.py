@@ -2,6 +2,8 @@ import unittest
 from server import app
 import os
 import jwt
+from user import User
+from auth_handlers import encodeJWT
 
 
 class TestAuthHandlers(unittest.TestCase):
@@ -14,7 +16,7 @@ class TestAuthHandlers(unittest.TestCase):
         self.app = app.test_client()
         self.assertEqual(app.debug, False)
 
-    def test_login_user(self):
+    def test_login(self):
         # username is valid
         response = self.app.post("/auth/login",
                                  json={
@@ -39,3 +41,18 @@ class TestAuthHandlers(unittest.TestCase):
             'code': 401,
             'error': "incorrect username or password"
         })
+
+    def test_logout(self):
+        # create new user
+        user = User({
+            "first_name": "david",
+            "last_name": "goldstein",
+            "user_name": "david1",
+            "email": "temp@gmail.com",
+            "username": "david",
+            "password": "davidrulz",
+        })
+        jwt = encodeJWT(user)
+        response = self.app.get("/auth/logout",
+                                headers=dict(Authorization='Bearer ' + jwt))
+        self.assertEqual(response.status_code, 200)

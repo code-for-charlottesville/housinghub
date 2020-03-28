@@ -28,7 +28,7 @@ def login():
     if err is not None:
         return server.err_out(401, err)
     # create a JWT token and return to front end
-    return jsonify({'jwt': _encodeJWT(user)})
+    return jsonify({'jwt': encodeJWT(user)})
 
 
 def logout():
@@ -41,7 +41,7 @@ def get_login_status():
     return server.err_out(500, "not implemented")
 
 
-def _encodeJWT(user):
+def encodeJWT(user):
     """encodes JWT
         takes user class.User as argument
         returns encoded jwt as string
