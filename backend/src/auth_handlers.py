@@ -51,9 +51,8 @@ def _encodeJWT(user):
     rawBytes = jwt.encode(
         {
             'exp': futureTime,
-            'uid': user.get("id"),
-            "name": "{} {}".format(user.get("first_name"),
-                                   user.get("last_name"))
+            'uid': user.uid,
+            "name": "{} {}".format(user.first_name, user.last_name)
         },
         server.tokenSecret,
         algorithm='HS256')

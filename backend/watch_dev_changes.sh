@@ -1,7 +1,7 @@
 while true; do
 
 # setup testing configuration
-export FLASK_APP=src/server.py
+export FLASK_APP=src/server/server.py
 export DB_ENDPOINT=test
 export TOKEN_EXP_SECONDS=1000
 export TOKEN_SECRET='r4?89N;\P`/mj)5!'

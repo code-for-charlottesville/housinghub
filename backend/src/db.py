@@ -1,4 +1,5 @@
 import logging
+from user import User
 
 
 class DB:
@@ -30,10 +31,12 @@ class DB:
         if password != "davidrulz":
             return ({}, "incorrect username or password")
 
-        return ({
+        tempUserConfig = {
             "first_name": "david",
             "last_name": "goldstein",
+            "user_name": "david1",
+            "email": "temp@gmail.com",
             "username": "david",
             "password": "davidrulz",
-            "id": 234234
-        }, None)
+        }
+        return (User(tempUserConfig), None)

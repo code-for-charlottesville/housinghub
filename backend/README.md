@@ -23,7 +23,7 @@ pip install -r requirements.txt
 ## Run
 
 ```sh
-export FLASK_APP=src/server.py
+export FLASK_APP=src/server/server.py
 export DB_ENDPOINT=test
 export TOKEN_EXP_SECONDS=300
 export TOKEN_SECRET=randompassword
