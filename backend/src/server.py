@@ -128,30 +128,30 @@ supportedCrudEndpoints = [{
     }]
 }]
 
+
+def _get_handler(func):
+    if (endpt.get("path").startswith("/property")
+            and m.get("method") is "GET"):
+
+        def wrapper():
+            (uInfo, err) = auth.validateIncomingRequest(request)
+            if err is not None:
+                return err_out(401, err)
+            # kwargs['jwtPayload'] = jwtPayload
+            (body, code, err) = func(request, uInfo)
+            if err is not None:
+                return err_out(code, err)
+            return jsonify(body)
+
+        return wrapper
+    return func
+
+
 for endpt in supportedCrudEndpoints:
     for m in endpt.get("methods"):
-
-        handler = m.get("handler")
-
-        if (endpt.get("path").startswith("/property")
-                and m.get("method") is "GET"):
-
-            def wrapper(**kwargs):
-                (uInfo, err) = auth.validateIncomingRequest(request)
-                if err is not None:
-                    return err_out(401, err)
-                # kwargs['jwtPayload'] = jwtPayload
-                (body, code,
-                 err) = property_handlers.get_property(request, uInfo)
-                if err is not None:
-                    return err_out(code, err)
-                return jsonify(body)
-
-            handler = wrapper
-
         app.add_url_rule(endpt.get("path"),
                          "{} a {}".format(m.get("method"), endpt.get("name")),
-                         handler,
+                         _get_handler(m.get("handler")),
                          methods=[m.get("method")])
 
 # docs
