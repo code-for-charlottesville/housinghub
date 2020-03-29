@@ -131,7 +131,7 @@ supportedCrudEndpoints = [{
 
 def _get_handler(func):
     if (endpt.get("path").startswith("/property")
-            and m.get("method") is "GET"):
+            and (m.get("method") is "GET" or m.get("method") is "POST")):
 
         def wrapper():
             (uInfo, err) = auth.validateIncomingRequest(request)

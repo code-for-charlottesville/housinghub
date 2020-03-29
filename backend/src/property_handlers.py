@@ -10,9 +10,9 @@ def get_property(request, jwtPayload):
     return ({}, 500, "not implemented")
 
 
-def post_property():
+def post_property(request, jwtPayload):
     """adds a new Property to the database and returns response"""
-    return server.err_out(500, "not implemented")
+    return ({}, 500, "not implemented")
 
 
 def put_property():
