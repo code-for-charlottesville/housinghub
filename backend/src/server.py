@@ -130,26 +130,32 @@ supportedCrudEndpoints = [{
 
 for endpt in supportedCrudEndpoints:
     for m in endpt.get("methods"):
+
+        handler = m.get("handler")
+
+        if (endpt.get("path").startswith("/property")
+                and m.get("method") is "GET"):
+
+            def wrapper(**kwargs):
+                (uInfo, err) = auth.validateIncomingRequest(request)
+                if err is not None:
+                    return err_out(401, err)
+                # kwargs['jwtPayload'] = jwtPayload
+                (body, code,
+                 err) = property_handlers.get_property(request, uInfo)
+                if err is not None:
+                    return err_out(code, err)
+                return jsonify(body)
+
+            handler = wrapper
+
         app.add_url_rule(endpt.get("path"),
                          "{} a {}".format(m.get("method"), endpt.get("name")),
-                         m.get("handler"),
+                         handler,
                          methods=[m.get("method")])
 
 # docs
 app.add_url_rule('/', "swagger docs", serve_docs)
-
-
-# auth
-@app.before_request
-def auth_wrapper():
-    # dont authenticate auth endpoints
-    if (request.path.startswith("/auth/")):
-        return
-    # assert that there is a validate incoming request
-    (uInfo, err) = auth.validateIncomingRequest(request)
-    if err is not None:
-        return err_out(401, err)
-
 
 if __name__ == '__main__':
     app.run(debug=True)
