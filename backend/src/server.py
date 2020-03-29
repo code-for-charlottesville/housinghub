@@ -129,29 +129,32 @@ supportedCrudEndpoints = [{
 }]
 
 
-def _get_handler(func):
-    if (endpt.get("path").startswith("/property")
-            and (m.get("method") is "GET" or m.get("method") is "POST")):
+def _wrap_auth_handler(func):
+    """
+        wrapper for applying auth functions. If not an /auth/ endpoint, add
+        additional validateIncomingRequest and add request and jwt arguments
+    """
+    if (endpt.get("path").startswith("/auth/")):
+        return func
+    # else return function with wrapper
+    def wrapper():
+        (uInfo, err) = auth.validateIncomingRequest(request)
+        if err is not None:
+            return err_out(401, err)
+        # kwargs['jwtPayload'] = jwtPayload
+        (body, code, err) = func(request, uInfo)
+        if err is not None:
+            return err_out(code, err)
+        return jsonify(body)
 
-        def wrapper():
-            (uInfo, err) = auth.validateIncomingRequest(request)
-            if err is not None:
-                return err_out(401, err)
-            # kwargs['jwtPayload'] = jwtPayload
-            (body, code, err) = func(request, uInfo)
-            if err is not None:
-                return err_out(code, err)
-            return jsonify(body)
-
-        return wrapper
-    return func
+    return wrapper
 
 
 for endpt in supportedCrudEndpoints:
     for m in endpt.get("methods"):
         app.add_url_rule(endpt.get("path"),
                          "{} a {}".format(m.get("method"), endpt.get("name")),
-                         _get_handler(m.get("handler")),
+                         _wrap_auth_handler(m.get("handler")),
                          methods=[m.get("method")])
 
 # docs

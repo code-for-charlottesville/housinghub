@@ -3,21 +3,21 @@ import requests
 from flask import send_file, request, jsonify
 
 
-def get_navigator():
+def get_navigator(request, jwtPayload):
     """finds and returns a navigator in the DB"""
-    return server.err_out(500, "not implemented")
+    return ({}, 500, "not implemented")
 
 
-def post_navigator():
+def post_navigator(request, jwtPayload):
     """adds a new navigator to the database and returns response"""
-    return server.err_out(500, "not implemented")
+    return ({}, 500, "not implemented")
 
 
-def put_navigator():
+def put_navigator(request, jwtPayload):
     """updates a navigator in the DB and returns the updated object"""
-    return server.err_out(500, "not implemented")
+    return ({}, 500, "not implemented")
 
 
-def delete_navigator():
+def delete_navigator(request, jwtPayload):
     """deletes a navigator in the DB and returns the deleted object"""
-    return server.err_out(500, "not implemented")
+    return ({}, 500, "not implemented")

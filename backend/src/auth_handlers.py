@@ -15,7 +15,7 @@ def register_new_user():
 
     # create a JWT token and return to the front end
 
-    return server.err_out(500, "not implemented")
+    return ({}, 500, "not implemented")
 
 
 def login():

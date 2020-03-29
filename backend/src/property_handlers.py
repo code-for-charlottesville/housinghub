@@ -15,11 +15,11 @@ def post_property(request, jwtPayload):
     return ({}, 500, "not implemented")
 
 
-def put_property():
+def put_property(request, jwtPayload):
     """updates a Property in the DB and returns the updated object"""
-    return server.err_out(500, "not implemented")
+    return ({}, 500, "not implemented")
 
 
-def delete_property():
+def delete_property(request, jwtPayload):
     """deletes a Property in the DB and returns the deleted object"""
-    return server.err_out(500, "not implemented")
+    return ({}, 500, "not implemented")
