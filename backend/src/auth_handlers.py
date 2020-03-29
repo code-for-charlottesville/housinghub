@@ -3,6 +3,7 @@ import requests
 from flask import send_file, request, jsonify
 from datetime import datetime, timezone, timedelta
 from jwt import encode, decode, ExpiredSignatureError, exceptions as jwtExceptions
+import logging
 
 
 def register_new_user():
@@ -20,10 +21,24 @@ def register_new_user():
     return server.err_out(500, "not implemented")
 
 
+def rotateServerKeyIfNeeded():
+    """
+    rotates the server key if the expiration has passed
+    """
+    if server.tokenFutureRotationDate < datetime.now(timezone.utc):
+        logging.debug(
+            "rotating key, at least {} has passed since last rotation".format(
+                server.tokenRotationIntervalSec))
+        "{}-{}".format(secrets.token_hex(64), time.time())
+        server.tokenFutureRotationDate = datetime.now(
+            timezone.utc) + timedelta(seconds=server.tokenRotationIntervalSec)
+
+
 def login():
     """login an existing user
     :return: flask response object
     """
+    rotateServerKeyIfNeeded()
     # get user and password from front end
     u = request.get_json().get("username")
     p = request.get_json().get("password")

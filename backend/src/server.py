@@ -10,6 +10,7 @@ import os
 import logging
 import secrets
 import time
+from datetime import datetime, timezone, timedelta
 
 app = Flask(__name__)
 app.config.from_pyfile('../config.cfg')
@@ -18,6 +19,10 @@ db = db.DB(os.environ['DB_ENDPOINT'])
 
 # global config
 tokenSecret = "{}-{}".format(secrets.token_hex(64), time.time())
+tokenRotationIntervalSec = int(
+    os.environ.get("TOKEN_SECRET_KEY_ROTATION_SECONDS") or 172800)
+tokenFutureRotationDate = datetime.now(
+    timezone.utc) + timedelta(seconds=tokenRotationIntervalSec)
 tokenExpSeconds = 10800
 tokenEncryptAlg = 'HS256'
 try:

@@ -26,7 +26,7 @@ pip install -r requirements.txt
 export FLASK_APP=src/server.py
 export DB_ENDPOINT=test
 export TOKEN_EXP_SECONDS=300
-export TOKEN_SECRET=randompassword
+export TOKEN_SECRET_KEY_ROTATION_SECONDS=randompassword
 export PORT=5000
 python3 api/swagger-yaml-to-html.py < api/swagger.yml > api/index.html
 flask run
@@ -75,7 +75,7 @@ Var | Meaning
 `PORT` | Port the server should run on
 `DB_ENDPOINT` | Endpoint of the DB
 `TOKEN_EXP_SECONDS` | How long tokens are good for in seconds. Default is 10800s
-`TOKEN_SECRET` | Server secret to encode / decode jwt tokens
+`TOKEN_SECRET_KEY_ROTATION_SECONDS` | The interval between the secret signing key for jwt tokens is rotated. Defaults to 172800 (2 days)
 
 ## Docker
 

@@ -4,7 +4,6 @@ while true; do
 export FLASK_APP=src/server/server.py
 export DB_ENDPOINT=test
 export TOKEN_EXP_SECONDS=1000
-export TOKEN_SECRET='r4?89N;\P`/mj)5!'
 export PORT=5000
 
 inotifywait -e modify,create,delete -r ./ && \
