@@ -22,11 +22,13 @@ class DB:
     def query_db(self, q):
         """
         queries DB
-        q (string) - query to be passed to DB
+        :parma q: (string) - query to be passed to DB
         """
     def validate_login(self, username, password):
         """validates if the username and password is valid for users in the db
-        returns tuple in the format (user[User], error[string])
+        :param username: (string) username to validate
+        :param password: (string) password to validate
+        :return tuple: in the format (user[User], error[string])
         """
         if password != "davidrulz":
             return ({}, "incorrect username or password")

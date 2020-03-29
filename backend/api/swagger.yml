@@ -295,9 +295,128 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
 
+  /auth/register:
+    post:
+      summary: creates a new user
+      requestBody:
+        required: true
+        content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/createUserRequest'
+
+      responses:
+        '200':
+          description: Newly created user
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+        '500':
+          description: An error message.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+
+  /auth/login:
+    post:
+      summary: retrieves a jwt token from the server, acting as user authentication
+      requestBody:
+        required: true
+        content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/loginRequest'
+
+      responses:
+        '200':
+          description: The newly created jwt token
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/jwt'
+        '500':
+          description: An error message.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'  
+
+  /auth/status:
+    get:
+      summary: Verify if a user's is currently valid and see jwt token payload
+      responses:
+        '200':
+          description: jwt payload for user
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/jwtPayload'
+        '500':
+          description: An error message.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+
+
 
 components:
   schemas:
+
+    createUserRequest:
+      type: object
+      properties:
+        username:
+          type: string
+          description: UNDER CONSTRUCTION
+        password:
+          type: string
+          description: UNDER CONSTRUCTION
+
+    loginRequest:
+      type: object
+      properties:
+        username:
+          type: string
+          description: username for the user logging in 
+          example: david0124816
+        password:
+          type: string
+          description: password for the user
+          example: sercretpassword
+
+    jwt:
+      type: object
+      properties:
+        jwt: 
+          type: string
+          description: utf-8 encoded jwt token for the user signed with HS256
+          example: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE1ODU0Mjk3NjUsInVpZCI6ImI0OTM1OGZjLTcxMzctMTFlYS1iZDRmLWU0NzBiOGI2MTY4MyIsIm5hbWUiOiJkYXZpZCBnb2xkc3RlaW4ifQ.q6p91KS8iOme-K5baVlVSFBPW8K0kjdSJZ-IWSOF-cw
+
+    jwtPayload:
+      type: object
+      properties:
+        exp:
+          type: integer
+          description: UTC timestamp when the token will expire
+          example: 1585429765
+        uuid:
+          type: string
+          description: UUID of the user in the database
+          example: "b49358fc-7137-11ea-bd4f-e470b8b61683"
+        name:
+          type: string
+          description: name of the user in form "first last"
+          example: David Goldstein
+
+    User:
+      type: object
+      properties:
+        id:
+          type: string
+          description: UNDER CONSTRUCTION
 
     Error:
       type: object
@@ -305,9 +424,12 @@ components:
         code:
           type: integer
           description: The code of the error.
+          example: 500
         error:
           type: string
           description: Explanation of the error.
+          example: Internal server error
+          
     Navigator:
       type: object
       properties:

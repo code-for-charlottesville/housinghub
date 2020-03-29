@@ -91,7 +91,7 @@ def encodeJWT(user):
     rawBytes = encode(
         {
             'exp': futureTime,
-            'uid': user.uid,
+            'uuid': user.uid,
             "name": "{} {}".format(user.first_name, user.last_name)
         },
         server.tokenSecret,
