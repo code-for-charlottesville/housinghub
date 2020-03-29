@@ -7,7 +7,6 @@ service: serverless-flask
 plugins:
   - serverless-python-requirements
   - serverless-wsgi
-  - serverless-offline
 
 
 custom:
@@ -15,7 +14,7 @@ custom:
     app: src/server.app
     packRequirements: false
   pythonRequirements:
-    dockerizePip: non-linux
+    dockerizePip: true
 
 
 provider:
@@ -29,10 +28,11 @@ functions:
   api:
     handler: wsgi_handler.handler
     environment:
-      DB_HOST: test
-      DB_PORT: 5432
-      DB_USER: app
-      DB_PASSWORD: app
+      DB_HOST: ${env:DB_HOST}
+      DB_USER: ${env:DB_USER}
+      DB_PASSWORD: ${env:DB_PASSWORD}
+      TOKEN_SECRET: test
+      TOKEN_EXP_SECONDS: 300
     events:
       - http: ANY /
       - http: 'ANY {proxy+}'

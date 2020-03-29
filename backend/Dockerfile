@@ -1,25 +1,25 @@
 # syntax=docker/dockerfile:experimental
-from jfloff/alpine-python:3.6-slim
-#run apt-get update
-workdir /usr/housinghub
-run python3 --version
+from python:3.6-stretch
 
-# copy app and copy dependencies
-copy . /usr/housinghub
-#run pip install -r requirements.txt
+
+# RUN apk update && apk add unzip curl openntpd nodejs npm gcc
+RUN curl -sL https://deb.nodesource.com/setup_13.x | bash -
+RUN apt-get update && apt-get install -y nodejs
+RUN node -v && npm -v
+
+# User based development environment
+RUN npm install -g serverless
+
+WORKDIR /usr/housinghub
+COPY . /usr/housinghub
+
+RUN npm install --save-dev serverless-python-requirements
+RUN npm install --save-dev serverless-wsgi
+
+# install python dependencies
 RUN --mount=type=cache,target=/root/.cache/pip pip install -r requirements.txt
 
 # generate documentation
-run python api/swagger-yaml-to-html.py < api/swagger.yml > api/index.html
+RUN python api/swagger-yaml-to-html.py < api/swagger.yml > api/index.html
 
-# configure app
-env FLASK_APP src/server/server.py
-run > config.cfg
-run echo 'HOST = "0.0.0.0"' >> config.cfg
-run echo 'DEBUG = True' >> config.cfg
-run cat config.cfg
-# configure saving
-env DB_ENDPOINT "tcp://test"
-env PORT "5000"
-# run app
-CMD ./docker_start.sh
+CMD sls wsgi serve --host 0.0.0.0
