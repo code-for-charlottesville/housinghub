@@ -10,9 +10,21 @@ info:
   license:
     name: GPL-3.0
 
+tags:
+  - name: navigator
+    description: People who help others "navigate" the housing hub system
+  - name: landlord
+    description: People who own property and wish to lease it
+  - name: property
+    description: Real property, the actual apartment, condo, or house
+  - name: authentication
+    description: Logging in, logging out, and site security  
+
 paths:
   /navigator:
     get:
+      tags: 
+        - navigator
       summary: Retrieves a navigator from the backend DB
       parameters:
         - name: id
@@ -36,6 +48,8 @@ paths:
                 $ref: '#/components/schemas/Error'
 
     post:
+      tags: 
+        - navigator      
       summary: Creates navigator if does not already exist.
       requestBody:
         required: true
@@ -59,6 +73,8 @@ paths:
                 $ref: '#/components/schemas/Error'
 
     put:
+      tags: 
+        - navigator    
       summary: Update existing navigator.
       requestBody:
         required: true
@@ -83,6 +99,8 @@ paths:
 
 
     delete:
+      tags: 
+        - navigator    
       summary: Delete existing navigator.
       parameters:
         - name: id
@@ -107,6 +125,8 @@ paths:
                 $ref: '#/components/schemas/Error'
   /landlord:
     get:
+      tags: 
+        - landlord    
       summary: Retrieves a landlord from the backend DB
       parameters:
         - name: id
@@ -130,6 +150,8 @@ paths:
                 $ref: '#/components/schemas/Error'
 
     post:
+      tags: 
+        - landlord    
       summary: Creates landlord if does not already exist.
       requestBody:
         required: true
@@ -153,6 +175,8 @@ paths:
                 $ref: '#/components/schemas/Error'
 
     put:
+      tags: 
+        - landlord    
       summary: Update existing landlord.
       requestBody:
         required: true
@@ -177,6 +201,8 @@ paths:
 
 
     delete:
+      tags: 
+        - landlord    
       summary: Delete existing landlord.
       parameters:
         - name: id
@@ -202,6 +228,8 @@ paths:
 
   /property:
     get:
+      tags: 
+        - property    
       summary: Retrieves a property from the backend DB
       parameters:
         - name: id
@@ -225,6 +253,8 @@ paths:
                 $ref: '#/components/schemas/Error'
 
     post:
+      tags: 
+        - property    
       summary: Creates property if does not already exist.
       requestBody:
         required: true
@@ -248,6 +278,8 @@ paths:
                 $ref: '#/components/schemas/Error'
 
     put:
+      tags: 
+        - property    
       summary: Update existing property.
       requestBody:
         required: true
@@ -272,6 +304,8 @@ paths:
 
 
     delete:
+      tags: 
+        - property    
       summary: Delete existing property.
       parameters:
         - name: id
@@ -297,7 +331,9 @@ paths:
 
   /auth/register:
     post:
-      summary: creates a new user
+      tags: 
+        - authentication    
+      summary: UNDER CONSTRUCTION!!creates a new user
       requestBody:
         required: true
         content:
@@ -321,6 +357,8 @@ paths:
 
   /auth/login:
     post:
+      tags: 
+        - authentication    
       summary: retrieves a jwt token from the server, acting as user authentication
       requestBody:
         required: true
@@ -345,6 +383,8 @@ paths:
 
   /auth/status:
     get:
+      tags: 
+        - authentication    
       summary: Verify if a user's is currently valid and see jwt token payload
       responses:
         '200':
@@ -392,7 +432,7 @@ components:
       properties:
         jwt: 
           type: string
-          description: utf-8 encoded jwt token for the user signed with HS256
+          description: utf-8 encoded jwt token for the user encrypted with HS256
           example: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE1ODU0Mjk3NjUsInVpZCI6ImI0OTM1OGZjLTcxMzctMTFlYS1iZDRmLWU0NzBiOGI2MTY4MyIsIm5hbWUiOiJkYXZpZCBnb2xkc3RlaW4ifQ.q6p91KS8iOme-K5baVlVSFBPW8K0kjdSJZ-IWSOF-cw
 
     jwtPayload:
