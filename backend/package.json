@@ -1,0 +1,20 @@
+{
+  "name": "housinghub-api",
+  "version": "1.0.0",
+  "description": "RESTful API to handle storage, retrieval, and searching of landlords, navigators, and property.",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "serverless-offline": "^6.1.2",
+    "serverless-python-requirements": "^5.1.0",
+    "serverless-wsgi": "^1.7.4"
+  }
+}

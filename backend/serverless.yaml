@@ -1,0 +1,38 @@
+# serverless.yml
+
+
+service: serverless-flask
+
+
+plugins:
+  - serverless-python-requirements
+  - serverless-wsgi
+  - serverless-offline
+
+
+custom:
+  wsgi:
+    app: src/server.app
+    packRequirements: false
+  pythonRequirements:
+    dockerizePip: non-linux
+
+
+provider:
+  name: aws
+  runtime: python3.6
+  stage: dev
+  region: us-east-1
+
+
+functions:
+  api:
+    handler: wsgi_handler.handler
+    environment:
+      DB_HOST: test
+      DB_PORT: 5432
+      DB_USER: app
+      DB_PASSWORD: app
+    events:
+      - http: ANY /
+      - http: 'ANY {proxy+}'
