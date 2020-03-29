@@ -1,0 +1,1 @@
+{"version":3,"sources":["../../../src/components/tabs/index.js"],"names":[],"mappings":";;;;;;;;;;;;AAAA;;AAEA","sourcesContent":["import './tabs.sass';\n\nexport { default } from './tabs';\n"],"file":"index.js"}

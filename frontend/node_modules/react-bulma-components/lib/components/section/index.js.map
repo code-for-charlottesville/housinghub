@@ -1,0 +1,1 @@
+{"version":3,"sources":["../../../src/components/section/index.js"],"names":[],"mappings":";;;;;;;;;;;;AAAA;;AAEA","sourcesContent":["import './section.sass';\n\nexport { default } from './section';\n"],"file":"index.js"}

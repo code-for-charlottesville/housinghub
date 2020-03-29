@@ -1,0 +1,1 @@
+{"version":3,"sources":["../../../src/components/modal/index.js"],"names":[],"mappings":";;;;;;;;;;;;AAAA;;AAEA","sourcesContent":["import './modal.sass';\n\nexport { default } from './modal';\n"],"file":"index.js"}

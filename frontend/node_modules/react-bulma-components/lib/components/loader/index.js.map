@@ -1,0 +1,1 @@
+{"version":3,"sources":["../../../src/components/loader/index.js"],"names":[],"mappings":";;;;;;;;;;;;AAAA;;AAEA","sourcesContent":["import './loader.sass';\n\nexport { default } from './loader';\n"],"file":"index.js"}
