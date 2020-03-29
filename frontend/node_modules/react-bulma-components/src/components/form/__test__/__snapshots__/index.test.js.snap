@@ -1,0 +1,16 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Form component Should expose all Form elements 1`] = `
+Object {
+  "Checkbox": [Function],
+  "Control": [Function],
+  "Field": [Function],
+  "Help": [Function],
+  "Input": [Function],
+  "InputFile": [Function],
+  "Label": [Function],
+  "Radio": [Function],
+  "Select": [Function],
+  "Textarea": [Function],
+}
+`;

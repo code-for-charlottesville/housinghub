@@ -1,0 +1,1 @@
+{"version":3,"sources":["../../../../../src/components/modal/components/card/index.js"],"names":["Card"],"mappings":";;;;;;;AAAA;;;;eAEeA,gB","sourcesContent":["import Card from './card';\n\nexport default Card;\n"],"file":"index.js"}

@@ -1,0 +1,1 @@
+{"version":3,"sources":["../../../src/components/pagination/index.js"],"names":[],"mappings":";;;;;;;;;;;;AAAA;;AAEA","sourcesContent":["import './pagination.sass';\n\nexport { default } from './pagination';\n"],"file":"index.js"}

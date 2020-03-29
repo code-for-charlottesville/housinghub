@@ -1,0 +1,1 @@
+{"version":3,"sources":["../../../src/components/element/index.js"],"names":["Element"],"mappings":";;;;;;;AAAA;;;;eAEeA,mB","sourcesContent":["import Element from './element';\n\nexport default Element;\n"],"file":"index.js"}

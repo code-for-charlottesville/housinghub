@@ -1,0 +1,1 @@
+{"version":3,"sources":["../../../src/components/heading/index.js"],"names":[],"mappings":";;;;;;;;;;;;AAAA;;AAEA","sourcesContent":["import './heading.sass';\n\nexport { default } from './heading';\n"],"file":"index.js"}

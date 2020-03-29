@@ -1,0 +1,1 @@
+{"version":3,"sources":["../../../src/components/footer/index.js"],"names":[],"mappings":";;;;;;;;;;;;AAAA;;AAEA","sourcesContent":["import './footer.sass';\n\nexport { default } from './footer';\n"],"file":"index.js"}

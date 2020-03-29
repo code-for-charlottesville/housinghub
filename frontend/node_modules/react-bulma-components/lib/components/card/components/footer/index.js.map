@@ -1,0 +1,1 @@
+{"version":3,"sources":["../../../../../src/components/card/components/footer/index.js"],"names":[],"mappings":";;;;;;;;;;;;AAAA","sourcesContent":["export { default } from './footer';\n"],"file":"index.js"}

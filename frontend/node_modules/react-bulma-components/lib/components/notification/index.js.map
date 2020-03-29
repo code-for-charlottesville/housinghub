@@ -1,0 +1,1 @@
+{"version":3,"sources":["../../../src/components/notification/index.js"],"names":[],"mappings":";;;;;;;;;;;;AAAA;;AAEA","sourcesContent":["import './notification.sass';\n\nexport { default } from './notification';\n"],"file":"index.js"}
