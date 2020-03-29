@@ -24,14 +24,25 @@ pip install -r requirements.txt
 
 ```sh
 export FLASK_APP=src/server.py
-export DYNAMO_DB_ENDPOINT=test
+export DB_ENDPOINT=test
+export TOKEN_EXP_SECONDS=300
+export TOKEN_SECRET=randompassword
 export PORT=5000
-python api/swagger-yaml-to-html.py < api/swagger.yml > api/index.html
+python3 api/swagger-yaml-to-html.py < api/swagger.yml > api/index.html
 flask run
 ```
 
+in a new tab, make an example request:
 ```bash
-curl -XPOST -H "content-type: application/json" -d '{"username" : "david", "password" : "davidrulz"}' http://localhost:5000/navigator
+# login new user to get jwt
+$ curl -XPOST -H "content-type: application/json" -d '{"username" : "david", "password" : "davidrulz"}' http://localhost:5000/auth/login 
+{"jwt":"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE1ODU0Mjk3NjUsInVpZCI6ImI0OTM1OGZjLTcxMzctMTFlYS1iZDRmLWU0NzBiOGI2MTY4MyIsIm5hbWUiOiJkYXZpZCBnb2xkc3RlaW4ifQ.q6p91KS8iOme-K5baVlVSFBPW8K0kjdSJZ-IWSOF-cw"}
+# make a request with this new jwt
+$ curl -H "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE1ODU0Mjk3NjUsInVpZCI6ImI0OTM1OGZjLTcxMzctMTFlYS1iZDRmLWU0NzBiOGI2MTY4MyIsIm5hbWUiOiJkYXZpZCBnb2xkc3RlaW4ifQ.q6p91KS8iOme-K5baVlVSFBPW8K0kjdSJZ-IWSOF-cw" http://localhost:5000/auth/status
+{"exp":1585429765,"name":"david goldstein","uid":"b49358fc-7137-11ea-bd4f-e470b8b61683"}
+# see that cannot make request with invalid jwt
+$ curl -H "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE1ODU0MzM0MjcsInVpZCI6IjNiOTJhZTVlLTcxNDAtMTFlYS1iZDRmLWU0NzBiOGI2MTY4MyIsIm5hbWUiOiJkYXZpZCBnb2xkc3RlaW4ifQ.j3bKF3YXalyHvFZ94LCZPN8HeuQEH5Bjbmusw-Js" http://localhost:5000/navigator
+{"code":401,"error":"token is invalid"}
 ```
 
 ## Development
@@ -62,7 +73,9 @@ See [config](config.cfg) for a complete example of configuration settings. Relat
 Var | Meaning
 --- | --- |
 `PORT` | Port the server should run on
-`DYNAMO_DB_ENDPOINT` | Endpoint of the running Dynamic DB
+`DB_ENDPOINT` | Endpoint of the DB
+`TOKEN_EXP_SECONDS` | How long tokens are good for in seconds. Default is 10800s
+`TOKEN_SECRET` | Server secret to encode / decode jwt tokens
 
 ## Docker
 

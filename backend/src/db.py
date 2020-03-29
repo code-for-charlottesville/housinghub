@@ -1,4 +1,5 @@
 import logging
+from user import User
 
 
 class DB:
@@ -24,5 +25,18 @@ class DB:
         q (string) - query to be passed to DB
         """
     def validate_login(self, username, password):
-        """validates if the username and password is valid for users in the db"""
-        return password == "davidrulz"
+        """validates if the username and password is valid for users in the db
+        returns tuple in the format (user[User], error[string])
+        """
+        if password != "davidrulz":
+            return ({}, "incorrect username or password")
+
+        tempUserConfig = {
+            "first_name": "david",
+            "last_name": "goldstein",
+            "user_name": "david1",
+            "email": "temp@gmail.com",
+            "username": "david",
+            "password": "davidrulz",
+        }
+        return (User(tempUserConfig), None)

@@ -13,13 +13,13 @@ RUN --mount=type=cache,target=/root/.cache/pip pip install -r requirements.txt
 run python api/swagger-yaml-to-html.py < api/swagger.yml > api/index.html
 
 # configure app
-env FLASK_APP src/server.py
+env FLASK_APP src/server/server.py
 run > config.cfg
 run echo 'HOST = "0.0.0.0"' >> config.cfg
 run echo 'DEBUG = True' >> config.cfg
 run cat config.cfg
 # configure saving
-env DYNAMO_DB_ENDPOINT "tcp://test"
+env DB_ENDPOINT "tcp://test"
 env PORT "5000"
 # run app
 CMD ./docker_start.sh

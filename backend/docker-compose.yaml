@@ -6,5 +6,5 @@ services:
     ports:
       - 5000:5000
     environment:
-      - DYNAMO_DB_ENDPOINT=test:test
+      - DB_ENDPOINT=test:test
       - PORT=5000

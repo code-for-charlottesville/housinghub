@@ -1,17 +1,32 @@
 import unittest
 from server import app
+from user import User
+from auth_handlers import encodeJWT
 
 
 class TestLandlordHandlers(unittest.TestCase):
 
+    user = User({
+        "first_name": "david",
+        "last_name": "goldstein",
+        "user_name": "david1",
+        "email": "temp@gmail.com",
+        "username": "david",
+        "password": "davidrulz",
+    })
+    jwt = encodeJWT(user)
+    authHeaders = dict(Authorization='Bearer ' + jwt)
+
     # executed prior to each test
     def setUp(self):
-        app.config['DYNAMO_DB_ENDPOINT'] = "tcp://dynamodb"
+        app.config['DB_ENDPOINT'] = "tcp://dynamodb"
+        app.config['TOKEN_SECRET'] = "r4?89N;-Pe/mj)5!"
+        app.config['TOKEN_EXP_SECONDS'] = "1000"
         self.app = app.test_client()
         self.assertEqual(app.debug, False)
 
     def test_get_landlord(self):
-        response = self.app.get("/landlord?id=test")
+        response = self.app.get("/landlord?id=test", headers=self.authHeaders)
         self.assertEqual(response.status_code, 500)
         self.assertEqual(response.get_json(), {
             'code': 500,
@@ -19,7 +34,9 @@ class TestLandlordHandlers(unittest.TestCase):
         })
 
     def test_post_landlord(self):
-        response = self.app.post("/landlord", json={'name': 'test'})
+        response = self.app.post("/landlord",
+                                 json={'name': 'test'},
+                                 headers=self.authHeaders)
         self.assertEqual(response.status_code, 500)
         self.assertEqual(response.get_json(), {
             'code': 500,
@@ -27,7 +44,9 @@ class TestLandlordHandlers(unittest.TestCase):
         })
 
     def test_put_landlord(self):
-        response = self.app.put("/landlord?td=test", json={'name': 'test'})
+        response = self.app.put("/landlord?td=test",
+                                json={'name': 'test'},
+                                headers=self.authHeaders)
         self.assertEqual(response.status_code, 500)
         self.assertEqual(response.get_json(), {
             'code': 500,
@@ -35,7 +54,8 @@ class TestLandlordHandlers(unittest.TestCase):
         })
 
     def test_delete_landlord(self):
-        response = self.app.delete("/landlord?td=test")
+        response = self.app.delete("/landlord?td=test",
+                                   headers=self.authHeaders)
         self.assertEqual(response.status_code, 500)
         self.assertEqual(response.get_json(), {
             'code': 500,

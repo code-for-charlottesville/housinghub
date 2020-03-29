@@ -2,25 +2,35 @@ from flask import Flask, request, jsonify, send_file, redirect, Response
 from flask_restful import Resource, Api
 import requests
 import db
-import navigatorhandlers
-import landlordhandlers
-import propertyhandlers
-import authhandlers
+import navigator_handlers
+import landlord_handlers
+import property_handlers
+import auth_handlers as auth
 import os
 import logging
 
-# flask setup
 app = Flask(__name__)
 app.config.from_pyfile('../config.cfg')
 # db setup
-db = db.DB(os.environ['DYNAMO_DB_ENDPOINT'])
+db = db.DB(os.environ['DB_ENDPOINT'])
+
+# global config
+tokenSecret = os.environ['TOKEN_SECRET']
+tokenExpSeconds = 10800
+tokenEncryptAlg = 'HS256'
+try:
+    tokenExpSeconds = int(os.environ['TOKEN_EXP_SECONDS'])
+except KeyError:
+    logging.debug(
+        "TOKEN_EXP_SECONDS not set in environment, defaulting to {} seconds".
+        format(tokenExpSeconds))
 
 ##########
 ## util ##
 ##########
 
 
-def server_docs():
+def serve_docs():
     """Serves docs to browser"""
     return send_file("../api/index.html")
 
@@ -42,16 +52,16 @@ supportedCrudEndpoints = [{
     "/navigator",
     "methods": [{
         "method": "GET",
-        "handler": navigatorhandlers.get_navigator
+        "handler": navigator_handlers.get_navigator
     }, {
         "method": "POST",
-        "handler": navigatorhandlers.post_navigator
+        "handler": navigator_handlers.post_navigator
     }, {
         "method": "PUT",
-        "handler": navigatorhandlers.put_navigator
+        "handler": navigator_handlers.put_navigator
     }, {
         "method": "DELETE",
-        "handler": navigatorhandlers.delete_navigator
+        "handler": navigator_handlers.delete_navigator
     }]
 }, {
     "name":
@@ -60,16 +70,16 @@ supportedCrudEndpoints = [{
     "/landlord",
     "methods": [{
         "method": "GET",
-        "handler": landlordhandlers.get_landlord
+        "handler": landlord_handlers.get_landlord
     }, {
         "method": "POST",
-        "handler": landlordhandlers.post_landlord
+        "handler": landlord_handlers.post_landlord
     }, {
         "method": "PUT",
-        "handler": landlordhandlers.put_landlord
+        "handler": landlord_handlers.put_landlord
     }, {
         "method": "DELETE",
-        "handler": landlordhandlers.delete_landlord
+        "handler": landlord_handlers.delete_landlord
     }]
 }, {
     "name":
@@ -78,16 +88,16 @@ supportedCrudEndpoints = [{
     "/property",
     "methods": [{
         "method": "GET",
-        "handler": propertyhandlers.get_property
+        "handler": property_handlers.get_property
     }, {
         "method": "POST",
-        "handler": propertyhandlers.post_property
+        "handler": property_handlers.post_property
     }, {
         "method": "PUT",
-        "handler": propertyhandlers.put_property
+        "handler": property_handlers.put_property
     }, {
         "method": "DELETE",
-        "handler": propertyhandlers.delete_property
+        "handler": property_handlers.delete_property
     }]
 }, {
     "name":
@@ -96,7 +106,7 @@ supportedCrudEndpoints = [{
     "/auth/register",
     "methods": [{
         "method": "POST",
-        "handler": authhandlers.register_new_user
+        "handler": auth.register_new_user
     }]
 }, {
     "name":
@@ -105,7 +115,7 @@ supportedCrudEndpoints = [{
     "/auth/login",
     "methods": [{
         "method": "POST",
-        "handler": authhandlers.login
+        "handler": auth.login
     }]
 }, {
     "name":
@@ -114,16 +124,7 @@ supportedCrudEndpoints = [{
     "/auth/status",
     "methods": [{
         "method": "GET",
-        "handler": authhandlers.get_login_status
-    }]
-}, {
-    "name":
-    "log out a user",
-    "path":
-    "/auth/logout",
-    "methods": [{
-        "method": "GET",
-        "handler": authhandlers.logout
+        "handler": auth.get_login_status
     }]
 }]
 
@@ -135,7 +136,20 @@ for endpt in supportedCrudEndpoints:
                          methods=[m.get("method")])
 
 # docs
-app.add_url_rule('/', "swagger docs", server_docs)
+app.add_url_rule('/', "swagger docs", serve_docs)
+
+
+# auth
+@app.before_request
+def auth_wrapper():
+    # dont authenticate auth endpoints
+    if (request.path.startswith("/auth/")):
+        return
+    # assert that there is a validate incoming request
+    (uInfo, err) = auth.validateIncomingRequest(request)
+    if err is not None:
+        return err_out(401, err)
+
 
 if __name__ == '__main__':
     app.run(debug=True)
