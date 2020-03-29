@@ -8,6 +8,8 @@ import property_handlers
 import auth_handlers as auth
 import os
 import logging
+import secrets
+import time
 
 app = Flask(__name__)
 app.config.from_pyfile('../config.cfg')
@@ -15,7 +17,7 @@ app.config.from_pyfile('../config.cfg')
 db = db.DB(os.environ['DB_ENDPOINT'])
 
 # global config
-tokenSecret = os.environ['TOKEN_SECRET']
+tokenSecret = "{}-{}".format(secrets.token_hex(64), time.time())
 tokenExpSeconds = 10800
 tokenEncryptAlg = 'HS256'
 try:
