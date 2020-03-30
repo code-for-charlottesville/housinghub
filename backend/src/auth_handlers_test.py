@@ -1,11 +1,11 @@
 import unittest
 from server import app, tokenSecret, tokenEncryptAlg
-import os
 import jwt
 from user import User
 from auth_handlers import encodeJWT
 from datetime import datetime, timezone, timedelta
 from jwt import encode
+import server
 
 
 class TestAuthHandlers(unittest.TestCase):
@@ -13,7 +13,6 @@ class TestAuthHandlers(unittest.TestCase):
     # executed prior to each test
     def setUp(self):
         app.config['DB_ENDPOINT'] = "tcp://dynamodb"
-        app.config['TOKEN_SECRET'] = "r4?89N;-Pe/mj)5!"
         app.config['TOKEN_EXP_SECONDS'] = "1000"
         self.app = app.test_client()
         self.assertEqual(app.debug, False)
@@ -28,9 +27,7 @@ class TestAuthHandlers(unittest.TestCase):
         self.assertEqual(response.status_code, 200)
         # assert able to decode jwt
         t = response.get_json().get("jwt")
-        jwtDecoded = jwt.decode(t,
-                                os.environ['TOKEN_SECRET'],
-                                algorithms='HS256')
+        jwtDecoded = jwt.decode(t, server.tokenSecret, algorithms='HS256')
         self.assertEqual(jwtDecoded.get("name"), "david goldstein")
         # username is not valid
         response = self.app.post("/auth/login",

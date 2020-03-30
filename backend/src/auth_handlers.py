@@ -3,10 +3,13 @@ import requests
 from flask import send_file, request, jsonify
 from datetime import datetime, timezone, timedelta
 from jwt import encode, decode, ExpiredSignatureError, exceptions as jwtExceptions
+import logging
 
 
 def register_new_user():
-    """registers a new user in the DB, returns JWT Token"""
+    """registers a new user in the DB, returns JWT Token
+    :return: flask response object
+    """
     # get user and password from front end
 
     # create new entry in the database
@@ -18,8 +21,24 @@ def register_new_user():
     return server.err_out(500, "not implemented")
 
 
+def rotateServerKeyIfNeeded():
+    """
+    rotates the server key if the expiration has passed
+    """
+    if server.tokenFutureRotationDate < datetime.now(timezone.utc):
+        logging.debug(
+            "rotating key, at least {} has passed since last rotation".format(
+                server.tokenRotationIntervalSec))
+        "{}-{}".format(secrets.token_hex(64), time.time())
+        server.tokenFutureRotationDate = datetime.now(
+            timezone.utc) + timedelta(seconds=server.tokenRotationIntervalSec)
+
+
 def login():
-    """login an existing user"""
+    """login an existing user
+    :return: flask response object
+    """
+    rotateServerKeyIfNeeded()
     # get user and password from front end
     u = request.get_json().get("username")
     p = request.get_json().get("password")
@@ -32,7 +51,9 @@ def login():
 
 
 def get_login_status():
-    """see if a user is currently logged in"""
+    """see if a user is currently logged in
+    :return: flask response object
+    """
     (payload, err) = validateIncomingRequest(request)
     if err is not None:
         return server.err_out(401, err)
@@ -40,9 +61,9 @@ def get_login_status():
 
 
 def validateIncomingRequest(request):
-    """
-        extracts jwt token from flask request object, then decodes JWT
-        returns (jwt(string), err(string))
+    """extracts jwt token from flask request object, then decodes JWT
+    :param request: flask request object
+    :return: tuple (jwt(string), err(string))
     """
     auth_header = request.headers.get('Authorization')
     if auth_header is None:
@@ -59,12 +80,11 @@ def validateIncomingRequest(request):
 
 def decodeJWT(jwt):
     """decodes jwt
-        takes in jwt (string)
-        returns (payload(dict), error(string))
+    :param jwt: string, utf-8 representation of jwt
+    :return: tuple of (payload(dict), error(string))
     """
     t = None
     err = None
-    print()
     try:
         t = decode(jwt,
                    server.tokenSecret,
@@ -78,15 +98,15 @@ def decodeJWT(jwt):
 
 def encodeJWT(user):
     """encodes JWT
-        takes user class.User as argument
-        returns encoded jwt as string
+    :param user: string takes user class.User as argument
+    :return: encoded jwt as string
     """
     futureTime = datetime.now(
         timezone.utc) + timedelta(seconds=server.tokenExpSeconds)
     rawBytes = encode(
         {
             'exp': futureTime,
-            'uid': user.uid,
+            'uuid': user.uid,
             "name": "{} {}".format(user.first_name, user.last_name)
         },
         server.tokenSecret,

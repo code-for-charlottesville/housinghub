@@ -10,9 +10,21 @@ info:
   license:
     name: GPL-3.0
 
+tags:
+  - name: navigator
+    description: People who help others "navigate" the housing hub system
+  - name: landlord
+    description: People who own property and wish to lease it
+  - name: property
+    description: Real property, the actual apartment, condo, or house
+  - name: authentication
+    description: Logging in, logging out, and site security  
+
 paths:
   /navigator:
     get:
+      tags: 
+        - navigator
       summary: Retrieves a navigator from the backend DB
       parameters:
         - name: id
@@ -36,6 +48,8 @@ paths:
                 $ref: '#/components/schemas/Error'
 
     post:
+      tags: 
+        - navigator      
       summary: Creates navigator if does not already exist.
       requestBody:
         required: true
@@ -59,6 +73,8 @@ paths:
                 $ref: '#/components/schemas/Error'
 
     put:
+      tags: 
+        - navigator    
       summary: Update existing navigator.
       requestBody:
         required: true
@@ -83,6 +99,8 @@ paths:
 
 
     delete:
+      tags: 
+        - navigator    
       summary: Delete existing navigator.
       parameters:
         - name: id
@@ -107,6 +125,8 @@ paths:
                 $ref: '#/components/schemas/Error'
   /landlord:
     get:
+      tags: 
+        - landlord    
       summary: Retrieves a landlord from the backend DB
       parameters:
         - name: id
@@ -130,6 +150,8 @@ paths:
                 $ref: '#/components/schemas/Error'
 
     post:
+      tags: 
+        - landlord    
       summary: Creates landlord if does not already exist.
       requestBody:
         required: true
@@ -153,6 +175,8 @@ paths:
                 $ref: '#/components/schemas/Error'
 
     put:
+      tags: 
+        - landlord    
       summary: Update existing landlord.
       requestBody:
         required: true
@@ -177,6 +201,8 @@ paths:
 
 
     delete:
+      tags: 
+        - landlord    
       summary: Delete existing landlord.
       parameters:
         - name: id
@@ -202,6 +228,8 @@ paths:
 
   /property:
     get:
+      tags: 
+        - property    
       summary: Retrieves a property from the backend DB
       parameters:
         - name: id
@@ -225,6 +253,8 @@ paths:
                 $ref: '#/components/schemas/Error'
 
     post:
+      tags: 
+        - property    
       summary: Creates property if does not already exist.
       requestBody:
         required: true
@@ -248,6 +278,8 @@ paths:
                 $ref: '#/components/schemas/Error'
 
     put:
+      tags: 
+        - property    
       summary: Update existing property.
       requestBody:
         required: true
@@ -272,6 +304,8 @@ paths:
 
 
     delete:
+      tags: 
+        - property    
       summary: Delete existing property.
       parameters:
         - name: id
@@ -295,9 +329,134 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
 
+  /auth/register:
+    post:
+      tags: 
+        - authentication    
+      summary: UNDER CONSTRUCTION!!creates a new user
+      requestBody:
+        required: true
+        content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/createUserRequest'
+
+      responses:
+        '200':
+          description: Newly created user
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+        '500':
+          description: An error message.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+
+  /auth/login:
+    post:
+      tags: 
+        - authentication    
+      summary: retrieves a jwt token from the server, acting as user authentication
+      requestBody:
+        required: true
+        content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/loginRequest'
+
+      responses:
+        '200':
+          description: The newly created jwt token
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/jwt'
+        '500':
+          description: An error message.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'  
+
+  /auth/status:
+    get:
+      tags: 
+        - authentication    
+      summary: Verify if a user's is currently valid and see jwt token payload
+      responses:
+        '200':
+          description: jwt payload for user
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/jwtPayload'
+        '500':
+          description: An error message.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+
+
 
 components:
   schemas:
+
+    createUserRequest:
+      type: object
+      properties:
+        username:
+          type: string
+          description: UNDER CONSTRUCTION
+        password:
+          type: string
+          description: UNDER CONSTRUCTION
+
+    loginRequest:
+      type: object
+      properties:
+        username:
+          type: string
+          description: username for the user logging in 
+          example: david0124816
+        password:
+          type: string
+          description: password for the user
+          example: sercretpassword
+
+    jwt:
+      type: object
+      properties:
+        jwt: 
+          type: string
+          description: utf-8 encoded jwt token for the user encrypted with HS256
+          example: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE1ODU0Mjk3NjUsInVpZCI6ImI0OTM1OGZjLTcxMzctMTFlYS1iZDRmLWU0NzBiOGI2MTY4MyIsIm5hbWUiOiJkYXZpZCBnb2xkc3RlaW4ifQ.q6p91KS8iOme-K5baVlVSFBPW8K0kjdSJZ-IWSOF-cw
+
+    jwtPayload:
+      type: object
+      properties:
+        exp:
+          type: integer
+          description: UTC timestamp when the token will expire
+          example: 1585429765
+        uuid:
+          type: string
+          description: UUID of the user in the database
+          example: "b49358fc-7137-11ea-bd4f-e470b8b61683"
+        name:
+          type: string
+          description: name of the user in form "first last"
+          example: David Goldstein
+
+    User:
+      type: object
+      properties:
+        id:
+          type: string
+          description: UNDER CONSTRUCTION
 
     Error:
       type: object
@@ -305,9 +464,12 @@ components:
         code:
           type: integer
           description: The code of the error.
+          example: 500
         error:
           type: string
           description: Explanation of the error.
+          example: Internal server error
+          
     Navigator:
       type: object
       properties:

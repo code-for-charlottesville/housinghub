@@ -8,6 +8,9 @@ import property_handlers
 import auth_handlers as auth
 import os
 import logging
+import secrets
+import time
+from datetime import datetime, timezone, timedelta
 
 app = Flask(__name__)
 app.config.from_pyfile('../config.cfg')
@@ -15,7 +18,11 @@ app.config.from_pyfile('../config.cfg')
 db = db.DB(os.environ['DB_ENDPOINT'])
 
 # global config
-tokenSecret = os.environ['TOKEN_SECRET']
+tokenSecret = "{}-{}".format(secrets.token_hex(64), time.time())
+tokenRotationIntervalSec = int(
+    os.environ.get("TOKEN_SECRET_KEY_ROTATION_SECONDS") or 172800)
+tokenFutureRotationDate = datetime.now(
+    timezone.utc) + timedelta(seconds=tokenRotationIntervalSec)
 tokenExpSeconds = 10800
 tokenEncryptAlg = 'HS256'
 try:
@@ -128,28 +135,37 @@ supportedCrudEndpoints = [{
     }]
 }]
 
+
+def _wrap_auth_handler(func):
+    """
+        wrapper for applying auth functions. If not an /auth/ endpoint, add
+        additional validateIncomingRequest and add request and jwt arguments
+    """
+    if (endpt.get("path").startswith("/auth/")):
+        return func
+    # else return function with wrapper
+    def wrapper():
+        (uInfo, err) = auth.validateIncomingRequest(request)
+        if err is not None:
+            return err_out(401, err)
+        # kwargs['jwtPayload'] = jwtPayload
+        (body, code, err) = func(request, uInfo)
+        if err is not None:
+            return err_out(code, err)
+        return jsonify(body)
+
+    return wrapper
+
+
 for endpt in supportedCrudEndpoints:
     for m in endpt.get("methods"):
         app.add_url_rule(endpt.get("path"),
                          "{} a {}".format(m.get("method"), endpt.get("name")),
-                         m.get("handler"),
+                         _wrap_auth_handler(m.get("handler")),
                          methods=[m.get("method")])
 
 # docs
 app.add_url_rule('/', "swagger docs", serve_docs)
-
-
-# auth
-@app.before_request
-def auth_wrapper():
-    # dont authenticate auth endpoints
-    if (request.path.startswith("/auth/")):
-        return
-    # assert that there is a validate incoming request
-    (uInfo, err) = auth.validateIncomingRequest(request)
-    if err is not None:
-        return err_out(401, err)
-
 
 if __name__ == '__main__':
     app.run(debug=True)
