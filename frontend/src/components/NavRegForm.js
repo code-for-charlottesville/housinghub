@@ -13,31 +13,40 @@ export const NavRegForm = () => {
           inputPh="Text input"
         />
         <InputField
-          inputName="First Name"
-          inputType="text"
-          inputPh="Text input"
-        />
-        <InputField
           inputName="Last Name"
           inputType="text"
           inputPh="Text input"
         />
-        <InputField
-          inputName="User Name"
-          inputType="text"
-          inputPh="Text input"
-        />
+        <InputField inputName="Email" inputType="email" inputPh="Email" />
         <InputField
           inputName="Password"
           inputType="password"
           inputPh="Password"
         />
-        <InputField inputName="Email" inputType="email" inputPh="Email" />
         <InputField
-          inputName="Phone number"
-          inputType="tel"
-          inputPh="Phone number"
+          inputName="Confirm password"
+          inputType="password"
+          inputPh="Password"
         />
+        <InputField
+          inputName="Organization"
+          inputType="text"
+          inputPh="Text input"
+        />
+        <div className="field">
+          <label className="label">Role</label>
+          <div className="control">
+            <label className="radio">
+              <input type="radio" name="answer" />
+              Navigator
+            </label>
+            <label className="radio">
+              <input type="radio" name="answer" />
+              Landlord
+            </label>
+          </div>
+        </div>
+
         <div className="field is-grouped">
           <div className="control">
             <button className="button is-link">Submit</button>
