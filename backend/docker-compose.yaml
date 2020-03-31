@@ -17,7 +17,7 @@ services:
     ports:
       - 5432:5432
 
-  backend:
+  housinghub-backend:
     image: codeforcharlottesville/housinghub:latest
     ports:
       - 5000:5000
