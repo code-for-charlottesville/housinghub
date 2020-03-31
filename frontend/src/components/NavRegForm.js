@@ -3,17 +3,13 @@ import "bulma/css/bulma.css";
 
 export const NavRegForm = () => {
   return (
-    <div className="container">
+    <div className="container column is-one-third">
       <h1 className="title">Navigator Registeration</h1>
       <form>
         <div className="field">
           <label className="label">First Name</label>
           <div className="control">
-            <input
-              className="input is-expanded"
-              type="text"
-              placeholder="Text input"
-            />
+            <input className="input" type="text" placeholder="Text input" />
           </div>
         </div>
         <div className="field">
