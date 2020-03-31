@@ -7,6 +7,12 @@ RESTful API to handle storage, retrieval, and searching of landlords, navigators
 ## Setup
 
 - [install python 3.6.x](https://realpython.com/installing-python/)
+- install the Serverless framework
+
+```sh
+npm install -g serverless
+```
+
 - configure dev environment:
 
 ```bash
@@ -18,18 +24,30 @@ python3 -m venv venv
 
 ```bash
 pip install -r requirements.txt
+npm i
 ```
+
+
 
 ## Run
 
+In order to run the app, you will need a Postgresql database to connect to. The easiest way to get started is to use Tilt (see instructions below), but you can create a local dockerized DB manually by running:
+
 ```sh
-export FLASK_APP=src/server.py
-export DB_ENDPOINT=test
+docker run -d -p 5432:5432 -e POSTGRES_DB=housinghub -e POSTGRES_USER=app -e POSTGRES_PASSWORD=apppassword postgres:11.7
+```
+
+Now you can run the Flask app by running 
+
+```sh
+export DB_HOST=0.0.0.0
+export DB_USER=app
+export DB_PASSWORD=apppassword
 export TOKEN_EXP_SECONDS=300
 export TOKEN_SECRET_KEY_ROTATION_SECONDS=randompassword
 export PORT=5000
 python3 api/swagger-yaml-to-html.py < api/swagger.yml > api/index.html
-flask run
+serverless wsgi serve
 ```
 
 in a new tab, make an example request:
@@ -83,19 +101,44 @@ Currently using header: `# syntax=docker/dockerfile:experimental`
 
 This allows to  accelerate the building and using experimental features like caching dependencies
 
-You would need to set up environment variables: `DOCKER_CLI_EXPERIMENTAL` and `DOCKER_BUILDKIT` 
+You would need to set up environment variables: `DOCKER_CLI_EXPERIMENTAL`, `DOCKER_BUILDKIT` and `COMPOSE_DOCKER_CLI_BUILD`
 
 ```bash
 export DOCKER_CLI_EXPERIMENTAL=enabled
 export DOCKER_BUILDKIT=1
+export COMPOSE_DOCKER_CLI_BUILD=1
 ```
 
 Then you can build and run the docker image:
 
 ```bash
-docker build . -t codeforcharlottesville/housinghubapi:alpine-3.6-slim
-docker run -p 5000:5000 codeforcharlottesville/housinghubapi:alpine-3.6-slim
+docker build . -t codeforcharlottesville/housinghub:latest
+docker-compose up
 ```
+
+## Using Tilt for local development
+
+For a local development workflow, we are using Tilt. 
+
+First you need to install Tilt. For macOS users with Homebrew installed, you can simply 
+
+```sh
+brew install windmilleng/tap/tilt
+```
+
+For other platforms see [https://docs.tilt.dev/install.html](https://docs.tilt.dev/install.html)
+
+Note that in order for Tilt to work you need both Docker and Docker Compose installed on your local system. 
+
+Once you have everything installed, you can start the environment by running 
+
+```sh
+tilt up 
+```
+
+from the /backend folder. 
+
+While tilt is running, any code changes made locally will be synced to the docker container on the fly so you can make changes and quickly see the results in your local instance. 
 
 ## Code Formatting
 
