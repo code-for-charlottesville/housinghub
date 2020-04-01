@@ -4,21 +4,26 @@ from flask import send_file, request, jsonify
 from datetime import datetime, timezone, timedelta
 from jwt import encode, decode, ExpiredSignatureError, exceptions as jwtExceptions
 import logging
+from user import User
 
 
 def register_new_user():
     """registers a new user in the DB, returns JWT Token
     :return: flask response object
     """
-    # get user and password from front end
-
+    # get user info from front end
+    try:
+        user_data = request.get_json() #dictionary of input
+        userd = User(user_data)
+    except KeyError as err:
+        return server.err_out(401, str(err))
     # create new entry in the database
 
     # TODO: confirm somehow??
 
     # create a JWT token and return to the front end
 
-    return server.err_out(500, "not implemented")
+    return jsonify(userd.get_info())
 
 
 def rotateServerKeyIfNeeded():

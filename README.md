@@ -1,4 +1,4 @@
-Join our Meetup group here: https://www.meetup.com/Code-for-Charlottesvile/
+ Join our Meetup group here: https://www.meetup.com/Code-for-Charlottesvile/
 
 # Building a Platform to Make Housing Navigation Easier
 
