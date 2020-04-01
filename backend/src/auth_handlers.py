@@ -12,9 +12,11 @@ def register_new_user():
     :return: flask response object
     """
     # get user info from front end
-    user_data = request.get_json() #dictionary of input
-    userd = User(user_data)
-
+    try:
+        user_data = request.get_json() #dictionary of input
+        userd = User(user_data)
+    except KeyError as err:
+        return server.err_out(401, str(err))
     # create new entry in the database
 
     # TODO: confirm somehow??
