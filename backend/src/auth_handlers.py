@@ -4,9 +4,6 @@ from flask import send_file, request, jsonify
 from datetime import datetime, timezone, timedelta
 from jwt import encode, decode, ExpiredSignatureError, exceptions as jwtExceptions
 import logging
-#from user import User
-import json
-
 from user import User
 
 
@@ -14,12 +11,9 @@ def register_new_user():
     """registers a new user in the DB, returns JWT Token
     :return: flask response object
     """
-    # get user and password from front end
+    # get user info from front end
     user_data = request.get_json() #dictionary of input
-
     userd = User(user_data)
-    print(userd)
-
 
     # create new entry in the database
 
@@ -47,8 +41,6 @@ def login():
     """login an existing user
     :return: flask response object
     """
-    #this is login
-    print("hi")
     rotateServerKeyIfNeeded()
     # get user and password from front end
     u = request.get_json().get("username")
