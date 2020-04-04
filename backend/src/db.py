@@ -27,7 +27,7 @@ class DB:
             else:
                 self.engine = sqlalchemy.create_engine(self.db_url)
             self.engine.connect()
-            self.session = sessionmaker(bind=self.engine)
+            self.Session = sessionmaker(bind=self.engine)
             metadata = sqlalchemy.MetaData()
             logging.debug(
                 "Loaded db '{}' successfully with metadata: {}".format(
@@ -45,6 +45,13 @@ class DB:
         :param: dictionary object to add
         :return: string error
         """
+        session = self.Session()
+        try:
+            session.add(obj)
+        except sqlalchemy.orm.exc.UnmappedInstanceError as e:
+            logging.error(e)
+            return "table {} does not exist".format(tableName)
+
     def query_db(self, q):
         """
         queries DB
