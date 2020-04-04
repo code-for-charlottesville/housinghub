@@ -28,7 +28,7 @@ class TestAuthHandlers(unittest.TestCase):
         # assert able to decode jwt
         t = response.get_json().get("jwt")
         jwtDecoded = jwt.decode(t, server.tokenSecret, algorithms='HS256')
-        self.assertEqual(jwtDecoded.get("name"), "david goldstein")
+        self.assertEqual(jwtDecoded.get("username"), "david1")
         # username is not valid
         response = self.app.post("/auth/login",
                                  json={
@@ -48,6 +48,8 @@ class TestAuthHandlers(unittest.TestCase):
             "last_name": "goldstein",
             "user_name": "david1",
             "email": "temp@gmail.com",
+            "role": "navigator",
+            "role_id": "TEMP_ROLE_ID",
             "username": "david",
             "password": "davidrulz",
         })
@@ -77,8 +79,10 @@ class TestAuthHandlers(unittest.TestCase):
         rawBytes = encode(
             {
                 'exp': pastTime,
-                'uid': user.uid,
-                "name": "{} {}".format(user.first_name, user.last_name)
+                'uuid': user.id,
+                'username': user.username,
+                'role': user.role,
+                'role_id': user.role_id,
             },
             tokenSecret,
             algorithm=tokenEncryptAlg)

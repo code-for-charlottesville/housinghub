@@ -16,7 +16,8 @@ app = Flask(__name__)
 app.config.from_pyfile('../config.cfg')
 
 # db setup
-db = db.DB(os.environ['DB_HOST'],os.environ['DB_USER'],os.environ['DB_PASSWORD'])
+db = db.DB(os.environ['DB_HOST'], os.environ['DB_USER'],
+           os.environ['DB_PASSWORD'], os.environ["DB_PORT"])
 
 # global config
 tokenSecret = "{}-{}".format(secrets.token_hex(64), time.time())

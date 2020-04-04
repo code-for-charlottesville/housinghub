@@ -10,11 +10,13 @@ class TestUser(unittest.TestCase):
             "last_name": "goldstein",
             "user_name": "david1",
             "email": "temp@gmail.com",
+            "role": "navigator",
+            "role_id": "TEMP_ROLE_ID",
             "username": "david",
             "password": "davidrulz",
         }
         u = User(tempUserConfig)
-        self.assertIsNotNone(u.uid)
+        self.assertIsNotNone(u.id)
         self.assertIsNotNone(u.registered_on)
         # assert key error when field does not exist
         with self.assertRaises(KeyError):

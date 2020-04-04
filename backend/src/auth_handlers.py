@@ -13,7 +13,7 @@ def register_new_user():
     """
     # get user info from front end
     try:
-        user_data = request.get_json() #dictionary of input
+        user_data = request.get_json()  #dictionary of input
         userd = User(user_data)
     except KeyError as err:
         return server.err_out(401, str(err))
@@ -111,8 +111,10 @@ def encodeJWT(user):
     rawBytes = encode(
         {
             'exp': futureTime,
-            'uuid': user.uid,
-            "name": "{} {}".format(user.first_name, user.last_name)
+            'uuid': user.id,
+            'username': user.username,
+            'role': user.role,
+            'role_id': user.role_id,
         },
         server.tokenSecret,
         algorithm=server.tokenEncryptAlg)
