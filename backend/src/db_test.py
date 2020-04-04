@@ -1,6 +1,7 @@
 import unittest
 import db
 import logging
+import sqlalchemy
 
 
 class TestDBMethods(unittest.TestCase):
@@ -15,7 +16,7 @@ class TestDBMethods(unittest.TestCase):
 
     def test_connectToDb(self):
         db.DB(self.host, self.user, self.password, self.port, self.in_memory)
-        with self.assertRaises(IOError):
+        with self.assertRaises(sqlalchemy.exc.InternalError):
             db.DB(self.host,
                   self.user,
                   self.password,

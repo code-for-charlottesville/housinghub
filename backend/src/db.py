@@ -1,6 +1,6 @@
 import logging
 from user import User
-from sqlalchemy import create_engine
+import sqlalchemy
 
 
 class DB:
@@ -18,13 +18,18 @@ class DB:
         try:
             # if in memory, use sql lite in-memory DB
             if self.in_memory:
-                self.engine = create_engine('sqlite:///:memory:', echo=True)
+                self.engine = sqlalchemy.create_engine('sqlite:///:memory:',
+                                                       echo=True)
             else:
-                self.engine = create_engine(self.db_url)
-            logging.debug("Loaded db '{}' successfully".format(self.db_url))
-        except IOError as e:
+                self.engine = sqlalchemy.create_engine(self.db_url)
+            self.engine.connect()
+            metadata = sqlalchemy.MetaData()
+            logging.debug(
+                "Loaded db '{}' successfully with metadata: {}".format(
+                    self.db_url, metadata))
+        except sqlalchemy.exc.InternalError as e:
             logging.error("Exception loading db '{}' at url '{}'".format(
-                e, db_url))
+                e, self.db_url))
             raise e
 
     def query_db(self, q):
