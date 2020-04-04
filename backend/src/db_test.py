@@ -15,3 +15,9 @@ class TestDBMethods(unittest.TestCase):
 
     def test_connectToDb(self):
         db.DB(self.host, self.user, self.password, self.port, self.in_memory)
+        with self.assertRaises(IOError):
+            db.DB(self.host,
+                  self.user,
+                  self.password,
+                  self.port,
+                  in_memory=False)
