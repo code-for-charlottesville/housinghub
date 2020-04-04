@@ -12,7 +12,6 @@ class DB:
             user, password, host, int(port))
         self.in_memory = in_memory
         self.connect_to_db()
-        self.load_tables()
 
     def load_tables(self):
         pass
@@ -39,6 +38,13 @@ class DB:
                 e, self.db_url))
             raise e
 
+    def add(self, tableName, obj):
+        """
+        adds an object to the db
+        :param: string name of table to add object to
+        :param: dictionary object to add
+        :return: string error
+        """
     def query_db(self, q):
         """
         queries DB
