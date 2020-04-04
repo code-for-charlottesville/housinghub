@@ -5,13 +5,18 @@ from sqlalchemy import create_engine
 
 class DB:
     """class which interfaces a dynamo DB"""
-    def __init__(self, host, user, password, port=5432):
+    def __init__(self, host, user, password, port=5432, inMemory=False):
         """attempts to connect to db, throws exception on error"""
         db_url = "postgresql+pygresql://{}:{}@{}:{}/housinghub".format(
             user, password, host, int(port))
+        logging.debug("connecting to DB: {}".format(db_url))
         # long-compute time values can be saved in class
         try:
-            self.engine = create_engine(db_url)
+            # if in memory, use sql lite in-memory DB
+            if inMemory:
+                self.engine = create_engine('sqlite:///:memory:', echo=True)
+            else:
+                self.engine = create_engine(db_url)
             logging.debug("Loaded db '{}' successfully".format(db_url))
         except IOError as e:
             logging.error("Exception loading db '{}' at url '{}'".format(

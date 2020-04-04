@@ -9,6 +9,7 @@ export DB_HOST="localhost"
 export DB_PORT=5432
 export DB_USER="testuser"
 export DB_PASSWORD="password"
+export DB_IN_MEMORY_ONLY="true"
 
 python api/swagger-yaml-to-html.py < api/swagger.yml > api/index.html
 
