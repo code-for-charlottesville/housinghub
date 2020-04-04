@@ -21,9 +21,8 @@ def upgrade():
     op.create_table(
         'users',
         sa.Column('id', UUID, primary_key=True),
-        sa.Column('username', VARCHAR, unique=True),
+        sa.Column('username', VARCHAR, unique=True, nullable=False),
         sa.Column('password_hash', VARCHAR, nullable=False),
-        sa.Column('salt', VARCHAR, nullable=False),
         sa.Column('role', VARCHAR, nullable=False),
         sa.Column('role_id', UUID, nullable=False),
         sa.Column('is_admin', BOOLEAN, default=False, nullable=False)
