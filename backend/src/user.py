@@ -1,26 +1,27 @@
 import datetime
 import random
 import uuid
+from sqlalchemy import Column, String, Boolean
 
 
-class User:
+class User():
     """user is anyone who has uses the app"""
+    __tablename__ = 'users'
+    id = Column(String, primary_key=True)
+    username = Column('username', String)
+    password_hash = Column('password', String)
+    role = Column('role', String)
+    role_id = Column('role_id', String)
+    is_admin = Column('is_admin', Boolean)
 
-    # TODO: replace when entire scheme is decided
-    id = None
-    username = None
     salt = None
-    password_hash = None
-    role = None
-    role_id = None
-    is_admin = None
     registered_on = None
     last_updated_on = None
 
     def __init__(self, info={}):
         """attempts to connect to db, throws exception on error"""
         # create new fields
-        self.id = str(uuid.uuid1())
+        self.id = "u-" + str(uuid.uuid1())
         self.registered_on = datetime.datetime.now()
         self.last_updated_on = self.registered_on
         # throws key error when required information does not exist

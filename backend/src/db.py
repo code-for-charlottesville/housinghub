@@ -1,6 +1,7 @@
 import logging
 from user import User
 import sqlalchemy
+from sqlalchemy.orm import sessionmaker
 
 
 class DB:
@@ -11,6 +12,10 @@ class DB:
             user, password, host, int(port))
         self.in_memory = in_memory
         self.connect_to_db()
+        self.load_tables()
+
+    def load_tables(self):
+        pass
 
     def connect_to_db(self):
         """attemps initial connection to DB. Throws error on failure"""
@@ -23,10 +28,12 @@ class DB:
             else:
                 self.engine = sqlalchemy.create_engine(self.db_url)
             self.engine.connect()
+            self.session = sessionmaker(bind=self.engine)
             metadata = sqlalchemy.MetaData()
             logging.debug(
                 "Loaded db '{}' successfully with metadata: {}".format(
                     self.db_url, metadata))
+            print(metadata)
         except sqlalchemy.exc.InternalError as e:
             logging.error("Exception loading db '{}' at url '{}'".format(
                 e, self.db_url))
