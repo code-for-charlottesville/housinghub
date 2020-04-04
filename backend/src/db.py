@@ -5,26 +5,28 @@ from sqlalchemy import create_engine
 
 class DB:
     """class which interfaces a dynamo DB"""
-    def __init__(self, host, user, password, port=5432, inMemory=False):
+    def __init__(self, host, user, password, port=5432, in_memory=False):
         """attempts to connect to db, throws exception on error"""
-        db_url = "postgresql+pygresql://{}:{}@{}:{}/housinghub".format(
+        self.db_url = "postgresql+pygresql://{}:{}@{}:{}/housinghub".format(
             user, password, host, int(port))
-        logging.debug("connecting to DB: {}".format(db_url))
-        # long-compute time values can be saved in class
+        self.in_memory = in_memory
+        self.connect_to_db()
+
+    def connect_to_db(self):
+        """attemps initial connection to DB. Throws error on failure"""
+        logging.debug("connecting to DB: {}".format(self.db_url))
         try:
             # if in memory, use sql lite in-memory DB
-            if inMemory:
+            if self.in_memory:
                 self.engine = create_engine('sqlite:///:memory:', echo=True)
             else:
-                self.engine = create_engine(db_url)
-            logging.debug("Loaded db '{}' successfully".format(db_url))
+                self.engine = create_engine(self.db_url)
+            logging.debug("Loaded db '{}' successfully".format(self.db_url))
         except IOError as e:
             logging.error("Exception loading db '{}' at url '{}'".format(
                 e, db_url))
             raise e
 
-    def connect_to_db(self):
-        """attemps initial connection to DB. Throws error on failure"""
     def query_db(self, q):
         """
         queries DB
