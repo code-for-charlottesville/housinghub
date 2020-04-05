@@ -1,5 +1,6 @@
 
-frontend/.DS_Store
-.DS_Store
-*.json
-*.gz
+**/.DS_Store
+**/node_modules
+**/.vscode
+**/.idea
+
