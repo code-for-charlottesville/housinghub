@@ -26,6 +26,10 @@ class DB:
                                                        echo=True)
             else:
                 self.engine = sqlalchemy.create_engine(self.db_url)
+            # create tables
+            Base.metadata.create_all(self.engine)
+            Base.metadata.bind = self.engine
+            # connection to DB
             self.engine.connect()
             self.Session = sessionmaker(bind=self.engine)
             self.metadata = sqlalchemy.MetaData()
