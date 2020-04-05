@@ -12,7 +12,7 @@ class TestUser(unittest.TestCase):
             "email": "temp@gmail.com",
             "role": "navigator",
             "role_id": "TEMP_ROLE_ID",
-            "username": "david",
+            "user_name": "david",
             "password": "davidrulz",
         }
         u = User(tempUserConfig)

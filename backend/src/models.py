@@ -2,6 +2,7 @@ import datetime
 import random
 import uuid
 from sqlalchemy.ext.declarative import declarative_base
+from werkzeug.security import generate_password_hash, check_password_hash
 from sqlalchemy import Column, String, Boolean
 
 Base = declarative_base()
@@ -11,8 +12,8 @@ class User(Base):
     """user is anyone who has uses the app"""
     __tablename__ = 'users'
     id = Column(String, primary_key=True)
-    username = Column('username', String)
-    password_hash = Column('password', String)
+    user_name = Column('user_name', String)
+    password_hash = Column('password_hash', String)
     role = Column('role', String)
     role_id = Column('role_id', String)
     is_admin = Column('is_admin', Boolean)
@@ -29,12 +30,18 @@ class User(Base):
         self.last_updated_on = self.registered_on
         # throws key error when required information does not exist
         #self.email = info["email"]
-        self.username = info["user_name"]
+        self.user_name = info["user_name"]
         self.password_hash = info["password"]
         self.salt = self._create_salt()
         self.role_id = info["role_id"]
         self.role = info["role"]
         self.is_admin = (info.get("is_admin") == "true") or False
+
+    def set_password(self, password):
+        self.password_hash = generate_password_hash(password)
+
+    def check_password(self, password):
+        return check_password_hash(self.password_hash, password)
 
     def _create_salt(self):
         ALPHABET = "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
@@ -47,7 +54,7 @@ class User(Base):
     def get_info(self):
         return_dict = {
             "id": self.id,
-            "username": self.username,
+            "user_name": self.user_name,
             "salt": self.salt,
             "password_hash": self.password_hash,
             "role": self.role,

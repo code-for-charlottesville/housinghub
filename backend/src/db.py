@@ -64,14 +64,14 @@ class DB:
         queries DB
         :parma q: (string) - query to be passed to DB
         """
-    def validate_login(self, username, password):
-        """validates if the username and password is valid for users in the db
-        :param username: (string) username to validate
+    def validate_login(self, user_name, password):
+        """validates if the user_name and password is valid for users in the db
+        :param user_name: (string) user_name to validate
         :param password: (string) password to validate
         :return tuple: in the format (user[User], error[string])
         """
         if password != "davidrulz":
-            return ({}, "incorrect username or password")
+            return ({}, "incorrect user_name or password")
 
         tempUserConfig = {
             "first_name": "david",
@@ -80,7 +80,7 @@ class DB:
             "email": "temp@gmail.com",
             "role": "navigator",
             "role_id": "TEMP_ROLE_ID",
-            "username": "david",
+            "user_name": "david",
             "password": "davidrulz",
         }
         return (User(tempUserConfig), None)

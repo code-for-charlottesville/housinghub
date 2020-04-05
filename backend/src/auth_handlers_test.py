@@ -17,27 +17,27 @@ class TestAuthHandlers(unittest.TestCase):
         self.app = app.test_client()
 
     def test_login(self):
-        # username is valid
+        # user_name is valid
         response = self.app.post("/auth/login",
                                  json={
-                                     'username': 'david',
+                                     'user_name': 'david',
                                      'password': 'davidrulz'
                                  })
         self.assertEqual(response.status_code, 200)
         # assert able to decode jwt
         t = response.get_json().get("jwt")
         jwtDecoded = jwt.decode(t, server.tokenSecret, algorithms='HS256')
-        self.assertEqual(jwtDecoded.get("username"), "david1")
-        # username is not valid
+        self.assertEqual(jwtDecoded.get("user_name"), "david1")
+        # user_name is not valid
         response = self.app.post("/auth/login",
                                  json={
-                                     'username': 'david',
+                                     'user_name': 'david',
                                      'password': 'davidrulz-bad-password'
                                  })
         self.assertEqual(response.status_code, 401)
         self.assertEqual(response.get_json(), {
             'code': 401,
-            'error': "incorrect username or password"
+            'error': "incorrect user_name or password"
         })
 
     def test_status(self):
@@ -49,7 +49,7 @@ class TestAuthHandlers(unittest.TestCase):
             "email": "temp@gmail.com",
             "role": "navigator",
             "role_id": "TEMP_ROLE_ID",
-            "username": "david",
+            "user_name": "david",
             "password": "davidrulz",
         })
         jwt = encodeJWT(user)
@@ -79,7 +79,7 @@ class TestAuthHandlers(unittest.TestCase):
             {
                 'exp': pastTime,
                 'uuid': user.id,
-                'username': user.username,
+                'user_name': user.user_name,
                 'role': user.role,
                 'role_id': user.role_id,
             },
@@ -89,3 +89,17 @@ class TestAuthHandlers(unittest.TestCase):
         response = self.app.get("/auth/status",
                                 headers=dict(Authorization='Bearer ' + jwt))
         self.assertEqual(response.status_code, 401)
+
+    def test_create_user(self):
+        user1 = {
+            "user_name": "david",
+            "password": "davidrulz",
+            "role_id": "4",
+            "role": "navigator",
+            "is_admin": True
+        }
+        response = self.app.post("/auth/register", json=user1)
+        self.assertEqual(response.status_code, 200)
+        for k in user1:
+            self.assertEqual(response.get_json().get("user").get(k),
+                             user1.get(k))

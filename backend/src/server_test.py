@@ -13,7 +13,7 @@ class TestServer(unittest.TestCase):
         "email": "temp@gmail.com",
         "role": "navigator",
         "role_id": "TEMP_ROLE_ID",
-        "username": "david",
+        "user_name": "david",
         "password": "davidrulz",
     })
     jwt = encodeJWT(user)

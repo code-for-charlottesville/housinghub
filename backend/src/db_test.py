@@ -37,12 +37,12 @@ class TestDBMethods(unittest.TestCase):
             "email": "temp@gmail.com",
             "role": "navigator",
             "role_id": "TEMP_ROLE_ID",
-            "username": "david",
+            "user_name": "david",
             "password": "davidrulz",
         })
         err = d.add("users", user)
         self.assertIsNone(err)
 
         s = d.new_session()
-        user_in_db = s.query(User).filter_by(username=user.username).one()
-        self.assertEqual(user_in_db.username, user.username)
+        user_in_db = s.query(User).filter_by(user_name=user.user_name).one()
+        self.assertEqual(user_in_db.user_name, user.user_name)

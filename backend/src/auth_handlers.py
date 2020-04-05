@@ -15,6 +15,7 @@ def register_new_user():
     try:
         user_data = request.get_json()  #dictionary of input
         userd = User(user_data)
+        userd.set_password(request.get_json().get("password"))
     except KeyError as err:
         return server.err_out(401, "'{}' is a required field".format(str(err)))
     # create new entry in the database
@@ -47,7 +48,7 @@ def login():
     """
     rotateServerKeyIfNeeded()
     # get user and password from front end
-    u = request.get_json().get("username")
+    u = request.get_json().get("user_name")
     p = request.get_json().get("password")
     # validate that user and password is valid
     (user, err) = server.db.validate_login(u, p)
@@ -114,7 +115,7 @@ def encodeJWT(user):
         {
             'exp': futureTime,
             'uuid': user.id,
-            'username': user.username,
+            'user_name': user.user_name,
             'role': user.role,
             'role_id': user.role_id,
         },
