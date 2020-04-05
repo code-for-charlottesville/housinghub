@@ -21,7 +21,7 @@ class DB:
 
     def connect_to_db(self):
         """attemps initial connection to DB. Throws error on failure"""
-        logging.info("connecting to DB: {}".format(self.db_url))
+        print("connecting to DB: {}".format(self.db_url))
         try:
             self.engine = sqlalchemy.create_engine(self.db_url)
             # create tables
@@ -31,7 +31,7 @@ class DB:
             self.engine.connect()
             self.Session = sessionmaker(bind=self.engine)
             self.metadata = sqlalchemy.MetaData()
-            logging.info("Loaded db '{}' successfully with tables: {}".format(
+            print("Loaded db '{}' successfully with tables: {}".format(
                 self.db_url, self.metadata.tables.keys()))
         except sqlalchemy.exc.InternalError as e:
             logging.error("Exception loading db '{}' at url '{}'".format(

@@ -40,12 +40,14 @@ docker run -d -p 5432:5432 -e POSTGRES_DB=housinghub -e POSTGRES_USER=app -e POS
 Now you can run the Flask app by running 
 
 ```sh
-export DB_HOST=0.0.0.0
-export DB_USER=app
-export DB_PASSWORD=apppassword
-export TOKEN_EXP_SECONDS=300
-export TOKEN_SECRET_KEY_ROTATION_SECONDS=randompassword
+export FLASK_APP=src/server.py
+export FLASK_ENV=development
+export TOKEN_EXP_SECONDS=1000
 export PORT=5000
+export DB_HOST="localhost"
+export DB_PORT=5431
+export DB_USER="app"
+export DB_PASSWORD="apppassword"
 python3 api/swagger-yaml-to-html.py < api/swagger.yml > api/index.html
 serverless wsgi serve
 ```
@@ -63,6 +65,10 @@ $ curl -H "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOj
 {"code":401,"error":"token is invalid"}
 
 $ curl -XPOST -H "content-type: application/json" -d '{"user_name" : "david", "password" : "davidrulz", "role_id" : "4", "role" : "navigator", "is_admin": true}' http://localhost:5000/auth/register
+```
+
+```bash
+$ psql postgres://app:apppassword@localhost:5431/housinghub
 ```
 
 ## Development

@@ -15,7 +15,7 @@ services:
       POSTGRES_USER: app
       POSTGRES_PASSWORD: apppassword
     ports:
-      - 5432:5432
+      - 5431:5432
 
   housinghub-backend:
     image: codeforcharlottesville/housinghub:latest
@@ -27,4 +27,3 @@ services:
       DB_PASSWORD: apppassword
       TOKEN_SECRET_KEY_ROTATION_SECONDS: 172800
       TOKEN_EXP_SECONDS: 300
-
