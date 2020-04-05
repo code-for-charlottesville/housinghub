@@ -7,7 +7,7 @@ Create Date: 2020-03-31 20:50:40.649341
 """
 from alembic import op
 import sqlalchemy as sa
-from sqlalchemy.dialects.postgresql import UUID,VARCHAR,BOOLEAN
+from sqlalchemy.dialects.postgresql import UUID,VARCHAR,BOOLEAN,ARRAY
 
 
 
@@ -22,12 +22,11 @@ def upgrade():
     op.create_table(
         'navigators',
         sa.Column('id', UUID, primary_key=True),
-        sa.Column('username', VARCHAR, unique=True),
-        sa.Column('password_hash', VARCHAR, nullable=False),
-        sa.Column('salt', VARCHAR, nullable=False),
-        sa.Column('role', VARCHAR, nullable=False),
-        sa.Column('role_id', UUID, nullable=False),
-        sa.Column('is_admin', BOOLEAN, default=False, nullable=False)
+        sa.Column('first_name', VARCHAR, nullable=True),
+        sa.Column('last_name', VARCHAR, nullable=False),
+        sa.Column('phone_number', VARCHAR, nullable=True),
+        sa.Column('email_address', VARCHAR, nullable=False),
+        sa.Column('company', VARCHAR, nullable=True)
     );
 
 
