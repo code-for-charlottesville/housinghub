@@ -16,13 +16,17 @@ class TestDBMethods(unittest.TestCase):
         logging.getLogger().setLevel(logging.ERROR)
 
     def test_connectToDb(self):
-        db.DB(self.host, self.user, self.password, self.port, self.in_memory)
+        d = db.DB(self.host, self.user, self.password, self.port,
+                  self.in_memory)
         with self.assertRaises(sqlalchemy.exc.InternalError):
             db.DB(self.host,
                   self.user,
                   self.password,
                   self.port,
                   in_memory=False)
+        # make sure all the tables were created
+        m = d.get_metadata()
+        self.assertEqual(['users'], list(m.tables.keys()))
 
     def test_add(self):
         d = db.DB(self.host, self.user, self.password, self.port,

@@ -1,5 +1,5 @@
 import logging
-from models import User
+from models import User, Base
 import sqlalchemy
 from sqlalchemy.orm import sessionmaker
 
@@ -18,7 +18,7 @@ class DB:
 
     def connect_to_db(self):
         """attemps initial connection to DB. Throws error on failure"""
-        logging.debug("connecting to DB: {}".format(self.db_url))
+        print("connecting to DB: {}".format(self.db_url))
         try:
             # if in memory, use sql lite in-memory DB
             if self.in_memory:
@@ -28,15 +28,16 @@ class DB:
                 self.engine = sqlalchemy.create_engine(self.db_url)
             self.engine.connect()
             self.Session = sessionmaker(bind=self.engine)
-            metadata = sqlalchemy.MetaData()
-            logging.debug(
-                "Loaded db '{}' successfully with metadata: {}".format(
-                    self.db_url, metadata))
-            print(metadata)
+            self.metadata = sqlalchemy.MetaData()
+            print("Loaded db '{}' successfully with tables: {}".format(
+                self.db_url, self.metadata.tables.keys()))
         except sqlalchemy.exc.InternalError as e:
             logging.error("Exception loading db '{}' at url '{}'".format(
                 e, self.db_url))
             raise e
+
+    def get_metadata(self):
+        return self.metadata
 
     def add(self, tableName, obj):
         """

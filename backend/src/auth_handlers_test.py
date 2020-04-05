@@ -15,7 +15,6 @@ class TestAuthHandlers(unittest.TestCase):
         app.config['DB_ENDPOINT'] = "tcp://dynamodb"
         app.config['TOKEN_EXP_SECONDS'] = "1000"
         self.app = app.test_client()
-        self.assertEqual(app.debug, False)
 
     def test_login(self):
         # username is valid
