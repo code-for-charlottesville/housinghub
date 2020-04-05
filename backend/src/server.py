@@ -16,6 +16,7 @@ app = Flask(__name__)
 app.config.from_pyfile('../config.cfg')
 
 # db setup
+
 db = db.DB(os.environ['DB_HOST'], os.environ['DB_USER'],
            os.environ['DB_PASSWORD'], os.environ["DB_PORT"],
            os.environ.get("DB_IN_MEMORY_ONLY") == "true")

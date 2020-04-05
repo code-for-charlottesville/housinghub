@@ -8,8 +8,13 @@ class DB:
     """class which interfaces a dynamo DB"""
     def __init__(self, host, user, password, port=5432, in_memory=False):
         """attempts to connect to db, throws exception on error"""
-        self.db_url = "postgresql+pygresql://{}:{}@{}:{}/housinghub".format(
-            user, password, host, int(port))
+        self.db_url = 'sqlite:///:memory:'
+
+        # if in_memory:
+        #     self.db_url = "postgresql+pygresql://{}:{}@{}:{}/housinghub".format(
+        #         user, password, host, int(port))
+        # else:
+        #     self.db_url = 'sqlite:///:memory:'
         self.in_memory = in_memory
         self.connect_to_db()
 
@@ -18,14 +23,9 @@ class DB:
 
     def connect_to_db(self):
         """attemps initial connection to DB. Throws error on failure"""
-        print("connecting to DB: {}".format(self.db_url))
+        logging.info("connecting to DB: {}".format(self.db_url))
         try:
-            # if in memory, use sql lite in-memory DB
-            if self.in_memory:
-                self.engine = sqlalchemy.create_engine('sqlite:///:memory:',
-                                                       echo=True)
-            else:
-                self.engine = sqlalchemy.create_engine(self.db_url)
+            self.engine = sqlalchemy.create_engine(self.db_url)
             # create tables
             Base.metadata.create_all(self.engine)
             Base.metadata.bind = self.engine
@@ -33,7 +33,7 @@ class DB:
             self.engine.connect()
             self.Session = sessionmaker(bind=self.engine)
             self.metadata = sqlalchemy.MetaData()
-            print("Loaded db '{}' successfully with tables: {}".format(
+            logging.info("Loaded db '{}' successfully with tables: {}".format(
                 self.db_url, self.metadata.tables.keys()))
         except sqlalchemy.exc.InternalError as e:
             logging.error("Exception loading db '{}' at url '{}'".format(
