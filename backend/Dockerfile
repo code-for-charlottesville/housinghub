@@ -22,4 +22,4 @@ RUN --mount=type=cache,target=/root/.cache/pip pip install -r requirements.txt
 # generate documentation
 RUN python api/swagger-yaml-to-html.py < api/swagger.yml > api/index.html
 
-CMD sls wsgi serve --host 0.0.0.0
+CMD /bin/sh docker_start.sh
