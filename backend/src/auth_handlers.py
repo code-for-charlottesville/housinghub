@@ -16,8 +16,14 @@ def register_new_user():
         user_data = request.get_json()  #dictionary of input
         userd = User(user_data)
     except KeyError as err:
-        return server.err_out(401, str(err))
+        return server.err_out(401, "'{}' is a required field".format(str(err)))
     # create new entry in the database
+    try:
+        server.db.add("users",userd)
+    except:
+        return server.err_out(500,"Could not add user to database")
+    return jsonify(userd.get_info())
+
 
     # TODO: confirm somehow??
 

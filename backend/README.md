@@ -7,7 +7,9 @@ RESTful API to handle storage, retrieval, and searching of landlords, navigators
 ## Setup
 
 - [install python 3.6.x](https://realpython.com/installing-python/)
-- install the Serverless framework
+- [install npm](https://www.npmjs.com/get-npm)
+- [install the Serverless framework](https://serverless.com/framework/docs/providers/aws/guide/installation/)
+- [install the psql CLI](https://www.pgcli.com/install)
 
 ```sh
 npm install -g serverless
@@ -26,7 +28,6 @@ python3 -m venv venv
 pip install -r requirements.txt
 npm i
 ```
-
 
 
 ## Run
@@ -67,9 +68,35 @@ $ curl -H "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOj
 $ curl -XPOST -H "content-type: application/json" -d '{"user_name" : "david", "password" : "davidrulz", "role_id" : "4", "role" : "navigator", "is_admin": true}' http://localhost:5000/auth/register
 ```
 
+Now let's go into the database to see the user we just created
+
 ```bash
 $ psql postgres://app:apppassword@localhost:5431/housinghub
+psql (10.12 (Ubuntu 10.12-0ubuntu0.18.04.1), server 11.7 (Debian 11.7-2.pgdg90+1))
+WARNING: psql major version 10, server major version 11.
+         Some psql features might not work.
+Type "help" for help
+...
 ```
+Type \dt which lists all datatables in the databse
+```bash
+housinghub-# \dt
+       List of relations
+ Schema | Name  | Type  | Owner 
+--------+-------+-------+-------
+ public | users | table | app
+(1 row)
+```
+To show the user we created from the curl request above, type the following query:
+```bash
+housinghub=# select * from users;
+                   id                   | username | password  |   role    | role_id | is_admin 
+----------------------------------------+----------+-----------+-----------+---------+----------
+ u-0967cad0-7768-11ea-81eb-e470b8b61683 | david    | davidrulz | navigator | 4       | f
+(1 row)
+```
+
+Now type \q to quit.
 
 ## Development
 
