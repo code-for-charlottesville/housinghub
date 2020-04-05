@@ -25,15 +25,13 @@ class TestDBMethods(unittest.TestCase):
                   self.port,
                   in_memory=False)
         # make sure all the tables were created
-        m = d.get_metadata()
-        self.assertEqual(['users'], list(m.tables.keys()))
 
     def test_add(self):
         d = db.DB(self.host, self.user, self.password, self.port,
                   self.in_memory)
 
         user = User({
-            "first_name": "david",
+            "first_name": "david-test_add",
             "last_name": "goldstein",
             "user_name": "david1",
             "email": "temp@gmail.com",
@@ -44,3 +42,7 @@ class TestDBMethods(unittest.TestCase):
         })
         err = d.add("users", user)
         self.assertIsNone(err)
+
+        s = d.new_session()
+        user_in_db = s.query(User).filter_by(username=user.username).one()
+        self.assertEqual(user_in_db.username, user.username)

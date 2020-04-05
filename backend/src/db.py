@@ -41,6 +41,9 @@ class DB:
     def get_metadata(self):
         return self.metadata
 
+    def new_session(self):
+        return self.Session()
+
     def add(self, tableName, obj):
         """
         adds an object to the db
@@ -48,9 +51,10 @@ class DB:
         :param: dictionary object to add
         :return: string error
         """
-        session = self.Session()
+        session = self.new_session()
         try:
             session.add(obj)
+            session.commit()
         except sqlalchemy.orm.exc.UnmappedInstanceError as e:
             logging.error(e)
             return "table {} does not exist".format(tableName)
