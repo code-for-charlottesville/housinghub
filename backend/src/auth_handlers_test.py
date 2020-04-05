@@ -101,5 +101,7 @@ class TestAuthHandlers(unittest.TestCase):
         response = self.app.post("/auth/register", json=user1)
         self.assertEqual(response.status_code, 200)
         for k in user1:
-            self.assertEqual(response.get_json().get("user").get(k),
-                             user1.get(k))
+            if k is not "password":
+                print(k)
+                self.assertEqual(response.get_json().get("user").get(k),
+                                 user1.get(k))

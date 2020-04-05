@@ -35,7 +35,7 @@ class User(Base):
         self.salt = self._create_salt()
         self.role_id = info["role_id"]
         self.role = info["role"]
-        self.is_admin = (info.get("is_admin") == "true") or False
+        self.is_admin = info.get("is_admin") or info.get("is_admin") == "true"
 
     def set_password(self, password):
         self.password_hash = generate_password_hash(password)
