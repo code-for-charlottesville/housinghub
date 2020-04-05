@@ -1,7 +1,7 @@
 import unittest
 from server import app
 from auth_handlers import encodeJWT
-from user import User
+from models import User
 
 
 class TestServer(unittest.TestCase):

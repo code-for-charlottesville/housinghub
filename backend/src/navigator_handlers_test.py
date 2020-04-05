@@ -1,6 +1,6 @@
 import unittest
 from server import app
-from user import User
+from models import User
 from auth_handlers import encodeJWT
 
 

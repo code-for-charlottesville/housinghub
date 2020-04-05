@@ -2,7 +2,7 @@ import unittest
 import db
 import logging
 import sqlalchemy
-from user import User
+from models import User
 
 
 class TestDBMethods(unittest.TestCase):

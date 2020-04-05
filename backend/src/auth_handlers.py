@@ -4,7 +4,7 @@ from flask import send_file, request, jsonify
 from datetime import datetime, timezone, timedelta
 from jwt import encode, decode, ExpiredSignatureError, exceptions as jwtExceptions
 import logging
-from user import User
+from models import User
 
 
 def register_new_user():

@@ -1,7 +1,7 @@
 import unittest
 from server import app, tokenSecret, tokenEncryptAlg
 import jwt
-from user import User
+from models import User
 from auth_handlers import encodeJWT
 from datetime import datetime, timezone, timedelta
 from jwt import encode

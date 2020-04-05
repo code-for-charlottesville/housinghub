@@ -1,5 +1,5 @@
 import logging
-from user import User
+from models import User
 import sqlalchemy
 from sqlalchemy.orm import sessionmaker
 
