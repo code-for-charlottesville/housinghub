@@ -8,13 +8,11 @@ class DB:
     """class which interfaces a dynamo DB"""
     def __init__(self, host, user, password, port=5432, in_memory=False):
         """attempts to connect to db, throws exception on error"""
-        self.db_url = 'sqlite:///:memory:'
-
-        # if in_memory:
-        #     self.db_url = "postgresql+pygresql://{}:{}@{}:{}/housinghub".format(
-        #         user, password, host, int(port))
-        # else:
-        #     self.db_url = 'sqlite:///:memory:'
+        if in_memory:
+            self.db_url = 'sqlite:///:memory:'
+        else:
+            self.db_url = "postgresql+pygresql://{}:{}@{}:{}/housinghub".format(
+                user, password, host, int(port))
         self.in_memory = in_memory
         self.connect_to_db()
 
