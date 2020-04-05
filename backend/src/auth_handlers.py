@@ -19,17 +19,13 @@ def register_new_user():
         return server.err_out(401, "'{}' is a required field".format(str(err)))
     # create new entry in the database
     try:
-        server.db.add("users",userd)
+        server.db.add("users", userd)
     except:
-        return server.err_out(500,"Could not add user to database")
-    return jsonify(userd.get_info())
-
-
-    # TODO: confirm somehow??
-
-    # create a JWT token and return to the front end
-
-    return jsonify(userd.get_info())
+        return server.err_out(500, "Could not add user to database")
+    return jsonify({
+        "user": userd.get_info(),
+        "jwt": encodeJWT(userd),
+    })
 
 
 def rotateServerKeyIfNeeded():
