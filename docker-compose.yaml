@@ -1,0 +1,34 @@
+version: "3.7"
+
+volumes:
+  postgres_data:
+    driver: local
+
+services:
+
+  postgres:
+    image: postgres:11.7
+    volumes: 
+      - postgres_data:/var/lib/postgresql/data
+    environment: 
+      POSTGRES_DB: housinghub
+      POSTGRES_USER: app
+      POSTGRES_PASSWORD: apppassword
+    ports:
+      - 5432:5432
+
+  housinghub-api:
+    image: codeforcharlottesville/housinghub-api:latest
+    ports:
+      - 5000:5000
+    environment:
+      APP_ENV: tilt
+
+  housinghub:
+    image: codeforcharlottesville/housinghub:latest
+    tty: true
+    ports:
+      - 3000:3000
+    environment:
+      API_ENDPOINT: http://housinghub-api:5000
+
