@@ -102,6 +102,15 @@ class TestAuthHandlers(unittest.TestCase):
         self.assertEqual(response.status_code, 200)
         for k in user1:
             if k is not "password":
-                print(k)
                 self.assertEqual(response.get_json().get("user").get(k),
                                  user1.get(k))
+        # user already exists
+        user1 = {
+            "user_name": "david",
+            "password": "davidrulz",
+            "role_id": "4",
+            "role": "navigator",
+            "is_admin": True
+        }
+        response = self.app.post("/auth/register", json=user1)
+        self.assertEqual(response.status_code, 409)

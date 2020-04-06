@@ -15,16 +15,19 @@ def register_new_user():
     try:
         user_data = request.get_json()  #dictionary of input
         userd = User(user_data)
-        userd.set_password(request.get_json().get("password"))
     except KeyError as err:
         return server.err_out(401, "'{}' is a required field".format(str(err)))
-    # create new entry in the database
-    try:
-        server.db.add(userd)
-    except Exception as e:
-        print(e)
+
+    # check if user already exists
+    if server.db.user_name_already_exists(userd.user_name):
         return server.err_out(
-            500, "Could not add user to database: {}".format(str(e)))
+            409, "user_name {} already exists".format(userd.user_name))
+    # create new entry in the database
+    err = server.db.add(userd)
+    if err is not None:
+        return server.err_out(
+            500, "Could not add user to the database: {}".format(err))
+
     return jsonify({
         "user": userd.get_info(),
         "jwt": encodeJWT(userd),

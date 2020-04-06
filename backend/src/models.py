@@ -35,9 +35,9 @@ class User(Base):
         self.role_id = info["role_id"]
         self.role = info["role"]
         self.is_admin = info.get("is_admin") or info.get("is_admin") == "true"
-        self.set_password(info.get("password"))
+        self._set_password(info.get("password"))
 
-    def set_password(self, password):
+    def _set_password(self, password):
         self.password_hash = generate_password_hash(password)
 
     def check_password(self, password):
