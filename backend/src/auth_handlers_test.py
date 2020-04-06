@@ -27,7 +27,7 @@ class TestAuthHandlers(unittest.TestCase):
         # assert able to decode jwt
         t = response.get_json().get("jwt")
         jwtDecoded = jwt.decode(t, server.tokenSecret, algorithms='HS256')
-        self.assertEqual(jwtDecoded.get("user_name"), "david1")
+        self.assertEqual(jwtDecoded.get("user_name"), "david")
         # user_name is not valid
         response = self.app.post("/auth/login",
                                  json={

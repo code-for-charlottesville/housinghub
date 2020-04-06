@@ -44,7 +44,7 @@ class DB:
     def new_session(self):
         return self.Session()
 
-    def add(self, tableName, obj):
+    def add(self, obj):
         """
         adds an object to the db
         :param: string name of table to add object to

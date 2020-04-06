@@ -40,7 +40,7 @@ class TestDBMethods(unittest.TestCase):
             "user_name": "david",
             "password": "davidrulz",
         })
-        err = d.add("users", user)
+        err = d.add(user)
         self.assertIsNone(err)
 
         s = d.new_session()

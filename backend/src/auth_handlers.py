@@ -20,7 +20,7 @@ def register_new_user():
         return server.err_out(401, "'{}' is a required field".format(str(err)))
     # create new entry in the database
     try:
-        server.db.add("users", userd)
+        server.db.add(userd)
     except Exception as e:
         print(e)
         return server.err_out(
