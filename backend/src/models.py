@@ -31,11 +31,11 @@ class User(Base):
         # throws key error when required information does not exist
         #self.email = info["email"]
         self.user_name = info["user_name"]
-        self.password_hash = info["password"]
         self.salt = self._create_salt()
         self.role_id = info["role_id"]
         self.role = info["role"]
         self.is_admin = info.get("is_admin") or info.get("is_admin") == "true"
+        self.set_password(info.get("password"))
 
     def set_password(self, password):
         self.password_hash = generate_password_hash(password)
@@ -55,8 +55,6 @@ class User(Base):
         return_dict = {
             "id": self.id,
             "user_name": self.user_name,
-            "salt": self.salt,
-            "password_hash": self.password_hash,
             "role": self.role,
             "role_id": self.role_id,
             "is_admin": self.is_admin,

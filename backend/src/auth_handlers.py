@@ -21,8 +21,9 @@ def register_new_user():
     # create new entry in the database
     try:
         server.db.add("users", userd)
-    except:
-        return server.err_out(500, "Could not add user to database")
+    except Exception as e:
+        print(e)
+        return server.err_out(500, "Could not add user to database: {}".format(str(e)))
     return jsonify({
         "user": userd.get_info(),
         "jwt": encodeJWT(userd),
