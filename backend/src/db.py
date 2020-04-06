@@ -44,6 +44,19 @@ class DB:
     def new_session(self):
         return self.Session()
 
+    def user_name_already_exists(self, user_name):
+        """
+        checks if user name already exists in users table
+        :param: string user_name
+        :return: boolean exists
+        """
+        session = self.new_session()
+        try:
+            u = session.query(User).filter_by(user_name=user_name).one()
+        except sqlalchemy.orm.exc.NoResultFound:
+            return False
+        return u is not None
+
     def add(self, obj):
         """
         adds an object to the db

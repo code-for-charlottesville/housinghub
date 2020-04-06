@@ -24,7 +24,6 @@ class TestDBMethods(unittest.TestCase):
                   self.password,
                   self.port,
                   in_memory=False)
-        # make sure all the tables were created
 
     def test_add(self):
         d = db.DB(self.host, self.user, self.password, self.port,
@@ -46,3 +45,22 @@ class TestDBMethods(unittest.TestCase):
         s = d.new_session()
         user_in_db = s.query(User).filter_by(user_name=user.user_name).one()
         self.assertEqual(user_in_db.user_name, user.user_name)
+
+    def test_user_name_already_exists(self):
+        d = db.DB(self.host, self.user, self.password, self.port,
+                  self.in_memory)
+        user = User({
+            "first_name": "david-test_add",
+            "last_name": "goldstein",
+            "user_name": "david1",
+            "email": "temp@gmail.com",
+            "role": "navigator",
+            "role_id": "TEMP_ROLE_ID",
+            "user_name": "david",
+            "password": "davidrulz",
+        })
+        err = d.add(user)
+        self.assertIsNone(err)
+        self.assertTrue(d.user_name_already_exists(user.user_name))
+        self.assertFalse(
+            d.user_name_already_exists("this is a username that doesnt exist"))
