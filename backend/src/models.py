@@ -1,8 +1,8 @@
-import datetime
+from datetime import datetime
 import uuid
 from sqlalchemy.ext.declarative import declarative_base
 from werkzeug.security import generate_password_hash, check_password_hash
-from sqlalchemy import Column, String, Boolean
+from sqlalchemy import Column, String, Boolean, DateTime
 
 Base = declarative_base()
 
@@ -16,17 +16,16 @@ class User(Base):
     role = Column('role', String)
     role_id = Column('role_id', String)
     is_admin = Column('is_admin', Boolean)
-
-    salt = None
-    registered_on = None
-    last_updated_on = None
+    registered_on = Column('registered_on', DateTime, default=datetime.now)
+    last_updated = Column('last_updated',
+                          DateTime,
+                          default=datetime.now,
+                          onupdate=datetime.now)
 
     def __init__(self, info={}):
         """attempts to connect to db, throws exception on error"""
         # create new fields
         self.id = "u-" + str(uuid.uuid1())
-        self.registered_on = datetime.datetime.now()
-        self.last_updated_on = self.registered_on
         # throws key error when required information does not exist
         #self.email = info["email"]
         self.user_name = info["user_name"]

@@ -53,6 +53,7 @@ class DB:
         session = self.new_session()
         try:
             u = session.query(User).filter_by(user_name=user_name).one()
+            session.commit()
         except sqlalchemy.orm.exc.NoResultFound:
             return False
         return u is not None

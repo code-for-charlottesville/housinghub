@@ -17,7 +17,6 @@ class TestUser(unittest.TestCase):
         }
         u = User(tempUserConfig)
         self.assertIsNotNone(u.id)
-        self.assertIsNotNone(u.registered_on)
         # assert key error when field does not exist
         with self.assertRaises(KeyError):
             User({})

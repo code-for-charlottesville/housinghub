@@ -35,7 +35,7 @@ npm i
 In order to run the app, you will need a Postgresql database to connect to. The easiest way to get started is to use Tilt (see instructions below), but you can create a local dockerized DB manually by running:
 
 ```sh
-docker run -d -p 5432:5432 -e POSTGRES_DB=housinghub -e POSTGRES_USER=app -e POSTGRES_PASSWORD=apppassword postgres:11.7
+docker-compose up -d postgres
 ```
 
 Now you can run the Flask app by running 
@@ -50,7 +50,7 @@ export DB_PORT=5431
 export DB_USER="app"
 export DB_PASSWORD="apppassword"
 python3 api/swagger-yaml-to-html.py < api/swagger.yml > api/index.html
-serverless wsgi serve
+flask run
 ```
 
 in a new tab, make an example request:
@@ -65,7 +65,7 @@ $ curl -H "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOj
 $ curl -H "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE1ODU0MzM0MjcsInVpZCI6IjNiOTJhZTVlLTcxNDAtMTFlYS1iZDRmLWU0NzBiOGI2MTY4MyIsIm5hbWUiOiJkYXZpZCBnb2xkc3RlaW4ifQ.j3bKF3YXalyHvFZ94LCZPN8HeuQEH5Bjbmusw-Js" http://localhost:5000/navigator
 {"code":401,"error":"token is invalid"}
 
-$ curl -XPOST -H "content-type: application/json" -d '{"username" : "david", "password" : "davidrulz", "role_id" : "4", "role" : "navigator", "is_admin": true}' http://localhost:5000/auth/register
+$ curl -XPOST -H "content-type: application/json" -d '{"user_name" : "david", "password" : "davidrulz", "role_id" : "4", "role" : "navigator", "is_admin": true}' http://localhost:5000/auth/register
 ```
 
 Now let's go into the database to see the user we just created
