@@ -1,5 +1,4 @@
 import datetime
-import random
 import uuid
 from sqlalchemy.ext.declarative import declarative_base
 from werkzeug.security import generate_password_hash, check_password_hash
@@ -31,7 +30,6 @@ class User(Base):
         # throws key error when required information does not exist
         #self.email = info["email"]
         self.user_name = info["user_name"]
-        self.salt = self._create_salt()
         self.role_id = info["role_id"]
         self.role = info["role"]
         self.is_admin = info.get("is_admin") or info.get("is_admin") == "true"
@@ -42,14 +40,6 @@ class User(Base):
 
     def check_password(self, password):
         return check_password_hash(self.password_hash, password)
-
-    def _create_salt(self):
-        ALPHABET = "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
-        chars = []
-        for i in range(16):
-            chars.append(random.choice(ALPHABET))
-
-        return "".join(chars)
 
     def get_info(self):
         return_dict = {
