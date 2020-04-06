@@ -89,13 +89,23 @@ class TestAuthHandlers(unittest.TestCase):
         self.assertEqual(response.status_code, 401)
 
     def test_create_user(self):
+        # badly formatted request
+        response = self.app.post("/auth/register", json={})
+        self.assertEqual(response.status_code, 401)
+        # positive test
         user1 = {
             "user_name": "david",
             "password": "davidrulz",
             "role": "navigator",
             "is_admin": True
         }
-        response = self.app.post("/auth/register", json=user1)
+        response = self.app.post("/auth/register",
+                                 json={
+                                     "user": user1,
+                                     "navigator": {
+                                         "id": "temp"
+                                     }
+                                 })
         self.assertEqual(response.status_code, 200)
         for k in user1:
             if k is not "password":
@@ -108,5 +118,11 @@ class TestAuthHandlers(unittest.TestCase):
             "role": "navigator",
             "is_admin": True
         }
-        response = self.app.post("/auth/register", json=user1)
+        response = self.app.post("/auth/register",
+                                 json={
+                                     "user": user1,
+                                     "navigator": {
+                                         "id": "temp"
+                                     }
+                                 })
         self.assertEqual(response.status_code, 409)

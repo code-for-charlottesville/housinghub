@@ -11,9 +11,11 @@ def register_new_user():
     """registers a new user in the DB, returns JWT Token
     :return: flask response object
     """
+    if request.get_json().get("user") is None:
+        return server.err_out(401, "user is a required field")
     # get user info from front end
     try:
-        user_data = request.get_json()  #dictionary of input
+        user_data = request.get_json().get("user")
         userd = User(user_data)
     except KeyError as err:
         return server.err_out(401, "'{}' is a required field".format(str(err)))
