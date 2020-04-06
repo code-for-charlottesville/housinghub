@@ -48,7 +48,6 @@ class TestAuthHandlers(unittest.TestCase):
             "user_name": "david1",
             "email": "temp@gmail.com",
             "role": "navigator",
-            "role_id": "TEMP_ROLE_ID",
             "user_name": "david",
             "password": "davidrulz",
         })
@@ -81,7 +80,6 @@ class TestAuthHandlers(unittest.TestCase):
                 'uuid': user.id,
                 'user_name': user.user_name,
                 'role': user.role,
-                'role_id': user.role_id,
             },
             tokenSecret,
             algorithm=tokenEncryptAlg)
@@ -94,7 +92,6 @@ class TestAuthHandlers(unittest.TestCase):
         user1 = {
             "user_name": "david",
             "password": "davidrulz",
-            "role_id": "4",
             "role": "navigator",
             "is_admin": True
         }
@@ -108,7 +105,6 @@ class TestAuthHandlers(unittest.TestCase):
         user1 = {
             "user_name": "david",
             "password": "davidrulz",
-            "role_id": "4",
             "role": "navigator",
             "is_admin": True
         }

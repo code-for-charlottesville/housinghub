@@ -16,8 +16,6 @@ class User(Base):
     password_hash = Column('password_hash', String)
 
     role = Column('role', String)
-    navigator_id = Column('navigator_id', ForeignKey('navigator.id'))
-    landlord_id = Column('landlord_id', ForeignKey('landlord.id'))
 
     is_admin = Column('is_admin', Boolean)
     registered_on = Column('registered_on', DateTime, default=datetime.now)
@@ -37,8 +35,6 @@ class User(Base):
         if self.role not in ["navigator", "landlord"]:
             raise KeyError("role must be one of {}".format(
                 ["navigator", "landlord"]))
-        self.navigator_id = info.get("navigator_id")
-        self.landlord_id = info.get("landlord_id")
         self.is_admin = info.get("is_admin") or info.get("is_admin") == "true"
         self._set_password(info.get("password"))
 
@@ -53,7 +49,6 @@ class User(Base):
             "id": self.id,
             "user_name": self.user_name,
             "role": self.role,
-            "role_id": self.role_id,
             "is_admin": self.is_admin,
             "registered_on": self.registered_on,
             "last_updated": self.last_updated
@@ -65,8 +60,10 @@ class User(Base):
 class Navigator(Base):
     __tablename__ = 'navigators'
     id = Column(String, primary_key=True)
+    user_id = Column('user_id', ForeignKey('users.id'))
 
 
 class Landlord(Base):
     __tablename__ = 'landlords'
     id = Column(String, primary_key=True)
+    user_id = Column('user_id', ForeignKey('users.id'))

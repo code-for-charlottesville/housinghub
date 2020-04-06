@@ -22,6 +22,7 @@ def register_new_user():
     if server.db.user_name_already_exists(userd.user_name):
         return server.err_out(
             409, "user_name {} already exists".format(userd.user_name))
+
     # create new entry in the database
     err = server.db.add(userd)
     if err is not None:
@@ -122,7 +123,6 @@ def encodeJWT(user):
             'uuid': user.id,
             'user_name': user.user_name,
             'role': user.role,
-            'role_id': user.role_id,
         },
         server.tokenSecret,
         algorithm=server.tokenEncryptAlg)
