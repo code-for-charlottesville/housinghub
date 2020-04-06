@@ -47,6 +47,8 @@ class User(Base):
             "role": self.role,
             "role_id": self.role_id,
             "is_admin": self.is_admin,
+            "registered_on": self.registered_on,
+            "last_updated": self.last_updated
         }
 
         return return_dict
