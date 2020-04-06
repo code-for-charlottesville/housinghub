@@ -21,3 +21,6 @@ class TestUser(unittest.TestCase):
         # assert key error when field does not exist
         with self.assertRaises(KeyError):
             User({})
+
+        self.assertTrue(u.check_password(tempUserConfig["password"]))
+        self.assertFalse(u.check_password("incorrect-password"))
