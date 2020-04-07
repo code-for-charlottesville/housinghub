@@ -1,6 +1,9 @@
 import React from "react";
+import { setView } from "../actions/appState";
+import { connect } from 'react-redux';
 
-export const Navbar = ({ showLoginBox, showRegisterBox, showNewPropBox }) => {
+
+const Navbar = (props) => {
   return (
     <nav className="navbar" role="navigation" aria-label="main navigation">
       <div className="navbar-brand">
@@ -27,10 +30,10 @@ export const Navbar = ({ showLoginBox, showRegisterBox, showNewPropBox }) => {
 
       <div id="burgerFilling" className="navbar-menu">
         <div className="navbar-start">
-          <a className="navbar-item" onClick={showLoginBox}>
+          <a className="navbar-item" onClick={props.dispatch(setView("login"))}>
             Login
           </a>
-          <a className="navbar-item" onClick={showRegisterBox}>
+          <a className="navbar-item" onClick={props.dispatch(setView("register"))}>
             Register
           </a>
 
@@ -38,7 +41,7 @@ export const Navbar = ({ showLoginBox, showRegisterBox, showNewPropBox }) => {
             <a className="navbar-link">Properties</a>
             <div className="navbar-dropdown">
               <a className="navbar-item">Search Properties</a>
-              <a className="navbar-item" onClick={showNewPropBox}>
+              <a className="navbar-item" onClick={props.dispatch(setView("new-prop"))}>
                 Add Property
               </a>
             </div>
@@ -48,3 +51,5 @@ export const Navbar = ({ showLoginBox, showRegisterBox, showNewPropBox }) => {
     </nav>
   );
 };
+
+export default connect()(Navbar)

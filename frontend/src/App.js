@@ -2,56 +2,20 @@ import React from "react";
 import { NavRegForm } from "./components/NavRegForm";
 import { Login } from "./components/Login";
 import { NewPropForm } from "./components/NewPropForm";
-import { Navbar } from "./components/Navbar";
+import Navbar from "./components/Navbar";
 import "bulma/css/bulma.css";
+import { connect } from 'react-redux';
 
 class App extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      isLoginOpen: true,
-      isRegisterOpen: false,
-      isNewPropOpen: false,
-    };
-  }
-
-  showLoginBox() {
-    this.setState({
-      isLoginOpen: true,
-      isRegisterOpen: false,
-      isNewPropOpen: false,
-    });
-  }
-
-  showRegisterBox() {
-    this.setState({
-      isLoginOpen: false,
-      isRegisterOpen: true,
-      isNewPropOpen: false,
-    });
-  }
-
-  showNewPropBox() {
-    this.setState({
-      isLoginOpen: false,
-      isRegisterOpen: false,
-      isNewPropOpen: true,
-    });
-  }
-
   render() {
     return (
       <>
         <div className="container column is-centered">
-          <Navbar
-            showLoginBox={this.showLoginBox.bind(this)}
-            showRegisterBox={this.showRegisterBox.bind(this)}
-            showNewPropBox={this.showNewPropBox.bind(this)}
-          />
+          <Navbar/>
           <div>
-            {this.state.isLoginOpen && <Login />}
-            {this.state.isRegisterOpen && <NavRegForm />}
-            {this.state.isNewPropOpen && <NewPropForm />}
+            {false && <Login />}
+            {false && <NavRegForm />}
+            {false && <NewPropForm />}
           </div>
         </div>
       </>
@@ -59,4 +23,9 @@ class App extends React.Component {
   }
 }
 
-export default App;
+function mapStateToProps(state) {
+  return state
+}
+
+
+export default connect(mapStateToProps)(App);
