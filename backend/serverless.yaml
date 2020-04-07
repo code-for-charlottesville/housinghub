@@ -1,0 +1,34 @@
+# serverless.yml
+
+
+service: serverless-flask
+
+
+plugins:
+  - serverless-python-requirements
+  - serverless-wsgi
+
+
+custom:
+  wsgi:
+    app: src/server.app
+    packRequirements: false
+  pythonRequirements:
+    dockerizePip: true
+
+
+provider:
+  name: aws
+  runtime: python3.6
+  stage: dev
+  region: us-east-1
+
+
+functions:
+  api:
+    handler: wsgi_handler.handler
+    environment:
+      APP_ENV: ${env:APP_ENV}
+    events:
+      - http: ANY /
+      - http: 'ANY {proxy+}'
