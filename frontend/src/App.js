@@ -3,6 +3,9 @@ import LandlordRegisteration from "./components/LandlordRegistration";
 import { NavRegForm } from "./components/NavRegForm";
 import { Login } from "./components/Login";
 import "bulma/css/bulma.css";
+import { PropertyDetail } from "./components/PropertyDetail";
+import { PropertyAvailability } from "./components/PropertyAvailability";
+import { PropertyRequirement } from "./components/PropertyRequirement";
 
 class App extends React.Component {
   constructor(props) {
@@ -21,6 +24,10 @@ class App extends React.Component {
   render() {
     return (
       <>
+        <PropertyRequirement />
+        <PropertyAvailability />
+        <PropertyDetail />
+
         <div className="container column is-centered">
           <div>
             <div onClick={this.showLoginBox.bind(this)}>Login</div>
