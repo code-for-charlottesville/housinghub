@@ -5,8 +5,8 @@ import "bulma/css/bulma.css";
 export const NavRegForm = () => {
   return (
     <div className="container column is-one-third">
-      <h1 className="title">Navigator Registeration</h1>
-      <form>
+      <h1 className="title">Navigator Registration</h1>
+      <form className="box">
         <InputField
           inputName="First Name"
           inputType="text"
