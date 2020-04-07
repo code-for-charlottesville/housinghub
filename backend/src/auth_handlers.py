@@ -1,9 +1,7 @@
 import server
 import requests
 from flask import send_file, request, jsonify, Blueprint, g
-from datetime import datetime, timezone, timedelta
 from jwt import encode, decode, ExpiredSignatureError, exceptions as jwtExceptions
-import logging
 from user import User
 from app.decorators import authenticate
 
@@ -25,7 +23,7 @@ def register():
         role = user_data.get('role')
         is_admin = bool(user_data.get('is_admin'))
         created_user = app.services.user_service().add_user(username,password,role,is_admin)
-    except KeyError as err:
+    except KeyError:
         return jsonify(code=400, error='Request is invalid'), 400
     # create new entry in the database
 
