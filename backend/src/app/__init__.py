@@ -32,7 +32,7 @@ flask_app.register_blueprint(auth_module)
 
 @flask_app.route('/',methods=['GET'])
 def index():
-  return None, 200
+  return '', 200
 
 @flask_app.route('/docs', methods=['GET'])
 def swagger_specs():
