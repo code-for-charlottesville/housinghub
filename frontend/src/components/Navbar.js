@@ -1,7 +1,7 @@
 import React from "react";
 import { setView } from "../actions/appState";
 import { connect } from 'react-redux';
-
+import { Login } from "../components/Login";
 
 const Navbar = (props) => {
   return (
@@ -30,10 +30,10 @@ const Navbar = (props) => {
 
       <div id="burgerFilling" className="navbar-menu">
         <div className="navbar-start">
-          <a className="navbar-item" onClick={props.dispatch(setView("login"))}>
+          <a className="navbar-item" onClick={() => props.dispatch(setView("login"))}>
             Login
           </a>
-          <a className="navbar-item" onClick={props.dispatch(setView("register"))}>
+          <a className="navbar-item" onClick={() => props.dispatch(setView("register"))}>
             Register
           </a>
 
@@ -41,7 +41,7 @@ const Navbar = (props) => {
             <a className="navbar-link">Properties</a>
             <div className="navbar-dropdown">
               <a className="navbar-item">Search Properties</a>
-              <a className="navbar-item" onClick={props.dispatch(setView("new-prop"))}>
+              <a className="navbar-item" onClick={() => props.dispatch(setView("new-prop"))}>
                 Add Property
               </a>
             </div>

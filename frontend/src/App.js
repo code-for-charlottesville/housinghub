@@ -13,9 +13,9 @@ class App extends React.Component {
         <div className="container column is-centered">
           <Navbar/>
           <div>
-            {false && <Login />}
-            {false && <NavRegForm />}
-            {false && <NewPropForm />}
+            {this.props.appState.view === "login" && <Login />}
+            {this.props.appState.view === "register" && <NavRegForm />}
+            {this.props.appState.view === "new-prop" && <NewPropForm />}
           </div>
         </div>
       </>

@@ -4,11 +4,10 @@ const initialState = {
 
 const appState = (state = initialState, action) => {
   switch (action.type) {
-  	case action.type === "SET_VIEW":
+  	case "SET_VIEW":
   		return Object.assign({}, state, {
   		  view: action.view
   		})
-  		break
     default:
       return state
   }
