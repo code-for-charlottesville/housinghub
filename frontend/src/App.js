@@ -1,6 +1,6 @@
 import React from "react";
 import { NavRegForm } from "./components/NavRegForm";
-import { Login } from "./components/Login";
+import Login from "./components/Login";
 import { NewPropForm } from "./components/NewPropForm";
 import Navbar from "./components/Navbar";
 import "bulma/css/bulma.css";
