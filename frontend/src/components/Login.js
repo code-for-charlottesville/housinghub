@@ -1,7 +1,7 @@
 import React from "react";
 import "bulma/css/bulma.css";
 import {connect } from "react-redux";
-import { setLoginField } from "../actions/login"
+import { setLoginField, loginUser } from "../actions/login"
 
 const Login = (props) => {
   return (
@@ -42,6 +42,9 @@ const Login = (props) => {
                   <span className="icon is-small is-left"></span>
                 </div>
               </div>
+              {props.fields.error !== "" &&
+                 <a>{props.fields.error}</a>
+              }
               <div className="field">
                 <label htmlFor="" className="checkbox">
                   <input
@@ -54,7 +57,7 @@ const Login = (props) => {
               </div>
               <div className="field is-grouped">
                 <div className="control">
-                  <button className="button is-success">Login</button>
+                  <button className="button is-success" onClick={() => loginUser()}>Login</button>
                 </div>
                 <div className="control">
                   <button className="button is-light">Register</button>
