@@ -9,7 +9,7 @@ const Login = (props) => {
       <div className="container">
         <div className="columns is-centered">
           <div className="column is-5-tablet is-4-desktop is-3-widescreen">
-            <form action="" className="box">
+            <form action="" className="box" onSubmit={e => e.preventDefault()}>
               <div className="field">
                 <label htmlFor="" className="label">
                   Email
@@ -56,8 +56,8 @@ const Login = (props) => {
                 </label>
               </div>
               <div className="field is-grouped">
+                  <button className="button is-success" onClick={loginUser}>Login</button>
                 <div className="control">
-                  <button className="button is-success" onClick={() => loginUser()}>Login</button>
                 </div>
                 <div className="control">
                   <button className="button is-light">Register</button>
