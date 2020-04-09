@@ -1,11 +1,11 @@
 import React from "react";
 import "bulma/css/bulma.css";
-import {connect } from "react-redux";
-import { Redirect } from 'react-router-dom';
-import { setLoginField, loginUser } from "../actions/login"
+import { connect } from "react-redux";
+import { Redirect } from "react-router-dom";
+import { setLoginField, loginUser } from "../actions/login";
 
-const Login = (props) => {
-  if (props.isLoggedIn) return (<Redirect to="/" />)
+const Login = props => {
+  if (props.isLoggedIn) return <Redirect to="/" />;
 
   return (
     <div className="hero-body">
@@ -22,11 +22,13 @@ const Login = (props) => {
                     type="email"
                     placeholder="e.g. bobsmith@gmail.com"
                     className="input"
-                    onChange={e => props.dispatch(setLoginField("email", e.target.value))}
+                    onChange={e =>
+                      props.dispatch(setLoginField("email", e.target.value))
+                    }
                     value={props.fields.email}
                     required
                   />
-                  <span className="icon is-small is-left"></span>
+                  <span className="icon is-small is-left" />
                 </div>
               </div>
               <div className="field">
@@ -38,30 +40,38 @@ const Login = (props) => {
                     type="password"
                     placeholder="*******"
                     className="input"
-                    onChange={e => props.dispatch(setLoginField("password", e.target.value))}
+                    onChange={e =>
+                      props.dispatch(setLoginField("password", e.target.value))
+                    }
                     value={props.fields.password}
                     required
                   />
-                  <span className="icon is-small is-left"></span>
+                  <span className="icon is-small is-left" />
                 </div>
               </div>
-              {props.fields.error !== "" &&
-                 <a>{props.fields.error}</a>
-              }
+              {props.fields.error !== "" && <a>{props.fields.error}</a>}
               <div className="field">
                 <label htmlFor="" className="checkbox">
                   <input
                     type="checkbox"
-                    onChange={e => props.dispatch(setLoginField("rememberMe", e.target.value === "true"))}
+                    onChange={e =>
+                      props.dispatch(
+                        setLoginField("rememberMe", e.target.value === "true")
+                      )
+                    }
                     value={props.fields.rememberMe}
                   />
                   Remember me
                 </label>
               </div>
               <div className="field is-grouped">
-                  <button className="button is-success" onClick={() => loginUser()}>Login</button>
-                <div className="control">
-                </div>
+                <button
+                  className="button is-success"
+                  onClick={() => loginUser()}
+                >
+                  Login
+                </button>
+                <div className="control" />
                 <div className="control">
                   <button className="button is-light">Register</button>
                 </div>
@@ -76,10 +86,9 @@ const Login = (props) => {
 
 function mapStateToProps(state) {
   return {
-    fields : state.login.fields,
-    isLoggedIn : state.login.isLoggedIn,
-  }
+    fields: state.login.fields,
+    isLoggedIn: state.login.isLoggedIn
+  };
 }
 
-
-export default connect(mapStateToProps)(Login)
+export default connect(mapStateToProps)(Login);

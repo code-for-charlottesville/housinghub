@@ -1,8 +1,8 @@
 import React from "react";
-import { connect } from 'react-redux';
-import { Link } from "react-router-dom"
+import { connect } from "react-redux";
+import { Link } from "react-router-dom";
 
-const Navbar = (props) => {
+const Navbar = props => {
   return (
     <nav className="navbar" role="navigation" aria-label="main navigation">
       <div className="navbar-brand">
@@ -21,9 +21,9 @@ const Navbar = (props) => {
               : classList.add("is-active");
           }}
         >
-          <span aria-hidden="true"></span>
-          <span aria-hidden="true"></span>
-          <span aria-hidden="true"></span>
+          <span aria-hidden="true" />
+          <span aria-hidden="true" />
+          <span aria-hidden="true" />
         </a>
       </div>
 
@@ -32,8 +32,12 @@ const Navbar = (props) => {
           <div className="navbar-item has-dropdown is-hoverable">
             <a className="navbar-link">Properties</a>
             <div className="navbar-dropdown">
-              <Link className="navbar-item" to="/property/new">Add Property</Link>
-              <Link className="navbar-item" to="/property/search">Search Property</Link>
+              <Link className="navbar-item" to="/property/new">
+                Add Property
+              </Link>
+              <Link className="navbar-item" to="/property/search">
+                Search Property
+              </Link>
             </div>
           </div>
         </div>
@@ -42,4 +46,4 @@ const Navbar = (props) => {
   );
 };
 
-export default connect()(Navbar)
+export default connect()(Navbar);
