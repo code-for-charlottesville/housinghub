@@ -30,10 +30,10 @@ export function setLoginFailure(error) {
 export function loginUser() {
 	// Make API call to backend /auth/login
 	postAuthLogin(store.getState().login.fields).then(response => {
-		if (response.jwt) {
+		console.log(response)
+		if (response && response.jwt) {
 			store.dispatch(setLoginSuccess(response.jwt))
 		} else {
-			// set error in store
 			store.dispatch(setLoginFailure(response.error))
 		}
 	})

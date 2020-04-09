@@ -18,13 +18,13 @@ def register():
     # get user info from front end
     try:
         user_data = request.get_json() #dictionary of input
-        username = user_data.get('user_name')
+        username = user_data.get("username")
         password = user_data.get('password')
         role = user_data.get('role')
         is_admin = bool(user_data.get('is_admin'))
         created_user = app.services.user_service().add_user(username,password,role,is_admin)
-    except KeyError:
-        return jsonify(code=400, error='Request is invalid'), 400
+    except KeyError as e:
+        return jsonify(code=400, error="Login invalid"), 400
     # create new entry in the database
 
     # TODO: confirm somehow??
