@@ -28,15 +28,15 @@ export function setLoginFailure(error) {
 /**
  * fires when user attempts to login
  **/
-export function loginUser() {
+export function loginUser(dispatch) {
 	// Make API call to backend /auth/login
 	postAuthLogin(store.getState().login.fields).then(response => {
 		if (response.jwt) {
-			store.dispatch(setLoginSuccess(response.jwt))
-			store.dispatch(setView("new-prop"))
+			dispatch(setLoginSuccess(response.jwt))
+			dispatch(setView("new-prop"))
 		} else {
 			// set error in store
-			store.dispatch(setLoginFailure(response.error))
+			dispatch(setLoginFailure(response.error))
 		}
 	})
 }

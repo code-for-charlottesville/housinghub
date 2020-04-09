@@ -13,9 +13,9 @@ class App extends React.Component {
         <div className="container column is-centered">
           <Navbar/>
           <div>
-            {this.props.appState.view === "login" && <Login />}
-            {this.props.appState.view === "register" && <NavRegForm />}
-            {this.props.appState.view === "new-prop" && <NewPropForm />}
+            {this.props.view === "login" && <Login />}
+            {this.props.view === "register" && <NavRegForm />}
+            {this.props.view === "new-prop" && <NewPropForm />}
           </div>
         </div>
       </>
@@ -24,7 +24,9 @@ class App extends React.Component {
 }
 
 function mapStateToProps(state) {
-  return state
+  return {
+     view : state.appState.view
+  }
 }
 
 
