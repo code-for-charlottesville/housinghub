@@ -1,7 +1,5 @@
 import React from "react";
-import { setView } from "../actions/appState";
 import { connect } from 'react-redux';
-import { Login } from "../components/Login";
 import { Link } from "react-router-dom"
 
 const Navbar = (props) => {

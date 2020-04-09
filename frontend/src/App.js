@@ -1,19 +1,17 @@
 import React from "react";
-import { Switch, Route, Redirect } from 'react-router-dom';
+import { Switch, Route } from "react-router-dom";
 import Login from "./components/Login";
 import "bulma/css/bulma.css";
-import { connect } from 'react-redux';
-import MainContent from "./containers/MainContent"
+import { connect } from "react-redux";
+import MainContent from "./containers/MainContent";
 
 class App extends React.Component {
-  render() {    
+  render() {
     return (
       <Switch>
         <Route path="/login" component={Login} />
-        <Route path="/" component={MainContent}/>
-        <Route>
-          Page not found :(
-        </Route>
+        <Route path="/" component={MainContent} />
+        <Route>Page not found :(</Route>
       </Switch>
     );
   }
@@ -21,9 +19,8 @@ class App extends React.Component {
 
 function mapStateToProps(state) {
   return {
-     isLoggedIn : state.login.isLoggedIn
-  }
+    isLoggedIn: state.login.isLoggedIn
+  };
 }
-
 
 export default connect(mapStateToProps)(App);
