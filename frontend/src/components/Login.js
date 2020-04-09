@@ -56,7 +56,7 @@ const Login = (props) => {
                 </label>
               </div>
               <div className="field is-grouped">
-                  <button className="button is-success" onClick={() => loginUser(props.dispatch)}>Login</button>
+                  <button className="button is-success" onClick={() => loginUser()}>Login</button>
                 <div className="control">
                 </div>
                 <div className="control">

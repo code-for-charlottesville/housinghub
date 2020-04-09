@@ -19,4 +19,4 @@ const logger = createLogger({
 
 const store = createStore(reducer, applyMiddleware(logger));
 
-export { store, reducer };
+export default store;
