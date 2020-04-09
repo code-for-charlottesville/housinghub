@@ -1,9 +1,12 @@
 import React from "react";
 import "bulma/css/bulma.css";
 import {connect } from "react-redux";
+import { Redirect } from 'react-router-dom';
 import { setLoginField, loginUser } from "../actions/login"
 
 const Login = (props) => {
+  if (props.isLoggedIn) return (<Redirect to="/home" />)
+
   return (
     <div className="hero-body">
       <div className="container">
@@ -73,7 +76,8 @@ const Login = (props) => {
 
 function mapStateToProps(state) {
   return {
-    fields : state.login.fields
+    fields : state.login.fields,
+    isLoggedIn : state.login.isLoggedIn,
   }
 }
 

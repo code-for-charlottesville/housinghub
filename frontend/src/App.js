@@ -1,31 +1,26 @@
 import React from "react";
-import { NavRegForm } from "./components/NavRegForm";
+import { Switch, Route } from 'react-router-dom';
 import Login from "./components/Login";
-import { NewPropForm } from "./components/NewPropForm";
 import Navbar from "./components/Navbar";
 import "bulma/css/bulma.css";
 import { connect } from 'react-redux';
+import MainContent from "./containers/MainContent"
 
 class App extends React.Component {
-  render() {
+  render() {    
     return (
-      <>
-        <div className="container column is-centered">
-          <Navbar/>
-          <div>
-            {this.props.view === "login" && <Login />}
-            {this.props.view === "register" && <NavRegForm />}
-            {this.props.view === "new-prop" && <NewPropForm />}
-          </div>
-        </div>
-      </>
+      <Switch>
+        <Route path="/login" component={Login} />
+        <Route path="/home" component={MainContent}/>
+        <Route path="/" component={MainContent}/>
+      </Switch>
     );
   }
 }
 
 function mapStateToProps(state) {
   return {
-     view : state.appState.view
+     isLoggedIn : state.login.isLoggedIn
   }
 }
 
