@@ -1,6 +1,5 @@
 import { postAuthLogin } from "../api/login"
 import store from "../reducers/index"
-import { setView } from "./appState"
 
 export function setLoginField(fieldName,newValue) {
   return {
@@ -33,7 +32,6 @@ export function loginUser() {
 	postAuthLogin(store.getState().login.fields).then(response => {
 		if (response.jwt) {
 			store.dispatch(setLoginSuccess(response.jwt))
-			store.dispatch(setView("new-prop"))
 		} else {
 			// set error in store
 			store.dispatch(setLoginFailure(response.error))

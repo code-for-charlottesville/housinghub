@@ -2,6 +2,7 @@ import React from "react";
 import { setView } from "../actions/appState";
 import { connect } from 'react-redux';
 import { Login } from "../components/Login";
+import { Link } from "react-router-dom"
 
 const Navbar = (props) => {
   return (
@@ -30,20 +31,11 @@ const Navbar = (props) => {
 
       <div id="burgerFilling" className="navbar-menu">
         <div className="navbar-start">
-          <a className="navbar-item" onClick={() => props.dispatch(setView("login"))}>
-            Login
-          </a>
-          <a className="navbar-item" onClick={() => props.dispatch(setView("register"))}>
-            Register
-          </a>
-
           <div className="navbar-item has-dropdown is-hoverable">
             <a className="navbar-link">Properties</a>
             <div className="navbar-dropdown">
-              <a className="navbar-item">Search Properties</a>
-              <a className="navbar-item" onClick={() => props.dispatch(setView("new-prop"))}>
-                Add Property
-              </a>
+              <Link className="navbar-item" to="/property/new">Add Property</Link>
+              <Link className="navbar-item" to="/property/search">Search Property</Link>
             </div>
           </div>
         </div>

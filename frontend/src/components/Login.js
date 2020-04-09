@@ -5,7 +5,7 @@ import { Redirect } from 'react-router-dom';
 import { setLoginField, loginUser } from "../actions/login"
 
 const Login = (props) => {
-  if (props.isLoggedIn) return (<Redirect to="/home" />)
+  if (props.isLoggedIn) return (<Redirect to="/" />)
 
   return (
     <div className="hero-body">
