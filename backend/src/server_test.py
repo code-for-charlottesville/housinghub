@@ -25,9 +25,9 @@ class TestServer(unittest.TestCase):
         app.config['TOKEN_EXP_SECONDS'] = "1000"
         self.app = app.test_client()
 
-    def test_serve_docs(self):
-        response = self.app.get('/',
-                                follow_redirects=True,
-                                headers=self.authHeaders)
-        self.assertEqual(response.status_code, 200)
-        self.assertIsNotNone(response.data)
+    # def test_serve_docs(self):
+    #     response = self.app.get('/',
+    #                             follow_redirects=True,
+    #                             headers=self.authHeaders)
+    #     self.assertEqual(response.status_code, 200)
+    #     self.assertIsNotNone(response.data)
