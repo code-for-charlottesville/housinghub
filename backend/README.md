@@ -49,6 +49,7 @@ export DB_HOST="localhost"
 export DB_PORT=5431
 export DB_USER="app"
 export DB_PASSWORD="apppassword"
+$(cd alembic && alembic upgrade head)
 python3 api/swagger-yaml-to-html.py < api/swagger.yml > api/index.html
 flask run
 ```
@@ -121,59 +122,30 @@ open htlmcov/index.html
 
 ## Config
 
-See [config](config.cfg) for a complete example of configuration settings. Relative paths start from the `src` directory.
+See [config.py](src/app/config.py) for a complete example of configuration settings. Relative paths start from the `src` directory.
+
+There are configurations for four distinct environments. Which configuration object gets applied at runtime depends on the APP_ENV environment variable:
+
+APP_ENV | Config Object | Environment Description
+--------|---------------|-------------------------
+local   | Config        | Local environment configuration
+tilt    | Tilt          | Config for Tilt environment. Default value when using docker compose
+staging | Staging       | Config applied to AWS staging environment
+production | Production | Config applied to AWS production environment
 
 Var | Meaning
 --- | --- |
 `PORT` | Port the server should run on
-`DB_ENDPOINT` | Endpoint of the DB
-`TOKEN_EXP_SECONDS` | How long tokens are good for in seconds. Default is 10800s
-`TOKEN_SECRET_KEY_ROTATION_SECONDS` | The interval between the secret signing key for jwt tokens is rotated. Defaults to 172800 (2 days)
-
-## Docker
-
-Currently using header: `# syntax=docker/dockerfile:experimental`
-
-This allows to  accelerate the building and using experimental features like caching dependencies
-
-You would need to set up environment variables: `DOCKER_CLI_EXPERIMENTAL`, `DOCKER_BUILDKIT` and `COMPOSE_DOCKER_CLI_BUILD`
-
-```bash
-export DOCKER_CLI_EXPERIMENTAL=enabled
-export DOCKER_BUILDKIT=1
-export COMPOSE_DOCKER_CLI_BUILD=1
-```
-
-Then you can build and run the docker image:
-
-```bash
-docker build . -t codeforcharlottesville/housinghub:latest
-docker-compose up
-```
+`DATABASE_URL` | Endpoint of the DB
+`TOKEN_TTL` | How long tokens are good for in seconds. Default is 10800s
+`TOKEN_ALG` | Algorithm used to sign the JWT token. Default is HS256
+`TOKEN_SECRET` | Secret key used for JWT token signing. *This shoud always be generated at startup in production environments*
 
 ## Using Tilt for local development
 
 For a local development workflow, we are using Tilt. 
 
-First you need to install Tilt. For macOS users with Homebrew installed, you can simply 
-
-```sh
-brew install windmilleng/tap/tilt
-```
-
-For other platforms see [https://docs.tilt.dev/install.html](https://docs.tilt.dev/install.html)
-
-Note that in order for Tilt to work you need both Docker and Docker Compose installed on your local system. 
-
-Once you have everything installed, you can start the environment by running 
-
-```sh
-tilt up 
-```
-
-from the /backend folder. 
-
-While tilt is running, any code changes made locally will be synced to the docker container on the fly so you can make changes and quickly see the results in your local instance. 
+For instructions on using Tilt for local developmet, see the [Developer Quickstart](https://github.com/code-for-charlottesville/housinghub/wiki/Developer-Quickstart)
 
 ## Code Formatting
 

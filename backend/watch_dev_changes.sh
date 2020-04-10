@@ -15,7 +15,7 @@ python api/swagger-yaml-to-html.py < api/swagger.yml > api/index.html
 
 inotifywait -e modify,create,delete -r ./ && \
 	clear && \
-	yapf -ri ./**/*.py && \
-	autoflake --in-place --remove-unused-variables ./**/*.py && \
+	yapf -ri ./src/*.py && \
+	autoflake --in-place --remove-unused-variables ./src/*.py && \
 	coverage run -m pytest
 done
