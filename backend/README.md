@@ -68,7 +68,16 @@ $ curl -H "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOj
 $ curl -H "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE1ODU0MzM0MjcsInVpZCI6IjNiOTJhZTVlLTcxNDAtMTFlYS1iZDRmLWU0NzBiOGI2MTY4MyIsIm5hbWUiOiJkYXZpZCBnb2xkc3RlaW4ifQ.j3bKF3YXalyHvFZ94LCZPN8HeuQEH5Bjbmusw-Js" http://localhost:5000/navigator
 {"code":401,"error":"token is invalid"}
 
-$ curl -XPOST -H "content-type: application/json" -d '{"username" : "david", "password" : "davidrulz", "role_id" : "4", "role" : "navigator", "is_admin": true}' http://localhost:5000/auth/register
+$ $ curl -XPOST -H "content-type: application/json" -d '{"user":{"username":"david","password":"davidrulz","role_id":"4","role":"navigator","is_admin":true}}' http://localhost:5000/auth/register
+{
+  "jwt": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE1ODY1MjU4MzYsInV1aWQiOiJ1LTEwNmQwMGE2LTdiMmUtMTFlYS05ODViLWU0NzBiOGI2MTY4MyIsInVzZXJuYW1lIjoiZGF2aWQiLCJyb2xlIjoibmF2aWdhdG9yIn0.9g4Hc1W4_Dq78QWpCehl8VRmfunUagUJe0Ai1fAvgPQ", 
+  "user": {
+    "id": "u-106d00a6-7b2e-11ea-985b-e470b8b61683", 
+    "is_admin": true, 
+    "role": "navigator", 
+    "username": "david"
+  }
+}
 ```
 
 Now let's go into the database to see the user we just created
