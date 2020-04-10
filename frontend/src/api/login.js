@@ -22,9 +22,14 @@ export function postAuthLogin({ email, password }) {
  * makes GET request to see if current token is valid
  **/
 export function getStatus(jwt) {
-  return axios.get("/backend/auth/status", {headers : {Authorization : `Bearer ${jwt}`}}).then(r => {
-    return Promise.resolve(r.data)
-  }).catch(e => {
-    return Promise.resolve(e.response.data);
-  })
+  return axios
+    .get("/backend/auth/status", {
+      headers: { Authorization: `Bearer ${jwt}` }
+    })
+    .then(r => {
+      return Promise.resolve(r.data);
+    })
+    .catch(e => {
+      return Promise.resolve(e.response.data);
+    });
 }

@@ -1,8 +1,11 @@
-import { postAuthLogin,  getStatus } from "../api/login";
+import { postAuthLogin, getStatus } from "../api/login";
 import { setLoading } from "./appState";
 import store from "../reducers/index";
-import { getJwtFromLocalStorage,removeJwtFromLocalStorage } from "../reducers/login"
-import axios from "axios"
+import {
+  getJwtFromLocalStorage,
+  removeJwtFromLocalStorage
+} from "../reducers/login";
+import axios from "axios";
 
 export function setLoginField(fieldName, newValue) {
   return {
@@ -49,11 +52,11 @@ export function checkForTokenFromStorage() {
     getStatus(getJwtFromLocalStorage()).then(r => {
       // token is invalid
       if (r.error) {
-        removeJwtFromLocalStorage()
+        removeJwtFromLocalStorage();
       } else {
         // token is valid! log in
         store.dispatch(setLoginSuccess(getJwtFromLocalStorage()));
       }
-    })
+    });
   }
 }
