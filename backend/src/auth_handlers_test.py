@@ -17,18 +17,15 @@ class TestAuthHandlers(unittest.TestCase):
         self.app = app.test_client()
 
     def test_login(self):
-        # username is valid
+        # username is invalid
         response = self.app.post("/auth/login",
                                  json={
-                                     'username': 'david',
+                                     'username':
+                                     'davidlskjdflkjsdflkjsdflkjsdf',
                                      'password': 'davidrulz'
                                  })
-        self.assertEqual(response.status_code, 200)
-        # assert able to decode jwt
-        t = response.get_json().get("jwt")
-        jwtDecoded = jwt.decode(t, server.tokenSecret, algorithms='HS256')
-        self.assertEqual(jwtDecoded.get("username"), "david")
-        # username is not valid
+        self.assertEqual(response.status_code, 401)
+        # password is not valid
         response = self.app.post("/auth/login",
                                  json={
                                      'username': 'david',
@@ -39,6 +36,27 @@ class TestAuthHandlers(unittest.TestCase):
             'code': 401,
             'error': "Invalid username or password"
         })
+        # insert user into DB
+        user = User({
+            "first_name": "david",
+            "last_name": "goldstein",
+            "username": "testsuccesslogin",
+            "role": "navigator",
+            "password": "davidrulz",
+        })
+        err = server.db.add(user)
+        self.assertIsNone(err)
+        # username is valid
+        response = self.app.post("/auth/login",
+                                 json={
+                                     'username': user.username,
+                                     'password': 'davidrulz'
+                                 })
+        self.assertEqual(response.status_code, 200)
+        # assert able to decode jwt
+        t = response.get_json().get("jwt")
+        jwtDecoded = jwt.decode(t, server.tokenSecret, algorithms='HS256')
+        self.assertEqual(jwtDecoded.get("username"), user.username)
 
     def test_status(self):
         # create new user
@@ -46,7 +64,6 @@ class TestAuthHandlers(unittest.TestCase):
             "first_name": "david",
             "last_name": "goldstein",
             "username": "david1",
-            "email": "temp@gmail.com",
             "role": "navigator",
             "username": "david",
             "password": "davidrulz",
