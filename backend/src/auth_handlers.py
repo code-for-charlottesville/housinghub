@@ -55,6 +55,6 @@ def get_login_status():
     """see if a user is currently logged in
     :return: flask response object
     """
-    return jsonify(g.user)
+    return jsonify({})
 
 

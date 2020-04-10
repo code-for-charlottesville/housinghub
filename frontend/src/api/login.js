@@ -17,3 +17,14 @@ export function postAuthLogin({ email, password }) {
       return Promise.resolve(err.response.data);
     });
 }
+
+/**
+ * makes GET request to see if current token is valid
+ **/
+export function getStatus() {
+  return axios.get("/backend/auth/status").then(r => {
+    return Promise.resolve(r.data)
+  }).catch(e => {
+    return Promise.resolve(e.response.data);
+  })
+}

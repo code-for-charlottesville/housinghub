@@ -1,6 +1,7 @@
-import { postAuthLogin } from "../api/login";
+import { postAuthLogin,  getStatus } from "../api/login";
 import { setLoading } from "./appState";
 import store from "../reducers/index";
+import { getJwtFromLocalStorage } from "../reducers/login"
 
 export function setLoginField(fieldName, newValue) {
   return {
@@ -38,4 +39,14 @@ export function loginUser() {
       store.dispatch(setLoginFailure(response.error));
     }
   });
+}
+
+// called when app starts up
+export function initApp() {
+  // if there is a token in local storage, set as user logged in with that token
+  if (getJwtFromLocalStorage() !== null) {
+    getStatus().then(r => {
+      console.log(r)
+    })
+  }
 }
