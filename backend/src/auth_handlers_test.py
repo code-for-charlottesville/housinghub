@@ -37,7 +37,7 @@ class TestAuthHandlers(unittest.TestCase):
         self.assertEqual(response.status_code, 401)
         self.assertEqual(response.get_json(), {
             'code': 401,
-            'error': "incorrect username or password"
+            'error': "Invalid username or password"
         })
 
     def test_status(self):

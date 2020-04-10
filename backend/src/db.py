@@ -84,17 +84,11 @@ class DB:
         :param password: (string) password to validate
         :return tuple: in the format (user[User], error[string])
         """
-        if password != "davidrulz":
-            return ({}, "incorrect username or password")
-
-        tempUserConfig = {
-            "first_name": "david",
-            "last_name": "goldstein",
-            "username": "david1",
-            "email": "temp@gmail.com",
-            "role": "navigator",
-            "role_id": "TEMP_ROLE_ID",
-            "username": "david",
-            "password": "davidrulz",
-        }
-        return (User(tempUserConfig), None)
+        s = self.new_session()
+        _user = s.query(User).filter(User.username == username).one_or_none()
+        s.commit()
+        if _user is None:
+            return (None, "Invalid username or password")
+        if _user.check_password(password) is False:
+            return (None, "Invalid username or password")
+        return (_user, None)
