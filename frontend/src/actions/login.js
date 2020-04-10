@@ -1,7 +1,8 @@
 import { postAuthLogin,  getStatus } from "../api/login";
 import { setLoading } from "./appState";
 import store from "../reducers/index";
-import { getJwtFromLocalStorage } from "../reducers/login"
+import { getJwtFromLocalStorage,removeJwtFromLocalStorage } from "../reducers/login"
+import axios from "axios"
 
 export function setLoginField(fieldName, newValue) {
   return {
@@ -42,11 +43,17 @@ export function loginUser() {
 }
 
 // called when app starts up
-export function initApp() {
+export function checkForTokenFromStorage() {
   // if there is a token in local storage, set as user logged in with that token
   if (getJwtFromLocalStorage() !== null) {
-    getStatus().then(r => {
-      console.log(r)
+    getStatus(getJwtFromLocalStorage()).then(r => {
+      // token is invalid
+      if (r.error) {
+        removeJwtFromLocalStorage()
+      } else {
+        // token is valid! log in
+        store.dispatch(setLoginSuccess(getJwtFromLocalStorage()));
+      }
     })
   }
 }

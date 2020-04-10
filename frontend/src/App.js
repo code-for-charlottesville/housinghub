@@ -4,13 +4,13 @@ import Login from "./components/Login";
 import "bulma/css/bulma.css";
 import { connect } from "react-redux";
 import MainContent from "./containers/MainContent";
-import { initApp } from "./actions/login";
+import { checkForTokenFromStorage } from "./actions/login";
 
 
 class App extends React.Component {
 
   componentDidMount() {
-    initApp()
+    checkForTokenFromStorage()
   }
 
   render() {

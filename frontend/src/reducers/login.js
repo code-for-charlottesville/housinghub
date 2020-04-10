@@ -1,3 +1,5 @@
+import axios from "axios"
+
 const initialState = {
   error: "",
   isLoggedIn: false,
@@ -41,8 +43,14 @@ export default appState;
 const LOCAL_STORAGE_JWT_KEY = "housinghub_token";
 function setJwtInLocalStorage(jwt) {
   localStorage.setItem(LOCAL_STORAGE_JWT_KEY, jwt);
+  axios.defaults.headers.common['Authorization'] = `Beaerer ${jwt}`
 }
 
 export function getJwtFromLocalStorage() {
   return localStorage.getItem(LOCAL_STORAGE_JWT_KEY);
+}
+
+export function removeJwtFromLocalStorage() {
+  localStorage.removeItem(LOCAL_STORAGE_JWT_KEY);
+  delete axios.defaults.headers.common['Authorization']
 }
