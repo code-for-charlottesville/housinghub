@@ -17,27 +17,27 @@ class TestAuthHandlers(unittest.TestCase):
         self.app = app.test_client()
 
     def test_login(self):
-        # user_name is valid
+        # username is valid
         response = self.app.post("/auth/login",
                                  json={
-                                     'user_name': 'david',
+                                     'username': 'david',
                                      'password': 'davidrulz'
                                  })
         self.assertEqual(response.status_code, 200)
         # assert able to decode jwt
         t = response.get_json().get("jwt")
         jwtDecoded = jwt.decode(t, server.tokenSecret, algorithms='HS256')
-        self.assertEqual(jwtDecoded.get("user_name"), "david")
-        # user_name is not valid
+        self.assertEqual(jwtDecoded.get("username"), "david")
+        # username is not valid
         response = self.app.post("/auth/login",
                                  json={
-                                     'user_name': 'david',
+                                     'username': 'david',
                                      'password': 'davidrulz-bad-password'
                                  })
         self.assertEqual(response.status_code, 401)
         self.assertEqual(response.get_json(), {
             'code': 401,
-            'error': "incorrect user_name or password"
+            'error': "incorrect username or password"
         })
 
     def test_status(self):
@@ -45,10 +45,10 @@ class TestAuthHandlers(unittest.TestCase):
         user = User({
             "first_name": "david",
             "last_name": "goldstein",
-            "user_name": "david1",
+            "username": "david1",
             "email": "temp@gmail.com",
             "role": "navigator",
-            "user_name": "david",
+            "username": "david",
             "password": "davidrulz",
         })
         jwt = encodeJWT(user)
@@ -78,7 +78,7 @@ class TestAuthHandlers(unittest.TestCase):
             {
                 'exp': pastTime,
                 'uuid': user.id,
-                'user_name': user.user_name,
+                'username': user.username,
                 'role': user.role,
             },
             tokenSecret,
@@ -94,7 +94,7 @@ class TestAuthHandlers(unittest.TestCase):
         self.assertEqual(response.status_code, 401)
         # positive test
         user1 = {
-            "user_name": "david",
+            "username": "david",
             "password": "davidrulz",
             "role": "navigator",
             "is_admin": True
@@ -113,7 +113,7 @@ class TestAuthHandlers(unittest.TestCase):
                                  user1.get(k))
         # user already exists
         user1 = {
-            "user_name": "david",
+            "username": "david",
             "password": "davidrulz",
             "role": "navigator",
             "is_admin": True

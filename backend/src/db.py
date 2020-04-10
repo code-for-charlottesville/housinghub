@@ -44,15 +44,15 @@ class DB:
     def new_session(self):
         return self.Session()
 
-    def user_name_already_exists(self, user_name):
+    def username_already_exists(self, username):
         """
         checks if user name already exists in users table
-        :param: string user_name
+        :param: string username
         :return: boolean exists
         """
         session = self.new_session()
         try:
-            u = session.query(User).filter_by(user_name=user_name).one()
+            u = session.query(User).filter_by(username=username).one()
             session.commit()
         except sqlalchemy.orm.exc.NoResultFound:
             return False
@@ -78,23 +78,23 @@ class DB:
         queries DB
         :parma q: (string) - query to be passed to DB
         """
-    def validate_login(self, user_name, password):
-        """validates if the user_name and password is valid for users in the db
-        :param user_name: (string) user_name to validate
+    def validate_login(self, username, password):
+        """validates if the username and password is valid for users in the db
+        :param username: (string) username to validate
         :param password: (string) password to validate
         :return tuple: in the format (user[User], error[string])
         """
         if password != "davidrulz":
-            return ({}, "incorrect user_name or password")
+            return ({}, "incorrect username or password")
 
         tempUserConfig = {
             "first_name": "david",
             "last_name": "goldstein",
-            "user_name": "david1",
+            "username": "david1",
             "email": "temp@gmail.com",
             "role": "navigator",
             "role_id": "TEMP_ROLE_ID",
-            "user_name": "david",
+            "username": "david",
             "password": "davidrulz",
         }
         return (User(tempUserConfig), None)

@@ -9,11 +9,11 @@ class TestNavigatorHandlers(unittest.TestCase):
     user = User({
         "first_name": "david",
         "last_name": "goldstein",
-        "user_name": "david1",
+        "username": "david1",
         "email": "temp@gmail.com",
         "role": "navigator",
         "role_id": "TEMP_ROLE_ID",
-        "user_name": "david",
+        "username": "david",
         "password": "davidrulz",
     })
     jwt = encodeJWT(user)

@@ -25,6 +25,7 @@ services:
       DB_HOST: postgres
       DB_USER: app
       DB_PASSWORD: apppassword
+      DB_PORT: 5432
       TOKEN_SECRET_KEY_ROTATION_SECONDS: 172800
       TOKEN_EXP_SECONDS: 300
       APP_ENV: tilt

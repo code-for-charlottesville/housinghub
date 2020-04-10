@@ -21,9 +21,9 @@ def register_new_user():
         return server.err_out(401, "'{}' is a required field".format(str(err)))
 
     # check if user already exists
-    if server.db.user_name_already_exists(userd.user_name):
+    if server.db.username_already_exists(userd.username):
         return server.err_out(
-            409, "user_name {} already exists".format(userd.user_name))
+            409, "username {} already exists".format(userd.username))
 
     # create new entry in the database
     err = server.db.add(userd)
@@ -56,7 +56,7 @@ def login():
     """
     rotateServerKeyIfNeeded()
     # get user and password from front end
-    u = request.get_json().get("user_name")
+    u = request.get_json().get("username")
     p = request.get_json().get("password")
     # validate that user and password is valid
     (user, err) = server.db.validate_login(u, p)
@@ -123,7 +123,7 @@ def encodeJWT(user):
         {
             'exp': futureTime,
             'uuid': user.id,
-            'user_name': user.user_name,
+            'username': user.username,
             'role': user.role,
         },
         server.tokenSecret,

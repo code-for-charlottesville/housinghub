@@ -32,35 +32,35 @@ class TestDBMethods(unittest.TestCase):
         user = User({
             "first_name": "david-test_add",
             "last_name": "goldstein",
-            "user_name": "david1",
+            "username": "david1",
             "email": "temp@gmail.com",
             "role": "navigator",
             "role_id": "TEMP_ROLE_ID",
-            "user_name": "david",
+            "username": "david",
             "password": "davidrulz",
         })
         err = d.add(user)
         self.assertIsNone(err)
 
         s = d.new_session()
-        user_in_db = s.query(User).filter_by(user_name=user.user_name).one()
-        self.assertEqual(user_in_db.user_name, user.user_name)
+        user_in_db = s.query(User).filter_by(username=user.username).one()
+        self.assertEqual(user_in_db.username, user.username)
 
-    def test_user_name_already_exists(self):
+    def test_username_already_exists(self):
         d = db.DB(self.host, self.user, self.password, self.port,
                   self.in_memory)
         user = User({
             "first_name": "david-test_add",
             "last_name": "goldstein",
-            "user_name": "david1",
+            "username": "david1",
             "email": "temp@gmail.com",
             "role": "navigator",
             "role_id": "TEMP_ROLE_ID",
-            "user_name": "david",
+            "username": "david",
             "password": "davidrulz",
         })
         err = d.add(user)
         self.assertIsNone(err)
-        self.assertTrue(d.user_name_already_exists(user.user_name))
+        self.assertTrue(d.username_already_exists(user.username))
         self.assertFalse(
-            d.user_name_already_exists("this is a username that doesnt exist"))
+            d.username_already_exists("this is a username that doesnt exist"))

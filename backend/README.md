@@ -44,9 +44,10 @@ Now you can run the Flask app by running
 export FLASK_APP=src/server.py
 export FLASK_ENV=development
 export TOKEN_EXP_SECONDS=1000
+export DB_IN_MEMORY_ONLY=false
 export PORT=5000
 export DB_HOST="localhost"
-export DB_PORT=5431
+export DB_PORT=5432
 export DB_USER="app"
 export DB_PASSWORD="apppassword"
 export APP_ENV="local"
@@ -67,7 +68,7 @@ $ curl -H "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOj
 $ curl -H "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE1ODU0MzM0MjcsInVpZCI6IjNiOTJhZTVlLTcxNDAtMTFlYS1iZDRmLWU0NzBiOGI2MTY4MyIsIm5hbWUiOiJkYXZpZCBnb2xkc3RlaW4ifQ.j3bKF3YXalyHvFZ94LCZPN8HeuQEH5Bjbmusw-Js" http://localhost:5000/navigator
 {"code":401,"error":"token is invalid"}
 
-$ curl -XPOST -H "content-type: application/json" -d '{"user_name" : "david", "password" : "davidrulz", "role_id" : "4", "role" : "navigator", "is_admin": true}' http://localhost:5000/auth/register
+$ curl -XPOST -H "content-type: application/json" -d '{"username" : "david", "password" : "davidrulz", "role_id" : "4", "role" : "navigator", "is_admin": true}' http://localhost:5000/auth/register
 ```
 
 Now let's go into the database to see the user we just created

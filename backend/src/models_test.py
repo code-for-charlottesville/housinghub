@@ -8,11 +8,11 @@ class TestUser(unittest.TestCase):
         tempUserConfig = {
             "first_name": "david",
             "last_name": "goldstein",
-            "user_name": "david1",
+            "username": "david1",
             "email": "temp@gmail.com",
             "role": "navigator",
             "role_id": "TEMP_ROLE_ID",
-            "user_name": "david",
+            "username": "david",
             "password": "davidrulz",
         }
         u = User(tempUserConfig)
