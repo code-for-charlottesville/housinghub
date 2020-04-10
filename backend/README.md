@@ -82,12 +82,15 @@ Type "help" for help
 ```
 Type \dt which lists all datatables in the databse
 ```bash
-housinghub-# \dt
-       List of relations
- Schema | Name  | Type  | Owner 
---------+-------+-------+-------
- public | users | table | app
-(1 row)
+housinghub=# \dt
+            List of relations
+ Schema |      Name       | Type  | Owner 
+--------+-----------------+-------+-------
+ public | alembic_version | table | app
+ public | landlords       | table | app
+ public | navigators      | table | app
+ public | users           | table | app
+(4 rows)
 ```
 To show the user we created from the curl request above, type the following query:
 ```bash
@@ -152,7 +155,7 @@ For instructions on using Tilt for local developmet, see the [Developer Quicksta
 
 ```sh
 pip install yapf
-yapf -ri ./**/*.py
+yapf -ri src/*.py
 ```
 
 ## Generating New Documentation
