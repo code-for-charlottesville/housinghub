@@ -15,7 +15,7 @@ services:
       POSTGRES_USER: app
       POSTGRES_PASSWORD: apppassword
     ports:
-      - 5431:5432
+      - 5432:5432
 
   housinghub-api:
     image: codeforcharlottesville/housinghub-api:latest

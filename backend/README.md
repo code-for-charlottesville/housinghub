@@ -49,6 +49,7 @@ export DB_HOST="localhost"
 export DB_PORT=5431
 export DB_USER="app"
 export DB_PASSWORD="apppassword"
+export APP_ENV="local"
 $(cd alembic && alembic upgrade head)
 python3 api/swagger-yaml-to-html.py < api/swagger.yml > api/index.html
 flask run
@@ -72,7 +73,7 @@ $ curl -XPOST -H "content-type: application/json" -d '{"user_name" : "david", "p
 Now let's go into the database to see the user we just created
 
 ```bash
-$ psql postgres://app:apppassword@localhost:5431/housinghub
+$ psql postgres://app:apppassword@localhost:5432/housinghub
 psql (10.12 (Ubuntu 10.12-0ubuntu0.18.04.1), server 11.7 (Debian 11.7-2.pgdg90+1))
 WARNING: psql major version 10, server major version 11.
          Some psql features might not work.
