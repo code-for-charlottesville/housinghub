@@ -20,7 +20,7 @@ depends_on = None
 def upgrade():
     op.create_table(
         'landlords',
-        sa.Column('id', UUID, primary_key=True),
+        sa.Column('id', VARCHAR, primary_key=True),
         sa.Column('first_name', VARCHAR, nullable=True),
         sa.Column('last_name', VARCHAR, nullable=False),
         sa.Column('phone_number', VARCHAR, nullable=True),
