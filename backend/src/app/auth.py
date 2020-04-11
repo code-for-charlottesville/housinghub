@@ -7,7 +7,6 @@ from functools import wraps
 def authenticate(f):
   @wraps(f)
   def decorated_function(*args, **kwargs):
-    app.logger.error("Decorating function")
     auth_service = app.services.auth_service()
     (user, err) = auth_service.authenticate_request(request)
     if user:
