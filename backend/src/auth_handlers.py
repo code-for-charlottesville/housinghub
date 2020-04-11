@@ -17,7 +17,11 @@ def register():
         password = user_data.get('password')
         role = user_data.get('role')
         is_admin = bool(user_data.get('is_admin'))
-        created_user = app.services.user_service().add_user(username,password,role,is_admin)
+        if username and password and role and is_admin:
+            created_user = app.services.user_service().add_user(username,password,role,is_admin)
+            return jsonify({'jwt': app.services.auth_service().encode_jwt(created_user)})
+        else:
+            return jsonify(code=400, error='Request is invalid'), 400
     except KeyError:
         return jsonify(code=400, error='Request is invalid'), 400
     # create new entry in the database
@@ -26,7 +30,7 @@ def register():
 
     # create a JWT token and return to the front end
 
-    return jsonify({'jwt': app.services.auth_service().encode_jwt(created_user)})
+   
 
 @auth_module.route('/login', methods=['POST'])
 def login():

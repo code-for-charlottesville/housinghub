@@ -1,5 +1,3 @@
-import server
-import requests
 from flask import request, jsonify, Blueprint
 from app.auth import authenticate 
 
