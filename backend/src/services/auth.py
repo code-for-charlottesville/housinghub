@@ -46,7 +46,7 @@ class AuthService:
     raw_bytes = encode(
         {
             'exp': future_time,
-            'uuid': user.id,
+            'uid': str(user.id),
             'role': user.role
         },
         self.token_secret,

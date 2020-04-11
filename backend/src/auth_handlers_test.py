@@ -5,6 +5,7 @@ from models.user import User
 import app
 import services
 import services.auth
+from datetime import datetime
 
 class TestAuthHandlers(unittest.TestCase):
 
@@ -52,48 +53,33 @@ class TestAuthHandlers(unittest.TestCase):
             'error': "Login invalid"
         })
 
-    # def test_status(self):
-    #     # create new user
-    #     user = User({
-    #         "first_name": "david",
-    #         "last_name": "goldstein",
-    #         "user_name": "david1",
-    #         "email": "temp@gmail.com",
-    #         "username": "david",
-    #         "password": "davidrulz",
-    #     })
-    #     jwt = encodeJWT(user)
-    #     response = self.app.get("/auth/status",
-    #                             headers=dict(Authorization='Bearer ' + jwt))
+    @patch('services.container.AuthService')
+    def test_status(self,MockAuthService):
+        user_id = str(uuid.uuid4())
+        mock_jwt_payload = {
+            'exp': datetime.now(),
+            'uid': user_id,
+            'role': 'navigator'
+        }
 
-    #     self.assertEqual(response.get_json().get("error"), None)
-    #     self.assertEqual(response.status_code, 200)
-    #     # Auth header does not exist
-    #     response = self.app.get("/auth/status",
-    #                             headers=dict(XXXXX='Bearer ' + jwt))
-    #     self.assertEqual(response.status_code, 401)
-    #     # Auth header not in right format
-    #     response = self.app.get("/auth/status",
-    #                             headers=dict(Authorization='Bearer XXX xXX' +
-    #                                          jwt))
-    #     self.assertEqual(response.status_code, 401)
-    #     # invalid jwt
-    #     response = self.app.get(
-    #         "/auth/status",
-    #         headers=dict(Authorization='Bearer f2039fj20398fsohdfohjisdef'))
-    #     self.assertEqual(response.status_code, 401)
-    #     # Token has expired
-    #     pastTime = datetime.now(timezone.utc) - timedelta(seconds=100)
-    #     print(pastTime)
-    #     rawBytes = encode(
-    #         {
-    #             'exp': pastTime,
-    #             'uid': user.uid,
-    #             "name": "{} {}".format(user.first_name, user.last_name)
-    #         },
-    #         tokenSecret,
-    #         algorithm=tokenEncryptAlg)
-    #     jwt = str(rawBytes, 'utf-8')
-    #     response = self.app.get("/auth/status",
-    #                             headers=dict(Authorization='Bearer ' + jwt))
-    #     self.assertEqual(response.status_code, 401)
+        # Auth success
+        mock_auth = MockAuthService.return_value
+        mock_auth.authenticate_request.return_value = (mock_jwt_payload, None)
+        
+        response = self.server.get("/auth/status")
+        
+
+        self.assertEqual(response.get_json().get("error"), None)
+        self.assertEqual(response.get_json().get("uid"), user_id)
+        self.assertEqual(response.get_json().get("role"), 'navigator')
+        self.assertEqual(response.status_code, 200)
+        
+        # Auth fail
+        mock_auth = MockAuthService.return_value
+        mock_auth.authenticate_request.return_value = (None, 'some error')
+        
+        response = self.server.get("/auth/status")
+        
+
+        self.assertEqual(response.get_json().get("error"), 'Not logged in')
+        self.assertEqual(response.status_code, 401)

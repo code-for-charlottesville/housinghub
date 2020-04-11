@@ -56,7 +56,7 @@ def get_login_status():
     auth_service = app.services.auth_service()
     (user, err) = auth_service.authenticate_request(request)
     if user:
-        return jsonify(user)
+        return jsonify(user), 200
     else:
         return jsonify(code=401,error='Not logged in'), 401
 
