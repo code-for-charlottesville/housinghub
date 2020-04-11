@@ -1,9 +1,10 @@
 from flask import request, jsonify, Blueprint
-from app.auth import authenticate 
+from app.auth import authenticate
 
 import app
 
-navigator_module = Blueprint('navigator',__name__)
+navigator_module = Blueprint('navigator', __name__)
+
 
 @navigator_module.route('/navigator', methods=['GET'])
 @authenticate
@@ -13,7 +14,7 @@ def get_navigator():
     :param request: dictionary of jwtPayload
     :return tuple (response body (dict), response code (int), error (string))
     """
-    return jsonify(code=500,error='not implemented'), 500
+    return jsonify(code=500, error='not implemented'), 500
 
 
 @navigator_module.route('/navigator', methods=['POST'])
@@ -24,7 +25,7 @@ def post_navigator():
     :param request: dictionary of jwtPayload
     :return tuple (response body (dict), response code (int), error (string))
     """
-    return jsonify(code=500,error='not implemented'), 500
+    return jsonify(code=500, error='not implemented'), 500
 
 
 @navigator_module.route('/navigator', methods=['PUT'])
@@ -35,7 +36,7 @@ def put_navigator():
 	:param request: dictionary of jwtPayload
 	:return tuple (response body (dict), response code (int), error (string))
     """
-    return jsonify(code=500,error='not implemented'), 500
+    return jsonify(code=500, error='not implemented'), 500
 
 
 @navigator_module.route('/navigator', methods=['DELETE'])
@@ -46,4 +47,4 @@ def delete_navigator():
 	:param request: dictionary of jwtPayload
 	:return tuple (response body (dict), response code (int), error (string))
     """
-    return jsonify(code=500,error='not implemented'), 500
+    return jsonify(code=500, error='not implemented'), 500

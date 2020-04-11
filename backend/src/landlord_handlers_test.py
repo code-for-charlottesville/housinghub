@@ -9,10 +9,11 @@ class TestLandlordHandlers(unittest.TestCase):
 
     # executed prior to each test
     def setUp(self):
-        self.auth_service_patch = patch('services.container.AuthService', spec=True)
+        self.auth_service_patch = patch('services.container.AuthService',
+                                        spec=True)
         mock_auth_service = self.auth_service_patch.start()
         instance = mock_auth_service.return_value
-        instance.authenticate_request.return_value = (test_user,None)
+        instance.authenticate_request.return_value = (test_user, None)
         self.app = app.flask_app.test_client()
 
     def tearDown(self):
@@ -27,8 +28,7 @@ class TestLandlordHandlers(unittest.TestCase):
         })
 
     def test_post_landlord(self):
-        response = self.app.post("/landlord",
-                                 json={'name': 'test'})
+        response = self.app.post("/landlord", json={'name': 'test'})
         self.assertEqual(response.status_code, 500)
         self.assertEqual(response.get_json(), {
             'code': 500,
@@ -36,8 +36,7 @@ class TestLandlordHandlers(unittest.TestCase):
         })
 
     def test_put_landlord(self):
-        response = self.app.put("/landlord?td=test",
-                                json={'name': 'test'})
+        response = self.app.put("/landlord?td=test", json={'name': 'test'})
         self.assertEqual(response.status_code, 500)
         self.assertEqual(response.get_json(), {
             'code': 500,

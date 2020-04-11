@@ -1,9 +1,10 @@
 from flask import request, jsonify, Blueprint
-from app.auth import authenticate 
+from app.auth import authenticate
 
 import app
 
-landlord_module = Blueprint('landlord',__name__)
+landlord_module = Blueprint('landlord', __name__)
+
 
 @landlord_module.route('/landlord', methods=['GET'])
 @authenticate
@@ -13,8 +14,7 @@ def get_landlord():
     :param request: dictionary of jwtPayload
     :return tuple (response body (dict), response code (int), error (string))
     """
-    return jsonify(code=500,error='not implemented'), 500
-
+    return jsonify(code=500, error='not implemented'), 500
 
 
 @landlord_module.route('/landlord', methods=['POST'])
@@ -25,8 +25,7 @@ def post_landlord():
     :param request: dictionary of jwtPayload
     :return tuple (response body (dict), response code (int), error (string))
     """
-    return jsonify(code=500,error='not implemented'), 500
-
+    return jsonify(code=500, error='not implemented'), 500
 
 
 @landlord_module.route('/landlord', methods=['PUT'])
@@ -37,7 +36,7 @@ def put_landlord():
     :param request: dictionary of jwtPayload
     :return tuple (response body (dict), response code (int), error (string))
     """
-    return jsonify(code=500,error='not implemented'), 500
+    return jsonify(code=500, error='not implemented'), 500
 
 
 @landlord_module.route('/landlord', methods=['DELETE'])
@@ -48,4 +47,4 @@ def delete_landlord():
     :param request: dictionary of jwtPayload
     :return tuple (response body (dict), response code (int), error (string))
     """
-    return jsonify(code=500,error='not implemented'), 500
+    return jsonify(code=500, error='not implemented'), 500
