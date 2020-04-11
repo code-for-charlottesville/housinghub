@@ -1,6 +1,8 @@
 import React from "react";
+import { connect } from "react-redux";
+import { Link } from "react-router-dom";
 
-export const Navbar = ({ showLoginBox, showRegisterBox, showNewPropBox }) => {
+const Navbar = props => {
   return (
     <nav className="navbar" role="navigation" aria-label="main navigation">
       <div className="navbar-brand">
@@ -19,28 +21,23 @@ export const Navbar = ({ showLoginBox, showRegisterBox, showNewPropBox }) => {
               : classList.add("is-active");
           }}
         >
-          <span aria-hidden="true"></span>
-          <span aria-hidden="true"></span>
-          <span aria-hidden="true"></span>
+          <span aria-hidden="true" />
+          <span aria-hidden="true" />
+          <span aria-hidden="true" />
         </a>
       </div>
 
       <div id="burgerFilling" className="navbar-menu">
         <div className="navbar-start">
-          <a className="navbar-item" onClick={showLoginBox}>
-            Login
-          </a>
-          <a className="navbar-item" onClick={showRegisterBox}>
-            Register
-          </a>
-
           <div className="navbar-item has-dropdown is-hoverable">
             <a className="navbar-link">Properties</a>
             <div className="navbar-dropdown">
-              <a className="navbar-item">Search Properties</a>
-              <a className="navbar-item" onClick={showNewPropBox}>
+              <Link className="navbar-item" to="/property/new">
                 Add Property
-              </a>
+              </Link>
+              <Link className="navbar-item" to="/property/search">
+                Search Property
+              </Link>
             </div>
           </div>
         </div>
@@ -48,3 +45,5 @@ export const Navbar = ({ showLoginBox, showRegisterBox, showNewPropBox }) => {
     </nav>
   );
 };
+
+export default connect()(Navbar);

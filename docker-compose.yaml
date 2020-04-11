@@ -38,3 +38,16 @@ services:
     environment:
       API_ENDPOINT: http://housinghub-api:5000
 
+  edge:
+    image: dgoldstein1/reverse-proxy:0.1.5
+    ports:
+      - 8443:8443
+    environment:
+      port: 8443
+      services: ui,backend
+      ui_incoming_path: /
+      ui_outgoing_url: http://housinghub:3000
+      backend_incoming_path: /backend/
+      backend_outgoing_url: http://housinghub-api:5000
+
+
