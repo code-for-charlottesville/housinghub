@@ -1,32 +1,26 @@
 import unittest
-from server import app
-from models import User
-from auth_handlers import encodeJWT
+from unittest.mock import patch
+from test import test_user
+
+import app
 
 
 class TestPropertyHandlers(unittest.TestCase):
 
-    user = User({
-        "first_name": "david",
-        "last_name": "goldstein",
-        "username": "david1",
-        "email": "temp@gmail.com",
-        "role": "navigator",
-        "role_id": "TEMP_ROLE_ID",
-        "username": "david",
-        "password": "davidrulz",
-    })
-    jwt = encodeJWT(user)
-    authHeaders = dict(Authorization='Bearer ' + jwt)
-
     # executed prior to each test
     def setUp(self):
-        app.config['DB_ENDPOINT'] = "tcp://dynamodb"
-        app.config['TOKEN_EXP_SECONDS'] = "1000"
-        self.app = app.test_client()
+        self.auth_service_patch = patch('services.container.AuthService',
+                                        spec=True)
+        mock_auth_service = self.auth_service_patch.start()
+        instance = mock_auth_service.return_value
+        instance.authenticate_request.return_value = (test_user, None)
+        self.app = app.flask_app.test_client()
+
+    def tearDown(self):
+        self.auth_service_patch.stop()
 
     def test_get_property(self):
-        response = self.app.get("/property?id=test", headers=self.authHeaders)
+        response = self.app.get("/property?id=test")
         self.assertEqual(response.status_code, 500)
         self.assertEqual(response.get_json(), {
             'code': 500,
@@ -34,9 +28,7 @@ class TestPropertyHandlers(unittest.TestCase):
         })
 
     def test_post_property(self):
-        response = self.app.post("/property",
-                                 json={'name': 'test'},
-                                 headers=self.authHeaders)
+        response = self.app.post("/property", json={'name': 'test'})
         self.assertEqual(response.status_code, 500)
         self.assertEqual(response.get_json(), {
             'code': 500,
@@ -44,9 +36,7 @@ class TestPropertyHandlers(unittest.TestCase):
         })
 
     def test_put_property(self):
-        response = self.app.put("/property?td=test",
-                                json={'name': 'test'},
-                                headers=self.authHeaders)
+        response = self.app.put("/property?td=test", json={'name': 'test'})
         self.assertEqual(response.status_code, 500)
         self.assertEqual(response.get_json(), {
             'code': 500,
@@ -54,8 +44,7 @@ class TestPropertyHandlers(unittest.TestCase):
         })
 
     def test_delete_property(self):
-        response = self.app.delete("/property?id=test",
-                                   headers=self.authHeaders)
+        response = self.app.delete("/property?id=test")
         self.assertEqual(response.status_code, 500)
         self.assertEqual(response.get_json(), {
             'code': 500,

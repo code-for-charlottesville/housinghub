@@ -1,131 +1,60 @@
-import server
 import requests
-from flask import send_file, request, jsonify
-from datetime import datetime, timezone, timedelta
-from jwt import encode, decode, ExpiredSignatureError, exceptions as jwtExceptions
-import logging
-from models import User
+from flask import request, jsonify, Blueprint
+
+import app
+
+auth_module = Blueprint('auth', __name__, url_prefix='/auth')
 
 
-def register_new_user():
+@auth_module.route('/register', methods=['POST'])
+def register():
     """registers a new user in the DB, returns JWT Token
     :return: flask response object
     """
-    if request.get_json().get("user") is None:
-        return server.err_out(401, "user is a required field")
     # get user info from front end
     try:
-        user_data = request.get_json().get("user")
-        userd = User(user_data)
-    except KeyError as err:
-        return server.err_out(401, "'{}' is a required field".format(str(err)))
-
-    # check if user already exists
-    if server.db.username_already_exists(userd.username):
-        return server.err_out(
-            409, "username {} already exists".format(userd.username))
-
-    # create new entry in the database
-    err = server.db.add(userd)
-    if err is not None:
-        return server.err_out(
-            500, "Could not add user to the database: {}".format(err))
-
-    return jsonify({
-        "user": userd.get_info(),
-        "jwt": encodeJWT(userd),
-    })
+        user_data = request.get_json()  #dictionary of input
+        app.logger.error('Paylod is ' + str(user_data))
+        username = user_data.get('user_name')
+        password = user_data.get('password')
+        role = user_data.get('role')
+        is_admin = bool(user_data.get('is_admin'))
+        if username and password and role:
+            created_user = app.services.user_service().add_user(
+                username, password, role, is_admin)
+            return jsonify(
+                {'jwt': app.services.auth_service().encode_jwt(created_user)})
+        else:
+            app.logger.error('Invalid user registration payload')
+            return jsonify(code=400, error='Request is invalid'), 400
+    except:
+        app.logger.error('Unexpected error registering new user')
+        return jsonify(code=500, error='internal error'), 500
 
 
-def rotateServerKeyIfNeeded():
-    """
-    rotates the server key if the expiration has passed
-    """
-    if server.tokenFutureRotationDate < datetime.now(timezone.utc):
-        logging.debug(
-            "rotating key, at least {} has passed since last rotation".format(
-                server.tokenRotationIntervalSec))
-        "{}-{}".format(secrets.token_hex(64), time.time())
-        server.tokenFutureRotationDate = datetime.now(
-            timezone.utc) + timedelta(seconds=server.tokenRotationIntervalSec)
-
-
+@auth_module.route('/login', methods=['POST'])
 def login():
     """login an existing user
     :return: flask response object
     """
-    rotateServerKeyIfNeeded()
     # get user and password from front end
     u = request.get_json().get("username")
     p = request.get_json().get("password")
     # validate that user and password is valid
-    (user, err) = server.db.validate_login(u, p)
-    if err is not None:
-        return server.err_out(401, err)
-    # create a JWT token and return to front end
-    return jsonify({'jwt': encodeJWT(user)})
+    user = app.services.auth_service().validate_login(u, p)
+    if user:
+        # create a JWT token and return to front end
+        return jsonify({'jwt': app.services.auth_service().encode_jwt(user)})
+    return jsonify(code=401, error='Login invalid'), 401
 
 
+@auth_module.route('/status', methods=['GET'])
 def get_login_status():
     """see if a user is currently logged in
     :return: flask response object
     """
-    (payload, err) = validateIncomingRequest(request)
-    if err is not None:
-        return server.err_out(401, err)
-    return jsonify(payload)
-
-
-def validateIncomingRequest(request):
-    """extracts jwt token from flask request object, then decodes JWT
-    :param request: flask request object
-    :return: tuple (jwt(string), err(string))
-    """
-    auth_header = request.headers.get('Authorization')
-    if auth_header is None:
-        return (None, "Authorization header not found in request")
-    # get bearer
-    spl = auth_header.split(" ")
-    if len(spl) != 2:
-        return (
-            None,
-            "Token header must be in form: 'Authorization: Bearer $JWT_TOKEN but was: '{}'"
-            .format(auth_header))
-    return decodeJWT(spl[1])
-
-
-def decodeJWT(jwt):
-    """decodes jwt
-    :param jwt: string, utf-8 representation of jwt
-    :return: tuple of (payload(dict), error(string))
-    """
-    t = None
-    err = None
-    try:
-        t = decode(jwt,
-                   server.tokenSecret,
-                   algorithms=[server.tokenEncryptAlg])
-    except ExpiredSignatureError:
-        err = "token has expired"
-    except jwtExceptions.DecodeError:
-        err = "token is invalid"
-    return (t, err)
-
-
-def encodeJWT(user):
-    """encodes JWT
-    :param user: string takes user class.User as argument
-    :return: encoded jwt as string
-    """
-    futureTime = datetime.now(
-        timezone.utc) + timedelta(seconds=server.tokenExpSeconds)
-    rawBytes = encode(
-        {
-            'exp': futureTime,
-            'uuid': user.id,
-            'username': user.username,
-            'role': user.role,
-        },
-        server.tokenSecret,
-        algorithm=server.tokenEncryptAlg)
-    return str(rawBytes, 'utf-8')
+    auth_service = app.services.auth_service()
+    (user, err) = auth_service.authenticate_request(request)
+    if user:
+        return jsonify(user), 200
+    return jsonify(code=401, error='Not logged in'), 401
