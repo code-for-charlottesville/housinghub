@@ -25,6 +25,7 @@ jobs:
         cd backend
         python -m pip install --upgrade pip
         pip install -r requirements.txt
+        python api/swagger-yaml-to-html.py < api/swagger.yml > api/index.html
 #    - name: Lint with flake8
 #      run: |
 #        pip install flake8
@@ -32,8 +33,6 @@ jobs:
 #        flake8 . --count --select=E9,F63,F7,F82 --show-source --statistics
 #        # exit-zero treats all errors as warnings. The GitHub editor is 127 chars wide
 #        flake8 . --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics
-    - name: Generate swagger specs
-      run: python api/swagger-yaml-to-html.py < api/swagger.yml > api/index.html
     - name: Test with pytest
       run: |
         pip install pytest
