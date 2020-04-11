@@ -7,9 +7,7 @@ RESTful API to handle storage, retrieval, and searching of landlords, navigators
 ## Setup
 
 - [install python 3.6.x](https://realpython.com/installing-python/)
-- [install npm](https://www.npmjs.com/get-npm)
-- [install the Serverless framework](https://serverless.com/framework/docs/providers/aws/guide/installation/)
-- [install the psql CLI](https://www.pgcli.com/install)
+- install the Serverless framework
 
 ```sh
 npm install -g serverless
@@ -30,30 +28,22 @@ npm i
 ```
 
 
+
 ## Run
 
 In order to run the app, you will need a Postgresql database to connect to. The easiest way to get started is to use Tilt (see instructions below), but you can create a local dockerized DB manually by running:
 
 ```sh
-docker-compose up -d postgres
+docker run -d -p 5432:5432 -e POSTGRES_DB=housinghub -e POSTGRES_USER=app -e POSTGRES_PASSWORD=apppassword postgres:11.7
 ```
 
 Now you can run the Flask app by running 
 
 ```sh
-export FLASK_APP=src/server.py
-export FLASK_ENV=development
-export TOKEN_EXP_SECONDS=1000
-export DB_IN_MEMORY_ONLY=false
-export PORT=5000
-export DB_HOST="localhost"
-export DB_PORT=5432
-export DB_USER="app"
-export DB_PASSWORD="apppassword"
-export APP_ENV="local"
+export APP_ENV=local
 $(cd alembic && alembic upgrade head)
 python3 api/swagger-yaml-to-html.py < api/swagger.yml > api/index.html
-flask run
+serverless wsgi serve
 ```
 
 in a new tab, make an example request:
@@ -68,50 +58,8 @@ $ curl -H "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOj
 $ curl -H "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE1ODU0MzM0MjcsInVpZCI6IjNiOTJhZTVlLTcxNDAtMTFlYS1iZDRmLWU0NzBiOGI2MTY4MyIsIm5hbWUiOiJkYXZpZCBnb2xkc3RlaW4ifQ.j3bKF3YXalyHvFZ94LCZPN8HeuQEH5Bjbmusw-Js" http://localhost:5000/navigator
 {"code":401,"error":"token is invalid"}
 
-$ curl -XPOST -H "content-type: application/json" -d '{"user":{"username":"david","password":"davidrulz","role_id":"4","role":"navigator","is_admin":true}}' http://localhost:5000/auth/register
-{
-  "jwt": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE1ODY1MjU4MzYsInV1aWQiOiJ1LTEwNmQwMGE2LTdiMmUtMTFlYS05ODViLWU0NzBiOGI2MTY4MyIsInVzZXJuYW1lIjoiZGF2aWQiLCJyb2xlIjoibmF2aWdhdG9yIn0.9g4Hc1W4_Dq78QWpCehl8VRmfunUagUJe0Ai1fAvgPQ", 
-  "user": {
-    "id": "u-106d00a6-7b2e-11ea-985b-e470b8b61683", 
-    "is_admin": true, 
-    "role": "navigator", 
-    "username": "david"
-  }
-}
+$ curl -XPOST -H "content-type: application/json" -d '{"user_name" : "david", "password" : "davidrulz", "role_id" : "4", "role" : "navigator", "is_admin": true}' http://localhost:5000/auth/register
 ```
-
-Now let's go into the database to see the user we just created
-
-```bash
-$ psql postgres://app:apppassword@localhost:5432/housinghub
-psql (10.12 (Ubuntu 10.12-0ubuntu0.18.04.1), server 11.7 (Debian 11.7-2.pgdg90+1))
-WARNING: psql major version 10, server major version 11.
-         Some psql features might not work.
-Type "help" for help
-...
-```
-Type \dt which lists all datatables in the databse
-```bash
-housinghub=# \dt
-            List of relations
- Schema |      Name       | Type  | Owner 
---------+-----------------+-------+-------
- public | alembic_version | table | app
- public | landlords       | table | app
- public | navigators      | table | app
- public | users           | table | app
-(4 rows)
-```
-To show the user we created from the curl request above, type the following query:
-```bash
-housinghub=# select * from users;
-                   id                   | username | password  |   role    | role_id | is_admin 
-----------------------------------------+----------+-----------+-----------+---------+----------
- u-0967cad0-7768-11ea-81eb-e470b8b61683 | david    | davidrulz | navigator | 4       | f
-(1 row)
-```
-
-Now type \q to quit.
 
 ## Development
 
@@ -165,7 +113,7 @@ For instructions on using Tilt for local developmet, see the [Developer Quicksta
 
 ```sh
 pip install yapf
-yapf -ri src/*.py
+yapf -ri ./**/*.py
 ```
 
 ## Generating New Documentation

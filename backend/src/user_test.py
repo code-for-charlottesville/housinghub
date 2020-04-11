@@ -1,5 +1,5 @@
 import unittest
-from models import User
+from user import User
 from server import app
 
 
@@ -8,18 +8,14 @@ class TestUser(unittest.TestCase):
         tempUserConfig = {
             "first_name": "david",
             "last_name": "goldstein",
-            "username": "david1",
+            "user_name": "david1",
             "email": "temp@gmail.com",
-            "role": "navigator",
-            "role_id": "TEMP_ROLE_ID",
             "username": "david",
             "password": "davidrulz",
         }
         u = User(tempUserConfig)
-        self.assertIsNotNone(u.id)
+        self.assertIsNotNone(u.uid)
+        self.assertIsNotNone(u.registered_on)
         # assert key error when field does not exist
         with self.assertRaises(KeyError):
             User({})
-
-        self.assertTrue(u.check_password(tempUserConfig["password"]))
-        self.assertFalse(u.check_password("incorrect-password"))

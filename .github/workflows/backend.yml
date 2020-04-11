@@ -35,13 +35,4 @@ jobs:
     - name: Test with pytest
       run: |
         pip install pytest
-        export FLASK_APP=backend/src/server.py
-        export FLASK_ENV=development
-        export TOKEN_EXP_SECONDS=1000
-        export PORT=5000
-        export DB_HOST="localhost"
-        export DB_PORT=5432
-        export DB_USER="testuser"
-        export DB_PASSWORD="password"
-        export DB_IN_MEMORY_ONLY="true"
         pytest

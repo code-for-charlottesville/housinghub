@@ -333,7 +333,7 @@ paths:
     post:
       tags: 
         - authentication    
-      summary: creates a new user
+      summary: UNDER CONSTRUCTION!!creates a new user
       requestBody:
         required: true
         content:
@@ -347,7 +347,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/createUserResponse'
+                $ref: '#/components/schemas/User'
         '500':
           description: An error message.
           content:
@@ -408,21 +408,12 @@ components:
     createUserRequest:
       type: object
       properties:
-        user:
-           $ref: '#/components/schemas/User'
-        navigator:
-           $ref: '#/components/schemas/Navigator'
-        landlord:
-           $ref: '#/components/schemas/Landlord'                   
-        
-    createUserResponse:
-      type: object
-      properties:
-        jwt:
-           $ref: '#/components/schemas/jwt'
-        user:
-           $ref: '#/components/schemas/User'
-
+        username:
+          type: string
+          description: UNDER CONSTRUCTION
+        password:
+          type: string
+          description: UNDER CONSTRUCTION
 
     loginRequest:
       type: object
@@ -454,35 +445,18 @@ components:
         uuid:
           type: string
           description: UUID of the user in the database
-          example: "u-b49358fc-7137-11ea-bd4f-e470b8b61683"
-        user_name:
+          example: "b49358fc-7137-11ea-bd4f-e470b8b61683"
+        name:
           type: string
-          description: user name of the user
-          example: david01235
-        role:
-          type: string
-          description: what the user does in this system
-          example: "navigator"
+          description: name of the user in form "first last"
+          example: David Goldstein
 
     User:
       type: object
       properties:
         id:
           type: string
-          description: uuid of the user starting with "u-"
-          example: "u-sdf23f-f23joif-sfdh23-sefue"
-        user_name:
-          type: string
-          description: unique username of the user
-          example: "david2134"
-        role:
-          type: string
-          description: what the user does in the system
-          example: "navigator"
-        is_admin:
-          type: boolean
-          description: is the user an admin in system?
-          example: true
+          description: UNDER CONSTRUCTION
 
     Error:
       type: object
