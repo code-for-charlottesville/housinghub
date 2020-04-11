@@ -13,8 +13,11 @@ class UserService:
     Session = sessionmaker(database_engine)
     self.db_session = Session()
 
-  def add_user(self, username: str, password: str, role: str, is_admin: bool = False):
+  def add_user(self, username: str, password: str, role: str, is_admin: bool = False) -> User:
     _new_user = User(id = uuid.uuid4(), username = username, password_hash = pbkdf2_sha256.hash(password), role = role, role_id = uuid.uuid4(), is_admin = is_admin)
     self.db_session.add(_new_user)
     self.db_session.commit()
     return _new_user
+
+  def get_user_by_id(self, uid) -> User:
+    return self.db_session.query(User).filter(User.id == uid).one_or_none()

@@ -46,7 +46,8 @@ class AuthService:
     raw_bytes = encode(
         {
             'exp': future_time,
-            'uuid': user.id
+            'uuid': user.id,
+            'role': user.role
         },
         self.token_secret,
         algorithm = self.token_alg)

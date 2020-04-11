@@ -1,4 +1,3 @@
-import server
 import requests
 from flask import send_file, request, jsonify, Blueprint, g
 from jwt import encode, decode, ExpiredSignatureError, exceptions as jwtExceptions
@@ -49,12 +48,16 @@ def login():
     else:
         return jsonify(code=401,error='Login invalid'), 401
 
-@authenticate
 @auth_module.route('/status',methods=['GET'])
 def get_login_status():
     """see if a user is currently logged in
     :return: flask response object
     """
-    return jsonify(g.user)
+    auth_service = app.services.auth_service()
+    (user, err) = auth_service.authenticate_request(request)
+    if user:
+        return jsonify(user)
+    else:
+        return jsonify(code=401,error='Not logged in'), 401
 
 
