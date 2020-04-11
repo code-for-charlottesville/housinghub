@@ -1,9 +1,5 @@
 import requests
-from flask import send_file, request, jsonify, Blueprint, g
-from jwt import encode, decode, ExpiredSignatureError, exceptions as jwtExceptions
-from user import User
-from app.decorators import authenticate
-
+from flask import request, jsonify, Blueprint
 
 import app
 

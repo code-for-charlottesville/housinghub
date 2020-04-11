@@ -1,39 +1,51 @@
 import server
 import requests
-from flask import send_file, request, jsonify
+from flask import request, jsonify, Blueprint
+from app.auth import authenticate 
 
+import app
 
-def get_navigator(request, jwtPayload):
+navigator_module = Blueprint('navigator',__name__)
+
+@navigator_module.route('/navigator', methods=['GET'])
+@authenticate
+def get_navigator():
     """finds and returns a navigator in the DB
     :param request: flask request object
     :param request: dictionary of jwtPayload
     :return tuple (response body (dict), response code (int), error (string))
     """
-    return ({}, 500, "not implemented")
+    return jsonify(code=500,error='not implemented'), 500
 
 
-def post_navigator(request, jwtPayload):
+@navigator_module.route('/navigator', methods=['POST'])
+@authenticate
+def post_navigator():
     """adds a new navigator to the database and returns response
     :param request: flask request object
     :param request: dictionary of jwtPayload
     :return tuple (response body (dict), response code (int), error (string))
     """
-    return ({}, 500, "not implemented")
+    return jsonify(code=500,error='not implemented'), 500
 
 
-def put_navigator(request, jwtPayload):
+@navigator_module.route('/navigator', methods=['PUT'])
+@authenticate
+def put_navigator():
     """updates a navigator in the DB and returns the updated object
 	:param request: flask request object
 	:param request: dictionary of jwtPayload
 	:return tuple (response body (dict), response code (int), error (string))
     """
-    return ({}, 500, "not implemented")
+    return jsonify(code=500,error='not implemented'), 500
 
 
-def delete_navigator(request, jwtPayload):
+@navigator_module.route('/navigator', methods=['DELETE'])
+@authenticate
+def delete_navigator():
     """deletes a navigator in the DB and returns the deleted object
 	:param request: flask request object
 	:param request: dictionary of jwtPayload
 	:return tuple (response body (dict), response code (int), error (string))
     """
-    return ({}, 500, "not implemented")
+    return jsonify(code=500,error='not implemented'), 500
