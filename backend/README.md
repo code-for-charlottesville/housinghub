@@ -7,11 +7,9 @@ RESTful API to handle storage, retrieval, and searching of landlords, navigators
 ## Setup
 
 - [install python 3.6.x](https://realpython.com/installing-python/)
-- install the Serverless framework
-
-```sh
-npm install -g serverless
-```
+- [install npm](https://www.npmjs.com/get-npm)
+- [install the Serverless framework](https://serverless.com/framework/docs/providers/aws/guide/installation/)
+- [install the psql CLI](https://www.pgcli.com/install)
 
 - configure dev environment:
 
@@ -41,10 +39,20 @@ Now you can run the Flask app by running
 
 ```sh
 export APP_ENV=local
+export FLASK_APP=src/server.py
+$(cd alembic && alembic upgrade head)
+python3 api/swagger-yaml-to-html.py < api/swagger.yml > api/index.html
+flask run
+```
+
+or run locally as a simulated serverless application
+```sh
+export APP_ENV=local
 $(cd alembic && alembic upgrade head)
 python3 api/swagger-yaml-to-html.py < api/swagger.yml > api/index.html
 serverless wsgi serve
 ```
+
 
 in a new tab, make an example request:
 ```bash

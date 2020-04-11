@@ -8,7 +8,7 @@ export PORT=5000
 
 inotifywait -e modify,create,delete -r ./ && \
 	clear && \
-	yapf -ri ./**/*.py && \
-	autoflake --in-place --remove-unused-variables ./**/*.py && \
+	yapf -ri ./src/*.py && \
+	autoflake --in-place --remove-unused-variables ./src/*.py && \
 	coverage run -m pytest
 done

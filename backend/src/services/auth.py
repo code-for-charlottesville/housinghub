@@ -46,7 +46,8 @@ class AuthService:
     raw_bytes = encode(
         {
             'exp': future_time,
-            'uuid': user.id
+            'uid': str(user.id),
+            'role': user.role
         },
         self.token_secret,
         algorithm = self.token_alg)
@@ -69,14 +70,18 @@ class AuthService:
     :param request: flask request object
     :return: tuple (jwt(string), err(string))
     """
-    auth_header = request.headers.get('Authorization')
-    if auth_header is None:
-        return (None, "Authorization header not found in request")
-    # get bearer
-    spl = auth_header.split(" ")
-    if len(spl) != 2:
-        return (
-            None,
-            "Token header must be in form: 'Authorization: Bearer $JWT_TOKEN but was: '{}'"
-            .format(auth_header))
-    return app.services.auth_service().decode_jwt(spl[1])
+    try:
+      auth_header = request.headers.get('Authorization')
+      if auth_header is None:
+          return (None, "Authorization header not found in request")
+      # get bearer
+      spl = auth_header.split(" ")
+      if len(spl) != 2:
+          return (
+              None,
+              "Token header must be in form: 'Authorization: Bearer $JWT_TOKEN but was: '{}'"
+              .format(auth_header))
+      return app.services.auth_service().decode_jwt(spl[1])
+    except:
+      app.logger.error('Exception authenticating request')
+      return (None, "Exception authenticating request")
