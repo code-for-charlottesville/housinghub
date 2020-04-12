@@ -6,14 +6,17 @@ const initialState = {
   fields: {
     email: "",
     password: "",
-    rememberMe: false
+    rememberMe: true
   }
 };
 
 const appState = (state = initialState, action) => {
   switch (action.type) {
     case "SET_LOGIN_SUCCESS":
-      setJwtInLocalStorage(action.jwt);
+      if (state.fields.rememberMe) {
+        setJwtInLocalStorage(action.jwt);
+      }
+      axios.defaults.headers.common["Authorization"] = `Beaerer ${action.jwt}`;
       return Object.assign({}, state, {
         ...state,
         isLoggedIn: true,
@@ -43,7 +46,6 @@ export default appState;
 const LOCAL_STORAGE_JWT_KEY = "housinghub_token";
 function setJwtInLocalStorage(jwt) {
   localStorage.setItem(LOCAL_STORAGE_JWT_KEY, jwt);
-  axios.defaults.headers.common["Authorization"] = `Beaerer ${jwt}`;
 }
 
 export function getJwtFromLocalStorage() {

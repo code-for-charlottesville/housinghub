@@ -47,10 +47,12 @@ export function loginUser() {
 
 // called when app starts up
 export function checkForTokenFromStorage() {
+  store.dispatch(setLoading(true));
   // if there is a token in local storage, set as user logged in with that token
   if (getJwtFromLocalStorage() !== null) {
     getStatus(getJwtFromLocalStorage()).then(r => {
-      if (r.jwt) {
+      store.dispatch(setLoading(false));
+      if (r.uid) {
         return store.dispatch(setLoginSuccess(getJwtFromLocalStorage()));
       }
       // else  token is invalid

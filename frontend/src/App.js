@@ -5,6 +5,8 @@ import "bulma/css/bulma.css";
 import { connect } from "react-redux";
 import MainContent from "./containers/MainContent";
 import { checkForTokenFromStorage } from "./actions/login";
+import { Footer } from "./components/Footer"
+import "./style/App.css"
 
 
 class App extends React.Component {
@@ -15,11 +17,14 @@ class App extends React.Component {
 
   render() {
     return (
-      <Switch>
-        <Route path="/login" component={Login} />
-        <Route path="/" component={MainContent} />
-        <Route>Page not found :(</Route>
-      </Switch>
+      <div className="App">
+        <Switch>
+          <Route path="/login" component={Login} />
+          <Route path="/" component={MainContent} />
+          <Route>Page not found :(</Route>
+        </Switch>
+        <Footer/>
+      </div>
     );
   }
 }

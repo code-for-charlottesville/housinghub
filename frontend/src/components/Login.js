@@ -7,7 +7,6 @@ import { LoadingSpinner } from "./LoadingSpinner";
 
 const Login = props => {
   if (props.isLoggedIn) return <Redirect to="/home" />;
-  console.log(props.error);
   return (
     <div className="hero-body">
       <div className="container">
@@ -62,12 +61,12 @@ const Login = props => {
                   <label htmlFor="" className="checkbox">
                     <input
                       type="checkbox"
+                      checked={props.fields.rememberMe}
                       onChange={e =>
                         props.dispatch(
-                          setLoginField("rememberMe", e.target.value === "true")
+                          setLoginField("rememberMe", !props.fields.rememberMe)
                         )
                       }
-                      value={props.fields.rememberMe}
                     />
                     Remember me
                   </label>
