@@ -86,9 +86,6 @@ const Login = props => {
                     Login
                   </button>
                   <div className="control" />
-                  <div className="control">
-                    <button className="button is-light">Register</button>
-                  </div>
                 </div>
               </form>
             )}
