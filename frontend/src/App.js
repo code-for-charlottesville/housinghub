@@ -4,7 +4,7 @@ import Login from "./components/Login";
 import "bulma/css/bulma.css";
 import { connect } from "react-redux";
 import MainContent from "./containers/MainContent";
-import { checkForTokenFromStorage } from "./actions/login";
+import { setJwtStatus } from "./actions/login";
 import { Footer } from "./components/Footer"
 import Logout from "./components/Logout"
 import "./style/App.css"
@@ -13,7 +13,7 @@ import "./style/App.css"
 class App extends React.Component {
 
   componentDidMount() {
-    checkForTokenFromStorage()
+    setJwtStatus()
   }
 
   render() {
