@@ -74,8 +74,8 @@ const Login = props => {
                 </div>
                 {props.error && (
                   <div className="field">
-                    <span className="tag is-danger">
-                      {"Error Logging In: " + props.error}
+                    <span className="tag is-danger is-light">
+                      {"Could Not Log In: " + props.error}
                     </span>
                   </div>
                 )}
