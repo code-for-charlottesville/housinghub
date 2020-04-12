@@ -19,7 +19,7 @@ const appState = (state = initialState, action) => {
         isLoggedIn: true,
         error: ""
       });
-    case "SET_LOGIN_FAILURE":
+    case "SET_LOGIN_ERROR":
       return Object.assign({}, state, {
         ...state,
         isLoggedIn: false,

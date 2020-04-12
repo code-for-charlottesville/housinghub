@@ -50,13 +50,11 @@ export function checkForTokenFromStorage() {
   // if there is a token in local storage, set as user logged in with that token
   if (getJwtFromLocalStorage() !== null) {
     getStatus(getJwtFromLocalStorage()).then(r => {
-      // token is invalid
-      if (r.error) {
-        removeJwtFromLocalStorage();
-      } else {
-        // token is valid! log in
-        store.dispatch(setLoginSuccess(getJwtFromLocalStorage()));
+      if (r.jwt) {
+        return store.dispatch(setLoginSuccess(getJwtFromLocalStorage()));
       }
+      // else  token is invalid
+      removeJwtFromLocalStorage();
     });
   }
 }

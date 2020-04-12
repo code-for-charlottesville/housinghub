@@ -21,6 +21,9 @@ curl -XPOST -H "content-type: application/json" -d '{"user_name" : "user@gmail.c
 
 Now go to the app's main page by opening http://localhost:8443 in your browser and use the above credentials to log in.
 
+email: user@gmail.com
+password: password
+
 ## How to format Code
 
 ```bash
