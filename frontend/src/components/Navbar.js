@@ -39,6 +39,12 @@ const Navbar = props => {
                 Search Property
               </Link>
             </div>
+            <a className="navbar-link">User</a>
+            <div className="navbar-dropdown">
+              <Link className="navbar-item" to="/logout">
+                Log Out
+              </Link>
+            </div>
           </div>
         </div>
       </div>

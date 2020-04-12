@@ -29,6 +29,12 @@ export function setLoginFailure(error) {
   };
 }
 
+export function logout() {
+  return {
+    type: "LOGOUT"
+  };
+}
+
 /**
  * fires when user attempts to login
  **/
@@ -47,9 +53,9 @@ export function loginUser() {
 
 // called when app starts up
 export function checkForTokenFromStorage() {
-  store.dispatch(setLoading(true));
   // if there is a token in local storage, set as user logged in with that token
   if (getJwtFromLocalStorage() !== null) {
+    store.dispatch(setLoading(true));
     getStatus(getJwtFromLocalStorage()).then(r => {
       store.dispatch(setLoading(false));
       if (r.uid) {

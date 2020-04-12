@@ -12,6 +12,13 @@ const initialState = {
 
 const appState = (state = initialState, action) => {
   switch (action.type) {
+    case "LOGOUT":
+      removeJwtFromLocalStorage();
+      return Object.assign({}, state, {
+        ...state,
+        isLoggedIn: false,
+        error: ""
+      });
     case "SET_LOGIN_SUCCESS":
       if (state.fields.rememberMe) {
         setJwtInLocalStorage(action.jwt);
