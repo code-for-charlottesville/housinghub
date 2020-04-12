@@ -1,5 +1,5 @@
 import React from "react";
-import { NewPropForm } from "../components/NewPropForm";
+import NewPropForm from "../components/NewPropForm";
 import { connect } from "react-redux";
 import { Redirect, Switch, Route } from "react-router-dom";
 import Navbar from "../components/Navbar";

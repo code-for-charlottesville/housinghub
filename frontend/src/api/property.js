@@ -1,3 +1,20 @@
-export function postProperty(prop) {
-  // TODO
+import axios from "axios";
+
+/**
+ * makes POST request to /backend/property with id
+ **/
+
+export function postProperty({ id }) {
+  console.log(`posting: id => ${id}`);
+  return axios
+    .post("/backend/property", {
+      id: id,
+    })
+    .then((r) => {
+      return Promise.resolve(r.data);
+    })
+    .catch((err) => {
+      console.error(err.response);
+      return Promise.resolve(err.response.data);
+    });
 }
