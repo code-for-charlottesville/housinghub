@@ -4,9 +4,7 @@ import { Login } from "./components/Login";
 import { NewPropForm } from "./components/NewPropForm";
 import { Navbar } from "./components/Navbar";
 import "bulma/css/bulma.css";
-import { PropertyDetail } from "./components/PropertyDetail";
-import { PropertyAvailability } from "./components/PropertyAvailability";
-import { PropertyRequirement } from "./components/PropertyRequirement";
+
 
 class App extends React.Component {
   constructor(props) {
@@ -45,9 +43,7 @@ class App extends React.Component {
   render() {
     return (
       <>
-        <PropertyRequirement />
-        <PropertyAvailability />
-        <PropertyDetail />
+   
 
         <div className="container column is-centered">
           <Navbar
