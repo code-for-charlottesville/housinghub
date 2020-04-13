@@ -1,7 +1,13 @@
 const initialState = {
-  exp: -1,
-  role: "",
-  uid: ""
+  fields: {
+    firstName: "",
+    lastName: "",
+    email: "",
+    password: "",
+    confirmPassword: "",
+    organization: "",
+    role: "",
+  },
 };
 
 const appState = (state = initialState, action) => {
@@ -9,7 +15,7 @@ const appState = (state = initialState, action) => {
     case "SET_USER":
       return Object.assign({}, state, {
         ...state,
-        ...action.user
+        ...action.user,
       });
     default:
       return state;
