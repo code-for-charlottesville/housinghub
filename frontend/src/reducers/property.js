@@ -48,7 +48,6 @@ const propertyState = (state = initialState, action) => {
         error: action.error,
       });
     case "SET_PROPERTY_FIELD":
-      console.log(`setting ${action.fieldName}`); //
       return Object.assign({}, state, {
         ...state,
         fields: {

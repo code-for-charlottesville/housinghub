@@ -5,7 +5,6 @@ import axios from "axios";
  **/
 
 export function postProperty({ id }) {
-  console.log(`posting: id => ${id}`);
   return axios
     .post("/backend/property", {
       id: id,
