@@ -1,43 +1,27 @@
 
-//TEMPLATE
-
-// export default (state = {}, action) => {
-//   switch (action.type) {
-//     case "SIMPLE_ACTION":
-//       return {
-//         result: action.payload
-//       };
-//     default:
-//       return state;
-//   }
-// };
-
 const initialState = {
   error: "",
   fields: {
-    id: "1",
+    id: "",
     name: "",
     address: "",
     unitNum: "",
     floorNum: "",
-    zipCode: "", //int or str?
+    zipCode: "", 
     type: "",
-    numBeds: 0, //int or str?
-    //numBedsOther:
-    numBaths: 0, //int or str?
-    //numBathsOther
-    numBathsShared: 0, //int or str?
-    //numbBathsSharedOther:
+    numBeds: 0, 
+    numBaths: 0, 
+    numBathsShared: 0,
     basement: false,
     schoolDist: "",
     busStop: false,
     wheelchairAcc: false,
     elevator: false,
-    dateAvail: "", //Date?
-    monthsAvail: 0, //int or str?
-    rentPerMonth: 0, //int or str?
-    appFee: 0, //int or str?
-    deposit: 0, //int or str?
+    dateAvail: "", 
+    monthsAvail: 0, 
+    rentPerMonth: 0,
+    appFee: 0, 
+    deposit: 0, 
     lastMonthRent: false,
     CSRAP: false,
     HVC: false,
@@ -47,8 +31,8 @@ const initialState = {
     creditCompany: "",
     backgroundCompany: "",
     cleanRecord: false,
-    notes: ""
-  }
+    notes: "",
+  },
 };
 
 const propertyState = (state = initialState, action) => {
@@ -57,21 +41,21 @@ const propertyState = (state = initialState, action) => {
       return Object.assign({}, state, {
         ...state,
         id: action.id,
-        error: ""
+        error: "",
       });
     case "SET_NEWPROP_FAILURE":
       return Object.assign({}, state, {
         ...state,
-        error: action.error
+        error: action.error,
       });
     case "SET_PROPERTY_FIELD":
-      console.log(`setting ${action.fieldName}`);
+      console.log(`setting ${action.fieldName}`); //
       return Object.assign({}, state, {
         ...state,
         fields: {
           ...state.fields,
-          [action.fieldName]: action.newValue
-        }
+          [action.fieldName]: action.newValue,
+        },
       });
     default:
       return state;
