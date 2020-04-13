@@ -1,6 +1,7 @@
 import React from "react";
 import "bulma/css/bulma.css";
 import { InputField } from "./InputField";
+import { InputFieldNum } from "./InputFieldNum";
 import { connect } from "react-redux";
 import { setPropertyField } from "../actions/property";
 
@@ -71,26 +72,11 @@ const PropDetailsForm = (props) => {
             <option value="2">2</option>
             <option value="3">3</option>
             <option value="4">4</option>
-            <option value="other">Other</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
           </select>
         </div>
-      </div>
-      <div className="field">
-        <label
-          className="label"
-          style={{ color: "gray", fontWeight: "normal" }}
-        >
-          If other, please specify below:
-        </label>
-        <input
-          className="input"
-          type="text"
-          placeholder="Ex. 5"
-          onChange={(e) =>
-            props.dispatch(setPropertyField("numBeds", e.target.value))
-          }
-          value={props.fields.numBeds}
-        />
       </div>
       <div className="field">
         <label className="label" htmlFor="numBath">
@@ -109,26 +95,12 @@ const PropDetailsForm = (props) => {
             <option value="2">2</option>
             <option value="2.5">2.5</option>
             <option value="3">3</option>
-            <option value="other">Other</option>
+            <option value="3.5">3.5</option>
+            <option value="4">4</option>
+            <option value="4.5">4.5</option>
+            <option value="5">5</option>
           </select>
         </div>
-      </div>
-      <div className="field">
-        <label
-          className="label"
-          style={{ color: "gray", fontWeight: "normal" }}
-        >
-          If other, please specify below:
-        </label>
-        <input
-          className="input"
-          type="text"
-          placeholder="Ex. 3.5"
-          onChange={(e) =>
-            props.dispatch(setPropertyField("numBaths", e.target.value))
-          }
-          value={props.fields.numBaths}
-        />
       </div>
       <div className="field">
         <label className="label" htmlFor="numBathsShared">
@@ -146,26 +118,10 @@ const PropDetailsForm = (props) => {
             <option value="1">1</option>
             <option value="2">2</option>
             <option value="3">3</option>
-            <option value="other">Other</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
           </select>
         </div>
-      </div>
-      <div className="field">
-        <label
-          className="label"
-          style={{ color: "gray", fontWeight: "normal" }}
-        >
-          If other, please specify below:
-        </label>
-        <input
-          className="input"
-          type="text"
-          placeholder="Ex. 4"
-          onChange={(e) =>
-            props.dispatch(setPropertyField("numBathsShared", e.target.value))
-          }
-          value={props.fields.numBathsShared}
-        />
       </div>
       <div className="field">
         <label className="label" htmlFor="basementBool">
@@ -179,8 +135,8 @@ const PropDetailsForm = (props) => {
             }
             value={props.fields.basement}
           >
-            <option value="true">Yes</option>
             <option value="false">No</option>
+            <option value="true">Yes</option>
           </select>
         </div>
       </div>
@@ -189,7 +145,7 @@ const PropDetailsForm = (props) => {
         inputType="text"
         inputPh="Ex. Albermale"
         onChangeFn={setPropertyField}
-        onChange="schoolDist"
+        onChangeFld="schoolDist"
         inputValue={props.fields.schoolDist}
       />
       <div className="field">
@@ -204,8 +160,8 @@ const PropDetailsForm = (props) => {
             }
             value={props.fields.busStop}
           >
-            <option value="true">Yes</option>
             <option value="false">No</option>
+            <option value="true">Yes</option>
           </select>
         </div>
       </div>
@@ -221,8 +177,8 @@ const PropDetailsForm = (props) => {
             }
             value={props.fields.wheelchairAcc}
           >
-            <option value="true">Yes</option>
             <option value="false">No</option>
+            <option value="true">Yes</option>
           </select>
         </div>
       </div>
@@ -238,8 +194,8 @@ const PropDetailsForm = (props) => {
             }
             value={props.fields.elevator}
           >
-            <option value="true">Yes</option>
             <option value="false">No</option>
+            <option value="true">Yes</option> 
           </select>
         </div>
       </div>
@@ -262,9 +218,9 @@ const PropDetailsForm = (props) => {
           value={props.fields.dateAvail}
         />
       </div>
-      <InputField
+      <InputFieldNum
         inputName="Please specify the potential months available for the property."
-        inputType="text"
+        inputType="number"
         inputPh="Ex. 12"
         onChangeFn={setPropertyField}
         onChangeFld="monthsAvail"

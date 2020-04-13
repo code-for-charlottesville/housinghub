@@ -5,19 +5,19 @@ import { setPropertyField, addProperty } from "../actions/property";
 import PropDetailsForm from "./PropDetailsForm";
 import PaymentDetailsForm from "./PaymentDetailsForm";
 
-const NewPropForm = props => {
+const NewPropForm = (props) => {
   return (
     <div className="container column is-half">
       <h1 className="title">Add New Property</h1>
       <hr />
       <h2 className="subtitle">Property Details</h2>
-      <form action="" onSubmit={e => e.preventDefault()}>
-      <PropDetailsForm />
+      <form action="" onSubmit={(e) => e.preventDefault()}>
+        <PropDetailsForm />
 
-      <h2 className="subtitle">Payment Details</h2>
-      <PaymentDetailsForm />
+        <h2 className="subtitle">Payment Details</h2>
+        <PaymentDetailsForm />
 
-      <h2 className="subtitle">Additional Notes</h2>
+        <h2 className="subtitle">Additional Notes</h2>
         <div className="box">
           <div className="field">
             <label className="label">
@@ -27,9 +27,9 @@ const NewPropForm = props => {
               <textarea
                 className="textarea"
                 placeholder="Ex. Property's rent includes utilities..."
-                onChange={e => 
+                onChange={(e) =>
                   props.dispatch(setPropertyField("notes", e.target.value))
-                  }
+                }
                 value={props.fields.notes}
               />
             </div>
@@ -41,7 +41,11 @@ const NewPropForm = props => {
           </label>
           <div className="field is-grouped">
             <div className="control">
-                <button className="button is-link" title="Add property" onClick={() => addProperty()}>
+              <button
+                className="button is-link"
+                title="Add property"
+                onClick={() => addProperty()}
+              >
                 Submit
               </button>
             </div>
@@ -59,7 +63,7 @@ const NewPropForm = props => {
 
 function mapStateToProps(state) {
   return {
-    fields: state.propertyState.fields
+    fields: state.propertyState.fields,
   };
 }
 
