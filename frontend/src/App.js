@@ -4,22 +4,29 @@ import Login from "./components/Login";
 import "bulma/css/bulma.css";
 import { connect } from "react-redux";
 import MainContent from "./containers/MainContent";
-import { checkForTokenFromStorage } from "./actions/login";
+import { setJwtStatus } from "./actions/login";
+import { Footer } from "./components/Footer"
+import Logout from "./components/Logout"
+import "./style/App.css"
 
 
 class App extends React.Component {
 
   componentDidMount() {
-    checkForTokenFromStorage()
+    setJwtStatus()
   }
 
   render() {
     return (
-      <Switch>
-        <Route path="/login" component={Login} />
-        <Route path="/" component={MainContent} />
-        <Route>Page not found :(</Route>
-      </Switch>
+      <div className="App">
+        <Switch>
+          <Route path="/logout" component={Logout} />
+          <Route path="/login" component={Login} />
+          <Route path="/" component={MainContent} />
+          <Route>Page not found :(</Route>
+        </Switch>
+        <Footer/>
+      </div>
     );
   }
 }

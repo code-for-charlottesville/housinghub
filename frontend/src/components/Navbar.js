@@ -2,7 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 
-const Navbar = (props) => {
+const Navbar = props => {
   return (
     <nav className="navbar" role="navigation" aria-label="main navigation">
       <div className="navbar-brand">
@@ -37,6 +37,12 @@ const Navbar = (props) => {
               </Link>
               <Link className="navbar-item" to="/property/search">
                 Search Property
+              </Link>
+            </div>
+            <a className="navbar-link">User</a>
+            <div className="navbar-dropdown">
+              <Link className="navbar-item" to="/logout">
+                Log Out
               </Link>
             </div>
           </div>

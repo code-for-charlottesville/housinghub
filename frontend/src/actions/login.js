@@ -6,6 +6,7 @@ import {
   removeJwtFromLocalStorage,
 } from "../reducers/login";
 import axios from "axios";
+import { setUser } from "./user";
 
 export function setLoginField(fieldName, newValue) {
   return {
@@ -29,6 +30,12 @@ export function setLoginFailure(error) {
   };
 }
 
+export function logout() {
+  return {
+    type: "LOGOUT"
+  };
+}
+
 /**
  * fires when user attempts to login
  **/
@@ -39,6 +46,8 @@ export function loginUser() {
     store.dispatch(setLoading(false));
     if (response && response.jwt) {
       store.dispatch(setLoginSuccess(response.jwt));
+      // set jwt status
+      setJwtStatus(false);
     } else {
       store.dispatch(setLoginFailure(response.error));
     }
@@ -46,16 +55,18 @@ export function loginUser() {
 }
 
 // called when app starts up
-export function checkForTokenFromStorage() {
+export function setJwtStatus(checkLocalOnly = true) {
   // if there is a token in local storage, set as user logged in with that token
-  if (getJwtFromLocalStorage() !== null) {
-    getStatus(getJwtFromLocalStorage()).then((r) => {
-      // token is invalid
-      if (r.error) {
-        removeJwtFromLocalStorage();
-      } else {
-        // token is valid! log in
+  if (getJwtFromLocalStorage() !== null || checkLocalOnly) {
+    store.dispatch(setLoading(true));
+    getStatus(getJwtFromLocalStorage()).then(r => {
+      store.dispatch(setLoading(false));
+      if (r.uid) {
         store.dispatch(setLoginSuccess(getJwtFromLocalStorage()));
+        store.dispatch(setUser(r));
+      } else {
+        // else  token is invalid
+        removeJwtFromLocalStorage();
       }
     });
   }

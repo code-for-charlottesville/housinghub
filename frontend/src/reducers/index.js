@@ -5,10 +5,13 @@ import { createLogger } from "redux-logger";
 import propertyState from "./property";
 import appState from "./appState";
 import login from "./login";
+import user from "./user";
+
 const reducer = combineReducers({
   appState,
   propertyState,
   login,
+  user
 });
 
 const logger = createLogger({
