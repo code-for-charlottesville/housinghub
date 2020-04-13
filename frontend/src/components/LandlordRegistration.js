@@ -1,9 +1,9 @@
-import React from 'react';
+import React from "react";
 
-function LandlordRegistrationComponent () {
+function LandlordRegistrationComponent() {
   return (
     <div className="LandlordRegistration">
-      <form style={{textAlign: 'left'}} method="post">
+      <form style={{ textAlign: "left" }} method="post">
         <label>Username</label>
         <input name="username" type="text" />
         <br />

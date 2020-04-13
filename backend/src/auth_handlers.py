@@ -1,14 +1,10 @@
-import server
 import requests
-from flask import send_file, request, jsonify, Blueprint, g
-from jwt import encode, decode, ExpiredSignatureError, exceptions as jwtExceptions
-from user import User
-from app.decorators import authenticate
-
+from flask import request, jsonify, Blueprint
 
 import app
 
-auth_module = Blueprint('auth',__name__,url_prefix='/auth')
+auth_module = Blueprint('auth', __name__, url_prefix='/auth')
+
 
 @auth_module.route('/register', methods=['POST'])
 def register():
@@ -17,21 +13,24 @@ def register():
     """
     # get user info from front end
     try:
-        user_data = request.get_json() #dictionary of input
+        user_data = request.get_json()  #dictionary of input
+        app.logger.error('Paylod is ' + str(user_data))
         username = user_data.get('user_name')
         password = user_data.get('password')
         role = user_data.get('role')
         is_admin = bool(user_data.get('is_admin'))
-        created_user = app.services.user_service().add_user(username,password,role,is_admin)
-    except KeyError:
-        return jsonify(code=400, error='Request is invalid'), 400
-    # create new entry in the database
+        if username and password and role:
+            created_user = app.services.user_service().add_user(
+                username, password, role, is_admin)
+            return jsonify(
+                {'jwt': app.services.auth_service().encode_jwt(created_user)})
+        else:
+            app.logger.error('Invalid user registration payload')
+            return jsonify(code=400, error='Request is invalid'), 400
+    except:
+        app.logger.error('Unexpected error registering new user')
+        return jsonify(code=500, error='internal error'), 500
 
-    # TODO: confirm somehow??
-
-    # create a JWT token and return to the front end
-
-    return jsonify({'jwt': app.services.auth_service().encode_jwt(created_user)})
 
 @auth_module.route('/login', methods=['POST'])
 def login():
@@ -46,15 +45,16 @@ def login():
     if user:
         # create a JWT token and return to front end
         return jsonify({'jwt': app.services.auth_service().encode_jwt(user)})
-    else:
-        return jsonify(code=401,error='Login invalid'), 401
+    return jsonify(code=401, error='Login invalid'), 401
 
-@authenticate
-@auth_module.route('/status',methods=['GET'])
+
+@auth_module.route('/status', methods=['GET'])
 def get_login_status():
     """see if a user is currently logged in
     :return: flask response object
     """
-    return jsonify(g.user)
-
-
+    auth_service = app.services.auth_service()
+    (user, err) = auth_service.authenticate_request(request)
+    if user:
+        return jsonify(user), 200
+    return jsonify(code=401, error='Not logged in'), 401
