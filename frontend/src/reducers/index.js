@@ -8,12 +8,12 @@ import login from "./login";
 const reducer = combineReducers({
   appState,
   propertyState,
-  login
+  login,
 });
 
 const logger = createLogger({
   collapsed: true,
-  diff: true
+  diff: true,
 });
 
 const store = createStore(reducer, applyMiddleware(logger));
