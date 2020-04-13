@@ -12,9 +12,13 @@ export function postAuthLogin({ email, password }) {
     .then(r => {
       return Promise.resolve(r.data);
     })
-    .catch(err => {
-      console.error(err.response);
-      return Promise.resolve(err.response.data);
+    .catch(error => {
+      console.error(error.response);
+      return Promise.resolve({
+        error:
+          (error.response.data && error.response.data.error) ||
+          error.response.statusText
+      });
     });
 }
 
@@ -29,7 +33,12 @@ export function getStatus(jwt) {
     .then(r => {
       return Promise.resolve(r.data);
     })
-    .catch(e => {
-      return Promise.resolve(e.response.data);
+    .catch(error => {
+      console.error(error.response);
+      return Promise.resolve({
+        error:
+          (error.response.data && error.response.data.error) ||
+          error.response.statusText
+      });
     });
 }
