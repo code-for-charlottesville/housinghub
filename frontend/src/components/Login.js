@@ -102,6 +102,7 @@ function mapStateToProps(state) {
     isLoggedIn: state.login.isLoggedIn,
     loading: state.appState.loading,
     error: state.login.error
+
   };
 }
 

@@ -1,5 +1,5 @@
 const initialState = {
-  loading: false
+  loading: false,
 };
 
 const appState = (state = initialState, action) => {
@@ -7,7 +7,7 @@ const appState = (state = initialState, action) => {
     case "SET_LOADING":
       return Object.assign({}, state, {
         ...state,
-        loading: action.loading
+        loading: action.loading,
       });
     default:
       return state;
