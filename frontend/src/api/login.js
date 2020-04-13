@@ -7,12 +7,12 @@ export function postAuthLogin({ email, password }) {
   return axios
     .post("/backend/auth/login", {
       username: email,
-      password
+      password,
     })
-    .then(r => {
+    .then((r) => {
       return Promise.resolve(r.data);
     })
-    .catch(err => {
+    .catch((err) => {
       console.error(err.response);
       return Promise.resolve(err.response.data);
     });
@@ -24,12 +24,12 @@ export function postAuthLogin({ email, password }) {
 export function getStatus(jwt) {
   return axios
     .get("/backend/auth/status", {
-      headers: { Authorization: `Bearer ${jwt}` }
+      headers: { Authorization: `Bearer ${jwt}` },
     })
-    .then(r => {
+    .then((r) => {
       return Promise.resolve(r.data);
     })
-    .catch(e => {
+    .catch((e) => {
       return Promise.resolve(e.response.data);
     });
 }

@@ -4,7 +4,7 @@ import { connect } from "react-redux";
 import { Redirect } from "react-router-dom";
 import { setLoginField, loginUser } from "../actions/login";
 
-const Login = props => {
+const Login = (props) => {
   if (props.isLoggedIn) return <Redirect to="/" />;
 
   return (
@@ -12,7 +12,11 @@ const Login = props => {
       <div className="container">
         <div className="columns is-centered">
           <div className="column is-5-tablet is-4-desktop is-3-widescreen">
-            <form action="" className="box" onSubmit={e => e.preventDefault()}>
+            <form
+              action=""
+              className="box"
+              onSubmit={(e) => e.preventDefault()}
+            >
               <div className="field">
                 <label htmlFor="" className="label">
                   Email
@@ -22,7 +26,7 @@ const Login = props => {
                     type="email"
                     placeholder="e.g. bobsmith@gmail.com"
                     className="input"
-                    onChange={e =>
+                    onChange={(e) =>
                       props.dispatch(setLoginField("email", e.target.value))
                     }
                     value={props.fields.email}
@@ -40,7 +44,7 @@ const Login = props => {
                     type="password"
                     placeholder="*******"
                     className="input"
-                    onChange={e =>
+                    onChange={(e) =>
                       props.dispatch(setLoginField("password", e.target.value))
                     }
                     value={props.fields.password}
@@ -54,7 +58,7 @@ const Login = props => {
                 <label htmlFor="" className="checkbox">
                   <input
                     type="checkbox"
-                    onChange={e =>
+                    onChange={(e) =>
                       props.dispatch(
                         setLoginField("rememberMe", e.target.value === "true")
                       )
@@ -87,7 +91,7 @@ const Login = props => {
 function mapStateToProps(state) {
   return {
     fields: state.login.fields,
-    isLoggedIn: state.login.isLoggedIn
+    isLoggedIn: state.login.isLoggedIn,
   };
 }
 

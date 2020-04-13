@@ -57,9 +57,7 @@ const PaymentDetailsForm = (props) => {
           <input
             type="checkbox"
             onChange={(e) =>
-              props.dispatch(
-                setPropertyField("CSRAP", !props.fields.CSRAP)
-              )
+              props.dispatch(setPropertyField("CSRAP", !props.fields.CSRAP))
             }
             value={props.fields.CSRAP}
           />

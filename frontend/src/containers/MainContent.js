@@ -4,7 +4,7 @@ import { connect } from "react-redux";
 import { Redirect, Switch, Route } from "react-router-dom";
 import Navbar from "../components/Navbar";
 
-const MainContent = props => {
+const MainContent = (props) => {
   if (!props.isLoggedIn) return <Redirect to="/login" />;
   return (
     <div className="container column is-centered">
@@ -20,7 +20,7 @@ const MainContent = props => {
 
 function mapStateToProps(state) {
   return {
-    isLoggedIn: state.login.isLoggedIn
+    isLoggedIn: state.login.isLoggedIn,
   };
 }
 

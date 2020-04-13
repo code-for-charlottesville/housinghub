@@ -195,7 +195,7 @@ const PropDetailsForm = (props) => {
             value={props.fields.elevator}
           >
             <option value="false">No</option>
-            <option value="true">Yes</option> 
+            <option value="true">Yes</option>
           </select>
         </div>
       </div>
