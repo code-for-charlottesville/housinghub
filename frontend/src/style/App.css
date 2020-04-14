@@ -1,4 +1,5 @@
 .App {
+  display: flexbox;
   overflow-y: hidden;
   overflow-x: hidden;
   background: linear-gradient(to bottom, orange, transparent 100px);
@@ -18,7 +19,7 @@
 
 .App-footer {
   text-align: center;
-  position: absolute;
+  position: relative;
   bottom: 0;
   margin: 10px;
   width: 100%;
