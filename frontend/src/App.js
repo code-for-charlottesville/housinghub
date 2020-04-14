@@ -18,7 +18,6 @@ class App extends React.Component {
 
   render() {
     return (
-      <>
       <div className="App">
         <Switch>
           <Route path="/logout" component={Logout} />
@@ -26,10 +25,8 @@ class App extends React.Component {
           <Route path="/" component={MainContent} />
           <Route>Page not found :(</Route>
         </Switch>
-        
+        <Footer/>
       </div>
-      <Footer/>
-      </>
     );
   }
 }
