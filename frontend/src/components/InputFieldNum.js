@@ -1,7 +1,7 @@
 import React from "react";
 import store from "../reducers";
 
-export const InputField = ({
+export const InputFieldNum = ({
   inputName,
   inputType,
   inputPh,
@@ -18,7 +18,8 @@ export const InputField = ({
           type={inputType}
           placeholder={inputPh}
           onChange={(e) => {
-            store.dispatch(onChangeFn(onChangeFld, e.target.value));
+            (e.target.value >= 0 &&
+              store.dispatch(onChangeFn(onChangeFld, e.target.value)));
           }}
           value={inputValue}
         />

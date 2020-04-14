@@ -39,6 +39,8 @@ const Navbar = props => {
                 Search Property
               </Link>
             </div>
+          </div>
+          <div className="navbar-item has-dropdown is-hoverable">
             <a className="navbar-link">User</a>
             <div className="navbar-dropdown">
               <Link className="navbar-item" to="/logout">

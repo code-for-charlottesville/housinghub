@@ -27,21 +27,21 @@ const appState = (state = initialState, action) => {
       return Object.assign({}, state, {
         ...state,
         isLoggedIn: true,
-        error: ""
+        error: "",
       });
     case "SET_LOGIN_ERROR":
       return Object.assign({}, state, {
         ...state,
         isLoggedIn: false,
-        error: action.error
+        error: action.error,
       });
     case "SET_LOGIN_FIELD":
       return Object.assign({}, state, {
         ...state,
         fields: {
           ...state.fields,
-          [action.fieldName]: action.newValue
-        }
+          [action.fieldName]: action.newValue,
+        },
       });
     default:
       return state;
