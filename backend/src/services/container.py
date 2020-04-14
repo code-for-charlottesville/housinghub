@@ -4,6 +4,8 @@ import services
 
 from services.user import UserService
 from services.auth import AuthService
+from services.navigator import NavigatorService
+from services.property import PropertyService
 
 
 class ServicesContainer:
@@ -18,3 +20,9 @@ class ServicesContainer:
 
   def auth_service(self):
     return AuthService(self.logger,self.database_engine,self.config['TOKEN_SECRET'],self.config['TOKEN_ALG'],self.config['TOKEN_TTL'])
+
+  def navigator_service(self):
+    return NavigatorService(self.logger, self.database_engine)
+
+  def property_service(self):
+    return PropertyService(self.logger, self.database_engine)
