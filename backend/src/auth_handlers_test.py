@@ -57,10 +57,9 @@ class TestAuthHandlers(unittest.TestCase):
             'error': "Login invalid"
         })
 
-    
     @patch('services.container.AuthService')
     @patch('services.container.UserService')
-    def test_register(self,MockUserService,MockAuthService):
+    def test_register(self, MockUserService, MockAuthService):
         _user = test.generate_user(password='my-password')
         test_paylod = {
             'user_name': _user.username,
@@ -80,19 +79,25 @@ class TestAuthHandlers(unittest.TestCase):
 
         self.assertEqual(response.status_code, 200)
         self.assertEqual(response.get_json().get("jwt"), 'token')
-        mock_user.add_user.assert_called_once_with(_user.username,'my-password',_user.role,_user.is_admin)
+        mock_user.add_user.assert_called_once_with(_user.username,
+                                                   'my-password', _user.role,
+                                                   _user.is_admin)
         mock_auth.encode_jwt.assert_called_once_with(_user)
 
         # DB Exception
         mock_user.add_user.return_value = None
         response = self.server.post("/auth/register", json=test_paylod)
-        self.assertEqual(response.status_code, 500, msg='Failed DB add should trigger a 500 response')
+        self.assertEqual(response.status_code,
+                         500,
+                         msg='Failed DB add should trigger a 500 response')
 
-        # Bad Request   
+        # Bad Request
         test_paylod.pop('user_name')
-        response = self.server.post("/auth/register", json=test_paylod  )
-        self.assertEqual(response.status_code, 400, msg='Missing user_name in request should trigger a 400 response')
-
+        response = self.server.post("/auth/register", json=test_paylod)
+        self.assertEqual(
+            response.status_code,
+            400,
+            msg='Missing user_name in request should trigger a 400 response')
 
     @patch('services.container.AuthService')
     def test_status(self, MockAuthService):

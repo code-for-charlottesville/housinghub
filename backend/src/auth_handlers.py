@@ -23,8 +23,10 @@ def register():
             created_user = app.services.user_service().add_user(
                 username, password, role, is_admin)
             if created_user:
-                return jsonify(
-                    {'jwt': app.services.auth_service().encode_jwt(created_user)})
+                return jsonify({
+                    'jwt':
+                    app.services.auth_service().encode_jwt(created_user)
+                })
             else:
                 return jsonify(code=500, error='internal error'), 500
         else:
