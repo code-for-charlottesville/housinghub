@@ -1,9 +1,0 @@
-docker_build('codeforcharlottesville/housinghub', '.', dockerfile='Dockerfile',
-  live_update=[
-    sync('.', '/usr/housinghub'),
-    run('pip install -r requirements.txt'),
-    restart_container(),
-  ]
-)
-
-docker_compose('docker-compose.yaml')

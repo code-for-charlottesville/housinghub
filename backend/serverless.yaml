@@ -28,11 +28,7 @@ functions:
   api:
     handler: wsgi_handler.handler
     environment:
-      DB_HOST: ${env:DB_HOST}
-      DB_USER: ${env:DB_USER}
-      DB_PASSWORD: ${env:DB_PASSWORD}
-      TOKEN_SECRET_KEY_ROTATION_SECONDS: 172800
-      TOKEN_EXP_SECONDS: 300
+      APP_ENV: ${env:APP_ENV}
     events:
       - http: ANY /
       - http: 'ANY {proxy+}'

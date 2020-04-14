@@ -17,14 +17,18 @@ services:
     ports:
       - 5432:5432
 
-  housinghub-backend:
-    image: codeforcharlottesville/housinghub:latest
+  housinghub-api:
+    image: codeforcharlottesville/housinghub-api:latest
     ports:
       - 5000:5000
     environment:
-      DB_HOST: postgres
-      DB_USER: app
-      DB_PASSWORD: apppassword
-      TOKEN_SECRET_KEY_ROTATION_SECONDS: 172800
-      TOKEN_EXP_SECONDS: 300
+      APP_ENV: tilt
+
+  housinghub:
+    image: codeforcharlottesville/housinghub:latest
+    tty: true
+    ports:
+      - 3000:3000
+    environment:
+      API_ENDPOINT: http://housinghub-api:5000
 

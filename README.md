@@ -1,4 +1,4 @@
-Join our Meetup group here: https://www.meetup.com/Code-for-Charlottesvile/
+ Join our Meetup group here: https://www.meetup.com/Code-for-Charlottesvile/
 
 # Building a Platform to Make Housing Navigation Easier
 
@@ -43,6 +43,10 @@ The data are still sensitive, however, because landlords often do not wish to pu
 Please see the wiki page [here](https://github.com/code-for-charlottesville/housinghub/wiki/Getting-Started-with-Git)
 
 If you have any questions, please don't hesitate to speak with one of the co-captains or to one of the more experienced volunteers. For more information on GitHub (and Git) see: https://github.com/UVA-DSI/Open-Data-Lab/tree/master/education/GitHub
+
+### Ready to get started?
+
+Please see the [Developer Quickstart](https://github.com/code-for-charlottesville/housinghub/wiki/Developer-Quickstart) for instructions on how to start hacking!
 
 
 

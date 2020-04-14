@@ -1,6 +1,7 @@
 import server
 import requests
 from flask import send_file, request, jsonify
+from app.decorators import authenticate
 
 
 def get_navigator(request, jwtPayload):
@@ -9,6 +10,8 @@ def get_navigator(request, jwtPayload):
     :param request: dictionary of jwtPayload
     :return tuple (response body (dict), response code (int), error (string))
     """
+
+
     return ({}, 500, "not implemented")
 
 
