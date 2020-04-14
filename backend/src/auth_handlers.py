@@ -22,8 +22,11 @@ def register():
         if username and password and role:
             created_user = app.services.user_service().add_user(
                 username, password, role, is_admin)
-            return jsonify(
-                {'jwt': app.services.auth_service().encode_jwt(created_user)})
+            if created_user:
+                return jsonify(
+                    {'jwt': app.services.auth_service().encode_jwt(created_user)})
+            else:
+                return jsonify(code=500, error='internal error'), 500
         else:
             app.logger.error('Invalid user registration payload')
             return jsonify(code=400, error='Request is invalid'), 400

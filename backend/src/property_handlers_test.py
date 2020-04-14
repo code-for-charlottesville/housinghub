@@ -1,6 +1,6 @@
 import unittest
 from unittest.mock import patch
-from test import test_user
+import test
 
 import app
 
@@ -13,7 +13,8 @@ class TestPropertyHandlers(unittest.TestCase):
                                         spec=True)
         mock_auth_service = self.auth_service_patch.start()
         instance = mock_auth_service.return_value
-        instance.authenticate_request.return_value = (test_user, None)
+        self.auth_user = test.generate_user()
+        instance.authenticate_request.return_value = (self.auth_user, None)
         self.app = app.flask_app.test_client()
 
     def tearDown(self):
