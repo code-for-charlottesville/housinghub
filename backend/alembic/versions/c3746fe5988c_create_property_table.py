@@ -7,7 +7,7 @@ Create Date: 2020-04-14 19:11:39.275524
 """
 from alembic import op
 import sqlalchemy as sa
-from sqlalchemy.dialects.postgresql import UUID,VARCHAR,BOOLEAN,ARRAY, INTEGER, DATE, FLOAT
+from sqlalchemy.dialects.postgresql import UUID, VARCHAR, BOOLEAN, ARRAY, INTEGER, DATE, FLOAT
 
 # revision identifiers, used by Alembic.
 revision = 'c3746fe5988c'
@@ -39,7 +39,7 @@ def upgrade():
         sa.Column('last_contact_date', DATE, nullable=True),
         sa.Column('potential_month_available', INTEGER, nullable=True),
         sa.Column('bedrooms', INTEGER, nullable=False),
-        sa.Column('bathrooms = ', INTEGER, nullable=False),
+        sa.Column('bathrooms', INTEGER, nullable=False),
         sa.Column('shared_bathrooms', INTEGER, nullable=True),
         sa.Column('has_basement', BOOLEAN, nullable=True), 
         sa.Column('application_fee', FLOAT, nullable=True),
