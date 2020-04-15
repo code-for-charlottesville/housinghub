@@ -513,6 +513,145 @@ components:
     Property:
       type: object
       properties:
-        id:
+        landlord_id:
           type: string
-          description: The ID of the property
+          format: uid
+          description: ID of landlord
+          example: 359627C2-C1E2-4CC3-89BD-3D33E9EC2AAB
+        voucher_type_accepted:
+          type: array
+          items:
+            type: string
+          description: Types of housing vouchers accepted by the property owner
+        voucher_type_not_accepted:
+          type: array
+          items:
+            type: string
+          description: Types of housing vouchers not accepted by the property owner
+        address:
+          type: string
+          description: Address where the property is located
+          example: 123 Fake St Charlottesville, VA 22903
+        zip_code:
+          type: string
+          description: Zip code where the property is located
+          example: 22903
+        unit_apt_no:
+          type: string
+          description: Unit or Aprtment number of the property
+          example: B
+        property_name: 
+          type: string
+          description: Name of the property
+          example: Foo apartment
+        bus_line: 
+          type: boolean
+          description: Whether the property is near a bus line
+          example: true
+        school_district:
+          type: string
+          description: Which school district the property is in
+          example: Venable
+        wheelchair_accessibility:
+          type: boolean
+          description: Whether the property is wheelchair acceessible
+          example: false
+        elevator: 
+          type: boolean
+          description: Whether the property has an elevator
+          example: false
+        monthly_rent:
+          type: number
+          description: Monthly rent for property
+          example: 1500
+        contact_method: 
+          type: array
+          items:
+            type: string
+        is_available:
+          type: boolean
+          description: Whether the property is currently available
+          example: false
+        date_first_availaable:
+          type: string
+          format: date
+          description: Date which the property first becomes available
+          example: "2020-06-01"
+        last_contact_date:
+          type: string
+          format: date
+          description: Last data on which the property owner was contact_method
+          example: "2020-04-01"
+        potential_month_available:
+          type: integer
+          minimum: 1
+          maximum: 12
+          description: What month the property will potentially become available
+          example: 3
+        bedrooms:
+          type: integer
+          minimum: 1
+          description: Number of bedrooms the property has
+        bathrroms:
+          type: integer
+          minimum: 1
+          description: Number of bathrooms the property has
+          example: 1
+        shared_bathrooms:
+          type: integer
+          minimum: 0
+          description: Number of bathrooms shared with another property
+          example: 0
+        has_basement: 
+          type: boolean
+          description: Whether the property has a has_basement
+        application_fee:
+          type: number
+          format: float
+          description: Cost to file an application in dollars
+          example: 50.00
+        deposti:
+          type: number
+          format: float
+          description: Deposit due before moving in
+          example: 500.00
+        last_month_rent_required:
+          type: boolean
+          description: whether the last month rent is due in advance
+        allow_criminal_records:
+          type: boolean
+          description: Whether the property owner will rent to tenants with a criminal record 
+        listing_date:
+          type: string
+          format: date
+          description: Date the property was listed 
+          example: "2020-03-01"
+        where_listed:
+          type: string
+          description: Where the property was orginally listed
+          example: Craigslist
+        floor:
+          type: integer
+          minimum: 1
+          description: Which building floor the property is on
+        housing_type:
+          type: string
+          description: Type of property. Apartment, house, etc 
+          example: Apartment
+        year_availble: 
+          type: integer
+          description: The year the property will be available
+          example: 2020
+        credit_screening_company:
+          type: string
+          description: The company used for screening tenant's credit 
+          example: Experian
+        background_screening_company:
+          type: string 
+          description: Company used to screen tenant's background 
+          example: Joe's Provate Eye, Inc.
+        last_contacted_by:
+          type: string 
+          format: uid 
+          description: Last Navigator to make contact with the property owner 
+          example: 359627C2-C1E2-4CC3-89BD-3D33E9EC2AAB
