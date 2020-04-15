@@ -24,6 +24,20 @@ provider:
   region: us-east-1
 
 
+custom:
+  AURORA:
+    DB_NAME: aurora${opt:stage, self:provider.stage}
+    USERNAME: app
+    PASSWORD: apppassword
+    HOST:
+      Fn::GetAtt: [AuroraRDSCluster, Endpoint.Address]
+    PORT:
+      Fn::GetAtt: [AuroraRDSCluster, Endpoint.Port]
+    VPC_CIDR: 10
+  SQS:
+    NAME: aurora-queue-${opt:stage, self:provider.stage}
+
+
 functions:
   api:
     handler: wsgi_handler.handler
