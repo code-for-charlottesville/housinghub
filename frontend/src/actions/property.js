@@ -24,6 +24,8 @@ export function setPropertyField(fieldName, newValue) {
   };
 }
 
+//New onClick Fn here
+
 /**
  * fires when user attempts to POST new property
  **/

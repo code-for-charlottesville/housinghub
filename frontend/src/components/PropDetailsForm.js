@@ -226,6 +226,32 @@ const PropDetailsForm = (props) => {
         onChangeFld="monthsAvail"
         inputValue={props.fields.monthsAvail}
       />
+      
+      <InputField
+        inputName="Please specify below when the property was listed using the format MM-dd-YYYY."
+        inputType="text"
+        inputPh="Ex. 01-15-2020"
+        onChangeFn={setPropertyField}
+        onChangeFld="whenListed"
+        inputValue={props.fields.whenListed}
+      />
+      <InputField
+        inputName="Please specify below where this property was seen listed."
+        inputType="text"
+        inputPh="Ex. Trulia"
+        onChangeFn={setPropertyField}
+        onChangeFld="whereListed"
+        inputValue={props.fields.whereListed}
+      />
+      <InputField
+        inputName="What is the preferred contact method for this property?"
+        inputType="text"
+        inputPh="Ex. Phone"
+        onChangeFn={setPropertyField}
+        onChangeFld="contactMethod"
+        inputValue={props.fields.contactMethod}
+      />
+      <input type="hidden" value={setPropertyField("yearAvail", props.fields.dateAvail.substring(props.fields.dateAvail.length - 4))} />
     </div>
   );
 };
