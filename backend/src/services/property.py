@@ -30,6 +30,7 @@ class PropertyService:
         return self.db_session.query(Property).filter(Property.id == pid).one_or_none()
 
     def get_all_property(self):
+        print("get all property")
         return self.db_session.query(Property).all()
 
     def delete_property(self, pid):

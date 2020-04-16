@@ -16,9 +16,8 @@ def get_property():
     :param request: dictionary of jwtPayload
     :return tuple (response body (dict), response code (int), error (string))
     """
-    print(str(dummpy_prop()))
     try:
-        property_list = dummpy_prop()#app.services.property_service().get_property()
+        property_list = app.services.property_service().get_all_property()
         if property_list:
             return jsonify(property_list), 200
         else:
@@ -27,45 +26,6 @@ def get_property():
         jsonify(code=500, error='internal error'), 500
     return jsonify(code=500, error='internal error'), 500
 
-
-def dummpy_prop():
-    prop_info = Property()
-    prop_info.id = 1
-    prop_info.landlord_id = 1
-    prop_info.navigator_id = 1
-    prop_info.voucher_type_accepted = "ABC"
-    prop_info.voucher_type_not_accepted = "BVF"
-    prop_info.address = "kkk"
-    prop_info.zip_code = "22904"
-    prop_info.unit_apt_no ="45"
-    prop_info.property_name = "ABC Prop"
-    prop_info.bus_line = "NG"
-    prop_info.school_district = "Abermale county school"
-    prop_info.wheelchair_accessibility = True
-    prop_info.elevator = "yes"
-    prop_info.monthly_rent = 3400
-    prop_info.contact_method = "phone"
-    prop_info.is_available = True
-    prop_info.date_first_available = ""
-    prop_info.last_contact_date = "prop_data.get('last_contact_date')"
-    prop_info.potential_month_available = "prop_data.get('potential_month_available')"
-    prop_info.bedrooms = 5
-    prop_info.bathrooms = 5
-    prop_info.shared_bathrooms = 3
-    prop_info.has_basement = True
-    prop_info.application_fee = 456
-    prop_info.deposit = 32
-    prop_info.last_month_rent_required = True
-    prop_info.allow_criminal_records = True
-    prop_info.listing_date = "prop_data.get('listing_date')"
-    prop_info.where_listed = "prop_data.get('where_listed')"
-    prop_info.floor = 3
-    prop_info.housing_type = "prop_data.get('housing_type')"
-    prop_info.year_available = "prop_data.get('year_available')"
-    prop_info.credit_screening_company = "prop_data.get('credit_screening_company')"
-    prop_info.background_screening_company = "prop_data.get('background_screening_company')"
-    prop_info.last_contacted_by = "prop_data.get('last_contacted_by')"
-    return prop_info.to_dict()
 
 def extract_property_info(prop_data):
     prop_info = Property()
@@ -118,6 +78,7 @@ def post_property():
     try:
         prop_data = request.get_json()  # dictionary of input
         app.logger.error('Paylod is ' + str(prop_data))
+        print(str(str(prop_data)))
 
         prop_info = extract_property_info(prop_data)
         if prop_info:
