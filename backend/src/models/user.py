@@ -1,5 +1,6 @@
 from sqlalchemy import Column
 from sqlalchemy.dialects.postgresql import UUID,VARCHAR,BOOLEAN
+from marshmallow_sqlalchemy import SQLAlchemyAutoSchema
 import json
 
 from models import Base
@@ -21,4 +22,8 @@ class User(Base):
     _dict = self.__dict__
     _dict.pop('_sa_instance_state')
     return _dict
+
+class UserSchema(SQLAlchemyAutoSchema):
+  class Meta:
+    model = User
 

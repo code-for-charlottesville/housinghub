@@ -11,8 +11,8 @@ class PropertyService:
     Session = sessionmaker(database_engine)
     self.db_session = Session()
 
-  def add_property(self, property_name: str, address: str, zip_code: str):
-    _new_property = Property(id = uuid.uuid4(), property_name = property_name, address = address, zip_code = zip_code)
-    self.db_session.add(_new_property)
+  def add_property(self, property: Property):
+    property.id = uuid.uuid4()
+    self.db_session.add(property)
     self.db_session.commit()
-    return _new_property
+    return property

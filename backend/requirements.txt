@@ -1,5 +1,7 @@
 alembic==1.4.2
 aniso8601==8.0.0
+apispec==3.3.0
+apispec-webframeworks==0.5.2
 attrs==19.3.0
 certifi==2019.11.28
 cffi==1.14.0
@@ -16,6 +18,8 @@ itsdangerous==1.1.0
 Jinja2==2.11.1
 Mako==1.1.2
 MarkupSafe==1.1.1
+marshmallow==3.5.1
+marshmallow-sqlalchemy==0.22.3
 more-itertools==8.2.0
 packaging==20.3
 passlib==1.7.2

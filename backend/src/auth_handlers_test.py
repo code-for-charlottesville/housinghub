@@ -60,17 +60,21 @@ class TestAuthHandlers(unittest.TestCase):
             'error': "Login invalid"
         })
 
-    
     @patch('services.container.AuthService')
     @patch('services.container.UserService')
-    def test_register(self,MockUserService,MockAuthService):
+    def test_register(self, MockUserService, MockAuthService):
         test_paylod = {
             'user_name': 'user',
             'password': 'password',
             'role': 'role',
             'is_admin': False
         }
-        _user = User(id=uuid.uuid4(), username='user', password_hash=pbkdf2_sha256, role='role', role_id='role-id', is_admin=False)
+        _user = User(id=uuid.uuid4(),
+                     username='user',
+                     password_hash=pbkdf2_sha256,
+                     role='role',
+                     role_id='role-id',
+                     is_admin=False)
 
         mock_user = MockUserService.return_value
         mock_auth = MockAuthService.return_value
@@ -83,14 +87,14 @@ class TestAuthHandlers(unittest.TestCase):
 
         self.assertEqual(response.status_code, 200)
         self.assertEqual(response.get_json().get("jwt"), 'token')
-        mock_user.add_user.assert_called_once_with('user','password','role',False)
+        mock_user.add_user.assert_called_once_with('user', 'password', 'role',
+                                                   False)
         mock_auth.encode_jwt.assert_called_once_with(_user)
 
         # Bad Request
         test_paylod.pop('user_name')
         response = self.server.post("/auth/register", json=test_paylod)
         self.assertEqual(response.status_code, 400)
-
 
     @patch('services.container.AuthService')
     def test_status(self, MockAuthService):
