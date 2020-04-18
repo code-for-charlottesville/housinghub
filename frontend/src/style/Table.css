@@ -1,0 +1,8 @@
+.table { 
+	margin: 5px;
+	width: 100%;
+}
+
+.row:hover {
+	background-color: green;
+}

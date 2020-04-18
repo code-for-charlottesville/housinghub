@@ -7,20 +7,27 @@ import Table from "../components/Table"
 const SearchProperty = (props) => {
 
   let columns = [
+      {
+    	"field" : "address",
+    	"title" : "Address"
+    },
     {
     	"field" : "property_name",
     	"title" : "Name"
     },
-    {
-    	"field" : "address",
-    	"title" : "Address"
-    }
+  ]
+
+  let rows = [
+  	[
+  	  		"253 East Main Street",
+  		"David's new property"
+  	]
   ]
 
   return (
   	<div>
       <SearchBar placeHolder={"253 East Main Street"} onChange={() => {}}/>
-      <Table columns={columns}/>
+      <Table columns={columns} rows={rows}/>
   	</div>
   );
 };
