@@ -53,7 +53,7 @@ def register():
         return jsonify(code=500, error='internal error'), 500
     except ValidationError as err:
         app.logger.error(f'Invalid request ${err.messages}')
-        return jsonify(err.messages), 400
+        return jsonify(code=400, error=err.messages), 400
     except:
         app.logger.error(
             f'Unexpected error registering new user: ${traceback.format_exc()}'
@@ -98,7 +98,7 @@ def login():
         return jsonify(code=401, error='Login invalid'), 401
     except ValidationError as err:
         app.logger.error(f'Invalid request ${err.messages}')
-        return jsonify(err.messages), 400
+        return jsonify(code=400, error=err.messages), 400
     except:
         app.logger.error(
             f'Unexpected error registering new user: ${traceback.format_exc()}'

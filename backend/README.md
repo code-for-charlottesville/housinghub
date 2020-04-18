@@ -41,7 +41,6 @@ Now you can run the Flask app by running
 export APP_ENV=local
 export FLASK_APP=src/server.py
 $(cd alembic && alembic upgrade head)
-python3 api/swagger-yaml-to-html.py < api/swagger.yml > api/index.html
 flask run
 ```
 
@@ -49,7 +48,6 @@ or run locally as a simulated serverless application
 ```sh
 export APP_ENV=local
 $(cd alembic && alembic upgrade head)
-python3 api/swagger-yaml-to-html.py < api/swagger.yml > api/index.html
 serverless wsgi serve
 ```
 

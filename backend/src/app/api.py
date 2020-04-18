@@ -22,7 +22,8 @@ class AuthResponse(Schema):
 housinghub_spec.components.schema("AuthResponse", schema=AuthResponse)
 
 class ErrorResponse(Schema):
-  message = fields.String()
+  code = fields.Integer()
+  error = fields.String()
 housinghub_spec.components.schema("ErrorResponse", schema=ErrorResponse)
 
 
