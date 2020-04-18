@@ -3,7 +3,7 @@ import "bulma/css/bulma.css";
 import { InputField } from "./InputField";
 import { InputFieldNum } from "./InputFieldNum";
 import { connect } from "react-redux";
-import { setPropertyField } from "../actions/property";
+import { setPropertyField, setArrayValues, parseYear } from "../actions/property";
 
 const PropDetailsForm = (props) => {
   return (
@@ -199,25 +199,15 @@ const PropDetailsForm = (props) => {
           </select>
         </div>
       </div>
-      <div className="field">
-        <label className="label">
-          Please specify below when the property will be available using the
-          format MM-dd-YYYY.
-        </label>
-        <span className="label" style={{ color: "gray", fontWeight: "normal" }}>
-          If currently available, please specify the earliest date at which it
-          was listed.
-        </span>
-        <input
-          type="text"
-          className="input"
-          placeholder="Ex. 01/23/2020"
-          onChange={(e) =>
-            props.dispatch(setPropertyField("dateAvail", e.target.value))
-          }
-          value={props.fields.dateAvail}
-        />
-      </div>
+        <InputField
+          inputName="If not yet available, please specify below when the property will be available using the
+          format MM-dd-YYYY. The default will be the current date if left as is."
+          inputType="date"
+          inputPh="MM-dd-YYYY"
+          onChangeFn={setPropertyField}
+          onChangeFld="dateAvail"
+          inputValue={props.fields.dateAvail}
+          />
       <InputFieldNum
         inputName="Please specify the potential months available for the property."
         inputType="number"
@@ -226,14 +216,13 @@ const PropDetailsForm = (props) => {
         onChangeFld="monthsAvail"
         inputValue={props.fields.monthsAvail}
       />
-      
       <InputField
-        inputName="Please specify below when the property was listed using the format MM-dd-YYYY."
-        inputType="text"
+        inputName="Please specify below when the property was first listed using the format MM-dd-YYYY.
+        The default will be the current date if left as is."
+        inputType="date"
         inputPh="Ex. 01-15-2020"
         onChangeFn={setPropertyField}
         onChangeFld="whenListed"
-        inputValue={props.fields.whenListed}
       />
       <InputField
         inputName="Please specify below where this property was seen listed."
@@ -243,16 +232,52 @@ const PropDetailsForm = (props) => {
         onChangeFld="whereListed"
         inputValue={props.fields.whereListed}
       />
-      <InputField
-        inputName="What is the preferred contact method for this property?"
-        inputType="text"
-        inputPh="Ex. Phone"
-        onChangeFn={setPropertyField}
-        onChangeFld="contactMethod"
-        inputValue={props.fields.contactMethod}
-      />
-      <input type="hidden" value={setPropertyField("yearAvail", props.fields.dateAvail.substring(props.fields.dateAvail.length - 4))} />
+      <div className="field">
+      <label className="label" htmlFor="contactMethods">
+        Please check the preferred contact methods for the property's landlord.
+      </label>
+      <label className="checkbox">
+        <input
+          type="checkbox"
+          onChange={(e) =>
+            setArrayValues("contactMethods", e.target.value)
+          }
+          value="Phone"
+        />
+        Phone
+      </label>
+      <br />
+      <label className="checkbox">
+        <input
+          type="checkbox"
+          onChange={(e) =>
+            setArrayValues("contactMethods", e.target.value)
+          }
+          value="Email"
+        />
+        Email
+      </label>
+      <br />
+      <label className="checkbox">
+        <input
+          type="checkbox"
+          onChange={(e) =>
+            setArrayValues("contactMethods", e.target.value)
+          }
+          value="Registered sites"
+        />
+        Registered Site
+      </label>
     </div>
+    <InputField
+      inputName="Please specify below when the property's landlord was last contacted. 
+      The default will be the current date if left as is."
+      inputType="date"
+      inputPh="MM-dd-YYY"
+      onChangeFn={setPropertyField}
+      onChangeFld="lastContacted"
+      />
+  </div>
   );
 };
 
