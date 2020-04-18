@@ -1,20 +1,20 @@
-from flask import Flask, send_file, request, g, jsonify, render_template
-from services.container import ServicesContainer
-from functools import wraps
-import os
-import time
-import secrets
 import json
-from  app.config import Config, TiltConfig, StagingConfig, ProductionConfig
-
-from .spec import housinghub_spec
-
 import logging
+import os
+import secrets
+import time
+from functools import wraps
 
+from flask import Flask, g, jsonify, render_template, request, send_file
+
+from app.config import Config, ProductionConfig, StagingConfig, TiltConfig
 from auth_handlers import auth_module
 from landlord_handlers import landlord_module
 from navigator_handlers import navigator_module
 from property_handlers import property_module
+from services.container import ServicesContainer
+
+from .spec import housinghub_spec
 
 flask_app = Flask(__name__)
 

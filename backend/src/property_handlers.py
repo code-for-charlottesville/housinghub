@@ -1,13 +1,13 @@
-from flask import request, jsonify, Blueprint
-from app.auth import authenticate
-
-import uuid
 import traceback
+import uuid
+
+from flask import Blueprint, jsonify, request
+from marshmallow import ValidationError
 
 import app
-from app.spec import DocumentedBlueprint
 from app.api import AddPropertyRequest, PropertyResponse
-from marshmallow import ValidationError
+from app.auth import authenticate
+from app.spec import DocumentedBlueprint
 
 property_module = DocumentedBlueprint('property', __name__)
 

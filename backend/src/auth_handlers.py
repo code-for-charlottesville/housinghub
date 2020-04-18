@@ -1,13 +1,12 @@
-import requests
-import re
-from flask import request, jsonify, Blueprint
-from marshmallow import Schema, fields, validates, ValidationError, pprint
 import traceback
-import sys
+
+import requests
+from flask import Blueprint, jsonify, request
+from marshmallow import Schema, ValidationError, fields, pprint, validates
 
 import app
+from app.api import AuthResponse, ErrorResponse, LoginRequest, RegisterRequest
 from app.spec import DocumentedBlueprint
-from app.api import RegisterRequest, LoginRequest, AuthResponse, ErrorResponse
 
 auth_module = DocumentedBlueprint('auth', __name__, url_prefix='/auth')
 
@@ -46,10 +45,12 @@ def register():
     try:
         payload = RegisterRequest().load(request.get_json())
         created_user = app.services.user_service().add_user(
-            payload['user_name'], payload['password'], payload['role'],
+            payload['username'], payload['password'], payload['role'],
             payload['is_admin'])
-        return jsonify(AuthResponse().dump(
-            {'jwt': app.services.auth_service().encode_jwt(created_user)}))
+        if created_user:
+            return jsonify(AuthResponse().dump(
+                {'jwt': app.services.auth_service().encode_jwt(created_user)}))
+        return jsonify(code=500, error='internal error'), 500
     except ValidationError as err:
         app.logger.error(f'Invalid request ${err.messages}')
         return jsonify(err.messages), 400

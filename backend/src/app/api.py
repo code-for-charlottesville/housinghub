@@ -1,24 +1,15 @@
-import re
-from marshmallow import Schema, fields, validates, ValidationError, pprint
+from marshmallow import Schema, ValidationError, fields, pprint, validates
 from marshmallow_sqlalchemy import SQLAlchemyAutoSchema
 
-from models.user import User
-from models.property import Property
-
 from app.spec import housinghub_spec
+from models import Property, User
 
-email_regex = '^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$'
 
 class RegisterRequest(Schema):
-  user_name = fields.String(requried=True)
+  username = fields.Email(required=True)
   password = fields.String(required=True)
   role = fields.String(required=True)
   is_admin = fields.Bool(required=True)
-
-  @validates("user_name")
-  def validate_username(self,value):
-      if not re.search(email_regex,value):
-          raise ValidationError('Username must be a valid email address')
 
   @validates("password")
   def validate_password(self,value):
@@ -52,4 +43,3 @@ class PropertyResponse(SQLAlchemyAutoSchema):
     model = Property
     load_instance = False
 housinghub_spec.components.schema("PropertyResponse", schema=PropertyResponse)
-

@@ -4,6 +4,7 @@ from sqlalchemy.orm import sessionmaker
 
 from models.property import Property
 
+
 class PropertyService:
   
   def __init__(self,logger,database_engine):

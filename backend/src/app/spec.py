@@ -1,9 +1,10 @@
 from collections import defaultdict
+from functools import partial
+
 from apispec import APISpec, BasePlugin, yaml_utils
+from apispec.exceptions import APISpecError
 from apispec.ext.marshmallow import MarshmallowPlugin
 from apispec_webframeworks.flask import FlaskPlugin
-from apispec.exceptions import APISpecError
-from functools import partial
 from flask import Blueprint
 
 housinghub_spec = APISpec(
