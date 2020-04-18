@@ -41,7 +41,6 @@ Now you can run the Flask app by running
 export APP_ENV=local
 export FLASK_APP=src/server.py
 $(cd alembic && alembic upgrade head)
-python3 api/swagger-yaml-to-html.py < api/swagger.yml > api/index.html
 flask run
 ```
 
@@ -49,7 +48,6 @@ or run locally as a simulated serverless application
 ```sh
 export APP_ENV=local
 $(cd alembic && alembic upgrade head)
-python3 api/swagger-yaml-to-html.py < api/swagger.yml > api/index.html
 serverless wsgi serve
 ```
 
@@ -65,8 +63,7 @@ $ curl -H "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOj
 # see that cannot make request with invalid jwt
 $ curl -H "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE1ODU0MzM0MjcsInVpZCI6IjNiOTJhZTVlLTcxNDAtMTFlYS1iZDRmLWU0NzBiOGI2MTY4MyIsIm5hbWUiOiJkYXZpZCBnb2xkc3RlaW4ifQ.j3bKF3YXalyHvFZ94LCZPN8HeuQEH5Bjbmusw-Js" http://localhost:5000/navigator
 {"code":401,"error":"token is invalid"}
-
-$ curl -XPOST -H "content-type: application/json" -d '{"user_name" : "david", "password" : "davidrulz", "role_id" : "4", "role" : "navigator", "is_admin": true}' http://localhost:5000/auth/register
+curl -XPOST -H "content-type: application/json" -d '{"user_name" : "user@gmail.com", "password" : "password", "role" : "navigator", "is_admin": true}' http://localhost:8443/backend/auth/register
 ```
 
 ## Development
@@ -87,6 +84,7 @@ pytest
 See code coverage:
 ```sh
 coverage run -m pytest
+coverage html
 open htlmcov/index.html
 ```
 

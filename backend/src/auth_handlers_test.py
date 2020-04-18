@@ -1,12 +1,16 @@
+import test
 import unittest
 import uuid
+from datetime import datetime
 from unittest.mock import patch
-from models.user import User
+
+from passlib.hash import pbkdf2_sha256
+
 import app
 import services
 import services.auth
-from datetime import datetime
-from passlib.hash import pbkdf2_sha256
+from app.api import LoginRequest, RegisterRequest
+from models.user import User
 
 
 class TestAuthHandlers(unittest.TestCase):
@@ -21,12 +25,8 @@ class TestAuthHandlers(unittest.TestCase):
     @patch('services.container.AuthService')
     def test_login_success(self, MockAuthService):
         mock_auth = MockAuthService.return_value
-        mock_auth.validate_login.return_value = User(id=uuid.uuid4,
-                                                     username='user',
-                                                     password_hash='pass',
-                                                     role='role',
-                                                     role_id='role_id',
-                                                     is_admin=False)
+        _user = test.generate_user()
+        mock_auth.validate_login.return_value = _user
         mock_auth.encode_jwt.return_value = 'jwt-token'
         # call with valid credentials
         response = self.server.post("/auth/login",
@@ -58,19 +58,18 @@ class TestAuthHandlers(unittest.TestCase):
         self.assertEqual(response.get_json(), {
             'code': 401,
             'error': "Login invalid"
-        })
+        })                       
 
-    
     @patch('services.container.AuthService')
     @patch('services.container.UserService')
-    def test_register(self,MockUserService,MockAuthService):
-        test_paylod = {
-            'user_name': 'user',
-            'password': 'password',
-            'role': 'role',
-            'is_admin': False
+    def test_register(self, MockUserService, MockAuthService):
+        _user = test.generate_user(password='my-password')
+        test_payload = {
+            'username': _user.username,
+            'password': 'my-password',
+            'role': _user.role,
+            'is_admin': _user.is_admin
         }
-        _user = User(id=uuid.uuid4(), username='user', password_hash=pbkdf2_sha256, role='role', role_id='role-id', is_admin=False)
 
         mock_user = MockUserService.return_value
         mock_auth = MockAuthService.return_value
@@ -79,18 +78,36 @@ class TestAuthHandlers(unittest.TestCase):
         mock_user.add_user.return_value = _user
         mock_auth.encode_jwt.return_value = 'token'
 
-        response = self.server.post("/auth/register", json=test_paylod)
+        response = self.server.post("/auth/register", json=test_payload)
 
         self.assertEqual(response.status_code, 200)
         self.assertEqual(response.get_json().get("jwt"), 'token')
-        mock_user.add_user.assert_called_once_with('user','password','role',False)
+        mock_user.add_user.assert_called_once_with(_user.username,
+                                                   'my-password', _user.role,
+                                                   _user.is_admin)
         mock_auth.encode_jwt.assert_called_once_with(_user)
 
-        # Bad Request
-        test_paylod.pop('user_name')
-        response = self.server.post("/auth/register", json=test_paylod)
-        self.assertEqual(response.status_code, 400)
+        # DB Exception
+        mock_user.add_user.return_value = None
+        response = self.server.post("/auth/register", json=test_payload)
+        self.assertEqual(response.status_code,
+                         500,
+                         msg='Failed DB add should trigger a 500 response')
 
+        # Bad Request
+        test_payload.pop('username')
+        response = self.server.post("/auth/register", json=test_payload)
+        self.assertEqual(
+            response.status_code,
+            400,
+            msg='Missing username in request should trigger a 400 response')
+
+        # Invalid username: Not an email address
+        test_payload['username'] = 'not-an-email'
+        response = self.server.post("/auth/register", json=test_payload)
+        self.assertEqual(response.status_code,
+                         400,
+                         msg='Invalid email was allowed as a username')
 
     @patch('services.container.AuthService')
     def test_status(self, MockAuthService):

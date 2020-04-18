@@ -1,9 +1,12 @@
-from sqlalchemy import Column
-from sqlalchemy.dialects.postgresql import UUID,VARCHAR,BOOLEAN, ARRAY, INTEGER, DATE, FLOAT
-
 import json
 
-from models import Base
+from marshmallow_sqlalchemy import SQLAlchemyAutoSchema
+from sqlalchemy import Column
+from sqlalchemy.dialects.postgresql import (ARRAY, BOOLEAN, DATE, FLOAT,
+                                            INTEGER, UUID, VARCHAR)
+
+from models.base import Base
+
 
 class Property(Base):
   __tablename__ = 'property'
@@ -46,9 +49,9 @@ class Property(Base):
 
 
   def __repr__(self):
-    return json.dumps(self)
+    _dict = PropertySchema().dump(self)
+    return json.dumps(_dict)
 
-  def to_dict(self):
-    _dict = self.__dict__
-    _dict.pop('_sa_instance_state')
-    return _dict
+class PropertySchema(SQLAlchemyAutoSchema):
+  class Meta:
+    model = Property

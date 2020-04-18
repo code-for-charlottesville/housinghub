@@ -1,5 +1,6 @@
-import secrets 
+import secrets
 import time
+
 
 class Config(object):
   """ Base config. User local environment """

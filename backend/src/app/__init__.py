@@ -1,20 +1,20 @@
-from flask import Flask, send_file, request, g, jsonify
-from services.container import ServicesContainer
-from functools import wraps
-import os
-import time
-import secrets
-from  app.config import Config, TiltConfig, StagingConfig, ProductionConfig
-
+import json
 import logging
+import os
+import secrets
+import time
+from functools import wraps
 
+from flask import Flask, g, jsonify, render_template, request, send_file
+
+from app.config import Config, ProductionConfig, StagingConfig, TiltConfig
 from auth_handlers import auth_module
 from landlord_handlers import landlord_module
 from navigator_handlers import navigator_module
 from property_handlers import property_module
+from services.container import ServicesContainer
 
-application_environment = os.getenv('APP_ENV','local')
-
+from .spec import housinghub_spec
 
 flask_app = Flask(__name__)
 
@@ -39,7 +39,11 @@ flask_app.register_blueprint(navigator_module)
 flask_app.register_blueprint(property_module)
 
 
+@flask_app.route('/spec', methods=['GET'])
+def get_spec():
+  return jsonify(housinghub_spec.to_dict())
+
 @flask_app.route('/', methods=['GET'])
 def swagger_specs():
   """Serves docs to browser"""
-  return send_file("../../api/index.html")
+  return render_template('spec.html', spec=housinghub_spec.to_dict())

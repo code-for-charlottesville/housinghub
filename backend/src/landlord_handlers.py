@@ -1,7 +1,7 @@
-from flask import request, jsonify, Blueprint
-from app.auth import authenticate
+from flask import Blueprint, jsonify, request
 
 import app
+from app.auth import authenticate
 
 landlord_module = Blueprint('landlord', __name__)
 

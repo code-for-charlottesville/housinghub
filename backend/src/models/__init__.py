@@ -1,6 +1,4 @@
-from sqlalchemy.ext.declarative import declarative_base
-
-Base = declarative_base()
-
-from .user import User
+from .navigator import Navigator, NavigatorSchema
+from .property import Property, PropertySchema
+from .user import User, UserSchema
 
