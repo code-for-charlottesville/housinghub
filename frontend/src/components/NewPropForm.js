@@ -1,7 +1,7 @@
 import React from "react";
 import "bulma/css/bulma.css";
 import { connect } from "react-redux";
-import { setPropertyField, addProperty } from "../actions/property";
+import { setPropertyField, addProperty, processDates } from "../actions/property";
 import PropDetailsForm from "./PropDetailsForm";
 import PaymentDetailsForm from "./PaymentDetailsForm";
 
@@ -44,7 +44,10 @@ const NewPropForm = (props) => {
               <button
                 className="button is-link"
                 title="Add property"
-                onClick={() => addProperty()}
+                onClick={() => {
+                  processDates(props.fields.dateAvail, props.fields.lastContacted, props.fields.whenListed)
+                  addProperty()
+                }}
               >
                 Submit
               </button>
