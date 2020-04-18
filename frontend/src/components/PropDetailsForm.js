@@ -3,7 +3,7 @@ import "bulma/css/bulma.css";
 import { InputField } from "./InputField";
 import { InputFieldNum } from "./InputFieldNum";
 import { connect } from "react-redux";
-import { setPropertyField, setArrayValues, parseYear } from "../actions/property";
+import { setPropertyField, setArrayValues } from "../actions/property";
 
 const PropDetailsForm = (props) => {
   return (
