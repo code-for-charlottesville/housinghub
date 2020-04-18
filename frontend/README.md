@@ -11,7 +11,7 @@ tilt up
 After everything has started, create a new user in the DB by making a request to the DB:
 
 ```bash
-curl -XPOST -H "content-type: application/json" -d '{"user_name" : "user@gmail.com", "password" : "password", "role_id" : "4", "role" : "navigator", "is_admin": true}' http://localhost:8443/backend/auth/register
+curl -XPOST -H "content-type: application/json" -d '{"user_name" : "user@gmail.com", "password" : "password", "role" : "navigator", "is_admin": true}' http://localhost:8443/backend/auth/register
 #response:
 {
   "jwt": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE1ODY3MTkyMTgsInVpZCI6IjUxYjBiNjU0LWI0OTItNDgxOC1iYmI3LTVhNzFmY2FiYmE3MCIsInJvbGUiOiJuYXZpZ2F0b3IifQ.Zn0LsAPNkXXkV2x5wgaZuHrMEnWXMqFNSGdoWdkFiDk"
