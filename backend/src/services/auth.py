@@ -1,18 +1,18 @@
-import app
+from datetime import datetime, timedelta, timezone
 
-from sqlalchemy.orm import sessionmaker
-from datetime import datetime, timezone, timedelta
-from jwt import encode, decode, ExpiredSignatureError, exceptions as jwtExceptions
+from jwt import ExpiredSignatureError, decode, encode
+from jwt import exceptions as jwtExceptions
 from passlib.hash import pbkdf2_sha256
+from sqlalchemy.orm import sessionmaker
 
-
+import app
 from models.user import User
+
 
 class AuthService:
 
-  def __init__(self,logger,database_engine,token_secret,token_alg,token_ttl):
+  def __init__(self,logger,Session,token_secret,token_alg,token_ttl):
     super().__init__()
-    Session = sessionmaker(bind=database_engine)
     self.logger = logger
     self.session = Session()
     self.token_secret = token_secret
@@ -38,9 +38,13 @@ class AuthService:
 
   def encode_jwt(self,user):
     """encodes JWT
-    :param user: string takes user class.User as argument
+    :param user: models.user.User object
     :return: encoded jwt as string
     """
+    if not isinstance(user, User):
+      self.logger.error(f'Cannot encode object of type ${str(type(user))} to JWT')
+      return None
+
     future_time = datetime.now(
         timezone.utc) + timedelta(seconds = self.token_ttl)
     raw_bytes = encode(
@@ -81,7 +85,7 @@ class AuthService:
               None,
               "Token header must be in form: 'Authorization: Bearer $JWT_TOKEN but was: '{}'"
               .format(auth_header))
-      return app.services.auth_service().decode_jwt(spl[1])
+      return self.decode_jwt(spl[1])
     except:
       app.logger.error('Exception authenticating request')
       return (None, "Exception authenticating request")

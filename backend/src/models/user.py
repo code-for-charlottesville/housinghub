@@ -1,8 +1,11 @@
-from sqlalchemy import Column
-from sqlalchemy.dialects.postgresql import UUID,VARCHAR,BOOLEAN
 import json
 
-from models import Base
+from marshmallow_sqlalchemy import SQLAlchemyAutoSchema
+from sqlalchemy import Column
+from sqlalchemy.dialects.postgresql import BOOLEAN, UUID, VARCHAR
+
+from models.base import Base
+
 
 class User(Base):
   __tablename__ = 'users'
@@ -17,8 +20,6 @@ class User(Base):
   def __repr__(self):
     return json.dumps(self)
 
-  def to_dict(self):
-    _dict = self.__dict__
-    _dict.pop('_sa_instance_state')
-    return _dict
-
+class UserSchema(SQLAlchemyAutoSchema):
+  class Meta:
+    model = User
