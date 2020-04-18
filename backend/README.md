@@ -85,6 +85,7 @@ pytest
 See code coverage:
 ```sh
 coverage run -m pytest
+coverage html
 open htlmcov/index.html
 ```
 
