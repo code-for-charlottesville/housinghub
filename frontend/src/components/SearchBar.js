@@ -1,20 +1,25 @@
 import React from "react";
 import "bulma/css/bulma.css";
-
+import "../style/App.css"
 const SearchBar = (props) => {
   return (
-  	<span>
-        
+  	<div className="SearchBar container">        
         <input
           type="text"
           placeholder={props.placeHolder}
           className="input"
           onChange={e =>
-            props.onChange(e.target.value)
+            props.onChange && props.onChange(e.target.value)
           }
           required
         />
-  	</span>
+        <button
+          className="button is-success"
+          onClick={e => props.onSubmit && props.onSubmit("temp")}
+        >
+          Search
+        </button>
+  	</div>
   );
 };
 
