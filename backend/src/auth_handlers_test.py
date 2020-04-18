@@ -105,10 +105,9 @@ class TestAuthHandlers(unittest.TestCase):
         # Invalid username: Not an email address
         test_payload['username'] = 'not-an-email'
         response = self.server.post("/auth/register", json=test_payload)
-        self.assertEqual(
-            response.status_code,
-            400,
-            msg='Invalid email was allowed as a username')
+        self.assertEqual(response.status_code,
+                         400,
+                         msg='Invalid email was allowed as a username')
 
     @patch('services.container.AuthService')
     def test_status(self, MockAuthService):
