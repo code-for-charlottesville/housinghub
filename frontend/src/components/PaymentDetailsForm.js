@@ -3,7 +3,7 @@ import "bulma/css/bulma.css";
 import { InputField } from "./InputField";
 import { InputFieldNum } from "./InputFieldNum";
 import { connect } from "react-redux";
-import { setPropertyField } from "../actions/property";
+import { setPropertyField, setArrayValues } from "../actions/property";
 
 const PaymentDetailsForm = (props) => {
   return (
@@ -56,10 +56,10 @@ const PaymentDetailsForm = (props) => {
         <label className="checkbox">
           <input
             type="checkbox"
-            onChange={(e) =>
-              props.dispatch(setPropertyField("CSRAP", !props.fields.CSRAP))
-            }
-            value={props.fields.CSRAP}
+            onChange={e => {
+              setArrayValues("acceptedVouchers", e.target.value)
+            }}
+            value="CSRAP"
           />
           CSRAP
         </label>
@@ -67,10 +67,10 @@ const PaymentDetailsForm = (props) => {
         <label className="checkbox">
           <input
             type="checkbox"
-            onChange={(e) =>
-              props.dispatch(setPropertyField("HCV", !props.fields.HCV))
-            }
-            value={props.fields.HCV}
+            onChange={e => {
+              setArrayValues("acceptedVouchers", e.target.value)
+            }}
+            value="HCV"
           />
           HCV
         </label>
@@ -78,10 +78,10 @@ const PaymentDetailsForm = (props) => {
         <label className="checkbox">
           <input
             type="checkbox"
-            onChange={(e) =>
-              props.dispatch(setPropertyField("MSV", !props.fields.MSV))
-            }
-            value={props.fields.MSV}
+            onChange={e => {
+              setArrayValues("acceptedVouchers", e.target.value)
+            }}
+            value="MSV"
           />
           MSV
         </label>
@@ -89,12 +89,10 @@ const PaymentDetailsForm = (props) => {
         <label className="checkbox">
           <input
             type="checkbox"
-            onChange={(e) =>
-              props.dispatch(
-                setPropertyField("voucher4", !props.fields.voucher4)
-              )
-            }
-            value={props.fields.voucher4}
+            onChange={e => {
+                setArrayValues("acceptedVouchers", e.target.value)
+            }}
+            value="Voucher 4"
           />
           Voucher 4
         </label>
@@ -102,12 +100,10 @@ const PaymentDetailsForm = (props) => {
         <label className="checkbox">
           <input
             type="checkbox"
-            onChange={(e) =>
-              props.dispatch(
-                setPropertyField("voucher5", !props.fields.voucher5)
-              )
-            }
-            value={props.fields.voucher5}
+            onChange={e => {
+                setArrayValues("acceptedVouchers", e.target.value)
+            }}
+            value="Voucher 5"
           />
           Voucher 5
         </label>
