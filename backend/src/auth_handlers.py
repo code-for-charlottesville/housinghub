@@ -48,8 +48,8 @@ def register():
             payload['username'], payload['password'], payload['role'],
             payload['is_admin'])
         if created_user:
-            return jsonify(AuthResponse().dump(
-                {'jwt': app.services.auth_service().encode_jwt(created_user)}))
+            jwt_token = app.services.auth_service().encode_jwt(created_user)
+            return jsonify(AuthResponse().dump({'jwt': jwt_token}))
         return jsonify(code=500, error='internal error'), 500
     except ValidationError as err:
         app.logger.error(f'Invalid request ${err.messages}')
