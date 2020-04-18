@@ -1,7 +1,7 @@
-from flask import request, jsonify, Blueprint
-from app.auth import authenticate
+from flask import Blueprint, jsonify, request
 
 import app
+from app.auth import authenticate
 
 navigator_module = Blueprint('navigator', __name__)
 

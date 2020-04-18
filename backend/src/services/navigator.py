@@ -5,6 +5,7 @@ from sqlalchemy.orm import sessionmaker
 
 from models.navigator import Navigator
 
+
 class NavigatorService:
   
   def __init__(self,logger,database_engine):

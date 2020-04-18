@@ -1,9 +1,14 @@
-from flask import request, jsonify, Blueprint
-from app.auth import authenticate
+import traceback
+
+from flask import Blueprint, jsonify, request
+from marshmallow import ValidationError
 
 import app
+from app.api import AddPropertyRequest, PropertyResponse
+from app.auth import authenticate
+from app.spec import DocumentedBlueprint
 
-property_module = Blueprint('property', __name__)
+property_module = DocumentedBlueprint('property', __name__)
 
 
 @property_module.route('/property', methods=['GET'])
@@ -21,11 +26,44 @@ def get_property():
 @authenticate
 def post_property():
     """adds a new Property to the database and returns response
-    :param request: flask request object
-    :param request: dictionary of jwtPayload
-    :return tuple (response body (dict), response code (int), error (string))
+    ---
+    post:
+        tags: 
+            - authentication    
+        summary: Creates a new user
+        requestBody:
+            required: true
+            content:
+                application/json:
+                    schema: AddPropertyRequest
+        responses:
+            '200':
+                description: Auth token for newly created user
+                content:
+                    application/json:
+                        schema: PropertyResponse
+            '400':
+                description: Request is invalid
+                content:
+                    application/json:
+                        schema: ErrorResponse
+            '500':
+                description: An error message.
+                content:
+                    application/json:
+                        schema: ErrorResponse
     """
-    return jsonify(code=500, error='not implemented'), 500
+    try:
+        payload = AddPropertyRequest().load(request.get_json())
+        _property = app.services.property_service().add_property(payload)
+        return jsonify(PropertyResponse().dump(_property))
+    except ValidationError as err:
+        app.logger.error(f'Invalid request ${err.messages}')
+        return jsonify(err.messages), 400
+    except:
+        app.logger.error(
+            f'Unexpected error adding property: ${traceback.format_exc()}')
+        return jsonify(code=500, error='internal error'), 500
 
 
 @property_module.route('/property', methods=['PUT'])
