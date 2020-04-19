@@ -5,7 +5,7 @@ const Table = (props) => {
   let _renderTableHeader = (column, columnIndex) => {
     return (
       <th
-        key={`${column.field}-${columnIndex}`}
+        key={`col-header-${column.field}-${columnIndex}`}
         onClick={() =>
           props.onColumnSort && props.onColumnSort(column, columnIndex)
         }
@@ -16,7 +16,7 @@ const Table = (props) => {
   };
 
   let _renderCell = (value, rowIndex, columnIndex) => {
-    let key = `${rowIndex}-${value}`;
+    let key = `$cell-{rowIndex}-${columnIndex}-${value}`;
     return <td key={key}>{value}</td>;
   };
 
@@ -24,6 +24,7 @@ const Table = (props) => {
     <tr
       className={props.selectedRowIndex === rowIndex ? "is-selected" : ""}
       onClick={() => props.onRowSelect && props.onRowSelect(r, rowIndex)}
+      key={`row-${rowIndex}`}
     >
       {r.map((value, columnIndex) => _renderCell(value, rowIndex, columnIndex))}
     </tr>
@@ -32,7 +33,9 @@ const Table = (props) => {
   return (
     <div className="table-container">
       <table className="table is-bordered is-striped is-hoverable is-fullwidth">
-        <thead>{props.columns.map((c, i) => _renderTableHeader(c, i))}</thead>
+        <thead>
+          <tr>{props.columns.map((c, i) => _renderTableHeader(c, i))}</tr>
+        </thead>
         <tbody>{props.rows.map((r, i) => _renderRow(r, i))}</tbody>
       </table>
     </div>

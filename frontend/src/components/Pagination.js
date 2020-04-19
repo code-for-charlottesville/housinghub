@@ -2,11 +2,10 @@ import React from "react";
 import _ from "lodash";
 import "../style/App.css";
 
-const MAX_PAGES = 10;
-
 const Pagination = (props) => {
   let renderPaginationBox = (content, pageIndex) => (
     <li
+      key={`pagination-box-${pageIndex}`}
       className="PaginationBox"
       onClick={() =>
         pageIndex !== props.currentPageIndex && props.onSetPage(pageIndex)

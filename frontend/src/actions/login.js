@@ -5,7 +5,6 @@ import {
   getJwtFromLocalStorage,
   removeJwtFromLocalStorage,
 } from "../reducers/login";
-import axios from "axios";
 import { setUser } from "./user";
 
 export function setLoginField(fieldName, newValue) {

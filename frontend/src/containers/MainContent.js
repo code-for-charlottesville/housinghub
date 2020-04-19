@@ -14,7 +14,7 @@ const MainContent = (props) => {
       <Switch>
         <Route path={"/property/new"} component={NewPropForm} />
         <Route path={"/property/search"} component={SearchProperty} />
-        <Route component={SearchProperty} />
+        <Route component={Home} />
       </Switch>
     </div>
   );
