@@ -27,26 +27,31 @@ export function setPropertyField(fieldName, newValue) {
 export function setArrayValues(arrayName, item) {
   let newArray = store.getState().propertyState.fields[arrayName];
   let index = newArray.indexOf(item);
-    if (index > -1) {
-        newArray.splice(index, 1);
-    } else {
-      newArray.push(item);
-    }
-    store.dispatch(setPropertyField(arrayName, newArray));
+  if (index > -1) {
+    newArray.splice(index, 1);
+  } else {
+    newArray.push(item);
+  }
+  store.dispatch(setPropertyField(arrayName, newArray));
 }
 
 export function processDates(dateAvail, lastContacted, whenListed) {
   //if user inputs date, input is typeof(string) || if browser doesn't support HTML Date input (Safari, IE11)
   //convert back to Date objects
-  if (typeof(dateAvail) === "string") {
-    store.dispatch(setPropertyField("dateAvail", new Date(dateAvail)))
+  if (typeof dateAvail === "string") {
+    store.dispatch(setPropertyField("dateAvail", new Date(dateAvail)));
     //set year
-    store.dispatch(setPropertyField("yearAvail", store.getState().propertyState.fields.dateAvail.getFullYear()))
+    store.dispatch(
+      setPropertyField(
+        "yearAvail",
+        store.getState().propertyState.fields.dateAvail.getFullYear()
+      )
+    );
   }
-  if (typeof(lastContacted) == "string")
-    store.dispatch(setPropertyField("lastContacted", new Date(lastContacted)))
-  if (typeof(whenListed) === "string")
-    store.dispatch(setPropertyField("whenListed", new Date(whenListed)))
+  if (typeof lastContacted == "string")
+    store.dispatch(setPropertyField("lastContacted", new Date(lastContacted)));
+  if (typeof whenListed === "string")
+    store.dispatch(setPropertyField("whenListed", new Date(whenListed)));
 }
 
 /**

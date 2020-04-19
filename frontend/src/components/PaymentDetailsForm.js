@@ -56,8 +56,8 @@ const PaymentDetailsForm = (props) => {
         <label className="checkbox">
           <input
             type="checkbox"
-            onChange={e => {
-              setArrayValues("acceptedVouchers", e.target.value)
+            onChange={(e) => {
+              setArrayValues("acceptedVouchers", e.target.value);
             }}
             value="CSRAP"
           />
@@ -67,8 +67,8 @@ const PaymentDetailsForm = (props) => {
         <label className="checkbox">
           <input
             type="checkbox"
-            onChange={e => {
-              setArrayValues("acceptedVouchers", e.target.value)
+            onChange={(e) => {
+              setArrayValues("acceptedVouchers", e.target.value);
             }}
             value="HCV"
           />
@@ -78,8 +78,8 @@ const PaymentDetailsForm = (props) => {
         <label className="checkbox">
           <input
             type="checkbox"
-            onChange={e => {
-              setArrayValues("acceptedVouchers", e.target.value)
+            onChange={(e) => {
+              setArrayValues("acceptedVouchers", e.target.value);
             }}
             value="MSV"
           />
@@ -89,8 +89,8 @@ const PaymentDetailsForm = (props) => {
         <label className="checkbox">
           <input
             type="checkbox"
-            onChange={e => {
-                setArrayValues("acceptedVouchers", e.target.value)
+            onChange={(e) => {
+              setArrayValues("acceptedVouchers", e.target.value);
             }}
             value="Voucher 4"
           />
@@ -100,8 +100,8 @@ const PaymentDetailsForm = (props) => {
         <label className="checkbox">
           <input
             type="checkbox"
-            onChange={e => {
-                setArrayValues("acceptedVouchers", e.target.value)
+            onChange={(e) => {
+              setArrayValues("acceptedVouchers", e.target.value);
             }}
             value="Voucher 5"
           />

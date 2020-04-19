@@ -11,7 +11,7 @@ const reducer = combineReducers({
   appState,
   propertyState,
   login,
-  user
+  user,
 });
 
 const logger = createLogger({
