@@ -63,7 +63,7 @@
     to   { opacity: 1; }
 }
 
-.SearchBar {
+.Sideways {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -72,6 +72,10 @@
   margin-top: 2%;
 }
 
+.PaginationBox {
+  margin: 3px;
+}
+
 .ListContainer {
-  margin: 45px;
+  margin: 15px;
 }

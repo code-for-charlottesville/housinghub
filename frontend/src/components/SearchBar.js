@@ -3,7 +3,7 @@ import "bulma/css/bulma.css";
 import "../style/App.css";
 const SearchBar = (props) => {
   return (
-    <div className="SearchBar container">
+    <div className="Sideways container">
       <input
         type="text"
         placeholder={props.placeHolder}

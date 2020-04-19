@@ -2,6 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import SearchBar from "../components/SearchBar";
 import Table from "../components/Table";
+import Pagination from "../components/Pagination";
 import "../style/App.css";
 
 const SearchProperty = (props) => {
@@ -31,7 +32,7 @@ const SearchProperty = (props) => {
     "Voucher 1, Voucher 2",
   ];
   let rows = [];
-  for (let i = 0; i < 25; i++) rows.push(r);
+  for (let i = 0; i < 4; i++) rows.push(r);
 
   return (
     <>
@@ -49,6 +50,11 @@ const SearchProperty = (props) => {
           }}
         />
       </div>
+      <Pagination
+        numberOfPages={16}
+        currentPageIndex={0}
+        onSetPage={(i) => console.log("new page: %d", i)}
+      />
     </>
   );
 };
