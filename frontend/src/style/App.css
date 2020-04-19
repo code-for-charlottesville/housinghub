@@ -64,9 +64,14 @@
 }
 
 .SearchBar {
-    display: flex;
+  display: flex;
   align-items: center;
   justify-content: center;
   width: 50%;
   text-align: center; 
+  margin-top: 2%;
+}
+
+.ListContainer {
+  margin: 45px;
 }

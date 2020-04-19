@@ -2,6 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import SearchBar from "../components/SearchBar";
 import Table from "../components/Table";
+import "../style/App.css";
 
 const SearchProperty = (props) => {
   let columns = [
@@ -33,10 +34,12 @@ const SearchProperty = (props) => {
   for (let i = 0; i < 25; i++) rows.push(r);
 
   return (
-    <div>
+    <>
       <SearchBar placeHolder={"253 East Main Street"} onChange={() => {}} />
-      <Table columns={columns} rows={rows} selectedRowIndex={3} />
-    </div>
+      <div className="ListContainer">
+        <Table columns={columns} rows={rows} selectedRowIndex={3} />
+      </div>
+    </>
   );
 };
 
