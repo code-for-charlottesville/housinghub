@@ -6,8 +6,8 @@ const initialState = {
   fields: {
     email: "",
     password: "",
-    rememberMe: true
-  }
+    rememberMe: true,
+  },
 };
 
 const appState = (state = initialState, action) => {
@@ -17,7 +17,7 @@ const appState = (state = initialState, action) => {
       return Object.assign({}, state, {
         ...state,
         isLoggedIn: false,
-        error: ""
+        error: "",
       });
     case "SET_LOGIN_SUCCESS":
       if (state.fields.rememberMe) {

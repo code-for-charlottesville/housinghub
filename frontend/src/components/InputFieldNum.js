@@ -18,8 +18,8 @@ export const InputFieldNum = ({
           type={inputType}
           placeholder={inputPh}
           onChange={(e) => {
-            (e.target.value >= 0 &&
-              store.dispatch(onChangeFn(onChangeFld, e.target.value)));
+            e.target.value >= 0 &&
+              store.dispatch(onChangeFn(onChangeFld, e.target.value));
           }}
           value={inputValue}
         />

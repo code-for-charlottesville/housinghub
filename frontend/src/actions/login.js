@@ -32,7 +32,7 @@ export function setLoginFailure(error) {
 
 export function logout() {
   return {
-    type: "LOGOUT"
+    type: "LOGOUT",
   };
 }
 
@@ -59,7 +59,7 @@ export function setJwtStatus(checkLocalOnly = true) {
   // if there is a token in local storage, set as user logged in with that token
   if (getJwtFromLocalStorage() !== null || checkLocalOnly) {
     store.dispatch(setLoading(true));
-    getStatus(getJwtFromLocalStorage()).then(r => {
+    getStatus(getJwtFromLocalStorage()).then((r) => {
       store.dispatch(setLoading(false));
       if (r.uid) {
         store.dispatch(setLoginSuccess(getJwtFromLocalStorage()));
