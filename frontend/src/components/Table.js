@@ -1,6 +1,5 @@
 import React from "react";
 import "bulma/css/bulma.css";
-import "../style/Table.css";
 
 const Table = (props) => {
   let _renderTableHeader = (column, columnIndex) => {

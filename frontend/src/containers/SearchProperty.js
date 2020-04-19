@@ -13,9 +13,22 @@ const SearchProperty = (props) => {
       field: "property_name",
       title: "Name",
     },
+    {
+      field: "monthly_rent",
+      title: "Rent",
+    },
+    {
+      field: "voucher_type_accepted",
+      title: "Vouchers Accepted",
+    },
   ];
 
-  let r = ["253 East Main Street", "David's new property"];
+  let r = [
+    "253 East Main Street",
+    "David's new property",
+    "$1350",
+    "Voucher 1, Voucher 2",
+  ];
   let rows = [];
   for (let i = 0; i < 25; i++) rows.push(r);
 
