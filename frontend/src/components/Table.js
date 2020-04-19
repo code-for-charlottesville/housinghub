@@ -17,11 +17,11 @@ const Table = (props) => {
     return <td key={key}>{value}</td>;
   };
 
-  let _renderRow = (r, rowIndex) => {
-    return r.map((value, columnIndex) =>
-      _renderCell(value, rowIndex, columnIndex)
-    );
-  };
+  let _renderRow = (r, rowIndex) => (
+    <tr>
+      {r.map((value, columnIndex) => _renderCell(value, rowIndex, columnIndex))}
+    </tr>
+  );
 
   return (
     <div className="table-container">
