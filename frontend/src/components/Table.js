@@ -4,7 +4,12 @@ import "bulma/css/bulma.css";
 const Table = (props) => {
   let _renderTableHeader = (column, columnIndex) => {
     return (
-      <th key={`${column.field}-${columnIndex}`}>
+      <th
+        key={`${column.field}-${columnIndex}`}
+        onClick={() =>
+          props.onColumnSort && props.onColumnSort(column, columnIndex)
+        }
+      >
         <abbr title={column.title}>{column.title}</abbr>
       </th>
     );
@@ -12,12 +17,14 @@ const Table = (props) => {
 
   let _renderCell = (value, rowIndex, columnIndex) => {
     let key = `${rowIndex}-${value}`;
-    if (columnIndex === 0) return <th key={key}>{value}</th>;
     return <td key={key}>{value}</td>;
   };
 
   let _renderRow = (r, rowIndex) => (
-    <tr className={props.selectedRowIndex === rowIndex ? "is-selected" : ""}>
+    <tr
+      className={props.selectedRowIndex === rowIndex ? "is-selected" : ""}
+      onClick={() => props.onRowSelect && props.onRowSelect(r, rowIndex)}
+    >
       {r.map((value, columnIndex) => _renderCell(value, rowIndex, columnIndex))}
     </tr>
   );

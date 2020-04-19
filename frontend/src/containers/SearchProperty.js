@@ -37,7 +37,17 @@ const SearchProperty = (props) => {
     <>
       <SearchBar placeHolder={"253 East Main Street"} onChange={() => {}} />
       <div className="ListContainer">
-        <Table columns={columns} rows={rows} selectedRowIndex={3} />
+        <Table
+          columns={columns}
+          rows={rows}
+          selectedRowIndex={3}
+          onColumnSort={(cName, cIndex) => {
+            console.log(cName, cIndex);
+          }}
+          onRowSelect={(rName, rIndex) => {
+            console.log(rName, rIndex);
+          }}
+        />
       </div>
     </>
   );
