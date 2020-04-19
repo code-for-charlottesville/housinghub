@@ -13,7 +13,9 @@ const Navbar = (props) => {
   return (
     <nav className="navbar" role="navigation" aria-label="main navigation">
       <div className="navbar-brand">
-        <span className="navbar-item">HHub</span>
+        <Link className="navbar-item" to="/home" onClick={() => toggleNav()}>
+          Home
+        </Link>
 
         <a
           role="button"

@@ -1,5 +1,6 @@
 import React from "react";
 import "bulma/css/bulma.css";
+import "../style/App.css";
 
 const Table = (props) => {
   let _renderTableHeader = (column, columnIndex) => {
@@ -32,7 +33,7 @@ const Table = (props) => {
 
   return (
     <div className="table-container">
-      <table className="table is-bordered is-striped is-hoverable is-fullwidth">
+      <table className="table is-bordered is-striped is-hoverable is-fullwidth HoverPointer">
         <thead>
           <tr>{props.columns.map((c, i) => _renderTableHeader(c, i))}</tr>
         </thead>

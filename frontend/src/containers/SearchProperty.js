@@ -36,7 +36,11 @@ const SearchProperty = (props) => {
 
   return (
     <>
-      <SearchBar placeHolder={"253 East Main Street"} onChange={() => {}} />
+      <SearchBar
+        placeHolder={"253 East Main Street"}
+        onChange={() => {}}
+        onSubmit={() => {}}
+      />
       <div className="ListContainer">
         <Table
           columns={columns}

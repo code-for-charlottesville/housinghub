@@ -72,6 +72,10 @@
   margin-top: 2%;
 }
 
+.HoverPointer {
+  cursor: pointer;
+}
+
 .PaginationBox {
   margin: 3px;
 }
