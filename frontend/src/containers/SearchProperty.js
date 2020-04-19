@@ -32,7 +32,7 @@ const SearchProperty = (props) => {
     "Voucher 1, Voucher 2",
   ];
   let rows = [];
-  for (let i = 0; i < 4; i++) rows.push(r);
+  for (let i = 0; i < 25; i++) rows.push(r);
 
   return (
     <>
@@ -52,7 +52,9 @@ const SearchProperty = (props) => {
       </div>
       <Pagination
         numberOfPages={16}
-        currentPageIndex={0}
+        currentPageIndex={11}
+        pageIndexStart={0}
+        pageIndexEnd={10}
         onSetPage={(i) => console.log("new page: %d", i)}
       />
     </>
