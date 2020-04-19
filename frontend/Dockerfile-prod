@@ -1,0 +1,31 @@
+
+# FROM node:12
+
+# # build environment
+# WORKDIR /app
+# COPY ./frontend /app
+# RUN npm install
+# ENV PATH /app/node_modules/.bin:$PATH
+# RUN npm install react-scripts@3.4.1 -g
+# RUN npm run build
+
+# production environment
+FROM dgoldstein1/reverse-proxy:0.1.4
+
+# copy in assets
+RUN mkdir -p /static-files
+COPY LICENSE /static-files/LICENSE
+COPY ./frontend/VERSION /static-files/VERSION
+COPY ./frontend/build /static-files/
+# COPY --from=build /app/build /static-files/
+
+ENV ui_incoming_path /
+ENV ui_outgoing_url file:///static-files
+ENV backend_incoming_path /backend/
+ENV backend_outgoing_url http://HOST:5000
+
+# configure reverse-proxy
+ENV PORT "3000"
+ENV services ui,backend
+
+CMD ./reverseProxy
