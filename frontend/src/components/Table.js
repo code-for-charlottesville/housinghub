@@ -18,7 +18,7 @@ const Table = (props) => {
   };
 
   let _renderRow = (r, rowIndex) => (
-    <tr>
+    <tr className={props.selectedRowIndex === rowIndex ? "is-selected" : ""}>
       {r.map((value, columnIndex) => _renderCell(value, rowIndex, columnIndex))}
     </tr>
   );

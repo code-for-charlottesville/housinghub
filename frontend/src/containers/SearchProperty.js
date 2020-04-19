@@ -17,12 +17,12 @@ const SearchProperty = (props) => {
 
   let r = ["253 East Main Street", "David's new property"];
   let rows = [];
-  for (let i = 0; i < 100; i++) rows.push(r);
+  for (let i = 0; i < 25; i++) rows.push(r);
 
   return (
     <div>
       <SearchBar placeHolder={"253 East Main Street"} onChange={() => {}} />
-      <Table columns={columns} rows={rows} />
+      <Table columns={columns} rows={rows} selectedRowIndex={3} />
     </div>
   );
 };
