@@ -4,6 +4,7 @@ import { connect } from "react-redux";
 import { Redirect, Switch, Route } from "react-router-dom";
 import Navbar from "../components/Navbar";
 import Home from "./Home";
+import SearchProperty from "./SearchProperty";
 
 const MainContent = (props) => {
   if (!props.isLoggedIn) return <Redirect to="/login" />;
@@ -12,7 +13,7 @@ const MainContent = (props) => {
       <Navbar />
       <Switch>
         <Route path={"/property/new"} component={NewPropForm} />
-        <Route path={"/property/search"}>search property</Route>
+        <Route path={"/property/search"} component={SearchProperty} />
         <Route component={Home} />
       </Switch>
     </div>
