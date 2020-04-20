@@ -29,3 +29,16 @@ password: password
 ```bash
 npx prettier --tab-width 2 --write src/**/*.js
 ```
+## Prod
+
+### Build
+
+From the root directory, run 
+
+```bash
+docker build . -t codeforcharlottesville/housinghub-ui -f frontend/Dockerfile-prod
+```
+
+### Configure
+
+In the production environment, set `backend_outgoing_url` to the URL of the housing hub backend.
