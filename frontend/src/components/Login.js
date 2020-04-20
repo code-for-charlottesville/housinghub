@@ -5,7 +5,7 @@ import { Redirect } from "react-router-dom";
 import { setLoginField, loginUser } from "../actions/login";
 import { LoadingSpinner } from "./LoadingSpinner";
 
-const Login = props => {
+const Login = (props) => {
   if (props.isLoggedIn) return <Redirect to="/home" />;
   return (
     <div className="hero-body">
@@ -17,7 +17,7 @@ const Login = props => {
               <form
                 action=""
                 className="box"
-                onSubmit={e => e.preventDefault()}
+                onSubmit={(e) => e.preventDefault()}
               >
                 <div className="field">
                   <label htmlFor="" className="label">
@@ -28,7 +28,7 @@ const Login = props => {
                       type="email"
                       placeholder="e.g. bobsmith@gmail.com"
                       className="input"
-                      onChange={e =>
+                      onChange={(e) =>
                         props.dispatch(setLoginField("email", e.target.value))
                       }
                       value={props.fields.email}
@@ -46,7 +46,7 @@ const Login = props => {
                       type="password"
                       placeholder="*******"
                       className="input"
-                      onChange={e =>
+                      onChange={(e) =>
                         props.dispatch(
                           setLoginField("password", e.target.value)
                         )
@@ -62,7 +62,7 @@ const Login = props => {
                     <input
                       type="checkbox"
                       checked={props.fields.rememberMe}
-                      onChange={e =>
+                      onChange={(e) =>
                         props.dispatch(
                           setLoginField("rememberMe", !props.fields.rememberMe)
                         )
@@ -101,8 +101,7 @@ function mapStateToProps(state) {
     fields: state.login.fields,
     isLoggedIn: state.login.isLoggedIn,
     loading: state.appState.loading,
-    error: state.login.error
-
+    error: state.login.error,
   };
 }
 

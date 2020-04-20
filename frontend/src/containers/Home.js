@@ -42,7 +42,7 @@ class Home extends React.Component {
 function mapStateToProps(state) {
   return {
     loading: state.appState.loading,
-    username: state.user.uid
+    username: state.user.uid,
   };
 }
 export default connect(mapStateToProps)(Home);
