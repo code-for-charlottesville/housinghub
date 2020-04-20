@@ -199,15 +199,15 @@ const PropDetailsForm = (props) => {
           </select>
         </div>
       </div>
-        <InputField
-          inputName="If not yet available, please specify below when the property will be available using the
+      <InputField
+        inputName="If not yet available, please specify below when the property will be available using the
           format MM-dd-YYYY. The default will be the current date if left as is."
-          inputType="date"
-          inputPh="MM-dd-YYYY"
-          onChangeFn={setPropertyField}
-          onChangeFld="dateAvail"
-          inputValue={props.fields.dateAvail}
-          />
+        inputType="date"
+        inputPh="MM-dd-YYYY"
+        onChangeFn={setPropertyField}
+        onChangeFld="dateAvail"
+        inputValue={props.fields.dateAvail}
+      />
       <InputFieldNum
         inputName="Please specify the potential months available for the property."
         inputType="number"
@@ -233,51 +233,46 @@ const PropDetailsForm = (props) => {
         inputValue={props.fields.whereListed}
       />
       <div className="field">
-      <label className="label" htmlFor="contactMethods">
-        Please check the preferred contact methods for the property's landlord.
-      </label>
-      <label className="checkbox">
-        <input
-          type="checkbox"
-          onChange={(e) =>
-            setArrayValues("contactMethods", e.target.value)
-          }
-          value="Phone"
-        />
-        Phone
-      </label>
-      <br />
-      <label className="checkbox">
-        <input
-          type="checkbox"
-          onChange={(e) =>
-            setArrayValues("contactMethods", e.target.value)
-          }
-          value="Email"
-        />
-        Email
-      </label>
-      <br />
-      <label className="checkbox">
-        <input
-          type="checkbox"
-          onChange={(e) =>
-            setArrayValues("contactMethods", e.target.value)
-          }
-          value="Registered sites"
-        />
-        Registered Site
-      </label>
-    </div>
-    <InputField
-      inputName="Please specify below when the property's landlord was last contacted. 
+        <label className="label" htmlFor="contactMethods">
+          Please check the preferred contact methods for the property's
+          landlord.
+        </label>
+        <label className="checkbox">
+          <input
+            type="checkbox"
+            onChange={(e) => setArrayValues("contactMethods", e.target.value)}
+            value="Phone"
+          />
+          Phone
+        </label>
+        <br />
+        <label className="checkbox">
+          <input
+            type="checkbox"
+            onChange={(e) => setArrayValues("contactMethods", e.target.value)}
+            value="Email"
+          />
+          Email
+        </label>
+        <br />
+        <label className="checkbox">
+          <input
+            type="checkbox"
+            onChange={(e) => setArrayValues("contactMethods", e.target.value)}
+            value="Registered sites"
+          />
+          Registered Site
+        </label>
+      </div>
+      <InputField
+        inputName="Please specify below when the property's landlord was last contacted. 
       The default will be the current date if left as is."
-      inputType="date"
-      inputPh="MM-dd-YYY"
-      onChangeFn={setPropertyField}
-      onChangeFld="lastContacted"
+        inputType="date"
+        inputPh="MM-dd-YYY"
+        onChangeFn={setPropertyField}
+        onChangeFld="lastContacted"
       />
-  </div>
+    </div>
   );
 };
 
