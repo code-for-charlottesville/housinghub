@@ -31,6 +31,7 @@ const initialState = {
     deposit: 0,
     lastMonthRent: false,
     acceptedVouchers: [],
+    refusedVouchers: ["MSV", "HCV", "CSRAP", "Voucher 4", "Voucher 5"],
     creditCompany: "",
     backgroundCompany: "",
     cleanRecord: false,
