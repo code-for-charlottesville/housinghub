@@ -4,7 +4,6 @@ import { connect } from "react-redux";
 import {
   setPropertyField,
   addProperty,
-  processDates,
 } from "../actions/property";
 import PropDetailsForm from "./PropDetailsForm";
 import PaymentDetailsForm from "./PaymentDetailsForm";
@@ -49,11 +48,6 @@ const NewPropForm = (props) => {
                 className="button is-link"
                 title="Add property"
                 onClick={() => {
-                  processDates(
-                    props.fields.dateAvail,
-                    props.fields.lastContacted,
-                    props.fields.whenListed
-                  );
                   addProperty();
                 }}
               >

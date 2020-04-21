@@ -18,13 +18,13 @@ const initialState = {
     busStop: false,
     wheelchairAcc: false,
     elevator: false,
-    dateAvail: new Date(),
+    dateAvail: new Date().toString(),
     yearAvail: new Date().getFullYear(),
     monthsAvail: 0,
-    whenListed: new Date(),
+    whenListed: new Date().toString(),
     whereListed: "",
     contactMethods: [],
-    lastContacted: new Date(),
+    lastContacted: new Date().toString(),
     lastContactedBy: "",
     rentPerMonth: 0,
     appFee: 0,
@@ -60,6 +60,30 @@ const propertyState = (state = initialState, action) => {
           [action.fieldName]: action.newValue,
         },
       });
+    case "SET_ARRAY_VALUES":
+      let index = state.fields[action.arrayName].indexOf(action.item);
+      if (index > -1) {
+        return Object.assign({}, state, {
+          ...state,
+          fields: {
+            ...state.fields,
+            [action.arrayName]: state.fields[action.arrayName].filter(
+              (item) => item !== action.item
+            ),
+          },
+        });
+      } else {
+        return Object.assign({}, state, {
+          ...state,
+          fields: {
+            ...state.fields,
+            [action.arrayName]: [
+              ...state.fields[action.arrayName],
+              action.item,
+            ],
+          },
+        });
+      }
     default:
       return state;
   }

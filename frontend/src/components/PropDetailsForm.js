@@ -206,7 +206,6 @@ const PropDetailsForm = (props) => {
         inputPh="MM-dd-YYYY"
         onChangeFn={setPropertyField}
         onChangeFld="dateAvail"
-        inputValue={props.fields.dateAvail}
       />
       <InputFieldNum
         inputName="Please specify the potential months available for the property."
@@ -240,7 +239,9 @@ const PropDetailsForm = (props) => {
         <label className="checkbox">
           <input
             type="checkbox"
-            onChange={(e) => setArrayValues("contactMethods", e.target.value)}
+            onChange={(e) =>
+              props.dispatch(setArrayValues("contactMethods", e.target.value))
+            }
             value="Phone"
           />
           Phone
@@ -249,7 +250,9 @@ const PropDetailsForm = (props) => {
         <label className="checkbox">
           <input
             type="checkbox"
-            onChange={(e) => setArrayValues("contactMethods", e.target.value)}
+            onChange={(e) =>
+              props.dispatch(setArrayValues("contactMethods", e.target.value))
+            }
             value="Email"
           />
           Email
@@ -258,7 +261,9 @@ const PropDetailsForm = (props) => {
         <label className="checkbox">
           <input
             type="checkbox"
-            onChange={(e) => setArrayValues("contactMethods", e.target.value)}
+            onChange={(e) =>
+              props.dispatch(setArrayValues("contactMethods", e.target.value))
+            }
             value="Registered sites"
           />
           Registered Site
