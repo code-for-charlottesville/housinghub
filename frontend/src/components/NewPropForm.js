@@ -48,6 +48,8 @@ const NewPropForm = (props) => {
                 className="button is-link"
                 title="Add property"
                 onClick={() => {
+                  let year = props.fields.dateFirstAvailable.match(/[0-9]{4}/);
+                  props.dispatch(setPropertyField("yearAvailable", parseInt(year, 10)));
                   addProperty();
                 }}
               >
