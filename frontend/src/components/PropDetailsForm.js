@@ -3,7 +3,7 @@ import "bulma/css/bulma.css";
 import { InputField } from "./InputField";
 import { InputFieldNum } from "./InputFieldNum";
 import { connect } from "react-redux";
-import { setPropertyField, setArrayValues } from "../actions/property";
+import { setAddPropertyField } from "../actions/property";
 
 const PropDetailsForm = (props) => {
   return (
@@ -12,7 +12,7 @@ const PropDetailsForm = (props) => {
         inputName="Property Name (if multi-unit complex): "
         inputType="text"
         inputPh="Ex. Flats"
-        onChangeFn={setPropertyField}
+        onChangeFn={setAddPropertyField}
         onChangeFld="propertyName"
         inputValue={props.addProperty.fields.propertyName}
       />
@@ -20,7 +20,7 @@ const PropDetailsForm = (props) => {
         inputName="Address: "
         inputType="text"
         inputPh="Ex. 1111 Main Street"
-        onChangeFn={setPropertyField}
+        onChangeFn={setAddPropertyField}
         onChangeFld="address"
         inputValue={props.addProperty.fields.address}
       />
@@ -28,7 +28,7 @@ const PropDetailsForm = (props) => {
         inputName="Unit / Apt no. (if applicable): "
         inputType="text"
         inputPh="Ex. Apt B"
-        onChangeFn={setPropertyField}
+        onChangeFn={setAddPropertyField}
         onChangeFld="unitAptNum"
         inputValue={props.addProperty.fields.unitAptNum}
       />
@@ -36,7 +36,7 @@ const PropDetailsForm = (props) => {
         inputName="Floor no. (if applicable): "
         inputType="text"
         inputPh="Ex. 2"
-        onChangeFn={setPropertyField}
+        onChangeFn={setAddPropertyField}
         onChangeFld="floor"
         inputValue={props.addProperty.fields.floor}
       />
@@ -44,7 +44,7 @@ const PropDetailsForm = (props) => {
         inputName="Zip Code: "
         inputType="text"
         inputPh="Ex. 22902"
-        onChangeFn={setPropertyField}
+        onChangeFn={setAddPropertyField}
         onChangeFld="zipCode"
         inputValue={props.addProperty.fields.zipCode}
       />
@@ -52,7 +52,7 @@ const PropDetailsForm = (props) => {
         inputName="Type of Housing: "
         inputType="text"
         inputPh="Ex. Apartment"
-        onChangeFn={setPropertyField}
+        onChangeFn={setAddPropertyField}
         onChangeFld="housingType"
         inputValue={props.addProperty.fields.housingType}
       />
@@ -64,7 +64,7 @@ const PropDetailsForm = (props) => {
           <select
             id="numBeds"
             onChange={(e) =>
-              props.dispatch(setPropertyField("bedrooms", e.target.value))
+              props.dispatch(setAddPropertyField("bedrooms", e.target.value))
             }
             value={props.addProperty.fields.bedrooms}
           >
@@ -86,7 +86,7 @@ const PropDetailsForm = (props) => {
           <select
             id="numBath"
             onChange={(e) =>
-              props.dispatch(setPropertyField("bathrooms", e.target.value))
+              props.dispatch(setAddPropertyField("bathrooms", e.target.value))
             }
             value={props.addProperty.fields.bathrooms}
           >
@@ -110,7 +110,7 @@ const PropDetailsForm = (props) => {
           <select
             id="numBathsShared"
             onChange={(e) =>
-              props.dispatch(setPropertyField("sharedBathrooms", e.target.value))
+              props.dispatch(setAddPropertyField("sharedBathrooms", e.target.value))
             }
             value={props.addProperty.fields.sharedBathrooms}
           >
@@ -131,7 +131,7 @@ const PropDetailsForm = (props) => {
           <select
             id="basementBool"
             onChange={(e) =>
-              props.dispatch(setPropertyField("hasBasement", e.target.value))
+              props.dispatch(setAddPropertyField("hasBasement", e.target.value))
             }
             value={props.addProperty.fields.hasBasement}
           >
@@ -144,7 +144,7 @@ const PropDetailsForm = (props) => {
         inputName="Property's School District: "
         inputType="text"
         inputPh="Ex. Albermale"
-        onChangeFn={setPropertyField}
+        onChangeFn={setAddPropertyField}
         onChangeFld="schoolDistrict"
         inputValue={props.addProperty.fields.schoolDistrict}
       />
@@ -156,7 +156,7 @@ const PropDetailsForm = (props) => {
           <select
             id="busStopBool"
             onChange={(e) =>
-              props.dispatch(setPropertyField("busLine", e.target.value))
+              props.dispatch(setAddPropertyField("busLine", e.target.value))
             }
             value={props.addProperty.fields.busLineStop}
           >
@@ -173,7 +173,7 @@ const PropDetailsForm = (props) => {
           <select
             id="wheelchairBool"
             onChange={(e) =>
-              props.dispatch(setPropertyField("wheelchairAccessibility", e.target.value))
+              props.dispatch(setAddPropertyField("wheelchairAccessibility", e.target.value))
             }
             value={props.addProperty.fields.wheelchairAccessibility}
           >
@@ -190,7 +190,7 @@ const PropDetailsForm = (props) => {
           <select
             id="elevatorBool"
             onChange={(e) =>
-              props.dispatch(setPropertyField("elevator", e.target.value))
+              props.dispatch(setAddPropertyField("elevator", e.target.value))
             }
             value={props.addProperty.fields.elevator}
           >
@@ -204,14 +204,14 @@ const PropDetailsForm = (props) => {
           format MM-dd-YYYY. The default will be the current date if left as is."
         inputType="date"
         inputPh="MM-dd-YYYY"
-        onChangeFn={setPropertyField}
+        onChangeFn={setAddPropertyField}
         onChangeFld="dateFirstAvailable"
       />
       <InputFieldNum
         inputName="Please specify the potential months available for the property."
         inputType="number"
         inputPh="Ex. 12"
-        onChangeFn={setPropertyField}
+        onChangeFn={setAddPropertyField}
         onChangeFld="potentialMonthAvailable"
         inputValue={props.addProperty.fields.potentialMonthAvailable}
       />
@@ -220,14 +220,14 @@ const PropDetailsForm = (props) => {
         The default will be the current date if left as is."
         inputType="date"
         inputPh="Ex. 01-15-2020"
-        onChangeFn={setPropertyField}
+        onChangeFn={setAddPropertyField}
         onChangeFld="listingDate"
       />
       <InputField
         inputName="Please specify below where this property was seen listed."
         inputType="text"
         inputPh="Ex. Trulia"
-        onChangeFn={setPropertyField}
+        onChangeFn={setAddPropertyField}
         onChangeFld="whereListed"
         inputValue={props.addProperty.fields.whereListed}
       />
@@ -240,7 +240,7 @@ const PropDetailsForm = (props) => {
           <input
             type="checkbox"
             onChange={(e) =>
-              props.dispatch(setArrayValues("contactMethod", e.target.value))
+              props.dispatch(setAddPropertyField("contactMethod", e.target.value))
             }
             value="Phone"
           />
@@ -251,7 +251,7 @@ const PropDetailsForm = (props) => {
           <input
             type="checkbox"
             onChange={(e) =>
-              props.dispatch(setArrayValues("contactMethod", e.target.value))
+              props.dispatch(setAddPropertyField("contactMethod", e.target.value))
             }
             value="Email"
           />
@@ -262,7 +262,7 @@ const PropDetailsForm = (props) => {
           <input
             type="checkbox"
             onChange={(e) =>
-              props.dispatch(setArrayValues("contactMethod", e.target.value))
+              props.dispatch(setAddPropertyField("contactMethod", e.target.value))
             }
             value="Registered sites"
           />
@@ -274,7 +274,7 @@ const PropDetailsForm = (props) => {
       The default will be the current date if left as is."
         inputType="date"
         inputPh="MM-dd-YYY"
-        onChangeFn={setPropertyField}
+        onChangeFn={setAddPropertyField}
         onChangeFld="lastContactDate"
       />
     </div>

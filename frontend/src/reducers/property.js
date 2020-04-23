@@ -53,40 +53,42 @@ const propertyState = (state = initialState, action) => {
         ...state,
         error: action.error,
       });
-    case "SET_PROPERTY_FIELD":
-      return Object.assign({}, state, {
-        ...state,
-        addProperty: {
-          fields: {
-            ...state.addProperty.fields,
-            [action.fieldName]: action.newValue,
-          },
-        },
-      });
-    case "SET_ARRAY_VALUES":
-      let index = state.addProperty.fields[action.arrayName].indexOf(action.item);
-      if (index > -1) {
-        return Object.assign({}, state, {
-          ...state,
-          addProperty: {
-            fields: {
-              ...state.addProperty.fields,
-              [action.arrayName]: state.addProperty.fields[action.arrayName].filter(
-                (item) => item !== action.item
-              ),
+    case "SET_ADD_PROPERTY_FIELD":
+      if (Array.isArray(state.addProperty.fields[action.fieldName])) {
+        let index = state.addProperty.fields[action.fieldName].indexOf(action.newValue);
+        if (index > -1) {
+          return Object.assign({}, state, {
+            ...state,
+            addProperty: {
+              fields: {
+                ...state.addProperty.fields,
+                [action.fieldName]: state.addProperty.fields[action.fieldName].filter(
+                  (item) => item !== action.newValue
+                ),
+              },
             },
-          },
-        });
+          });
+        } else {
+          return Object.assign({}, state, {
+            ...state,
+            addProperty: {
+              fields: {
+                ...state.addProperty.fields,
+                [action.fieldName]: [
+                  ...state.addProperty.fields[action.fieldName],
+                  action.newValue
+                ],
+              },
+            },
+          });
+        }
       } else {
         return Object.assign({}, state, {
           ...state,
           addProperty: {
             fields: {
               ...state.addProperty.fields,
-              [action.arrayName]: [
-                ...state.addProperty.fields[action.arrayName],
-                action.item,
-              ],
+              [action.fieldName]: action.newValue,
             },
           },
         });

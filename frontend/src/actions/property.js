@@ -16,19 +16,11 @@ export function setNewPropFailure(error) {
   };
 }
 
-export function setPropertyField(fieldName, newValue) {
+export function setAddPropertyField(fieldName, newValue) {
   return {
-    type: "SET_PROPERTY_FIELD",
+    type: "SET_ADD_PROPERTY_FIELD",
     fieldName,
     newValue,
-  };
-}
-
-export function setArrayValues(arrayName, item) {
-  return {
-    type: "SET_ARRAY_VALUES",
-    arrayName,
-    item,
   };
 }
 

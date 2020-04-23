@@ -3,7 +3,7 @@ import "bulma/css/bulma.css";
 import { InputField } from "./InputField";
 import { InputFieldNum } from "./InputFieldNum";
 import { connect } from "react-redux";
-import { setPropertyField, setArrayValues } from "../actions/property";
+import { setAddPropertyField } from "../actions/property";
 
 const PaymentDetailsForm = (props) => {
   return (
@@ -12,7 +12,7 @@ const PaymentDetailsForm = (props) => {
         inputName="What is the Monthly Rent of the Property?"
         inputType="number"
         inputPh="Ex. 1200"
-        onChangeFn={setPropertyField}
+        onChangeFn={setAddPropertyField}
         onChangeFld="monthlyRent"
         inputValue={props.addProperty.fields.monthlyRent}
       />
@@ -20,7 +20,7 @@ const PaymentDetailsForm = (props) => {
         inputName="Please specify the application fee, if any, for the property."
         inputType="number"
         inputPh="Ex. 250"
-        onChangeFn={setPropertyField}
+        onChangeFn={setAddPropertyField}
         onChangeFld="applicationFee"
         inputValue={props.addProperty.fields.applicationFee}
       />
@@ -28,7 +28,7 @@ const PaymentDetailsForm = (props) => {
         inputName="Please specify the deposit amount for the property"
         inputType="number"
         inputPh="Ex. 800"
-        onChangeFn={setPropertyField}
+        onChangeFn={setAddPropertyField}
         onChangeFld="deposit"
         inputValue={props.addProperty.fields.deposit}
       />
@@ -40,7 +40,7 @@ const PaymentDetailsForm = (props) => {
           <select
             id="lastMonthBool"
             onChange={(e) =>
-              props.dispatch(setPropertyField("lastMonthRentRequired", e.target.value))
+              props.dispatch(setAddPropertyField("lastMonthRentRequired", e.target.value))
             }
             value={props.addProperty.fields.lastMonthRentRequired}
           >
@@ -58,9 +58,9 @@ const PaymentDetailsForm = (props) => {
             type="checkbox"
             onChange={(e) => {
               props.dispatch(
-                setArrayValues("voucherTypeAccepted", e.target.value)
+                setAddPropertyField("voucherTypeAccepted", e.target.value)
               );
-              props.dispatch(setArrayValues("voucherTypeNotAccepted", e.target.value));
+              props.dispatch(setAddPropertyField("voucherTypeNotAccepted", e.target.value));
             }}
             value="CSRAP"
           />
@@ -72,9 +72,9 @@ const PaymentDetailsForm = (props) => {
             type="checkbox"
             onChange={(e) => {
               props.dispatch(
-                setArrayValues("voucherTypeAccepted", e.target.value)
+                setAddPropertyField("voucherTypeAccepted", e.target.value)
               );
-              props.dispatch(setArrayValues("voucherTypeNotAccepted", e.target.value));
+              props.dispatch(setAddPropertyField("voucherTypeNotAccepted", e.target.value));
             }}
             value="HCV"
           />
@@ -86,9 +86,9 @@ const PaymentDetailsForm = (props) => {
             type="checkbox"
             onChange={(e) => {
               props.dispatch(
-                setArrayValues("voucherTypeAccepted", e.target.value)
+                setAddPropertyField("voucherTypeAccepted", e.target.value)
               );
-              props.dispatch(setArrayValues("voucherTypeNotAccepted", e.target.value));
+              props.dispatch(setAddPropertyField("voucherTypeNotAccepted", e.target.value));
             }}
             value="MSV"
           />
@@ -100,9 +100,9 @@ const PaymentDetailsForm = (props) => {
             type="checkbox"
             onChange={(e) => {
               props.dispatch(
-                setArrayValues("voucherTypeAccepted", e.target.value)
+                setAddPropertyField("voucherTypeAccepted", e.target.value)
               );
-              props.dispatch(setArrayValues("voucherTypeNotAccepted", e.target.value));
+              props.dispatch(setAddPropertyField("voucherTypeNotAccepted", e.target.value));
             }}
             value="Voucher 4"
           />
@@ -114,9 +114,9 @@ const PaymentDetailsForm = (props) => {
             type="checkbox"
             onChange={(e) => {
               props.dispatch(
-                setArrayValues("voucherTypeAccepted", e.target.value)
+                setAddPropertyField("voucherTypeAccepted", e.target.value)
               );
-              props.dispatch(setArrayValues("voucherTypeNotAccepted", e.target.value));
+              props.dispatch(setAddPropertyField("voucherTypeNotAccepted", e.target.value));
             }}
             value="Voucher 5"
           />
@@ -128,7 +128,7 @@ const PaymentDetailsForm = (props) => {
                                credit screening company used."
         inputType="text"
         inputPh="Ex. Creditrating.com"
-        onChangeFn={setPropertyField}
+        onChangeFn={setAddPropertyField}
         onChangeFld="creditScreeningCompany"
         inputValue={props.addProperty.fields.creditScreeningCompany}
       />
@@ -137,7 +137,7 @@ const PaymentDetailsForm = (props) => {
                                checks for the property."
         inputType="text"
         inputPh="Ex. background-screening.com"
-        onChangeFn={setPropertyField}
+        onChangeFn={setAddPropertyField}
         onChangeFld="backgroundScreeningCompany"
         inputValue={props.addProperty.fields.backgroundScreeningCompany}
       />
@@ -149,7 +149,7 @@ const PaymentDetailsForm = (props) => {
           <select
             id="backgroundBool"
             onChange={(e) =>
-              props.dispatch(setPropertyField("allowCriminalRecords", e.target.value))
+              props.dispatch(setAddPropertyField("allowCriminalRecords", e.target.value))
             }
             value={props.addProperty.fields.allowCriminalRecords}
           >

@@ -2,7 +2,7 @@ import React from "react";
 import "bulma/css/bulma.css";
 import { connect } from "react-redux";
 import {
-  setPropertyField,
+  setAddPropertyField,
   addProperty,
 } from "../actions/property";
 import PropDetailsForm from "./PropDetailsForm";
@@ -31,7 +31,7 @@ const NewPropForm = (props) => {
                 className="textarea"
                 placeholder="Ex. Property's rent includes utilities..."
                 onChange={(e) =>
-                  props.dispatch(setPropertyField("notes", e.target.value))
+                  props.dispatch(setAddPropertyField("notes", e.target.value))
                 }
                 value={props.addProperty.fields.notes}
               />
@@ -49,7 +49,7 @@ const NewPropForm = (props) => {
                 title="Add property"
                 onClick={() => {
                   let year = props.addProperty.fields.dateFirstAvailable.match(/[0-9]{4}/);
-                  props.dispatch(setPropertyField("yearAvailable", parseInt(year, 10)));
+                  props.dispatch(setAddPropertyField("yearAvailable", parseInt(year, 10)));
                   addProperty();
                 }}
               >
