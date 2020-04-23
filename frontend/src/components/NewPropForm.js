@@ -33,7 +33,7 @@ const NewPropForm = (props) => {
                 onChange={(e) =>
                   props.dispatch(setPropertyField("notes", e.target.value))
                 }
-                value={props.fields.notes}
+                value={props.addProperty.fields.notes}
               />
             </div>
           </div>
@@ -48,7 +48,7 @@ const NewPropForm = (props) => {
                 className="button is-link"
                 title="Add property"
                 onClick={() => {
-                  let year = props.fields.dateFirstAvailable.match(/[0-9]{4}/);
+                  let year = props.addProperty.fields.dateFirstAvailable.match(/[0-9]{4}/);
                   props.dispatch(setPropertyField("yearAvailable", parseInt(year, 10)));
                   addProperty();
                 }}
@@ -70,7 +70,9 @@ const NewPropForm = (props) => {
 
 function mapStateToProps(state) {
   return {
-    fields: state.propertyState.fields,
+    addProperty: {
+     fields: state.propertyState.addProperty.fields,
+    },
   };
 }
 

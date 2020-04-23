@@ -14,7 +14,7 @@ const PropDetailsForm = (props) => {
         inputPh="Ex. Flats"
         onChangeFn={setPropertyField}
         onChangeFld="propertyName"
-        inputValue={props.fields.propertyName}
+        inputValue={props.addProperty.fields.propertyName}
       />
       <InputField
         inputName="Address: "
@@ -22,7 +22,7 @@ const PropDetailsForm = (props) => {
         inputPh="Ex. 1111 Main Street"
         onChangeFn={setPropertyField}
         onChangeFld="address"
-        inputValue={props.fields.address}
+        inputValue={props.addProperty.fields.address}
       />
       <InputField
         inputName="Unit / Apt no. (if applicable): "
@@ -30,7 +30,7 @@ const PropDetailsForm = (props) => {
         inputPh="Ex. Apt B"
         onChangeFn={setPropertyField}
         onChangeFld="unitAptNum"
-        inputValue={props.fields.unitAptNum}
+        inputValue={props.addProperty.fields.unitAptNum}
       />
       <InputField
         inputName="Floor no. (if applicable): "
@@ -38,7 +38,7 @@ const PropDetailsForm = (props) => {
         inputPh="Ex. 2"
         onChangeFn={setPropertyField}
         onChangeFld="floor"
-        inputValue={props.fields.floor}
+        inputValue={props.addProperty.fields.floor}
       />
       <InputField
         inputName="Zip Code: "
@@ -46,7 +46,7 @@ const PropDetailsForm = (props) => {
         inputPh="Ex. 22902"
         onChangeFn={setPropertyField}
         onChangeFld="zipCode"
-        inputValue={props.fields.zipCode}
+        inputValue={props.addProperty.fields.zipCode}
       />
       <InputField
         inputName="Type of Housing: "
@@ -54,7 +54,7 @@ const PropDetailsForm = (props) => {
         inputPh="Ex. Apartment"
         onChangeFn={setPropertyField}
         onChangeFld="housingType"
-        inputValue={props.fields.housingType}
+        inputValue={props.addProperty.fields.housingType}
       />
       <div className="field">
         <label className="label" htmlFor="numBeds">
@@ -66,7 +66,7 @@ const PropDetailsForm = (props) => {
             onChange={(e) =>
               props.dispatch(setPropertyField("bedrooms", e.target.value))
             }
-            value={props.fields.bedrooms}
+            value={props.addProperty.fields.bedrooms}
           >
             <option value="1">1</option>
             <option value="2">2</option>
@@ -88,7 +88,7 @@ const PropDetailsForm = (props) => {
             onChange={(e) =>
               props.dispatch(setPropertyField("bathrooms", e.target.value))
             }
-            value={props.fields.bathrooms}
+            value={props.addProperty.fields.bathrooms}
           >
             <option value="1">1</option>
             <option value="1.5">1.5</option>
@@ -112,7 +112,7 @@ const PropDetailsForm = (props) => {
             onChange={(e) =>
               props.dispatch(setPropertyField("sharedBathrooms", e.target.value))
             }
-            value={props.fields.sharedBathrooms}
+            value={props.addProperty.fields.sharedBathrooms}
           >
             <option value="0">0</option>
             <option value="1">1</option>
@@ -133,7 +133,7 @@ const PropDetailsForm = (props) => {
             onChange={(e) =>
               props.dispatch(setPropertyField("hasBasement", e.target.value))
             }
-            value={props.fields.hasBasement}
+            value={props.addProperty.fields.hasBasement}
           >
             <option value="false">No</option>
             <option value="true">Yes</option>
@@ -146,7 +146,7 @@ const PropDetailsForm = (props) => {
         inputPh="Ex. Albermale"
         onChangeFn={setPropertyField}
         onChangeFld="schoolDistrict"
-        inputValue={props.fields.schoolDistrict}
+        inputValue={props.addProperty.fields.schoolDistrict}
       />
       <div className="field">
         <label className="label" htmlFor="busStopBool">
@@ -158,7 +158,7 @@ const PropDetailsForm = (props) => {
             onChange={(e) =>
               props.dispatch(setPropertyField("busLine", e.target.value))
             }
-            value={props.fields.busLineStop}
+            value={props.addProperty.fields.busLineStop}
           >
             <option value="false">No</option>
             <option value="true">Yes</option>
@@ -175,7 +175,7 @@ const PropDetailsForm = (props) => {
             onChange={(e) =>
               props.dispatch(setPropertyField("wheelchairAccessibility", e.target.value))
             }
-            value={props.fields.wheelchairAccessibility}
+            value={props.addProperty.fields.wheelchairAccessibility}
           >
             <option value="false">No</option>
             <option value="true">Yes</option>
@@ -192,7 +192,7 @@ const PropDetailsForm = (props) => {
             onChange={(e) =>
               props.dispatch(setPropertyField("elevator", e.target.value))
             }
-            value={props.fields.elevator}
+            value={props.addProperty.fields.elevator}
           >
             <option value="false">No</option>
             <option value="true">Yes</option>
@@ -213,7 +213,7 @@ const PropDetailsForm = (props) => {
         inputPh="Ex. 12"
         onChangeFn={setPropertyField}
         onChangeFld="potentialMonthAvailable"
-        inputValue={props.fields.potentialMonthAvailable}
+        inputValue={props.addProperty.fields.potentialMonthAvailable}
       />
       <InputField
         inputName="Please specify below when the property was first listed using the format MM-dd-YYYY.
@@ -229,7 +229,7 @@ const PropDetailsForm = (props) => {
         inputPh="Ex. Trulia"
         onChangeFn={setPropertyField}
         onChangeFld="whereListed"
-        inputValue={props.fields.whereListed}
+        inputValue={props.addProperty.fields.whereListed}
       />
       <div className="field">
         <label className="label" htmlFor="contactMethod">
@@ -283,7 +283,9 @@ const PropDetailsForm = (props) => {
 
 function mapStateToProps(state) {
   return {
-    fields: state.propertyState.fields,
+    addProperty: {
+      fields: state.propertyState.addProperty.fields,
+    },
   };
 }
 

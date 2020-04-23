@@ -38,7 +38,7 @@ export function setArrayValues(arrayName, item) {
 export function addProperty() {
   store.dispatch(setLoading(true));
   // Make API call to backend /property
-  postProperty(store.getState().propertyState.fields).then((response) => {
+  postProperty(store.getState().propertyState.addProperty.fields).then((response) => {
     store.dispatch(setLoading(false));
     if (response && response.id) {
       store.dispatch(setNewPropSuccess(response.id));
