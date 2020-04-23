@@ -4,24 +4,24 @@ import { connect } from "react-redux";
 import { setAddPropertyField } from "../actions/property";
 
 const VoucherInputs = (props) => {
-  let accepted = props.addProperty.fields.voucherTypeAccepted;
-  let notAccepted = props.addProperty.fields.voucherTypeNotAccepted;
+  let accepted = props.addProperty.fields.voucher_type_accepted;
+  let notAccepted = props.addProperty.fields.voucher_type_not_accepted;
   
   function handleYes(value) {
     if (!accepted.includes(value)) {
-      props.dispatch(setAddPropertyField("voucherTypeAccepted", value));
+      props.dispatch(setAddPropertyField("voucher_type_accepted", value));
     }
     if (notAccepted.includes(value)) {
-      props.dispatch(setAddPropertyField("voucherTypeNotAccepted", value));
+      props.dispatch(setAddPropertyField("voucher_type_not_accepted", value));
     }
   };
   
   function handleNo(value) {
     if (accepted.includes(value)) {
-      props.dispatch(setAddPropertyField("voucherTypeAccepted", value));
+      props.dispatch(setAddPropertyField("voucher_type_accepted", value));
     }
     if (!notAccepted.includes(value)) {
-      props.dispatch(setAddPropertyField("voucherTypeNotAccepted", value));
+      props.dispatch(setAddPropertyField("voucher_type_not_accepted", value));
     }
   };
   return (

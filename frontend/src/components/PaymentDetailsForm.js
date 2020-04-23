@@ -14,16 +14,16 @@ const PaymentDetailsForm = (props) => {
         inputType="number"
         inputPh="Ex. 1200"
         onChangeFn={setAddPropertyField}
-        onChangeFld="monthlyRent"
-        inputValue={props.addProperty.fields.monthlyRent}
+        onChangeFld="monthly_rent"
+        inputValue={props.addProperty.fields.monthly_rent}
       />
       <InputFieldNum
         inputName="Please specify the application fee, if any, for the property."
         inputType="number"
         inputPh="Ex. 250"
         onChangeFn={setAddPropertyField}
-        onChangeFld="applicationFee"
-        inputValue={props.addProperty.fields.applicationFee}
+        onChangeFld="application_fee"
+        inputValue={props.addProperty.fields.application_fee}
       />
       <InputFieldNum
         inputName="Please specify the deposit amount for the property"
@@ -42,10 +42,10 @@ const PaymentDetailsForm = (props) => {
             id="lastMonthBool"
             onChange={(e) =>
               props.dispatch(
-                setAddPropertyField("lastMonthRentRequired", e.target.value)
+                setAddPropertyField("last_month_rent_required", e.target.value)
               )
             }
-            value={props.addProperty.fields.lastMonthRentRequired}
+            value={props.addProperty.fields.last_month_rent_required}
           >
             <option value="false">No</option>
             <option value="true">Yes</option>
@@ -59,8 +59,8 @@ const PaymentDetailsForm = (props) => {
         inputType="text"
         inputPh="Ex. Creditrating.com"
         onChangeFn={setAddPropertyField}
-        onChangeFld="creditScreeningCompany"
-        inputValue={props.addProperty.fields.creditScreeningCompany}
+        onChangeFld="credit_screening_company"
+        inputValue={props.addProperty.fields.credit_screening_company}
       />
       <InputField
         inputName="Please specify the company typically used to conduct background
@@ -68,8 +68,8 @@ const PaymentDetailsForm = (props) => {
         inputType="text"
         inputPh="Ex. background-screening.com"
         onChangeFn={setAddPropertyField}
-        onChangeFld="backgroundScreeningCompany"
-        inputValue={props.addProperty.fields.backgroundScreeningCompany}
+        onChangeFld="background_screening_company"
+        inputValue={props.addProperty.fields.background_screening_company}
       />
       <div className="field">
         <label className="label" htmlFor="backgroundBool">
@@ -80,10 +80,10 @@ const PaymentDetailsForm = (props) => {
             id="backgroundBool"
             onChange={(e) =>
               props.dispatch(
-                setAddPropertyField("allowCriminalRecords", e.target.value)
+                setAddPropertyField("allow_criminal_records", e.target.value)
               )
             }
-            value={props.addProperty.fields.allowCriminalRecords}
+            value={props.addProperty.fields.allow_criminal_records}
           >
             <option value="false">No</option>
             <option value="true">Yes</option>
