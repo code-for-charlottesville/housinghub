@@ -83,3 +83,11 @@
 .ListContainer {
   margin: 15px;
 }
+
+.radioBox {
+  display: flex;
+}
+
+.radioBox > .radioLabel {
+  margin-right: 1em;
+}

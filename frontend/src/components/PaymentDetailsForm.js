@@ -40,7 +40,9 @@ const PaymentDetailsForm = (props) => {
           <select
             id="lastMonthBool"
             onChange={(e) =>
-              props.dispatch(setAddPropertyField("lastMonthRentRequired", e.target.value))
+              props.dispatch(
+                setAddPropertyField("lastMonthRentRequired", e.target.value)
+              )
             }
             value={props.addProperty.fields.lastMonthRentRequired}
           >
@@ -51,77 +53,344 @@ const PaymentDetailsForm = (props) => {
       </div>
       <div className="field">
         <label className="label" htmlFor="vouchersAccepted">
-          Please check all vouchers accepted as payment for the property.
+          Please specify 'Yes' or 'No' for the vouchers accepted as payment for
+          the property.
         </label>
-        <label className="checkbox">
-          <input
-            type="checkbox"
-            onChange={(e) => {
-              props.dispatch(
-                setAddPropertyField("voucherTypeAccepted", e.target.value)
-              );
-              props.dispatch(setAddPropertyField("voucherTypeNotAccepted", e.target.value));
-            }}
-            value="CSRAP"
-          />
-          CSRAP
-        </label>
-        <br />
-        <label className="checkbox">
-          <input
-            type="checkbox"
-            onChange={(e) => {
-              props.dispatch(
-                setAddPropertyField("voucherTypeAccepted", e.target.value)
-              );
-              props.dispatch(setAddPropertyField("voucherTypeNotAccepted", e.target.value));
-            }}
-            value="HCV"
-          />
-          HCV
-        </label>
-        <br />
-        <label className="checkbox">
-          <input
-            type="checkbox"
-            onChange={(e) => {
-              props.dispatch(
-                setAddPropertyField("voucherTypeAccepted", e.target.value)
-              );
-              props.dispatch(setAddPropertyField("voucherTypeNotAccepted", e.target.value));
-            }}
-            value="MSV"
-          />
-          MSV
-        </label>
-        <br />
-        <label className="checkbox">
-          <input
-            type="checkbox"
-            onChange={(e) => {
-              props.dispatch(
-                setAddPropertyField("voucherTypeAccepted", e.target.value)
-              );
-              props.dispatch(setAddPropertyField("voucherTypeNotAccepted", e.target.value));
-            }}
-            value="Voucher 4"
-          />
-          Voucher 4
-        </label>
-        <br />
-        <label className="checkbox">
-          <input
-            type="checkbox"
-            onChange={(e) => {
-              props.dispatch(
-                setAddPropertyField("voucherTypeAccepted", e.target.value)
-              );
-              props.dispatch(setAddPropertyField("voucherTypeNotAccepted", e.target.value));
-            }}
-            value="Voucher 5"
-          />
-          Voucher 5
-        </label>
+        <div className="radioBox">
+          <label className="label radioLabel">CSRAP</label>
+          <div className="control">
+            <label className="radio">
+              <input
+                type="radio"
+                name="CSRAP"
+                onChange={(e) => {
+                  if (
+                    !props.addProperty.fields.voucherTypeAccepted.includes(
+                      e.target.value
+                    )
+                  ) {
+                    props.dispatch(
+                      setAddPropertyField("voucherTypeAccepted", e.target.value)
+                    );
+                  }
+                  if (
+                    props.addProperty.fields.voucherTypeNotAccepted.includes(
+                      e.target.value
+                    )
+                  ) {
+                    props.dispatch(
+                      setAddPropertyField(
+                        "voucherTypeNotAccepted",
+                        e.target.value
+                      )
+                    );
+                  }
+                }}
+                value="CSRAP"
+              />
+              Yes
+            </label>
+            <label className="radio">
+              <input
+                type="radio"
+                name="CSRAP"
+                onChange={(e) => {
+                  if (
+                    props.addProperty.fields.voucherTypeAccepted.includes(
+                      e.target.value
+                    )
+                  ) {
+                    props.dispatch(
+                      setAddPropertyField("voucherTypeAccepted", e.target.value)
+                    );
+                  }
+                  if (
+                    !props.addProperty.fields.voucherTypeNotAccepted.includes(
+                      e.target.value
+                    )
+                  ) {
+                    props.dispatch(
+                      setAddPropertyField(
+                        "voucherTypeNotAccepted",
+                        e.target.value
+                      )
+                    );
+                  }
+                }}
+                value="CSRAP"
+              />
+              No
+            </label>
+          </div>
+        </div>
+        <div className="radioBox">
+          <label className="label radioLabel">HCV</label>
+          <div className="control">
+            <label className="radio">
+              <input
+                type="radio"
+                name="HCV"
+                onChange={(e) => {
+                  if (
+                    !props.addProperty.fields.voucherTypeAccepted.includes(
+                      e.target.value
+                    )
+                  ) {
+                    props.dispatch(
+                      setAddPropertyField("voucherTypeAccepted", e.target.value)
+                    );
+                  }
+                  if (
+                    props.addProperty.fields.voucherTypeNotAccepted.includes(
+                      e.target.value
+                    )
+                  ) {
+                    props.dispatch(
+                      setAddPropertyField(
+                        "voucherTypeNotAccepted",
+                        e.target.value
+                      )
+                    );
+                  }
+                }}
+                value="HCV"
+              />
+              Yes
+            </label>
+            <label className="radio">
+              <input
+                type="radio"
+                name="HCV"
+                onChange={(e) => {
+                  if (
+                    props.addProperty.fields.voucherTypeAccepted.includes(
+                      e.target.value
+                    )
+                  ) {
+                    props.dispatch(
+                      setAddPropertyField("voucherTypeAccepted", e.target.value)
+                    );
+                  }
+                  if (
+                    !props.addProperty.fields.voucherTypeNotAccepted.includes(
+                      e.target.value
+                    )
+                  ) {
+                    props.dispatch(
+                      setAddPropertyField(
+                        "voucherTypeNotAccepted",
+                        e.target.value
+                      )
+                    );
+                  }
+                }}
+                value="HCV"
+              />
+              No
+            </label>
+          </div>
+        </div>
+        <div className="radioBox">
+          <label className="label radioLabel">MSV</label>
+          <div className="control">
+            <label className="radio">
+              <input
+                type="radio"
+                name="MSV"
+                onChange={(e) => {
+                  if (
+                    !props.addProperty.fields.voucherTypeAccepted.includes(
+                      e.target.value
+                    )
+                  ) {
+                    props.dispatch(
+                      setAddPropertyField("voucherTypeAccepted", e.target.value)
+                    );
+                  }
+                  if (
+                    props.addProperty.fields.voucherTypeNotAccepted.includes(
+                      e.target.value
+                    )
+                  ) {
+                    props.dispatch(
+                      setAddPropertyField(
+                        "voucherTypeNotAccepted",
+                        e.target.value
+                      )
+                    );
+                  }
+                }}
+                value="MSV"
+              />
+              Yes
+            </label>
+            <label className="radio">
+              <input
+                type="radio"
+                name="MSV"
+                onChange={(e) => {
+                  if (
+                    props.addProperty.fields.voucherTypeAccepted.includes(
+                      e.target.value
+                    )
+                  ) {
+                    props.dispatch(
+                      setAddPropertyField("voucherTypeAccepted", e.target.value)
+                    );
+                  }
+                  if (
+                    !props.addProperty.fields.voucherTypeNotAccepted.includes(
+                      e.target.value
+                    )
+                  ) {
+                    props.dispatch(
+                      setAddPropertyField(
+                        "voucherTypeNotAccepted",
+                        e.target.value
+                      )
+                    );
+                  }
+                }}
+                value="MSV"
+              />
+              No
+            </label>
+          </div>
+        </div>
+        <div className="radioBox">
+          <label className="label radioLabel">Voucher 4</label>
+          <div className="control">
+            <label className="radio">
+              <input
+                type="radio"
+                name="Voucher 4"
+                onChange={(e) => {
+                  if (
+                    !props.addProperty.fields.voucherTypeAccepted.includes(
+                      e.target.value
+                    )
+                  ) {
+                    props.dispatch(
+                      setAddPropertyField("voucherTypeAccepted", e.target.value)
+                    );
+                  }
+                  if (
+                    props.addProperty.fields.voucherTypeNotAccepted.includes(
+                      e.target.value
+                    )
+                  ) {
+                    props.dispatch(
+                      setAddPropertyField(
+                        "voucherTypeNotAccepted",
+                        e.target.value
+                      )
+                    );
+                  }
+                }}
+                value="Voucher 4"
+              />
+              Yes
+            </label>
+            <label className="radio">
+              <input
+                type="radio"
+                name="Voucher 4"
+                onChange={(e) => {
+                  if (
+                    props.addProperty.fields.voucherTypeAccepted.includes(
+                      e.target.value
+                    )
+                  ) {
+                    props.dispatch(
+                      setAddPropertyField("voucherTypeAccepted", e.target.value)
+                    );
+                  }
+                  if (
+                    !props.addProperty.fields.voucherTypeNotAccepted.includes(
+                      e.target.value
+                    )
+                  ) {
+                    props.dispatch(
+                      setAddPropertyField(
+                        "voucherTypeNotAccepted",
+                        e.target.value
+                      )
+                    );
+                  }
+                }}
+                value="Voucher 4"
+              />
+              No
+            </label>
+          </div>
+        </div>
+        <div className="radioBox">
+          <label className="label radioLabel">Voucher 5</label>
+          <div className="control">
+            <label className="radio">
+              <input
+                type="radio"
+                name="Voucher 5"
+                onChange={(e) => {
+                  if (
+                    !props.addProperty.fields.voucherTypeAccepted.includes(
+                      e.target.value
+                    )
+                  ) {
+                    props.dispatch(
+                      setAddPropertyField("voucherTypeAccepted", e.target.value)
+                    );
+                  }
+                  if (
+                    props.addProperty.fields.voucherTypeNotAccepted.includes(
+                      e.target.value
+                    )
+                  ) {
+                    props.dispatch(
+                      setAddPropertyField(
+                        "voucherTypeNotAccepted",
+                        e.target.value
+                      )
+                    );
+                  }
+                }}
+                value="Voucher 5"
+              />
+              Yes
+            </label>
+            <label className="radio">
+              <input
+                type="radio"
+                name="Voucher 5"
+                onChange={(e) => {
+                  if (
+                    props.addProperty.fields.voucherTypeAccepted.includes(
+                      e.target.value
+                    )
+                  ) {
+                    props.dispatch(
+                      setAddPropertyField("voucherTypeAccepted", e.target.value)
+                    );
+                  }
+                  if (
+                    !props.addProperty.fields.voucherTypeNotAccepted.includes(
+                      e.target.value
+                    )
+                  ) {
+                    props.dispatch(
+                      setAddPropertyField(
+                        "voucherTypeNotAccepted",
+                        e.target.value
+                      )
+                    );
+                  }
+                }}
+                value="Voucher 5"
+              />
+              No
+            </label>
+          </div>
+        </div>
       </div>
       <InputField
         inputName="If the property requires a credit screening, please specify the
@@ -149,7 +418,9 @@ const PaymentDetailsForm = (props) => {
           <select
             id="backgroundBool"
             onChange={(e) =>
-              props.dispatch(setAddPropertyField("allowCriminalRecords", e.target.value))
+              props.dispatch(
+                setAddPropertyField("allowCriminalRecords", e.target.value)
+              )
             }
             value={props.addProperty.fields.allowCriminalRecords}
           >

@@ -110,7 +110,9 @@ const PropDetailsForm = (props) => {
           <select
             id="numBathsShared"
             onChange={(e) =>
-              props.dispatch(setAddPropertyField("sharedBathrooms", e.target.value))
+              props.dispatch(
+                setAddPropertyField("sharedBathrooms", e.target.value)
+              )
             }
             value={props.addProperty.fields.sharedBathrooms}
           >
@@ -173,7 +175,9 @@ const PropDetailsForm = (props) => {
           <select
             id="wheelchairBool"
             onChange={(e) =>
-              props.dispatch(setAddPropertyField("wheelchairAccessibility", e.target.value))
+              props.dispatch(
+                setAddPropertyField("wheelchairAccessibility", e.target.value)
+              )
             }
             value={props.addProperty.fields.wheelchairAccessibility}
           >
@@ -240,7 +244,9 @@ const PropDetailsForm = (props) => {
           <input
             type="checkbox"
             onChange={(e) =>
-              props.dispatch(setAddPropertyField("contactMethod", e.target.value))
+              props.dispatch(
+                setAddPropertyField("contactMethod", e.target.value)
+              )
             }
             value="Phone"
           />
@@ -251,7 +257,9 @@ const PropDetailsForm = (props) => {
           <input
             type="checkbox"
             onChange={(e) =>
-              props.dispatch(setAddPropertyField("contactMethod", e.target.value))
+              props.dispatch(
+                setAddPropertyField("contactMethod", e.target.value)
+              )
             }
             value="Email"
           />
@@ -262,7 +270,9 @@ const PropDetailsForm = (props) => {
           <input
             type="checkbox"
             onChange={(e) =>
-              props.dispatch(setAddPropertyField("contactMethod", e.target.value))
+              props.dispatch(
+                setAddPropertyField("contactMethod", e.target.value)
+              )
             }
             value="Registered sites"
           />

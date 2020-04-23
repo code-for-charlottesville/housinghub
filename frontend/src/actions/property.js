@@ -30,12 +30,14 @@ export function setAddPropertyField(fieldName, newValue) {
 export function addProperty() {
   store.dispatch(setLoading(true));
   // Make API call to backend /property
-  postProperty(store.getState().propertyState.addProperty.fields).then((response) => {
-    store.dispatch(setLoading(false));
-    if (response && response.id) {
-      store.dispatch(setNewPropSuccess(response.id));
-    } else {
-      store.dispatch(setNewPropFailure(response.error));
+  postProperty(store.getState().propertyState.addProperty.fields).then(
+    (response) => {
+      store.dispatch(setLoading(false));
+      if (response && response.id) {
+        store.dispatch(setNewPropSuccess(response.id));
+      } else {
+        store.dispatch(setNewPropFailure(response.error));
+      }
     }
-  });
+  );
 }

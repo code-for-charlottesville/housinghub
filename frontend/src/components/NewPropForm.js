@@ -1,10 +1,7 @@
 import React from "react";
 import "bulma/css/bulma.css";
 import { connect } from "react-redux";
-import {
-  setAddPropertyField,
-  addProperty,
-} from "../actions/property";
+import { setAddPropertyField, addProperty } from "../actions/property";
 import PropDetailsForm from "./PropDetailsForm";
 import PaymentDetailsForm from "./PaymentDetailsForm";
 
@@ -48,8 +45,12 @@ const NewPropForm = (props) => {
                 className="button is-link"
                 title="Add property"
                 onClick={() => {
-                  let year = props.addProperty.fields.dateFirstAvailable.match(/[0-9]{4}/);
-                  props.dispatch(setAddPropertyField("yearAvailable", parseInt(year, 10)));
+                  let year = props.addProperty.fields.dateFirstAvailable.match(
+                    /[0-9]{4}/
+                  );
+                  props.dispatch(
+                    setAddPropertyField("yearAvailable", parseInt(year, 10))
+                  );
                   addProperty();
                 }}
               >
@@ -71,7 +72,7 @@ const NewPropForm = (props) => {
 function mapStateToProps(state) {
   return {
     addProperty: {
-     fields: state.propertyState.addProperty.fields,
+      fields: state.propertyState.addProperty.fields,
     },
   };
 }
