@@ -6,7 +6,7 @@ import { setAddPropertyField } from "../actions/property";
 const VoucherInputs = (props) => {
   let accepted = props.addProperty.fields.voucher_type_accepted;
   let notAccepted = props.addProperty.fields.voucher_type_not_accepted;
-  
+
   function handleYes(value) {
     if (!accepted.includes(value)) {
       props.dispatch(setAddPropertyField("voucher_type_accepted", value));
@@ -14,8 +14,8 @@ const VoucherInputs = (props) => {
     if (notAccepted.includes(value)) {
       props.dispatch(setAddPropertyField("voucher_type_not_accepted", value));
     }
-  };
-  
+  }
+
   function handleNo(value) {
     if (accepted.includes(value)) {
       props.dispatch(setAddPropertyField("voucher_type_accepted", value));
@@ -23,7 +23,7 @@ const VoucherInputs = (props) => {
     if (!notAccepted.includes(value)) {
       props.dispatch(setAddPropertyField("voucher_type_not_accepted", value));
     }
-  };
+  }
   return (
     <div className="field">
       <label className="label" htmlFor="vouchersAccepted">
@@ -38,7 +38,7 @@ const VoucherInputs = (props) => {
               type="radio"
               name="CSRAP"
               onChange={(e) => {
-                handleYes(e.target.value)
+                handleYes(e.target.value);
               }}
               value="CSRAP"
             />
@@ -49,7 +49,7 @@ const VoucherInputs = (props) => {
               type="radio"
               name="CSRAP"
               onChange={(e) => {
-                handleNo(e.target.value)
+                handleNo(e.target.value);
               }}
               value="CSRAP"
             />
@@ -65,7 +65,7 @@ const VoucherInputs = (props) => {
               type="radio"
               name="HCV"
               onChange={(e) => {
-                handleYes(e.target.value)
+                handleYes(e.target.value);
               }}
               value="HCV"
             />
@@ -76,7 +76,7 @@ const VoucherInputs = (props) => {
               type="radio"
               name="HCV"
               onChange={(e) => {
-                handleNo(e.target.value)
+                handleNo(e.target.value);
               }}
               value="HCV"
             />
@@ -92,7 +92,7 @@ const VoucherInputs = (props) => {
               type="radio"
               name="MSV"
               onChange={(e) => {
-                handleYes(e.target.value)
+                handleYes(e.target.value);
               }}
               value="MSV"
             />
@@ -103,7 +103,7 @@ const VoucherInputs = (props) => {
               type="radio"
               name="MSV"
               onChange={(e) => {
-                handleNo(e.target.value)
+                handleNo(e.target.value);
               }}
               value="MSV"
             />
@@ -119,7 +119,7 @@ const VoucherInputs = (props) => {
               type="radio"
               name="Voucher 4"
               onChange={(e) => {
-                handleYes(e.target.value)
+                handleYes(e.target.value);
               }}
               value="Voucher 4"
             />
@@ -130,7 +130,7 @@ const VoucherInputs = (props) => {
               type="radio"
               name="Voucher 4"
               onChange={(e) => {
-                handleNo(e.target.value)
+                handleNo(e.target.value);
               }}
               value="Voucher 4"
             />
@@ -146,7 +146,7 @@ const VoucherInputs = (props) => {
               type="radio"
               name="Voucher 5"
               onChange={(e) => {
-                handleYes(e.target.value)
+                handleYes(e.target.value);
               }}
               value="Voucher 5"
             />
@@ -157,7 +157,7 @@ const VoucherInputs = (props) => {
               type="radio"
               name="Voucher 5"
               onChange={(e) => {
-                handleNo(e.target.value)
+                handleNo(e.target.value);
               }}
               value="Voucher 5"
             />

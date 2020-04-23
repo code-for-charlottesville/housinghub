@@ -6,6 +6,20 @@ import PropDetailsForm from "./PropDetailsForm";
 import PaymentDetailsForm from "./PaymentDetailsForm";
 
 const NewPropForm = (props) => {
+  function handleSetIsAvailable() {
+    let available;
+    let dateAvailable = Date.parse(
+      props.addProperty.fields.date_first_available
+    );
+    dateAvailable - Date.now() > 0 ? (available = false) : (available = true);
+    props.dispatch(setAddPropertyField("is_available", available));
+  }
+
+  function handleSetYearAvailable() {
+    let year = props.addProperty.fields.date_first_available.match(/[0-9]{4}/);
+    props.dispatch(setAddPropertyField("year_available", parseInt(year, 10)));
+  }
+
   return (
     <div className="container column is-half">
       <h1 className="title">Add New Property</h1>
@@ -45,12 +59,8 @@ const NewPropForm = (props) => {
                 className="button is-link"
                 title="Add property"
                 onClick={() => {
-                  let year = props.addProperty.fields.date_first_available.match(
-                    /[0-9]{4}/
-                  );
-                  props.dispatch(
-                    setAddPropertyField("year_available", parseInt(year, 10))
-                  );
+                  handleSetYearAvailable();
+                  handleSetIsAvailable();
                   addProperty();
                 }}
               >

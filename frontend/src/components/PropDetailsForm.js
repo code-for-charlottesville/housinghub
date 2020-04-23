@@ -133,7 +133,9 @@ const PropDetailsForm = (props) => {
           <select
             id="basementBool"
             onChange={(e) =>
-              props.dispatch(setAddPropertyField("has_basement", e.target.value))
+              props.dispatch(
+                setAddPropertyField("has_basement", e.target.value)
+              )
             }
             value={props.addProperty.fields.has_basement}
           >
