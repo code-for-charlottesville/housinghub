@@ -6,6 +6,24 @@ import { setAddPropertyField } from "../actions/property";
 const VoucherInputs = (props) => {
   let accepted = props.addProperty.fields.voucherTypeAccepted;
   let notAccepted = props.addProperty.fields.voucherTypeNotAccepted;
+  
+  function handleYes(value) {
+    if (!accepted.includes(value)) {
+      props.dispatch(setAddPropertyField("voucherTypeAccepted", value));
+    }
+    if (notAccepted.includes(value)) {
+      props.dispatch(setAddPropertyField("voucherTypeNotAccepted", value));
+    }
+  };
+  
+  function handleNo(value) {
+    if (accepted.includes(value)) {
+      props.dispatch(setAddPropertyField("voucherTypeAccepted", value));
+    }
+    if (!notAccepted.includes(value)) {
+      props.dispatch(setAddPropertyField("voucherTypeNotAccepted", value));
+    }
+  };
   return (
     <div className="field">
       <label className="label" htmlFor="vouchersAccepted">
@@ -20,19 +38,7 @@ const VoucherInputs = (props) => {
               type="radio"
               name="CSRAP"
               onChange={(e) => {
-                if (!accepted.includes(e.target.value)) {
-                  props.dispatch(
-                    setAddPropertyField("voucherTypeAccepted", e.target.value)
-                  );
-                }
-                if (notAccepted.includes(e.target.value)) {
-                  props.dispatch(
-                    setAddPropertyField(
-                      "voucherTypeNotAccepted",
-                      e.target.value
-                    )
-                  );
-                }
+                handleYes(e.target.value)
               }}
               value="CSRAP"
             />
@@ -43,19 +49,7 @@ const VoucherInputs = (props) => {
               type="radio"
               name="CSRAP"
               onChange={(e) => {
-                if (accepted.includes(e.target.value)) {
-                  props.dispatch(
-                    setAddPropertyField("voucherTypeAccepted", e.target.value)
-                  );
-                }
-                if (!notAccepted.includes(e.target.value)) {
-                  props.dispatch(
-                    setAddPropertyField(
-                      "voucherTypeNotAccepted",
-                      e.target.value
-                    )
-                  );
-                }
+                handleNo(e.target.value)
               }}
               value="CSRAP"
             />
@@ -71,19 +65,7 @@ const VoucherInputs = (props) => {
               type="radio"
               name="HCV"
               onChange={(e) => {
-                if (!accepted.includes(e.target.value)) {
-                  props.dispatch(
-                    setAddPropertyField("voucherTypeAccepted", e.target.value)
-                  );
-                }
-                if (notAccepted.includes(e.target.value)) {
-                  props.dispatch(
-                    setAddPropertyField(
-                      "voucherTypeNotAccepted",
-                      e.target.value
-                    )
-                  );
-                }
+                handleYes(e.target.value)
               }}
               value="HCV"
             />
@@ -94,19 +76,7 @@ const VoucherInputs = (props) => {
               type="radio"
               name="HCV"
               onChange={(e) => {
-                if (accepted.includes(e.target.value)) {
-                  props.dispatch(
-                    setAddPropertyField("voucherTypeAccepted", e.target.value)
-                  );
-                }
-                if (!notAccepted.includes(e.target.value)) {
-                  props.dispatch(
-                    setAddPropertyField(
-                      "voucherTypeNotAccepted",
-                      e.target.value
-                    )
-                  );
-                }
+                handleNo(e.target.value)
               }}
               value="HCV"
             />
@@ -122,19 +92,7 @@ const VoucherInputs = (props) => {
               type="radio"
               name="MSV"
               onChange={(e) => {
-                if (!accepted.includes(e.target.value)) {
-                  props.dispatch(
-                    setAddPropertyField("voucherTypeAccepted", e.target.value)
-                  );
-                }
-                if (notAccepted.includes(e.target.value)) {
-                  props.dispatch(
-                    setAddPropertyField(
-                      "voucherTypeNotAccepted",
-                      e.target.value
-                    )
-                  );
-                }
+                handleYes(e.target.value)
               }}
               value="MSV"
             />
@@ -145,19 +103,7 @@ const VoucherInputs = (props) => {
               type="radio"
               name="MSV"
               onChange={(e) => {
-                if (accepted.includes(e.target.value)) {
-                  props.dispatch(
-                    setAddPropertyField("voucherTypeAccepted", e.target.value)
-                  );
-                }
-                if (!notAccepted.includes(e.target.value)) {
-                  props.dispatch(
-                    setAddPropertyField(
-                      "voucherTypeNotAccepted",
-                      e.target.value
-                    )
-                  );
-                }
+                handleNo(e.target.value)
               }}
               value="MSV"
             />
@@ -173,19 +119,7 @@ const VoucherInputs = (props) => {
               type="radio"
               name="Voucher 4"
               onChange={(e) => {
-                if (!accepted.includes(e.target.value)) {
-                  props.dispatch(
-                    setAddPropertyField("voucherTypeAccepted", e.target.value)
-                  );
-                }
-                if (notAccepted.includes(e.target.value)) {
-                  props.dispatch(
-                    setAddPropertyField(
-                      "voucherTypeNotAccepted",
-                      e.target.value
-                    )
-                  );
-                }
+                handleYes(e.target.value)
               }}
               value="Voucher 4"
             />
@@ -196,19 +130,7 @@ const VoucherInputs = (props) => {
               type="radio"
               name="Voucher 4"
               onChange={(e) => {
-                if (accepted.includes(e.target.value)) {
-                  props.dispatch(
-                    setAddPropertyField("voucherTypeAccepted", e.target.value)
-                  );
-                }
-                if (!notAccepted.includes(e.target.value)) {
-                  props.dispatch(
-                    setAddPropertyField(
-                      "voucherTypeNotAccepted",
-                      e.target.value
-                    )
-                  );
-                }
+                handleNo(e.target.value)
               }}
               value="Voucher 4"
             />
@@ -224,19 +146,7 @@ const VoucherInputs = (props) => {
               type="radio"
               name="Voucher 5"
               onChange={(e) => {
-                if (!accepted.includes(e.target.value)) {
-                  props.dispatch(
-                    setAddPropertyField("voucherTypeAccepted", e.target.value)
-                  );
-                }
-                if (notAccepted.includes(e.target.value)) {
-                  props.dispatch(
-                    setAddPropertyField(
-                      "voucherTypeNotAccepted",
-                      e.target.value
-                    )
-                  );
-                }
+                handleYes(e.target.value)
               }}
               value="Voucher 5"
             />
@@ -247,19 +157,7 @@ const VoucherInputs = (props) => {
               type="radio"
               name="Voucher 5"
               onChange={(e) => {
-                if (accepted.includes(e.target.value)) {
-                  props.dispatch(
-                    setAddPropertyField("voucherTypeAccepted", e.target.value)
-                  );
-                }
-                if (!notAccepted.includes(e.target.value)) {
-                  props.dispatch(
-                    setAddPropertyField(
-                      "voucherTypeNotAccepted",
-                      e.target.value
-                    )
-                  );
-                }
+                handleNo(e.target.value)
               }}
               value="Voucher 5"
             />
