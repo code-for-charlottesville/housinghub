@@ -1,7 +1,8 @@
-import app
-
-from flask import jsonify, g, request
 from functools import wraps
+
+from flask import g, jsonify, request
+
+import app
 
 
 def authenticate(f):

@@ -25,7 +25,7 @@ class Logout extends React.Component {
 
 function mapStateToProps(state) {
   return {
-    isLoggedIn: state.login.isLoggedIn
+    isLoggedIn: state.login.isLoggedIn,
   };
 }
 export default connect(mapStateToProps)(Logout);
