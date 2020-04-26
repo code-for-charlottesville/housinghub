@@ -1,3 +1,11 @@
+.navbar {
+  background: rgb(91,91,91);
+}
+
+.burger-line {
+  color: white;
+}
+
 .sidebar-burger-toggle {
 	position: absolute;
 }
@@ -6,17 +14,25 @@ a {
   color : black;
 }
 
-a:hover {
-  background-color: rgb(231,231,231);
+.circle:before {
+  content: ' \25CF';
+  font-size: 25px;
+  padding-right: 15px;
+  padding-left: 10px;
 }
 
 .menu-item {
-  padding: 3px;
+  padding: 5px;
   padding-left: 10px;
+  color: rgb(216,216,216);
+}
+.menu-item:hover {
+  background-color: rgb(231,231,231);
 }
 
 .menu-item-selected {
   background: rgb(231,231,231);
+  color: rgb(91,91,91);
 }
 
 /*
@@ -43,6 +59,11 @@ Note: Beware of modifying this element as it can break the animations - you shou
 /* Individual item */
 .bm-item {
   display: inline-block;
+  cursor: pointer;
+}
+
+.bm-item:focus {
+  outline: none;
 }
 
 /* Styling of overlay */

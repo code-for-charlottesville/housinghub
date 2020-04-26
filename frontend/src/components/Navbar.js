@@ -16,9 +16,9 @@ const Navbar = (props) => {
           data-target="burgerFilling"
           onClick={() => props.dispatch(setSidebarOpen(!props.sidebarOpen))}
         >
-          <span aria-hidden="true" />
-          <span aria-hidden="true" />
-          <span aria-hidden="true" />
+          <span aria-hidden="true" className="burger-line" />
+          <span aria-hidden="true" className="burger-line" />
+          <span aria-hidden="true" className="burger-line" />
         </a>
       </div>
     </nav>
