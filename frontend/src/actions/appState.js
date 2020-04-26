@@ -6,8 +6,8 @@ export function setLoading(loading) {
 }
 
 export function setSidebarOpen(sidebarOpen) {
-	return {
-		type: "SET_SIDEBAR_OPEN",
-		sidebarOpen
-	}
+  return {
+    type: "SET_SIDEBAR_OPEN",
+    sidebarOpen,
+  };
 }

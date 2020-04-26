@@ -6,7 +6,7 @@ import "../style/Sidebar.css";
 
 const Sidebar = (props) => {
   return (
-    <Menu>
+    <Menu customBurgerIcon={false}>
       <Link className="menu-item" to="/home">
         Home
       </Link>

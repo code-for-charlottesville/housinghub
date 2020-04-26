@@ -1,6 +1,6 @@
 const initialState = {
   loading: false,
-  sidebarOpen : false,
+  sidebarOpen: false,
 };
 
 const appState = (state = initialState, action) => {
@@ -13,7 +13,7 @@ const appState = (state = initialState, action) => {
     case "SET_SIDEBAR_OPEN":
       return Object.assign({}, state, {
         ...state,
-        sidebarOpen : action.sidebarOpen
+        sidebarOpen: action.sidebarOpen,
       });
     default:
       return state;
