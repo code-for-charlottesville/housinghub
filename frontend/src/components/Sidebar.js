@@ -6,7 +6,7 @@ import "../style/Sidebar.css";
 
 const Sidebar = (props) => {
   return (
-    <Menu customBurgerIcon={false}>
+    <Menu customBurgerIcon={false} isOpen={props.sidebarOpen}>
       <Link className="menu-item" to="/home">
         Home
       </Link>
@@ -26,4 +26,10 @@ const Sidebar = (props) => {
   );
 };
 
-export default connect()(Sidebar);
+function mapStateToProps(state) {
+  return {
+    sidebarOpen: state.appState.sidebarOpen,
+  };
+}
+
+export default connect(mapStateToProps)(Sidebar);

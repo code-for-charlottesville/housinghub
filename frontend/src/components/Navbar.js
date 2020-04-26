@@ -1,6 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
+import { setSidebarOpen } from "../actions/appState";
 import "../style/Sidebar.css";
 
 const Navbar = (props) => {
@@ -13,6 +14,7 @@ const Navbar = (props) => {
           aria-label="menu"
           aria-expanded="false"
           data-target="burgerFilling"
+          onClick={() => props.dispatch(setSidebarOpen(!props.sidebarOpen))}
         >
           <span aria-hidden="true" />
           <span aria-hidden="true" />
@@ -23,4 +25,10 @@ const Navbar = (props) => {
   );
 };
 
-export default connect()(Navbar);
+function mapStateToProps(state) {
+  return {
+    sidebarOpen: state.appState.sidebarOpen,
+  };
+}
+
+export default connect(mapStateToProps)(Navbar);
