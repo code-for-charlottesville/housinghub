@@ -9,7 +9,7 @@ import SearchProperty from "./SearchProperty";
 const MainContent = (props) => {
   if (!props.isLoggedIn) return <Redirect to="/login" />;
   return (
-    <div className="container column is-centered">
+    <div className="is-centered">
       <Navbar />
       <Switch>
         <Route path={"/property/new"} component={NewPropForm} />
