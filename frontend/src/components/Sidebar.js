@@ -1,6 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
-import { Link } from "react-router-dom";
+import { Link, withRouter } from "react-router-dom";
 import { slide as Menu } from "react-burger-menu";
 import "../style/Sidebar.css";
 import { setSidebarOpen } from "../actions/appState";
@@ -38,7 +38,9 @@ const Sidebar = (props) => {
     >
       {items.map((i, k) => (
         <Link
-          className="menu-item"
+          className={`menu-item ${
+            props.location.pathname === i.path ? "menu-item-selected" : ""
+          }`}
           onClick={() => props.dispatch(setSidebarOpen(false))}
           to={i.path}
           key={`sidebar-item-${k}`}
@@ -56,4 +58,4 @@ function mapStateToProps(state) {
   };
 }
 
-export default connect(mapStateToProps)(Sidebar);
+export default connect(mapStateToProps)(withRouter(Sidebar));
