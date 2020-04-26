@@ -2,7 +2,7 @@ const initialState = {
   error: "",
   addProperty: {
     fields: {
-      landlord_id: "",
+      landlord_id: "fc47b508-c246-48ee-82b9-af013e0cd10d",
       navigator_id: "",
       property_name: "",
       address: "",
@@ -22,10 +22,10 @@ const initialState = {
       year_available: new Date().getFullYear(),
       potential_month_available: 0,
       listing_date: new Date().toISOString().slice(0, 10),
-      where_listed: "",
+      where_listed: [],
       contact_method: [],
       last_contact_date: new Date().toISOString().slice(0, 10),
-      last_contacted_by: "",
+      last_contacted_by: "6f91d6f8-6327-4055-8fb4-8da8f854eea6",
       monthly_rent: 0,
       application_fee: 0,
       deposit: 0,
