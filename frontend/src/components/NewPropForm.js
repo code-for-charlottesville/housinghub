@@ -20,6 +20,10 @@ const NewPropForm = (props) => {
     props.dispatch(setAddPropertyField("year_available", parseInt(year, 10)));
   }
 
+  function handleSetNavigatorId() {
+    props.dispatch(setAddPropertyField("navigator_id", props.username));
+  }
+
   return (
     <div className="container column is-half">
       <h1 className="title">Add New Property</h1>
@@ -61,6 +65,7 @@ const NewPropForm = (props) => {
                 onClick={() => {
                   handleSetYearAvailable();
                   handleSetIsAvailable();
+                  handleSetNavigatorId();
                   addProperty();
                 }}
               >

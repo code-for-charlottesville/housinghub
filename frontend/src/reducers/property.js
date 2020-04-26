@@ -2,8 +2,8 @@ const initialState = {
   error: "",
   addProperty: {
     fields: {
-      landlord_id: "fc47b508-c246-48ee-82b9-af013e0cd10d",
-      navigator_id: "",
+      landlord_id: null,
+      navigator_id: null,
       property_name: "",
       address: "",
       unit_apt_no: "",
@@ -25,7 +25,7 @@ const initialState = {
       where_listed: [],
       contact_method: [],
       last_contact_date: new Date().toISOString().slice(0, 10),
-      last_contacted_by: "6f91d6f8-6327-4055-8fb4-8da8f854eea6",
+      last_contacted_by: null,
       monthly_rent: 0,
       application_fee: 0,
       deposit: 0,
@@ -36,7 +36,7 @@ const initialState = {
       background_screening_company: "",
       allow_criminal_records: false,
       is_available: false,
-      notes: "",
+      //notes: "",
     },
   },
 };
