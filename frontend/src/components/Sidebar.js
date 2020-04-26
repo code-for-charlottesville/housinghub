@@ -6,6 +6,29 @@ import "../style/Sidebar.css";
 import { setSidebarOpen } from "../actions/appState";
 
 const Sidebar = (props) => {
+  let items = [
+    {
+      text: "Home",
+      path: "/home",
+    },
+    {
+      text: "Property Search",
+      path: "/property/search",
+    },
+    {
+      text: "Manage My Properties",
+      path: "/property/manage",
+    },
+    {
+      text: "Create New Property",
+      path: "/property/new",
+    },
+    {
+      text: "Logout",
+      path: "/logout",
+    },
+  ];
+
   return (
     <Menu
       customBurgerIcon={false}
@@ -13,21 +36,16 @@ const Sidebar = (props) => {
       isOpen={props.sidebarOpen}
       disableOverlayClick={() => props.dispatch(setSidebarOpen(false))}
     >
-      <Link className="menu-item" to="/home">
-        Home
-      </Link>
-      <Link className="menu-item" to="/property/search">
-        Property Search
-      </Link>
-      <Link className="menu-item" to="/property/myproperties">
-        My Properties
-      </Link>
-      <Link className="menu-item" to="/property/new">
-        New Property
-      </Link>
-      <Link className="menu-item" to="/logout">
-        Logout
-      </Link>
+      {items.map((i, k) => (
+        <Link
+          className="menu-item"
+          onClick={() => props.dispatch(setSidebarOpen(false))}
+          to={i.path}
+          key={`sidebar-item-${k}`}
+        >
+          {i.text}
+        </Link>
+      ))}
     </Menu>
   );
 };
