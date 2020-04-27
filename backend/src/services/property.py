@@ -7,13 +7,13 @@ from models.property import Property
 
 class PropertyService:
   
-  def __init__(self,logger,database_engine):
+  def __init__(self,logger,Session):
     super().__init__()
-    Session = sessionmaker(database_engine)
+    self.session = Session()
     self.db_session = Session()
 
   def add_property(self, property: Property):
     property.id = uuid.uuid4()
-    self.db_session.add(property)
-    self.db_session.commit()
+    self.session.add(property)
+    self.session.commit()
     return property
