@@ -1,41 +1,43 @@
 const initialState = {
   error: "",
-  fields: {
-    id: "",
-    landlordId: "",
-    navigatorId: "",
-    name: "",
-    address: "",
-    unitNum: "",
-    floorNum: 0,
-    zipCode: "",
-    type: "",
-    numBeds: 0,
-    numBaths: 0,
-    numBathsShared: 0,
-    basement: false,
-    schoolDist: "",
-    busStop: false,
-    wheelchairAcc: false,
-    elevator: false,
-    dateAvail: new Date(),
-    yearAvail: new Date().getFullYear(),
-    monthsAvail: 0,
-    whenListed: new Date(),
-    whereListed: "",
-    contactMethods: [],
-    lastContacted: new Date(),
-    lastContactedBy: "",
-    rentPerMonth: 0,
-    appFee: 0,
-    deposit: 0,
-    lastMonthRent: false,
-    acceptedVouchers: [],
-    refusedVouchers: ["MSV", "HCV", "CSRAP", "Voucher 4", "Voucher 5"],
-    creditCompany: "",
-    backgroundCompany: "",
-    cleanRecord: false,
-    notes: "",
+  addProperty: {
+    fields: {
+      landlord_id: null,
+      navigator_id: null,
+      property_name: "",
+      address: "",
+      unit_apt_no: "",
+      floor: 0,
+      zip_code: "",
+      housing_type: "",
+      bedrooms: 0,
+      bathrooms: 0,
+      shared_bathrooms: 0,
+      has_basement: false,
+      school_district: "",
+      bus_line: false,
+      wheelchair_accessibility: false,
+      elevator: false,
+      date_first_available: new Date().toISOString().slice(0, 10),
+      year_available: new Date().getFullYear(),
+      potential_month_available: 0,
+      listing_date: new Date().toISOString().slice(0, 10),
+      where_listed: [],
+      contact_method: [],
+      last_contact_date: new Date().toISOString().slice(0, 10),
+      last_contacted_by: null,
+      monthly_rent: 0,
+      application_fee: 0,
+      deposit: 0,
+      last_month_rent_required: false,
+      voucher_type_accepted: [],
+      voucher_type_not_accepted: [],
+      credit_screening_company: "",
+      background_screening_company: "",
+      allow_criminal_records: false,
+      is_available: false,
+      //notes: "",
+    },
   },
 };
 
@@ -52,14 +54,48 @@ const propertyState = (state = initialState, action) => {
         ...state,
         error: action.error,
       });
-    case "SET_PROPERTY_FIELD":
-      return Object.assign({}, state, {
-        ...state,
-        fields: {
-          ...state.fields,
-          [action.fieldName]: action.newValue,
-        },
-      });
+    case "SET_ADD_PROPERTY_FIELD":
+      if (Array.isArray(state.addProperty.fields[action.fieldName])) {
+        let index = state.addProperty.fields[action.fieldName].indexOf(
+          action.newValue
+        );
+        if (index > -1) {
+          return Object.assign({}, state, {
+            ...state,
+            addProperty: {
+              fields: {
+                ...state.addProperty.fields,
+                [action.fieldName]: state.addProperty.fields[
+                  action.fieldName
+                ].filter((item) => item !== action.newValue),
+              },
+            },
+          });
+        } else {
+          return Object.assign({}, state, {
+            ...state,
+            addProperty: {
+              fields: {
+                ...state.addProperty.fields,
+                [action.fieldName]: [
+                  ...state.addProperty.fields[action.fieldName],
+                  action.newValue,
+                ],
+              },
+            },
+          });
+        }
+      } else {
+        return Object.assign({}, state, {
+          ...state,
+          addProperty: {
+            fields: {
+              ...state.addProperty.fields,
+              [action.fieldName]: action.newValue,
+            },
+          },
+        });
+      }
     default:
       return state;
   }

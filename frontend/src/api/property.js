@@ -4,11 +4,9 @@ import axios from "axios";
  * makes POST request to /backend/property with id
  **/
 
-export function postProperty({ id }) {
+export function postProperty(property) {
   return axios
-    .post("/backend/property", {
-      id: id,
-    })
+    .post("/backend/property", property)
     .then((r) => {
       return Promise.resolve(r.data);
     })

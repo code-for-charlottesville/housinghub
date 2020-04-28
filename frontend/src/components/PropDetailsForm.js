@@ -3,7 +3,7 @@ import "bulma/css/bulma.css";
 import { InputField } from "./InputField";
 import { InputFieldNum } from "./InputFieldNum";
 import { connect } from "react-redux";
-import { setPropertyField, setArrayValues } from "../actions/property";
+import { setAddPropertyField } from "../actions/property";
 
 const PropDetailsForm = (props) => {
   return (
@@ -12,49 +12,49 @@ const PropDetailsForm = (props) => {
         inputName="Property Name (if multi-unit complex): "
         inputType="text"
         inputPh="Ex. Flats"
-        onChangeFn={setPropertyField}
-        onChangeFld="name"
-        inputValue={props.fields.name}
+        onChangeFn={setAddPropertyField}
+        onChangeFld="property_name"
+        inputValue={props.addProperty.fields.property_name}
       />
       <InputField
         inputName="Address: "
         inputType="text"
         inputPh="Ex. 1111 Main Street"
-        onChangeFn={setPropertyField}
+        onChangeFn={setAddPropertyField}
         onChangeFld="address"
-        inputValue={props.fields.address}
+        inputValue={props.addProperty.fields.address}
       />
       <InputField
         inputName="Unit / Apt no. (if applicable): "
         inputType="text"
         inputPh="Ex. Apt B"
-        onChangeFn={setPropertyField}
-        onChangeFld="unitNum"
-        inputValue={props.fields.unitNum}
+        onChangeFn={setAddPropertyField}
+        onChangeFld="unit_apt_no"
+        inputValue={props.addProperty.fields.unit_apt_no}
       />
       <InputField
         inputName="Floor no. (if applicable): "
         inputType="text"
         inputPh="Ex. 2"
-        onChangeFn={setPropertyField}
-        onChangeFld="floorNum"
-        inputValue={props.fields.floor}
+        onChangeFn={setAddPropertyField}
+        onChangeFld="floor"
+        inputValue={props.addProperty.fields.floor}
       />
       <InputField
         inputName="Zip Code: "
         inputType="text"
         inputPh="Ex. 22902"
-        onChangeFn={setPropertyField}
-        onChangeFld="zipCode"
-        inputValue={props.fields.zipCode}
+        onChangeFn={setAddPropertyField}
+        onChangeFld="zip_code"
+        inputValue={props.addProperty.fields.zip_code}
       />
       <InputField
         inputName="Type of Housing: "
         inputType="text"
         inputPh="Ex. Apartment"
-        onChangeFn={setPropertyField}
-        onChangeFld="type"
-        inputValue={props.fields.type}
+        onChangeFn={setAddPropertyField}
+        onChangeFld="housing_type"
+        inputValue={props.addProperty.fields.housing_type}
       />
       <div className="field">
         <label className="label" htmlFor="numBeds">
@@ -64,9 +64,9 @@ const PropDetailsForm = (props) => {
           <select
             id="numBeds"
             onChange={(e) =>
-              props.dispatch(setPropertyField("numBeds", e.target.value))
+              props.dispatch(setAddPropertyField("bedrooms", e.target.value))
             }
-            value={props.fields.numBeds}
+            value={props.addProperty.fields.bedrooms}
           >
             <option value="1">1</option>
             <option value="2">2</option>
@@ -86,9 +86,9 @@ const PropDetailsForm = (props) => {
           <select
             id="numBath"
             onChange={(e) =>
-              props.dispatch(setPropertyField("numBaths", e.target.value))
+              props.dispatch(setAddPropertyField("bathrooms", e.target.value))
             }
-            value={props.fields.numBaths}
+            value={props.addProperty.fields.bathrooms}
           >
             <option value="1">1</option>
             <option value="1.5">1.5</option>
@@ -110,9 +110,11 @@ const PropDetailsForm = (props) => {
           <select
             id="numBathsShared"
             onChange={(e) =>
-              props.dispatch(setPropertyField("numBathsShared", e.target.value))
+              props.dispatch(
+                setAddPropertyField("shared_bathrooms", e.target.value)
+              )
             }
-            value={props.fields.numBathsShared}
+            value={props.addProperty.fields.shared_bathrooms}
           >
             <option value="0">0</option>
             <option value="1">1</option>
@@ -131,9 +133,11 @@ const PropDetailsForm = (props) => {
           <select
             id="basementBool"
             onChange={(e) =>
-              props.dispatch(setPropertyField("basement", e.target.value))
+              props.dispatch(
+                setAddPropertyField("has_basement", e.target.value)
+              )
             }
-            value={props.fields.basement}
+            value={props.addProperty.fields.has_basement}
           >
             <option value="false">No</option>
             <option value="true">Yes</option>
@@ -144,21 +148,21 @@ const PropDetailsForm = (props) => {
         inputName="Property's School District: "
         inputType="text"
         inputPh="Ex. Albermale"
-        onChangeFn={setPropertyField}
-        onChangeFld="schoolDist"
-        inputValue={props.fields.schoolDist}
+        onChangeFn={setAddPropertyField}
+        onChangeFld="school_district"
+        inputValue={props.addProperty.fields.school_district}
       />
       <div className="field">
-        <label className="label" htmlFor="busStopBool">
+        <label className="label" htmlFor="busLineBool">
           Is the Property Near a Bus Stop?
         </label>
         <div className="select">
           <select
-            id="busStopBool"
+            id="busLineBool"
             onChange={(e) =>
-              props.dispatch(setPropertyField("busStop", e.target.value))
+              props.dispatch(setAddPropertyField("bus_line", e.target.value))
             }
-            value={props.fields.busStop}
+            value={props.addProperty.fields.bus_line}
           >
             <option value="false">No</option>
             <option value="true">Yes</option>
@@ -173,9 +177,11 @@ const PropDetailsForm = (props) => {
           <select
             id="wheelchairBool"
             onChange={(e) =>
-              props.dispatch(setPropertyField("wheelchairAcc", e.target.value))
+              props.dispatch(
+                setAddPropertyField("wheelchair_accessibility", e.target.value)
+              )
             }
-            value={props.fields.wheelchairAcc}
+            value={props.addProperty.fields.wheelchair_accessibility}
           >
             <option value="false">No</option>
             <option value="true">Yes</option>
@@ -190,9 +196,9 @@ const PropDetailsForm = (props) => {
           <select
             id="elevatorBool"
             onChange={(e) =>
-              props.dispatch(setPropertyField("elevator", e.target.value))
+              props.dispatch(setAddPropertyField("elevator", e.target.value))
             }
-            value={props.fields.elevator}
+            value={props.addProperty.fields.elevator}
           >
             <option value="false">No</option>
             <option value="true">Yes</option>
@@ -204,43 +210,46 @@ const PropDetailsForm = (props) => {
           format MM-dd-YYYY. The default will be the current date if left as is."
         inputType="date"
         inputPh="MM-dd-YYYY"
-        onChangeFn={setPropertyField}
-        onChangeFld="dateAvail"
-        inputValue={props.fields.dateAvail}
+        onChangeFn={setAddPropertyField}
+        onChangeFld="date_first_available"
       />
       <InputFieldNum
         inputName="Please specify the potential months available for the property."
         inputType="number"
         inputPh="Ex. 12"
-        onChangeFn={setPropertyField}
-        onChangeFld="monthsAvail"
-        inputValue={props.fields.monthsAvail}
+        onChangeFn={setAddPropertyField}
+        onChangeFld="potential_month_available"
+        inputValue={props.addProperty.fields.potential_month_available}
       />
       <InputField
         inputName="Please specify below when the property was first listed using the format MM-dd-YYYY.
         The default will be the current date if left as is."
         inputType="date"
         inputPh="Ex. 01-15-2020"
-        onChangeFn={setPropertyField}
-        onChangeFld="whenListed"
+        onChangeFn={setAddPropertyField}
+        onChangeFld="listing_date"
       />
       <InputField
         inputName="Please specify below where this property was seen listed."
         inputType="text"
         inputPh="Ex. Trulia"
-        onChangeFn={setPropertyField}
-        onChangeFld="whereListed"
-        inputValue={props.fields.whereListed}
+        onChangeFn={setAddPropertyField}
+        onChangeFld="where_listed"
+        inputValue={props.addProperty.fields.where_listed}
       />
       <div className="field">
-        <label className="label" htmlFor="contactMethods">
+        <label className="label" htmlFor="contactMethod">
           Please check the preferred contact methods for the property's
           landlord.
         </label>
         <label className="checkbox">
           <input
             type="checkbox"
-            onChange={(e) => setArrayValues("contactMethods", e.target.value)}
+            onChange={(e) =>
+              props.dispatch(
+                setAddPropertyField("contact_method", e.target.value)
+              )
+            }
             value="Phone"
           />
           Phone
@@ -249,7 +258,11 @@ const PropDetailsForm = (props) => {
         <label className="checkbox">
           <input
             type="checkbox"
-            onChange={(e) => setArrayValues("contactMethods", e.target.value)}
+            onChange={(e) =>
+              props.dispatch(
+                setAddPropertyField("contact_method", e.target.value)
+              )
+            }
             value="Email"
           />
           Email
@@ -258,7 +271,11 @@ const PropDetailsForm = (props) => {
         <label className="checkbox">
           <input
             type="checkbox"
-            onChange={(e) => setArrayValues("contactMethods", e.target.value)}
+            onChange={(e) =>
+              props.dispatch(
+                setAddPropertyField("contact_method", e.target.value)
+              )
+            }
             value="Registered sites"
           />
           Registered Site
@@ -269,8 +286,8 @@ const PropDetailsForm = (props) => {
       The default will be the current date if left as is."
         inputType="date"
         inputPh="MM-dd-YYY"
-        onChangeFn={setPropertyField}
-        onChangeFld="lastContacted"
+        onChangeFn={setAddPropertyField}
+        onChangeFld="last_contact_date"
       />
     </div>
   );
@@ -278,7 +295,9 @@ const PropDetailsForm = (props) => {
 
 function mapStateToProps(state) {
   return {
-    fields: state.propertyState.fields,
+    addProperty: {
+      fields: state.propertyState.addProperty.fields,
+    },
   };
 }
 

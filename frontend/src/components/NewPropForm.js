@@ -1,15 +1,29 @@
 import React from "react";
 import "bulma/css/bulma.css";
 import { connect } from "react-redux";
-import {
-  setPropertyField,
-  addProperty,
-  processDates,
-} from "../actions/property";
+import { setAddPropertyField, addProperty } from "../actions/property";
 import PropDetailsForm from "./PropDetailsForm";
 import PaymentDetailsForm from "./PaymentDetailsForm";
 
 const NewPropForm = (props) => {
+  function handleSetIsAvailable() {
+    let available;
+    let dateAvailable = Date.parse(
+      props.addProperty.fields.date_first_available
+    );
+    dateAvailable - Date.now() > 0 ? (available = false) : (available = true);
+    props.dispatch(setAddPropertyField("is_available", available));
+  }
+
+  function handleSetYearAvailable() {
+    let year = props.addProperty.fields.date_first_available.match(/[0-9]{4}/);
+    props.dispatch(setAddPropertyField("year_available", parseInt(year, 10)));
+  }
+
+  function handleSetNavigatorId() {
+    props.dispatch(setAddPropertyField("navigator_id", props.username));
+  }
+
   return (
     <div className="container column is-half">
       <h1 className="title">Add New Property</h1>
@@ -32,9 +46,9 @@ const NewPropForm = (props) => {
                 className="textarea"
                 placeholder="Ex. Property's rent includes utilities..."
                 onChange={(e) =>
-                  props.dispatch(setPropertyField("notes", e.target.value))
+                  props.dispatch(setAddPropertyField("notes", e.target.value))
                 }
-                value={props.fields.notes}
+                value={props.addProperty.fields.notes}
               />
             </div>
           </div>
@@ -49,11 +63,9 @@ const NewPropForm = (props) => {
                 className="button is-link"
                 title="Add property"
                 onClick={() => {
-                  processDates(
-                    props.fields.dateAvail,
-                    props.fields.lastContacted,
-                    props.fields.whenListed
-                  );
+                  handleSetYearAvailable();
+                  handleSetIsAvailable();
+                  handleSetNavigatorId();
                   addProperty();
                 }}
               >
@@ -74,7 +86,9 @@ const NewPropForm = (props) => {
 
 function mapStateToProps(state) {
   return {
-    fields: state.propertyState.fields,
+    addProperty: {
+      fields: state.propertyState.addProperty.fields,
+    },
   };
 }
 
