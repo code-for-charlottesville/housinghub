@@ -21,7 +21,7 @@ const NewPropForm = (props) => {
   }
 
   function handleSetNavigatorId() {
-    props.dispatch(setAddPropertyField("navigator_id", props.username));
+    props.dispatch(setAddPropertyField("navigator_id", props.uid));
   }
 
   return (
@@ -35,48 +35,29 @@ const NewPropForm = (props) => {
         <h2 className="subtitle">Payment Details</h2>
         <PaymentDetailsForm />
 
-        <h2 className="subtitle">Additional Notes</h2>
-        <div className="box">
-          <div className="field">
-            <label className="label">
-              Please add any additional notes below for the property:
-            </label>
-            <div className="control">
-              <textarea
-                className="textarea"
-                placeholder="Ex. Property's rent includes utilities..."
-                onChange={(e) =>
-                  props.dispatch(setAddPropertyField("notes", e.target.value))
-                }
-                value={props.addProperty.fields.notes}
-              />
-            </div>
+        <label className="label">
+          If all fields above are filled out correctly press 'Submit' to add
+          this listing.
+        </label>
+        <div className="field is-grouped">
+          <div className="control">
+            <button
+              className="button is-link"
+              title="Add property"
+              onClick={() => {
+                handleSetYearAvailable();
+                handleSetIsAvailable();
+                handleSetNavigatorId();
+                addProperty();
+              }}
+            >
+              Submit
+            </button>
           </div>
-
-          <label className="label">
-            If all fields above are filled out correctly press 'Submit' to add
-            this listing.
-          </label>
-          <div className="field is-grouped">
-            <div className="control">
-              <button
-                className="button is-link"
-                title="Add property"
-                onClick={() => {
-                  handleSetYearAvailable();
-                  handleSetIsAvailable();
-                  handleSetNavigatorId();
-                  addProperty();
-                }}
-              >
-                Submit
-              </button>
-            </div>
-            <div className="control">
-              <button className="button is-light" title="Return home">
+          <div className="control">
+            <button className="button is-light" title="Return home">
                 Cancel
               </button>
-            </div>
           </div>
         </div>
       </form>

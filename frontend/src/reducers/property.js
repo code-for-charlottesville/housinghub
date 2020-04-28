@@ -36,7 +36,6 @@ const initialState = {
       background_screening_company: "",
       allow_criminal_records: false,
       is_available: false,
-      //notes: "",
     },
   },
 };

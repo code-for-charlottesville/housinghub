@@ -228,15 +228,50 @@ const PropDetailsForm = (props) => {
         inputPh="Ex. 01-15-2020"
         onChangeFn={setAddPropertyField}
         onChangeFld="listing_date"
-      />
-      <InputField
-        inputName="Please specify below where this property was seen listed."
-        inputType="text"
-        inputPh="Ex. Trulia"
-        onChangeFn={setAddPropertyField}
-        onChangeFld="where_listed"
-        inputValue={props.addProperty.fields.where_listed}
-      />
+      ></InputField>
+      <div className="field">
+        <label className="label" htmlFor="whereListed">
+          Please check the locations where this property was listed.
+        </label>
+        <label className="checkbox">
+          <input
+            type="checkbox"
+            onChange={(e) =>
+              props.dispatch(
+                setAddPropertyField("where_listed", e.target.value)
+              )
+            }
+            value="Trulia"
+          />
+          Trulia
+        </label>
+        <br />
+        <label className="checkbox">
+          <input
+            type="checkbox"
+            onChange={(e) =>
+              props.dispatch(
+                setAddPropertyField("where_listed", e.target.value)
+              )
+            }
+            value="Zillow"
+          />
+          Zillow
+        </label>
+        <br />
+        <label className="checkbox">
+          <input
+            type="checkbox"
+            onChange={(e) =>
+              props.dispatch(
+                setAddPropertyField("where_listed", e.target.value)
+              )
+            }
+            value="Other"
+          />
+          Other
+        </label>
+      </div>
       <div className="field">
         <label className="label" htmlFor="contactMethod">
           Please check the preferred contact methods for the property's
