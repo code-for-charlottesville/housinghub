@@ -54,7 +54,7 @@ def post_property():
                         schema: ErrorResponse
     """
     try:
-        payload = AddPropertyRequest().load(request.get_json())
+        payload = AddPropertyRequest().load(request.get_json(), transient=True)
         _property = app.services.property_service().add_property(payload)
         return jsonify(PropertyResponse().dump(_property))
     except ValidationError as err:
