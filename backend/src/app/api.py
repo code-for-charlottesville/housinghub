@@ -35,12 +35,12 @@ housinghub_spec.components.schema("LoginRequest", schema=LoginRequest)
 class AddPropertyRequest(SQLAlchemyAutoSchema):
   class Meta:
     model = Property
-    load_instance = False
+    load_instance = True
     exclude = ('id',)
 housinghub_spec.components.schema("AddPropertyRequest", schema=AddPropertyRequest)
 
 class PropertyResponse(SQLAlchemyAutoSchema):
   class Meta:
     model = Property
-    load_instance = False
+    load_instance = True
 housinghub_spec.components.schema("PropertyResponse", schema=PropertyResponse)
