@@ -29,7 +29,7 @@ def upgrade():
         sa.Column('unit_apt_no', VARCHAR, nullable=True),
         sa.Column('property_name', VARCHAR, nullable=True),
         sa.Column('bus_line', BOOLEAN, nullable=True),
-        sa.Column('school_district = ', VARCHAR, nullable=True),
+        sa.Column('school_district', VARCHAR, nullable=True),
         sa.Column('wheelchair_accessibility', BOOLEAN, nullable=True), 
         sa.Column('elevator', BOOLEAN, nullable=True),
         sa.Column('monthly_rent', INTEGER, nullable=True),
