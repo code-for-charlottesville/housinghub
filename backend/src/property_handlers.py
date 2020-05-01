@@ -4,21 +4,60 @@ from flask import Blueprint, jsonify, request
 from marshmallow import ValidationError
 
 import app
-from app.api import AddPropertyRequest, PropertyResponse
+from app.api import AddPropertyRequest, PropertyResponse, GetPropertyRequest, GetPropertyResponse, PaginationResponse, PropertySchema
 from app.auth import authenticate
 from app.spec import DocumentedBlueprint
 
 property_module = DocumentedBlueprint('property', __name__)
 
 
-@property_module.route('/property', methods=['GET'])
+@property_module.route('/property/search', methods=['POST'])
 @authenticate
 def get_property():
-    """finds and returns a Property in the DB
-    :param request: flask request object
-    :param request: dictionary of jwtPayload
-    :return tuple (response body (dict), response code (int), error (string))
+    """Gets a list of properties that match the search criteria
+    ---
+    post:
+        tags:
+            - authentication
+        summary: Gets a list of properties that match the search criteria
+        requestBody:
+            required: true
+            content:
+                application/json:
+                    schema: GetPropertyRequest
+        responses:
+            '200':
+                description: list of matched properties
+                content:
+                    application/json:
+                        schema: GetPropertyResponse
+            '400':
+                description: Request is invalid
+                content:
+                    application/json:
+                        schema: ErrorResponse
+            '500':
+                description: An error message.
+                content:
+                    application/json:
+                        schema: ErrorResponse
     """
+    try:
+        print("sent request = " + str(request.get_json()))
+        payload = GetPropertyRequest().load(request.get_json())
+        _property = app.services.property_service().get_property(payload)
+        _property_response = GetPropertyResponse()
+        _property_response.pagination = PaginationResponse()
+        _property_response.results = PropertySchema().dump(_property)
+        return jsonify(GetPropertyResponse().dump(_property_response))
+    except ValidationError as err:
+        app.logger.error(f'Invalid request ${err.messages}')
+        return jsonify(err.messages), 400
+    except:
+        app.logger.error(
+            f'Unexpected error getting property: ${traceback.format_exc()}')
+        return jsonify(code=500, error='internal error'), 500
+
     return jsonify(code=500, error='not implemented'), 500
 
 
@@ -30,7 +69,7 @@ def post_property():
     post:
         tags: 
             - authentication    
-        summary: Creates a new user
+        summary: Creates a new property
         requestBody:
             required: true
             content:
@@ -38,7 +77,7 @@ def post_property():
                     schema: AddPropertyRequest
         responses:
             '200':
-                description: Auth token for newly created user
+                description: newly created property
                 content:
                     application/json:
                         schema: PropertyResponse
