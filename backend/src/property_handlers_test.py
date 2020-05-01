@@ -21,12 +21,11 @@ class TestPropertyHandlers(unittest.TestCase):
         self.auth_service_patch.stop()
 
     def test_get_property(self):
-        response = self.app.get("/property?id=test")
-        self.assertEqual(response.status_code, 500)
-        self.assertEqual(response.get_json(), {
-            'code': 500,
-            'error': 'not implemented'
-        })
+        _search_request = {"pagination": {"page": 1, "results_per_page": 10},
+                           "searchFields": {"bathrooms": 2, "bedrooms": 2, "date_available": "2008-10-11",
+                                            "housing_type": ["string"], "max_rent": 1000, "zip_code": ["22456"]}}
+        response = self.app.post("/property/search", json=_search_request)
+        self.assertEqual(response.status_code, 200)
 
     def test_post_property(self):
         response = self.app.post("/property", json={'name': 'test'})
