@@ -2,8 +2,9 @@ import React from "react";
 import "bulma/css/bulma.css";
 import { InputField } from "./InputField";
 import { InputFieldNum } from "./InputFieldNum";
+import VoucherInputs from "./VoucherInputs";
 import { connect } from "react-redux";
-import { setPropertyField } from "../actions/property";
+import { setAddPropertyField } from "../actions/property";
 
 const PaymentDetailsForm = (props) => {
   return (
@@ -12,25 +13,25 @@ const PaymentDetailsForm = (props) => {
         inputName="What is the Monthly Rent of the Property?"
         inputType="number"
         inputPh="Ex. 1200"
-        onChangeFn={setPropertyField}
-        onChangeFld="rentPerMonth"
-        inputValue={props.fields.rentPerMonth}
+        onChangeFn={setAddPropertyField}
+        onChangeFld="monthly_rent"
+        inputValue={props.addProperty.fields.monthly_rent}
       />
       <InputFieldNum
         inputName="Please specify the application fee, if any, for the property."
         inputType="number"
         inputPh="Ex. 250"
-        onChangeFn={setPropertyField}
-        onChangeFld="appFee"
-        inputValue={props.fields.appFee}
+        onChangeFn={setAddPropertyField}
+        onChangeFld="application_fee"
+        inputValue={props.addProperty.fields.application_fee}
       />
       <InputFieldNum
         inputName="Please specify the deposit amount for the property"
         inputType="number"
         inputPh="Ex. 800"
-        onChangeFn={setPropertyField}
+        onChangeFn={setAddPropertyField}
         onChangeFld="deposit"
-        inputValue={props.fields.deposit}
+        inputValue={props.addProperty.fields.deposit}
       />
       <div className="field">
         <label className="label" htmlFor="lastMonthBool">
@@ -40,95 +41,35 @@ const PaymentDetailsForm = (props) => {
           <select
             id="lastMonthBool"
             onChange={(e) =>
-              props.dispatch(setPropertyField("lastMonthRent", e.target.value))
+              props.dispatch(
+                setAddPropertyField("last_month_rent_required", e.target.value)
+              )
             }
-            value={props.fields.lastMonthRent}
+            value={props.addProperty.fields.last_month_rent_required}
           >
             <option value="false">No</option>
             <option value="true">Yes</option>
           </select>
         </div>
       </div>
-      <div className="field">
-        <label className="label" htmlFor="vouchersAccepted">
-          Please check all vouchers accepted as payment for the property.
-        </label>
-        <label className="checkbox">
-          <input
-            type="checkbox"
-            onChange={(e) =>
-              props.dispatch(setPropertyField("CSRAP", !props.fields.CSRAP))
-            }
-            value={props.fields.CSRAP}
-          />
-          CSRAP
-        </label>
-        <br />
-        <label className="checkbox">
-          <input
-            type="checkbox"
-            onChange={(e) =>
-              props.dispatch(setPropertyField("HCV", !props.fields.HCV))
-            }
-            value={props.fields.HCV}
-          />
-          HCV
-        </label>
-        <br />
-        <label className="checkbox">
-          <input
-            type="checkbox"
-            onChange={(e) =>
-              props.dispatch(setPropertyField("MSV", !props.fields.MSV))
-            }
-            value={props.fields.MSV}
-          />
-          MSV
-        </label>
-        <br />
-        <label className="checkbox">
-          <input
-            type="checkbox"
-            onChange={(e) =>
-              props.dispatch(
-                setPropertyField("voucher4", !props.fields.voucher4)
-              )
-            }
-            value={props.fields.voucher4}
-          />
-          Voucher 4
-        </label>
-        <br />
-        <label className="checkbox">
-          <input
-            type="checkbox"
-            onChange={(e) =>
-              props.dispatch(
-                setPropertyField("voucher5", !props.fields.voucher5)
-              )
-            }
-            value={props.fields.voucher5}
-          />
-          Voucher 5
-        </label>
-      </div>
+      <VoucherInputs />
       <InputField
         inputName="If the property requires a credit screening, please specify the
                                credit screening company used."
         inputType="text"
         inputPh="Ex. Creditrating.com"
-        onChangeFn={setPropertyField}
-        onChangeFld="creditCompany"
-        inputValue={props.fields.creditCompany}
+        onChangeFn={setAddPropertyField}
+        onChangeFld="credit_screening_company"
+        inputValue={props.addProperty.fields.credit_screening_company}
       />
       <InputField
         inputName="Please specify the company typically used to conduct background
                                checks for the property."
         inputType="text"
         inputPh="Ex. background-screening.com"
-        onChangeFn={setPropertyField}
-        onChangeFld="backgroundCompany"
-        inputValue={props.fields.backgroundCompany}
+        onChangeFn={setAddPropertyField}
+        onChangeFld="background_screening_company"
+        inputValue={props.addProperty.fields.background_screening_company}
       />
       <div className="field">
         <label className="label" htmlFor="backgroundBool">
@@ -138,9 +79,11 @@ const PaymentDetailsForm = (props) => {
           <select
             id="backgroundBool"
             onChange={(e) =>
-              props.dispatch(setPropertyField("cleanRecord", e.target.value))
+              props.dispatch(
+                setAddPropertyField("allow_criminal_records", e.target.value)
+              )
             }
-            value={props.fields.cleanRecord}
+            value={props.addProperty.fields.allow_criminal_records}
           >
             <option value="false">No</option>
             <option value="true">Yes</option>
@@ -153,7 +96,9 @@ const PaymentDetailsForm = (props) => {
 
 function mapStateToProps(state) {
   return {
-    fields: state.propertyState.fields,
+    addProperty: {
+      fields: state.propertyState.addProperty.fields,
+    },
   };
 }
 
