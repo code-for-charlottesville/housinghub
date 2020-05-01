@@ -27,7 +27,7 @@ const csvWriter = createCsvWriter({
 });
 
 // write each row
-let nRows = 3;
+let nRows = 100;
 console.log("writing %d rows", nRows);
 let records = [];
 for (var i = 0; i < nRows; i++) {
