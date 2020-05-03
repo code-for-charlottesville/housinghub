@@ -11,15 +11,6 @@ from app.spec import DocumentedBlueprint
 property_module = DocumentedBlueprint('property', __name__)
 
 
-@property_module.route('/property/all_properties', methods=['GET'])
-
-def get_all_property():
-    print("TEST")
-    _property = app.services.property_service().get_all_property()
-
-    return jsonify(_property)
-
-
 @property_module.route('/property/search', methods=['POST'])
 @authenticate
 def get_property():
