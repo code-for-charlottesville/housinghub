@@ -19,6 +19,8 @@ class PropertyService:
         return property
 
     def get_property(self, payload):
+        if (self.db_session.query(Property).all() == None):
+            return None
         searchFields = payload["searchFields"]
         _properties = self.session.query(Property)
         for key, value in searchFields.items():
