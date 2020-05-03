@@ -35,9 +35,7 @@ class TestPropertyHandlers(unittest.TestCase):
                 "zip_code": ["22456"]
             }
         }
-        post_property_response = self.app.post("/property", json={"address":"1718 JPA","allow_criminal_records":True,"application_fee":0,"background_screening_company":"string","bathrooms":1,"bedrooms":1,"bus_line":True,"contact_method":["email"],"credit_screening_company":"string","date_first_available":"2020-10-10","deposit":0,"elevator":True,"floor":0,"has_basement":True,"housing_type":"apartment","is_available":True,"landlord_id":"fc4f8d8f-9cf0-462f-b179-d0306db89b1e","last_contact_date":"2009-02-20","last_contacted_by":"fc4f8d8f-9cf0-462f-b179-d0306db89b1e","last_month_rent_required":True,"listing_date":"2010-03-20","monthly_rent":700,"navigator_id":"fc4f8d8f-9cf0-462f-b179-d0306db89b1e","potential_month_available":0,"property_name":"JPA 1718","school_district":"Abermarle","shared_bathrooms":0,"unit_apt_no":"30","voucher_type_accepted":["ANV"],"voucher_type_not_accepted":["BBV"],"wheelchair_accessibility":True,"where_listed":["housing"],"year_available":2020,"zip_code":"22903"})
         response = self.app.post("/property/search", json=_search_request)
-        self.assertEqual(post_property_response.status_code, 200)
         self.assertEqual(response.status_code, 200)
 
     def test_post_property(self):
