@@ -74,6 +74,6 @@ class PropertySchema(Schema):
     load_instance = True
 
 class GetPropertyResponse(Schema):
-  results = fields.Nested(PropertySchema, many=True)
+  results = fields.List(fields.Nested(PropertySchema))
   pagination = fields.Nested(PaginationResponse)
 housinghub_spec.components.schema("GetPropertyResponse", schema=GetPropertyResponse)
