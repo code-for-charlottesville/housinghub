@@ -4,53 +4,24 @@ RESTful API to handle storage, retrieval, and searching of landlords, navigators
 
 *Note: this is only for unix operating systems*
 
-## Setup
 
-- [install python 3.6.x](https://realpython.com/installing-python/)
-- [install npm](https://www.npmjs.com/get-npm)
-- [install the Serverless framework](https://serverless.com/framework/docs/providers/aws/guide/installation/)
-- [install the psql CLI](https://www.pgcli.com/install)
+## Development
 
-- configure dev environment:
+From the root directory of the project, start the local development environment by runing:
 
 ```bash
-python3 -m venv venv
-. venv/bin/activate
+tilt up
 ```
 
-- install dependencies:
+After everything has started, create a new user in the DB by making a request to the DB:
 
 ```bash
-pip install -r requirements.txt
-npm i
+curl -XPOST -H "content-type: application/json" -d '{"username" : "user@gmail.com", "password" : "password", "role" : "navigator", "is_admin": true}' http://localhost:8443/backend/auth/register
+#response:
+{
+  "jwt": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE1ODY3MTkyMTgsInVpZCI6IjUxYjBiNjU0LWI0OTItNDgxOC1iYmI3LTVhNzFmY2FiYmE3MCIsInJvbGUiOiJuYXZpZ2F0b3IifQ.Zn0LsAPNkXXkV2x5wgaZuHrMEnWXMqFNSGdoWdkFiDk"
+}
 ```
-
-
-
-## Run
-
-In order to run the app, you will need a Postgresql database to connect to. The easiest way to get started is to use Tilt (see instructions below), but you can create a local dockerized DB manually by running:
-
-```sh
-docker run -d -p 5432:5432 -e POSTGRES_DB=housinghub -e POSTGRES_USER=app -e POSTGRES_PASSWORD=apppassword postgres:11.7
-```
-
-Now you can run the Flask app by running 
-
-```sh
-export APP_ENV=local
-export FLASK_APP=src/server.py
-$(cd alembic && alembic upgrade head)
-flask run
-```
-
-or run locally as a simulated serverless application
-```sh
-export APP_ENV=local
-$(cd alembic && alembic upgrade head)
-serverless wsgi serve
-```
-
 
 in a new tab, make an example request:
 ```bash
@@ -66,13 +37,27 @@ $ curl -H "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOj
 curl -XPOST -H "content-type: application/json" -d '{"username" : "user@gmail.com", "password" : "password", "role" : "navigator", "is_admin": true}' http://localhost:8443/backend/auth/register
 ```
 
-## Development
+## Generating New Data
 
-Development can be easier with the `./watch_dev_changes.sh` script. Run the script in a running terminal while making code changes. On each save of a file, the script will 
+Data can be generated in the `data` directory. You will need [npm](https://www.npmjs.com/get-npm) installed for this to work
 
-- format code
-- remove unneeded variables
-- run tests
+1. Create new mock data output file:
+
+```bash
+cd data
+npm install
+node create_mock_csv.js output.csv
+```
+
+2. Now we can ingest this data into our API.
+
+TODO:
+
+```bash
+cd data
+node inject_data_from_csv.py output.csv
+# TODO
+```
 
 ## Test
 
@@ -109,12 +94,6 @@ Var | Meaning
 `TOKEN_ALG` | Algorithm used to sign the JWT token. Default is HS256
 `TOKEN_SECRET` | Secret key used for JWT token signing. *This shoud always be generated at startup in production environments*
 
-## Using Tilt for local development
-
-For a local development workflow, we are using Tilt. 
-
-For instructions on using Tilt for local developmet, see the [Developer Quickstart](https://github.com/code-for-charlottesville/housinghub/wiki/Developer-Quickstart)
-
 ## Code Formatting
 
 ```sh
@@ -122,8 +101,53 @@ pip install yapf
 yapf -ri ./**/*.py
 ```
 
-## Generating New Documentation
+## Non-tiltSetup
+
+We recommend using `tilt` for development. This section serves as a reference for non-tilt development (if needed) and building the app locally.
+
+### Requirements
+
+- [install python 3.6.x](https://realpython.com/installing-python/)
+- [install npm](https://www.npmjs.com/get-npm)
+- [install the Serverless framework](https://serverless.com/framework/docs/providers/aws/guide/installation/)
+- [install the psql CLI](https://www.pgcli.com/install)
+- [docker](https://docs.docker.com/get-docker/)
+
+- configure dev environment:
+
+```bash
+python3 -m venv venv
+. venv/bin/activate
+```
+
+- install dependencies:
+
+```bash
+pip install -r requirements.txt
+npm i
+```
+
+### Run
+
+In order to run the app, you will need a Postgresql database to connect to. The easiest way to get started is to use Tilt (see instructions below), but you can create a local dockerized DB manually by running:
 
 ```sh
-python api/swagger-yaml-to-html.py < api/swagger.yml > api/index.html
+docker run -d -p 5432:5432 -e POSTGRES_DB=housinghub -e POSTGRES_USER=app -e POSTGRES_PASSWORD=apppassword postgres:11.7
 ```
+
+Now you can run the Flask app by running 
+
+```sh
+export APP_ENV=local
+export FLASK_APP=src/server.py
+$(cd alembic && alembic upgrade head)
+flask run
+```
+
+or run locally as a simulated serverless application
+```sh
+export APP_ENV=local
+$(cd alembic && alembic upgrade head)
+serverless wsgi serve
+```
+
