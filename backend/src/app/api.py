@@ -68,7 +68,7 @@ class PaginationResponse(Schema):
   page = fields.Integer(required=True)
   totalNumberOfResults = fields.Integer(required=True)
 
-class PropertySchema(Schema):
+class PropertySchema(SQLAlchemyAutoSchema):
   class Meta:
     model = Property
     load_instance = True

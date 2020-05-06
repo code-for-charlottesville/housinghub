@@ -43,20 +43,18 @@ def get_property():
                         schema: ErrorResponse
     """
     try:
-        #print("sent request = " + str(request.get_json()))
-        # data = {
-        #     "pagination" : {"results_per_page" : 1, "page" : 1}, 
-        #     "searchFields" : {"zip_code" : ["22903", "22904"], "bedrooms" : 1, "date_available" : "2020-12-01"}
-        # }
-
         payload = GetPropertyRequest().load(request.get_json())
         _property = app.services.property_service().get_property(payload)
-        print(_property)
-        print(len(_property))
         _property_response = GetPropertyResponse()
-        _property_response.pagination = PaginationResponse(partial=True).dump(
-            {"TotalNumberOfResults" : len(_property)})
-        _property_response.results = PropertySchema(many=True).dump(_property)
+        _property_response.pagination = PaginationResponse()
+        _property_response.pagination = PaginationResponse(partial=True).load(
+        {
+            "results_per_page": len(_property),
+            "page": 1,
+            "totalNumberOfResults": len(_property)
+        }
+    )
+        _property_response.results = _property
         return jsonify(GetPropertyResponse().dump(_property_response))
     except ValidationError as err:
         app.logger.error(f'Invalid request ${err.messages}')
