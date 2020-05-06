@@ -4,7 +4,7 @@ import SearchBar from "../components/SearchBar";
 import Table from "../components/Table";
 import Pagination from "../components/Pagination";
 import "../style/App.css";
-
+import PropertySearch from '../components/PropertySearch.js'
 const SearchProperty = (props) => {
   let columns = [
     {
@@ -33,14 +33,14 @@ const SearchProperty = (props) => {
   ];
   let rows = [];
   for (let i = 0; i < 25; i++) rows.push(r);
-
+  // <SearchBar
+  //   placeHolder={"253 East Main Street"}
+  //   onChange={() => {}}
+  //   onSubmit={() => {}}
+  // />
   return (
     <>
-      <SearchBar
-        placeHolder={"253 East Main Street"}
-        onChange={() => {}}
-        onSubmit={() => {}}
-      />
+      <PropertySearch/>
       <div className="ListContainer">
         <Table
           columns={columns}
