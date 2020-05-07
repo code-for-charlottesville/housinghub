@@ -33,11 +33,6 @@ const SearchProperty = (props) => {
   ];
   let rows = [];
   for (let i = 0; i < 25; i++) rows.push(r);
-  // <SearchBar
-  //   placeHolder={"253 East Main Street"}
-  //   onChange={() => {}}
-  //   onSubmit={() => {}}
-  // />
   return (
     <>
       <PropertySearch/>

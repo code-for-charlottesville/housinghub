@@ -6,6 +6,7 @@ const Dropdown = (props) => {
     return (
         <div class="dropdown is-hoverable">
           <div class="dropdown-trigger">
+            <p>{props.getName}</p>
             <button class="button" aria-haspopup="true" aria-controls="dropdown-menu3">
               <span>{props.getName}</span>
               <span class="icon is-small">

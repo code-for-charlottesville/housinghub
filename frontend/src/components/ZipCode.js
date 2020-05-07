@@ -1,32 +1,32 @@
-import React from "react";
+import React from 'react';
 import "bulma/css/bulma.css";
 import "../style/PropertySearch.css";
-import ZipCode from './ZipCode.js';
 
-const CheckBox = (props) => {
-    return (
-        <div class="columns is-hoverable">
-            <ZipCode/>
-            <div class="column">
-                <tr>
-                <label className="checkbox">
-                    <input type="checkbox"/>
-                    Single Family Home
+export default function ZipCode(props){
+    return(
+        <div class="column">
+            <tr>
+            <label className="checkbox">
+                <input type="checkbox"/>
+                    Charlottesville, VA 22903
                 </label>
                 </tr><tr>
                 <label className="checkbox">
                     <input type="checkbox"/>
-                    Apartement
+                    Charlottesville, VA 22904
                 </label>
                 </tr><tr>
                 <label className="checkbox">
                     <input type="checkbox"/>
-                    Shared Apartement
+                    Greene, VA 22935
                 </label>
-                </tr>
-            </div>
+                </tr><tr>
+                <label className="checkbox">
+                    <input type="checkbox"/>
+                    Albemarle, VA 22987
+                </label>
+            </tr>
         </div>
-    )
 
+    )
 }
-export default CheckBox;
