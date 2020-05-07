@@ -4,7 +4,7 @@ import SearchBar from "../components/SearchBar";
 import Table from "../components/Table";
 import Pagination from "../components/Pagination";
 import "../style/App.css";
-import PropertySearch from '../components/PropertySearch.js'
+import PropertySearch from "../components/PropertySearch.js";
 const SearchProperty = (props) => {
   let columns = [
     {
@@ -35,7 +35,7 @@ const SearchProperty = (props) => {
   for (let i = 0; i < 25; i++) rows.push(r);
   return (
     <>
-      <PropertySearch/>
+      <PropertySearch />
       <div className="ListContainer">
         <Table
           columns={columns}
