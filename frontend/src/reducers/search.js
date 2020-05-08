@@ -53,10 +53,11 @@ const searchState = (state = initialState, action) => {
               },
               searchFields: {
                 ...state.query.searchFields,
-                [action.fieldName]: state.query.searchFields[action.fieldName].filter(
-                  (item) => item != action.newValue),
+                [action.fieldName]: state.query.searchFields[
+                  action.fieldName
+                ].filter((item) => item != action.newValue),
               },
-            }
+            },
           });
         } else {
           return Object.assign({}, state, {
@@ -76,29 +77,29 @@ const searchState = (state = initialState, action) => {
           });
         }
       } else {
+        return Object.assign({}, state, {
+          ...state,
+          query: {
+            pagination: {
+              ...state.query.pagination,
+            },
+            searchFields: {
+              ...state.query.searchFields,
+              [action.fieldName]: action.newValue,
+            },
+          },
+        });
+      }
+    case "SET_PAGINATION_RESULTS":
       return Object.assign({}, state, {
         ...state,
-        query: {
+        searchResults: {
+          ...state.searchResults,
           pagination: {
-            ...state.query.pagination,
-          },
-          searchFields: {
-            ...state.query.searchFields,
+            ...state.searchResults.pagination,
             [action.fieldName]: action.newValue,
           },
         },
-      });
-    }
-    case "SET_PAGINATION_RESULTS":
-      return Object.assign({}, state, {
-          ...state,
-          searchResults: {
-            ...state.searchResults,
-            pagination: {
-              ...state.searchResults.pagination,
-              [action.fieldName]: action.newValue,
-            }
-          }
       });
     case "SET_SEARCH_RESULTS":
       return Object.assign({}, state, {

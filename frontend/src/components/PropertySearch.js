@@ -2,33 +2,37 @@ import React from "react";
 import "bulma/css/bulma.css";
 import "../style/App.css";
 import Dropdown from "./Dropdown.js";
-import CheckBox from "./CheckBox.js";
+import { connect } from "react-redux";
+import { InputField } from "./InputField";
+import { InputFieldNum } from "./InputFieldNum";
+import { setSearchfieldsQuery } from "../actions/search";
+import SearchZipCode from "./SearchZipCode";
+import SearchHousingType from "./SearchHousingType";
+
 const PropertySearch = (props) => {
   let results_per_page = 10;
   return (
-    <div class="columns">
-      <div class="column">
-        <CheckBox />
-      </div>
-      <div class="column">
-        <p>{"Date Available"}</p>
-        <input
-          type="date"
-          placeholder={props.placeHolder}
-          className="input"
-          onChange={(e) => props.onChange && props.onChange(e.target.value)}
-          required
+    <div className="columns">
+      <SearchZipCode />
+      <SearchHousingType />
+      <div className="column">
+        <InputField
+          inputName="Date Available"
+          inputType="date"
+          inputPh="MM-dd-YYYY"
+          onChangeFld="date_available"
+          onChangeFn={setSearchfieldsQuery}
         />
-        <p>{"Max Rent"}</p>
-        <input
-          type="text"
-          placeholder={props.placeHolder}
-          className="input"
-          onChange={(e) => props.onChange && props.onChange(e.target.value)}
-          required
+        <InputFieldNum
+          inputName="Max Rent"
+          inputType="number"
+          inputPh="1200"
+          onChangeFn={setSearchfieldsQuery}
+          onChangeFld="max_rent"
+          inputValue={props.query.searchFields.max_rent}
         />
       </div>
-      <div class="column">
+      {/* <div class="column">
         <div class="rows">
           <div class="row">
             <Dropdown getName="Bedrooms" />
@@ -37,11 +41,20 @@ const PropertySearch = (props) => {
             <Dropdown getName="Bathroom" />
           </div>
         </div>
-      </div>
-      <div class="column">
-        <button class="button is-primary is-rounded">{"Submit"}</button>
+      </div> */}
+      <div className="column">
+        <button className="button is-primary is-rounded">Submit</button>
       </div>
     </div>
   );
 };
-export default PropertySearch;
+
+function mapStateToProps(state) {
+  return {
+    query: {
+      pagination: state.search.query.pagination,
+      searchFields: state.search.query.searchFields
+    },
+  };
+}
+export default connect(mapStateToProps)(PropertySearch);
