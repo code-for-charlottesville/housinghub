@@ -40,6 +40,42 @@ const searchState = (state = initialState, action) => {
         },
       });
     case "SET_SEARCHFIELDS_QUERY":
+      if (Array.isArray(state.query.searchFields[action.fieldName])) {
+        let index = state.query.searchFields[action.fieldName].indexOf(
+          action.newValue
+        );
+        if (index > -1) {
+          return Object.assign({}, state, {
+            ...state,
+            query: {
+              pagination: {
+                ...state.query.pagination,
+              },
+              searchFields: {
+                ...state.query.searchFields,
+                [action.fieldName]: state.query.searchFields[action.fieldName].filter(
+                  (item) => item != action.newValue),
+              },
+            }
+          });
+        } else {
+          return Object.assign({}, state, {
+            ...state,
+            query: {
+              pagination: {
+                ...state.query.pagination,
+              },
+              searchFields: {
+                ...state.query.searchFields,
+                [action.fieldName]: [
+                  ...state.query.searchFields[action.fieldName],
+                  action.newValue,
+                ],
+              },
+            },
+          });
+        }
+      } else {
       return Object.assign({}, state, {
         ...state,
         query: {
@@ -52,6 +88,7 @@ const searchState = (state = initialState, action) => {
           },
         },
       });
+    }
     case "SET_PAGINATION_RESULTS":
       return Object.assign({}, state, {
           ...state,
