@@ -1,34 +1,71 @@
 import React from "react";
 import "bulma/css/bulma.css";
 import "../style/PropertySearch.css";
+import { setSearchfieldsQuery } from "../actions/search";
+import { connect } from "react-redux";
 
-export default function ZipCode(props) {
-  return (
-    <div class="column">
-      <tr>
-        <label className="checkbox">
-          <input type="checkbox" />
-          Charlottesville, VA 22903
-        </label>
-      </tr>
-      <tr>
-        <label className="checkbox">
-          <input type="checkbox" />
-          Charlottesville, VA 22904
-        </label>
-      </tr>
-      <tr>
-        <label className="checkbox">
-          <input type="checkbox" />
-          Greene, VA 22935
-        </label>
-      </tr>
-      <tr>
-        <label className="checkbox">
-          <input type="checkbox" />
-          Albemarle, VA 22987
-        </label>
-      </tr>
-    </div>
-  );
+const ZipCode = (props) => {
+    return(
+        <div class="column">
+            <div className="field">
+            <label className="label">
+                Zip Codes
+            </label>
+            <label className="checkbox">
+                <input 
+                type="checkbox"
+                value="22903"
+                onChange={e => {
+                    props.dispatch(setSearchfieldsQuery("zip_code", e.target.value))}
+                }
+                />
+                    Charlottesville, VA 22903
+                </label>
+                <br />
+                <label className="checkbox">
+                    <input 
+                    type="checkbox"
+                    value="22904"
+                    onChange={e => {
+                        props.dispatch(setSearchfieldsQuery("zip_code", e.target.value))}
+                    }
+                    />
+                    Charlottesville, VA 22904
+                </label>
+                <br />
+                <label className="checkbox">
+                    <input 
+                    type="checkbox"
+                    value="22935"
+                    onChange={e => {
+                        props.dispatch(setSearchfieldsQuery("zip_code", e.target.value))}
+                    }
+                    />
+                    Greene, VA 22935
+                </label>
+                <br />
+                <label className="checkbox">
+                    <input 
+                    type="checkbox"
+                    value="22987"
+                    onChange={e => {
+                        props.dispatch(setSearchfieldsQuery("zip_code", e.target.value))}
+                    }
+                    />
+                    Albemarle, VA 22987
+                </label>
+            </div>
+        </div>
+
+    );
 }
+
+function mapStateToProps(state) {
+    return {
+        query: {
+            searchFields: state.search.query.searchFields,
+        }
+    };
+}
+
+export default connect(mapStateToProps)(ZipCode);
