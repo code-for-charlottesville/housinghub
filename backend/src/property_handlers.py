@@ -1,8 +1,8 @@
 import traceback
 
 from flask import Blueprint, jsonify, request
-from marshmallow import ValidationError
-
+from marshmallow import ValidationError, pprint
+import json
 import app
 from app.api import AddPropertyRequest, PropertyResponse, GetPropertyRequest, GetPropertyResponse, PaginationResponse, PropertySchema
 from app.auth import authenticate
@@ -43,12 +43,18 @@ def get_property():
                         schema: ErrorResponse
     """
     try:
-        print("sent request = " + str(request.get_json()))
         payload = GetPropertyRequest().load(request.get_json())
         _property = app.services.property_service().get_property(payload)
         _property_response = GetPropertyResponse()
         _property_response.pagination = PaginationResponse()
-        _property_response.results = PropertySchema().dump(_property)
+        _property_response.pagination = PaginationResponse(partial=True).load(
+        {
+            "results_per_page": len(_property),
+            "page": 1,
+            "totalNumberOfResults": len(_property)
+        }
+    )
+        _property_response.results = _property
         return jsonify(GetPropertyResponse().dump(_property_response))
     except ValidationError as err:
         app.logger.error(f'Invalid request ${err.messages}')
@@ -59,6 +65,7 @@ def get_property():
         return jsonify(code=500, error='internal error'), 500
 
     return jsonify(code=500, error='not implemented'), 500
+
 
 
 @property_module.route('/property', methods=['POST'])

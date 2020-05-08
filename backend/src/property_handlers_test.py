@@ -1,8 +1,9 @@
 import test
 import unittest
 from unittest.mock import patch
-
 import app
+import services
+import services.auth, services.property
 
 
 class TestPropertyHandlers(unittest.TestCase):
@@ -20,17 +21,56 @@ class TestPropertyHandlers(unittest.TestCase):
     def tearDown(self):
         self.auth_service_patch.stop()
 
-    def test_get_property(self):
-        _search_request = {"pagination": {"page": 1, "results_per_page": 10},
-                           "searchFields": {"bathrooms": 2, "bedrooms": 2, "date_available": "2008-10-11",
-                                            "housing_type": ["string"], "max_rent": 1000, "zip_code": ["22456"]}}
+    @patch('services.container.PropertyService')
+    def test_get_property(self, MockPropertyService):
+        _search_request = {
+            "pagination": {
+                "page": 1,
+                "results_per_page": 10
+            },
+            "searchFields": {
+                "bathrooms": 2,
+                "bedrooms": 2,
+                "date_available": "2008-10-11",
+                "housing_type": ["string"],
+                "max_rent": 1000,
+                "zip_code": ["22456"]
+            }
+        }
         response = self.app.post("/property/search", json=_search_request)
         self.assertEqual(response.status_code, 200)
-
-    def test_post_property(self):
-        response = self.app.post("/property", json={'name': 'test'})
-        self.assertEqual(response.status_code, 400)
-
+    
+    @patch('services.container.PropertyService')
+    def test_get_property_2(self, MockPropertyService):
+        bathrooms = 1
+        bedrooms = 1
+        date_available = "2020-12-11"
+        housing_type = ["apartment", "house"]
+        max_rent = 1000
+        zip_code = ["22903", "22904"]
+        _search_request = {
+            "pagination": {
+                "page": 1,
+                "results_per_page": 10
+            },
+            "searchFields": {
+                "bathrooms": bathrooms,
+                "bedrooms": bedrooms,
+                "date_available": date_available,
+                "housing_type": housing_type,
+                "max_rent": max_rent,
+                "zip_code": zip_code
+            }
+        }
+        response = self.app.post("/property/search", json=_search_request)
+        self.assertEqual(response.status_code, 200)
+        for result in response.get_json()["results"]:
+            self.assertEqual(result["zip_code"] in zip_code, True)
+            self.assertEqual(result["monthly_rent"] <= max_rent, True)
+            self.assertEqual(result["housing_type"] in housing_type, True)
+            self.assertEqual(result["bedrooms"], bedrooms)
+            self.assertEqual(result["bathrooms"], bathrooms)
+    
     def test_put_property(self):
         response = self.app.put("/property?td=test", json={'name': 'test'})
         self.assertEqual(response.status_code, 500)
