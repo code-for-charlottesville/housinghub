@@ -5,6 +5,7 @@ import Table from "../components/Table";
 import Pagination from "../components/Pagination";
 import "../style/App.css";
 import PropertySearch from "../components/PropertySearch.js";
+
 const SearchProperty = (props) => {
   let columns = [
     {
@@ -25,14 +26,16 @@ const SearchProperty = (props) => {
     },
   ];
 
-  let r = [
-    "253 East Main Street",
-    "David's new property",
-    "$1350",
-    "Voucher 1, Voucher 2",
-  ];
   let rows = [];
-  for (let i = 0; i < 25; i++) rows.push(r);
+  for (let i = 0; i < props.searchResults.results.length; i++) {
+    let r = [
+      props.searchResults.results[i].address,
+      props.searchResults.results[i].property_name,
+      props.searchResults.results[i].monthly_rent,
+      props.searchResults.results[i].voucher_type_accepted.join(", "),
+    ];
+    rows.push(r);
+  }
   return (
     <>
       <PropertySearch />
@@ -61,7 +64,12 @@ const SearchProperty = (props) => {
 };
 
 function mapStateToProps(state) {
-  return {};
+  return {
+    searchResults: {
+    ...state.search.searchResults,
+    pagination: state.search.searchResults.pagination,
+    }
+  };
 }
 
 export default connect(mapStateToProps)(SearchProperty);
