@@ -1,6 +1,5 @@
 import React from "react";
 import { connect } from "react-redux";
-import SearchBar from "../components/SearchBar";
 import Table from "../components/Table";
 import Pagination from "../components/Pagination";
 import "../style/App.css";
@@ -26,6 +25,7 @@ const SearchProperty = (props) => {
     },
   ];
 
+  //Populate rows
   let rows = [];
   for (let i = 0; i < props.searchResults.results.length; i++) {
     let r = [

@@ -26,6 +26,7 @@ const PropertySearch = (props) => {
               }
               value={props.query.searchFields.bedrooms}
             >
+              <option hidden value>Select</option>
               <option value="1">1</option>
               <option value="2">2</option>
               <option value="3">3</option>
@@ -48,6 +49,7 @@ const PropertySearch = (props) => {
               }
               value={props.query.searchFields.bathrooms}
             >
+              <option hidden value>Select</option> 
               <option value="1">1</option>
               <option value="1.5">1.5</option>
               <option value="2">2</option>
