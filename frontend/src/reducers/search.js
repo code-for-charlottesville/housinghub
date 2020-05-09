@@ -55,7 +55,7 @@ const searchState = (state = initialState, action) => {
                 ...state.query.searchFields,
                 [action.fieldName]: state.query.searchFields[
                   action.fieldName
-                ].filter((item) => item != action.newValue),
+                ].filter((item) => item !== action.newValue),
               },
             },
           });
@@ -105,7 +105,7 @@ const searchState = (state = initialState, action) => {
       return Object.assign({}, state, {
         ...state,
         searchResults: {
-          results: action.resultList,
+          results: [...action.resultList],
           pagination: {
             ...state.searchResults.pagination,
           },

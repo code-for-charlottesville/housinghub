@@ -1,7 +1,7 @@
 import axios from "axios";
 
 /**
- * makes POST request to /backend/property with id
+ * makes POST request to /backend/property with property
  **/
 
 export function postProperty(property) {

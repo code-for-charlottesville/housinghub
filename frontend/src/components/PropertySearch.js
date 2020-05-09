@@ -1,20 +1,66 @@
 import React from "react";
 import "bulma/css/bulma.css";
 import "../style/App.css";
-import Dropdown from "./Dropdown.js";
 import { connect } from "react-redux";
 import { InputField } from "./InputField";
 import { InputFieldNum } from "./InputFieldNum";
-import { setSearchfieldsQuery } from "../actions/search";
+import { setSearchfieldsQuery, searchProperties } from "../actions/search";
 import SearchZipCode from "./SearchZipCode";
 import SearchHousingType from "./SearchHousingType";
 
 const PropertySearch = (props) => {
-  let results_per_page = 10;
   return (
     <div className="columns">
       <SearchZipCode />
       <SearchHousingType />
+      <div className="column">
+        <div className="field">
+          <label className="label" htmlFor="numBeds">
+            Bedrooms
+          </label>
+          <div className="select">
+            <select
+              id="numBeds"
+              onChange={(e) =>
+                props.dispatch(setSearchfieldsQuery("bedrooms", e.target.value))
+              }
+              value={props.query.searchFields.bedrooms}
+            >
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+              <option value="6">6</option>
+              <option value="7">7</option>
+            </select>
+          </div>
+        </div>
+        <div className="field">
+          <label className="label" htmlFor="numBath">
+            Bathrooms
+          </label>
+          <div className="select">
+            <select
+              id="numBath"
+              onChange={(e) =>
+                props.dispatch(setSearchfieldsQuery("bathrooms", e.target.value))
+              }
+              value={props.query.searchFields.bathrooms}
+            >
+              <option value="1">1</option>
+              <option value="1.5">1.5</option>
+              <option value="2">2</option>
+              <option value="2.5">2.5</option>
+              <option value="3">3</option>
+              <option value="3.5">3.5</option>
+              <option value="4">4</option>
+              <option value="4.5">4.5</option>
+              <option value="5">5</option>
+            </select>
+          </div>
+        </div>
+      </div>
       <div className="column">
         <InputField
           inputName="Date Available"
@@ -32,18 +78,13 @@ const PropertySearch = (props) => {
           inputValue={props.query.searchFields.max_rent}
         />
       </div>
-      {/* <div class="column">
-        <div class="rows">
-          <div class="row">
-            <Dropdown getName="Bedrooms" />
-          </div>
-          <div class="row">
-            <Dropdown getName="Bathroom" />
-          </div>
-        </div>
-      </div> */}
       <div className="column">
-        <button className="button is-primary is-rounded">Submit</button>
+        <button 
+          className="button is-primary is-rounded"
+          onClick={() => searchProperties()}
+        >
+          Submit
+        </button>
       </div>
     </div>
   );
@@ -55,6 +96,10 @@ function mapStateToProps(state) {
       pagination: state.search.query.pagination,
       searchFields: state.search.query.searchFields
     },
+    searchResults: {
+      ...state.search.searchResults,
+      pagination: state.search.searchResults.pagination,
+    }
   };
 }
 export default connect(mapStateToProps)(PropertySearch);
