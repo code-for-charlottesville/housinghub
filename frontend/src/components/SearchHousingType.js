@@ -8,49 +8,47 @@ const SearchHousingType = (props) => {
   return (
     <div className="column">
       <div className="field">
-        <label className="label">
-          Housing Type
+        <label className="label">Housing Type</label>
+        <label className="checkbox">
+          <input
+            type="checkbox"
+            value="Single Family Home"
+            onChange={(e) => {
+              props.dispatch(
+                setSearchfieldsQuery("housing_type", e.target.value)
+              );
+            }}
+          />
+          Single Family Home
         </label>
-      <label className="checkbox">
-        <input
-          type="checkbox"
-          value="Single Family Home"
-          onChange={(e) => {
-            props.dispatch(
-              setSearchfieldsQuery("housing_type", e.target.value)
-            );
-          }}
-        />
-        Single Family Home
-      </label>
-      <br />
-      <label className="checkbox">
-        <input
-          type="checkbox"
-          value="Apartment"
-          onChange={(e) => {
-            props.dispatch(
-              setSearchfieldsQuery("housing_type", e.target.value)
-            );
-          }}
-        />
-        Apartment
-      </label>
-      <br />
-      <label className="checkbox">
-        <input
-          type="checkbox"
-          value="Shared Apartment"
-          onChange={(e) => {
-            props.dispatch(
-              setSearchfieldsQuery("housing_type", e.target.value)
-            );
-          }}
-        />
-        Shared Apartment
-      </label>
+        <br />
+        <label className="checkbox">
+          <input
+            type="checkbox"
+            value="Apartment"
+            onChange={(e) => {
+              props.dispatch(
+                setSearchfieldsQuery("housing_type", e.target.value)
+              );
+            }}
+          />
+          Apartment
+        </label>
+        <br />
+        <label className="checkbox">
+          <input
+            type="checkbox"
+            value="Shared Apartment"
+            onChange={(e) => {
+              props.dispatch(
+                setSearchfieldsQuery("housing_type", e.target.value)
+              );
+            }}
+          />
+          Shared Apartment
+        </label>
+      </div>
     </div>
-  </div>
   );
 };
 

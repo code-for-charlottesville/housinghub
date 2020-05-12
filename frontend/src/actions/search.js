@@ -1,6 +1,6 @@
 import { postQuery } from "../api/search";
 import { setLoading } from "./appState";
-import store from "../reducers/index"; 
+import store from "../reducers/index";
 
 export function setPaginationQuery(fieldName, newValue) {
   return {
@@ -39,17 +39,16 @@ export function setSearchResults(resultList) {
 export function searchProperties() {
   store.dispatch(setLoading(true));
   // Make API call to backend/property/search
-  postQuery(store.getState().search.query).then(
-    (response) => {
-      store.dispatch(setLoading(false));
-      if (response && response.results) {
-        if (response.results.length > 0) {
-          store.dispatch(setSearchResults(response.results));  
-        } else {
-          alert("No matches found");
-        } 
+  postQuery(store.getState().search.query).then((response) => {
+    store.dispatch(setLoading(false));
+    if (response && response.results) {
+      if (response.results.length > 0) {
+        store.dispatch(setSearchResults(response.results));
       } else {
-        console.log("Could not search property: %o", response);
+        alert("No matches found");
+      }
+    } else {
+      console.log("Could not search property: %o", response);
     }
   });
 }

@@ -22,11 +22,15 @@ const PropertySearch = (props) => {
             <select
               id="numBeds"
               onChange={(e) =>
-                props.dispatch(setSearchfieldsQuery("bedrooms", parseInt(e.target.value)))
+                props.dispatch(
+                  setSearchfieldsQuery("bedrooms", parseInt(e.target.value))
+                )
               }
               value={props.query.searchFields.bedrooms}
             >
-              <option hidden value>Select</option>
+              <option hidden value>
+                Select
+              </option>
               <option value="1">1</option>
               <option value="2">2</option>
               <option value="3">3</option>
@@ -45,11 +49,15 @@ const PropertySearch = (props) => {
             <select
               id="numBath"
               onChange={(e) =>
-                props.dispatch(setSearchfieldsQuery("bathrooms", parseFloat(e.target.value)))
+                props.dispatch(
+                  setSearchfieldsQuery("bathrooms", parseFloat(e.target.value))
+                )
               }
               value={props.query.searchFields.bathrooms}
             >
-              <option hidden value>Select</option> 
+              <option hidden value>
+                Select
+              </option>
               <option value="1">1</option>
               <option value="1.5">1.5</option>
               <option value="2">2</option>
@@ -81,7 +89,7 @@ const PropertySearch = (props) => {
         />
       </div>
       <div className="column">
-        <button 
+        <button
           className="button is-primary is-rounded"
           onClick={() => searchProperties()}
         >
@@ -96,12 +104,12 @@ function mapStateToProps(state) {
   return {
     query: {
       pagination: state.search.query.pagination,
-      searchFields: state.search.query.searchFields
+      searchFields: state.search.query.searchFields,
     },
     searchResults: {
       ...state.search.searchResults,
       pagination: state.search.searchResults.pagination,
-    }
+    },
   };
 }
 export default connect(mapStateToProps)(PropertySearch);

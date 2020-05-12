@@ -64,7 +64,8 @@ const PropDetailsForm = (props) => {
           <select
             id="numBeds"
             onChange={(e) =>
-              props.dispatch(setAddPropertyField("bedrooms", parseInt(e.target.value))
+              props.dispatch(
+                setAddPropertyField("bedrooms", parseInt(e.target.value))
               )
             }
             value={props.addProperty.fields.bedrooms}
@@ -87,7 +88,8 @@ const PropDetailsForm = (props) => {
           <select
             id="numBath"
             onChange={(e) =>
-              props.dispatch(setAddPropertyField("bathrooms", parseFloat(e.target.value))
+              props.dispatch(
+                setAddPropertyField("bathrooms", parseFloat(e.target.value))
               )
             }
             value={props.addProperty.fields.bathrooms}
@@ -113,7 +115,10 @@ const PropDetailsForm = (props) => {
             id="numBathsShared"
             onChange={(e) =>
               props.dispatch(
-                setAddPropertyField("shared_bathrooms", parseInt(e.target.value))
+                setAddPropertyField(
+                  "shared_bathrooms",
+                  parseInt(e.target.value)
+                )
               )
             }
             value={props.addProperty.fields.shared_bathrooms}

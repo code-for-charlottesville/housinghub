@@ -20,11 +20,15 @@ export const InputFieldNum = ({
           placeholder={inputPh}
           min="0"
           onChange={(e) => {
-            (isFloat) ?
-              e.target.value >= 0 &&
-                store.dispatch(onChangeFn(onChangeFld, parseFloat(e.target.value))) :
-              e.target.value >= 0 &&
-                store.dispatch(onChangeFn(onChangeFld, parseInt(e.target.value))) 
+            isFloat
+              ? e.target.value >= 0 &&
+                store.dispatch(
+                  onChangeFn(onChangeFld, parseFloat(e.target.value))
+                )
+              : e.target.value >= 0 &&
+                store.dispatch(
+                  onChangeFn(onChangeFld, parseInt(e.target.value))
+                );
           }}
           value={inputValue}
         />
