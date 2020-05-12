@@ -65,10 +65,7 @@ const SearchProperty = (props) => {
 
 function mapStateToProps(state) {
   return {
-    searchResults: {
-    ...state.search.searchResults,
-    pagination: state.search.searchResults.pagination,
-    }
+    searchResults: state.search.searchResults,
   };
 }
 

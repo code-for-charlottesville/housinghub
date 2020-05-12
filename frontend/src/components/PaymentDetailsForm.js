@@ -21,6 +21,7 @@ const PaymentDetailsForm = (props) => {
         inputName="Please specify the application fee, if any, for the property."
         inputType="number"
         inputPh="Ex. 250"
+        isFloat={true}
         onChangeFn={setAddPropertyField}
         onChangeFld="application_fee"
         inputValue={props.addProperty.fields.application_fee}
@@ -29,6 +30,7 @@ const PaymentDetailsForm = (props) => {
         inputName="Please specify the deposit amount for the property"
         inputType="number"
         inputPh="Ex. 800"
+        isFloat={true}
         onChangeFn={setAddPropertyField}
         onChangeFld="deposit"
         inputValue={props.addProperty.fields.deposit}

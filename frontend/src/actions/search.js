@@ -45,12 +45,11 @@ export function searchProperties() {
       if (response && response.results) {
         if (response.results.length > 0) {
           store.dispatch(setSearchResults(response.results));  
-          console.log("success!");
         } else {
-          console.log("No matches found");
+          alert("No matches found");
         } 
       } else {
-        console.log("error :(");
+        console.log("Could not search property: %o", response);
     }
   });
 }

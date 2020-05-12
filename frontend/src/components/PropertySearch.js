@@ -22,7 +22,7 @@ const PropertySearch = (props) => {
             <select
               id="numBeds"
               onChange={(e) =>
-                props.dispatch(setSearchfieldsQuery("bedrooms", e.target.value))
+                props.dispatch(setSearchfieldsQuery("bedrooms", parseInt(e.target.value)))
               }
               value={props.query.searchFields.bedrooms}
             >
@@ -45,7 +45,7 @@ const PropertySearch = (props) => {
             <select
               id="numBath"
               onChange={(e) =>
-                props.dispatch(setSearchfieldsQuery("bathrooms", e.target.value))
+                props.dispatch(setSearchfieldsQuery("bathrooms", parseFloat(e.target.value)))
               }
               value={props.query.searchFields.bathrooms}
             >
