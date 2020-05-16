@@ -16,9 +16,9 @@ export function setNewPropFailure(error) {
   };
 }
 
-export function setPropertyField(fieldName, newValue) {
+export function setAddPropertyField(fieldName, newValue) {
   return {
-    type: "SET_PROPERTY_FIELD",
+    type: "SET_ADD_PROPERTY_FIELD",
     fieldName,
     newValue,
   };
@@ -30,12 +30,14 @@ export function setPropertyField(fieldName, newValue) {
 export function addProperty() {
   store.dispatch(setLoading(true));
   // Make API call to backend /property
-  postProperty(store.getState().propertyState.fields).then((response) => {
-    store.dispatch(setLoading(false));
-    if (response && response.id) {
-      store.dispatch(setNewPropSuccess(response.id));
-    } else {
-      store.dispatch(setNewPropFailure(response.error));
+  postProperty(store.getState().propertyState.addProperty.fields).then(
+    (response) => {
+      store.dispatch(setLoading(false));
+      if (response && response.id) {
+        store.dispatch(setNewPropSuccess(response.id));
+      } else {
+        store.dispatch(setNewPropFailure(response.error));
+      }
     }
-  });
+  );
 }
