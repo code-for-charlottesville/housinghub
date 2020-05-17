@@ -2,7 +2,7 @@ from marshmallow import Schema, ValidationError, fields, pprint, validates
 from marshmallow_sqlalchemy import SQLAlchemyAutoSchema
 
 from app.spec import housinghub_spec
-from models import Property, User
+from models import Property, User, Note
 
 
 class RegisterRequest(Schema):
@@ -77,3 +77,8 @@ class GetPropertyResponse(Schema):
   results = fields.List(fields.Nested(PropertySchema))
   pagination = fields.Nested(PaginationResponse)
 housinghub_spec.components.schema("GetPropertyResponse", schema=GetPropertyResponse)
+
+class NoteSchema(SQLAlchemyAutoSchema):
+  class Meta:
+    model = Note
+    load_instance = True
