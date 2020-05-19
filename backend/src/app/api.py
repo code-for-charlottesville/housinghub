@@ -68,12 +68,12 @@ class PaginationResponse(Schema):
   page = fields.Integer(required=True)
   totalNumberOfResults = fields.Integer(required=True)
 
-class PropertySchema(Schema):
+class PropertySchema(SQLAlchemyAutoSchema):
   class Meta:
     model = Property
     load_instance = True
 
 class GetPropertyResponse(Schema):
-  results = fields.Nested(PropertySchema, many=True)
+  results = fields.List(fields.Nested(PropertySchema))
   pagination = fields.Nested(PaginationResponse)
 housinghub_spec.components.schema("GetPropertyResponse", schema=GetPropertyResponse)
