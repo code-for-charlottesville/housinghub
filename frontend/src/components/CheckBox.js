@@ -1,7 +1,8 @@
 import React from "react";
 import "bulma/css/bulma.css";
-import "../style/PropertySearch.css";
+
 import ZipCode from "./ZipCode.js";
+import "../style/CheckBox.css";
 
 const CheckBox = (props) => {
   return (
@@ -9,22 +10,25 @@ const CheckBox = (props) => {
       <ZipCode />
       <div class="column">
         <tr>
-          <label className="checkbox">
-            <input type="checkbox" />
-            Single Family Home
-          </label>
+        <label className="checkbox">
+        <input type="checkbox"/>
+        Single Family Home
+        <span class="checkbox-custom rectangular"></span>
+        </label>
         </tr>
         <tr>
-          <label className="checkbox">
-            <input type="checkbox" />
-            Apartement
-          </label>
+        <label className="checkbox">
+        <input type="checkbox"/>
+        Apartment
+        <span class="checkbox-custom rectangular"></span>
+        </label>
         </tr>
         <tr>
-          <label className="checkbox">
-            <input type="checkbox" />
-            Shared Apartement
-          </label>
+        <label className="checkbox">
+        <input type="checkbox"/>
+        Shared Apartment
+        <span class="checkbox-custom rectangular"></span>
+        </label>
         </tr>
       </div>
     </div>

@@ -1,7 +1,7 @@
 import React from "react";
 import "bulma/css/bulma.css";
 import "../style/App.css";
-
+import "../style/PropertySearch.css";
 const Table = (props) => {
   let _renderTableHeader = (column, columnIndex) => {
     return (
@@ -34,8 +34,15 @@ const Table = (props) => {
   return (
     <div className="table-container">
       <table className="table is-bordered is-striped is-hoverable is-fullwidth HoverPointer">
-        <thead>
-          <tr>{props.columns.map((c, i) => _renderTableHeader(c, i))}</tr>
+        <thead className="head">
+          <tr>
+          <th>{'Property Type'}</th>
+          <th>{'Address'}</th>
+          <th>{'Rent'}</th>
+          <th >{'Bedrooms'}</th>
+          <th >{'Bathrooms'}</th>
+          <th >{'Actions'}</th>
+          </tr>
         </thead>
         <tbody>{props.rows.map((r, i) => _renderRow(r, i))}</tbody>
       </table>

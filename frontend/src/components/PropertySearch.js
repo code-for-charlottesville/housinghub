@@ -8,7 +8,7 @@ const PropertySearch = (props) => {
   return (
     <div class="columns">
       <div class="column">
-        <CheckBox />
+        <CheckBox/>
       </div>
       <div class="column">
         <p>{"Date Available"}</p>
@@ -22,7 +22,7 @@ const PropertySearch = (props) => {
         <p>{"Max Rent"}</p>
         <input
           type="text"
-          placeholder={props.placeHolder}
+          placeholder={'Max Rent'}
           className="input"
           onChange={(e) => props.onChange && props.onChange(e.target.value)}
           required
@@ -39,7 +39,7 @@ const PropertySearch = (props) => {
         </div>
       </div>
       <div class="column">
-        <button class="button is-primary is-rounded">{"Submit"}</button>
+        <button class="button is-primary is-rounded">{"   Search   "}</button>
       </div>
     </div>
   );
