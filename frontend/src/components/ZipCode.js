@@ -1,7 +1,7 @@
 import React from "react";
 import "bulma/css/bulma.css";
 import "../style/PropertySearch.css";
-// import { Checkbox } from '@material-ui/core'
+import "../style/CheckBox.css";
 export default function ZipCode(props) {
   return (
     <div class="column">

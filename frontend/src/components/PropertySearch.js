@@ -7,37 +7,9 @@ import { InputFieldNum } from "./InputFieldNum";
 import { setSearchfieldsQuery, searchProperties } from "../actions/search";
 import SearchZipCode from "./SearchZipCode";
 import SearchHousingType from "./SearchHousingType";
-
 const PropertySearch = (props) => {
   return (
-<<<<<<< HEAD
-    <div class="columns">
-      <div class="column">
-        <CheckBox/>
-      </div>
-      <div class="column">
-        <p>{"Date Available"}</p>
-        <input
-          type="date"
-          placeholder={props.placeHolder}
-          className="input"
-          onChange={(e) => props.onChange && props.onChange(e.target.value)}
-          required
-        />
-        <p>{"Max Rent"}</p>
-        <input
-          type="text"
-          placeholder={'Max Rent'}
-          className="input"
-          onChange={(e) => props.onChange && props.onChange(e.target.value)}
-          required
-        />
-      </div>
-      <div class="column">
-        <div class="rows">
-          <div class="row">
-            <Dropdown getName="Bedrooms" />
-=======
+
     <div className="columns">
       <SearchZipCode />
       <SearchHousingType />
@@ -67,7 +39,6 @@ const PropertySearch = (props) => {
               <option value="6">6</option>
               <option value="7">7</option>
             </select>
->>>>>>> 9ab75f0f46d8f00896e393629ce3eda255fe2779
           </div>
         </div>
         <div className="field">
@@ -100,10 +71,9 @@ const PropertySearch = (props) => {
           </div>
         </div>
       </div>
-<<<<<<< HEAD
       <div class="column">
         <button class="button is-primary is-rounded">{"   Search   "}</button>
-=======
+      </div>
       <div className="column">
         <InputField
           inputName="Date Available"
@@ -128,7 +98,6 @@ const PropertySearch = (props) => {
         >
           Submit
         </button>
->>>>>>> 9ab75f0f46d8f00896e393629ce3eda255fe2779
       </div>
     </div>
   );

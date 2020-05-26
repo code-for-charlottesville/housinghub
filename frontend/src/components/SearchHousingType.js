@@ -3,7 +3,7 @@ import "bulma/css/bulma.css";
 import "../style/PropertySearch.css";
 import { setSearchfieldsQuery } from "../actions/search";
 import { connect } from "react-redux";
-
+// import "../style/CheckBox.css"
 const SearchHousingType = (props) => {
   return (
     <div className="column">
@@ -11,6 +11,7 @@ const SearchHousingType = (props) => {
         <label className="label">Housing Type</label>
         <label className="checkbox">
           <input
+            class="checkbox-custom"
             type="checkbox"
             value="Single Family Home"
             onChange={(e) => {
