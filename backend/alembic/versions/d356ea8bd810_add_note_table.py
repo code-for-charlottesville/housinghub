@@ -23,6 +23,7 @@ def upgrade():
         sa.Column('id', UUID, primary_key=True),
         sa.Column('entity_type', VARCHAR, nullable=False),
         sa.Column('entity_id', UUID, nullable=False),
+        sa.Column('content', VARCHAR, nullable=False),
         sa.Column('created_by', UUID, nullable=False),
         sa.Column('private', BOOLEAN, nullable=False),
         sa.Column('created_at', TIMESTAMP, nullable=False),

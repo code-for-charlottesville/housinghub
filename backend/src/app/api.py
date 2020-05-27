@@ -82,3 +82,10 @@ class NoteSchema(SQLAlchemyAutoSchema):
   class Meta:
     model = Note
     load_instance = True
+
+class AddNoteRequest(SQLAlchemyAutoSchema):
+  class Meta:
+    model = Note
+    load_instance = True
+    exclude = ('id', 'created_at', 'created_by', )
+housinghub_spec.components.schema("AddNoteRequest", schema=AddNoteRequest)

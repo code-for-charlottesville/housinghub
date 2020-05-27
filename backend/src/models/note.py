@@ -13,6 +13,7 @@ class Note(Base):
     id = Column(UUID, primary_key = True)
     entity_type = Column(VARCHAR)
     entity_id = Column(UUID)
+    content = Column(VARCHAR)
     created_by = Column(UUID)
     private = Column(BOOLEAN)
     created_at = Column(TIMESTAMP)
