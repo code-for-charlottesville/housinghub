@@ -7,7 +7,7 @@ from services.auth import AuthService
 from services.navigator import NavigatorService
 from services.property import PropertyService
 from services.user import UserService
-
+from services.note import NoteService
 
 class ServicesContainer:
 
@@ -27,3 +27,6 @@ class ServicesContainer:
 
   def property_service(self):
     return PropertyService(self.logger, self.Session)
+
+  def note_service(self):
+    return NoteService(self.logger, self.Session)

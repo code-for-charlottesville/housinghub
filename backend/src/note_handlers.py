@@ -4,7 +4,7 @@ from flask import Blueprint, jsonify, request
 from marshmallow import ValidationError, pprint
 import json
 import app
-from app.api import NoteSchema, AddNoteRequest
+from app.api import NoteSchema, AddNoteRequest, NoteResponse
 from app.auth import authenticate
 from app.spec import DocumentedBlueprint
 
