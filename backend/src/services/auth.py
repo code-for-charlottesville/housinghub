@@ -80,7 +80,6 @@ class AuthService:
           return (None, "Authorization header not found in request")
       # get bearer
       spl = auth_header.split(" ")
-      #app.logger.error(spl[0], spl[1])
       if len(spl) != 2:
           return (
               None,
