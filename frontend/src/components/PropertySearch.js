@@ -71,9 +71,6 @@ const PropertySearch = (props) => {
           </div>
         </div>
       </div>
-      <div class="column">
-        <button class="button is-primary is-rounded">{"   Search   "}</button>
-      </div>
       <div className="column">
         <InputField
           inputName="Date Available"
@@ -96,7 +93,7 @@ const PropertySearch = (props) => {
           className="button is-primary is-rounded"
           onClick={() => searchProperties()}
         >
-          Submit
+          Search
         </button>
       </div>
     </div>

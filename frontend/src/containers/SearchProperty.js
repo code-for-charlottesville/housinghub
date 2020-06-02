@@ -32,7 +32,9 @@ const SearchProperty = (props) => {
       props.searchResults.results[i].address,
       props.searchResults.results[i].property_name,
       props.searchResults.results[i].monthly_rent,
-      props.searchResults.results[i].voucher_type_accepted.join(", "),
+      props.searchResults.results[i].bedrooms,
+      props.searchResults.results[i].bathrooms,
+      <a href="">See More</a>,
     ];
     rows.push(r);
   }
