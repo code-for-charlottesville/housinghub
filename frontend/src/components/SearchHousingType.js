@@ -11,7 +11,7 @@ const SearchHousingType = (props) => {
         <label className="label">Housing Type</label>
         <label className="checkbox">
           <input
-            class="checkbox-custom"
+            className="checkbox-custom"
             type="checkbox"
             value="Single Family Home"
             onChange={(e) => {

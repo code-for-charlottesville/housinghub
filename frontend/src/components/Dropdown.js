@@ -8,8 +8,8 @@ const Dropdown = (props) => {
     getName(i);
   };
   return (
-    <div class="dropdown is-hoverable">
-      <div class="dropdown-trigger">
+    <div className="dropdown is-hoverable">
+      <div className="dropdown-trigger">
           <input
             type="text"
             placeholder={name}
@@ -17,21 +17,21 @@ const Dropdown = (props) => {
             required
           />
         <button
-          class="button-2"
+          className="button-2"
           aria-haspopup="true"
           aria-controls="dropdown-menu3"
         >
-          <span><i class="arrow down"></i></span>
-          <span class="icon is-small">
-            <i class="fas fa-angle-down" aria-hidden="true"></i>
+          <span><i className="arrow down"></i></span>
+          <span className="icon is-small">
+            <i className="fas fa-angle-down" aria-hidden="true"></i>
           </span>
         </button>
       </div>
-      <div class="dropdown-menu" id="dropdown-menu3" role="menu">
-        <div class="dropdown-content">
+      <div className="dropdown-menu" id="dropdown-menu3" role="menu">
+        <div className="dropdown-content">
           {[1,2,3,4,5,6,7,8,'--'].map(item => {
               return(
-                  <a href="#" class="dropdown-item" onClick={() => changeName(item)}>
+                  <a href="#" className="dropdown-item" onClick={() => changeName(item)}>
                     {item}
                   </a>
               )

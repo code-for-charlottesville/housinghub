@@ -48,7 +48,7 @@ export function searchProperties() {
         alert("No matches found");
       }
     } else {
-      console.log("Could not search property: %o", response);
+      console.error("Could not search property: %o", response);
     }
   });
 }
