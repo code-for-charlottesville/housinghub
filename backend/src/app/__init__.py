@@ -12,6 +12,7 @@ from auth_handlers import auth_module
 from landlord_handlers import landlord_module
 from navigator_handlers import navigator_module
 from property_handlers import property_module
+from note_handlers import note_module
 from services.container import ServicesContainer
 
 from .spec import housinghub_spec
@@ -37,7 +38,7 @@ flask_app.register_blueprint(auth_module)
 flask_app.register_blueprint(landlord_module)
 flask_app.register_blueprint(navigator_module)
 flask_app.register_blueprint(property_module)
-
+flask_app.register_blueprint(note_module)
 
 @flask_app.route('/spec', methods=['GET'])
 def get_spec():
