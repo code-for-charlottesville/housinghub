@@ -11,6 +11,8 @@ def authenticate(f):
     auth_service = app.services.auth_service()
     (user, err) = auth_service.authenticate_request(request)
     if user:
+      g.user_id = user['uid']
+      g.user_role = user['role']
       return f(*args,**kwargs)
     else:
       app.logger.error(f'Request not authenticated for ${request.url}')
