@@ -36,12 +36,12 @@ const Table = (props) => {
       <table className="table is-bordered is-striped is-hoverable is-fullwidth HoverPointer">
         <thead className="head">
           <tr>
-          <th>Property Type</th>
-          <th>Address</th>
-          <th>Rent</th>
-          <th >Bedrooms</th>
-          <th >Bathrooms</th>
-          <th >Actions</th>
+            <th>Property Type</th>
+            <th>Address</th>
+            <th>Rent</th>
+            <th>Bedrooms</th>
+            <th>Bathrooms</th>
+            <th>Actions</th>
           </tr>
         </thead>
         <tbody>{props.rows.map((r, i) => _renderRow(r, i))}</tbody>

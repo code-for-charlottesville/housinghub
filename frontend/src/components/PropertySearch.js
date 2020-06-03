@@ -9,7 +9,6 @@ import SearchZipCode from "./SearchZipCode";
 import SearchHousingType from "./SearchHousingType";
 const PropertySearch = (props) => {
   return (
-
     <div className="columns">
       <SearchZipCode />
       <SearchHousingType />

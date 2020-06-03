@@ -10,25 +10,25 @@ const CheckBox = (props) => {
       <ZipCode />
       <div className="column">
         <tr>
-        <label className="checkbox">
-        <input type="checkbox"/>
-        Single Family Home
-        <span className="checkbox-custom rectangular"></span>
-        </label>
+          <label className="checkbox">
+            <input type="checkbox" />
+            Single Family Home
+            <span className="checkbox-custom rectangular"></span>
+          </label>
         </tr>
         <tr>
-        <label className="checkbox">
-        <input type="checkbox"/>
-        Apartment
-        <span className="checkbox-custom rectangular"></span>
-        </label>
+          <label className="checkbox">
+            <input type="checkbox" />
+            Apartment
+            <span className="checkbox-custom rectangular"></span>
+          </label>
         </tr>
         <tr>
-        <label className="checkbox">
-        <input type="checkbox"/>
-        Shared Apartment
-        <span className="checkbox-custom rectangular"></span>
-        </label>
+          <label className="checkbox">
+            <input type="checkbox" />
+            Shared Apartment
+            <span className="checkbox-custom rectangular"></span>
+          </label>
         </tr>
       </div>
     </div>
