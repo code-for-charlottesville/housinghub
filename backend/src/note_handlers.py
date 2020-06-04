@@ -15,6 +15,42 @@ note_module = DocumentedBlueprint('note', __name__)
 @authenticate
 def post_note():
     """
-    TO DO
+    adds a new Note to the database and returns response
+    ---
+    post:
+        tags:
+            - authentication
+        summary: Creates a new note
+        requestBody:
+            required: true
+            content:
+                application/json:
+                    schema: AddNoteRequest
+        responses:
+            '200':
+                description: newly created note
+                content:
+                    application/json:
+                        schema: NoteResponse
+            '400':
+                description: Request is invalid
+                content:
+                    application/json:
+                        schema: ErrorResponse
+            '500':
+                description: An error message.
+                content:
+                    application/json:
+                        schema: ErrorResponse
     """
-    return jsonify(code=500, error='not implemented'), 500
+    try:
+        payload = AddNoteRequest().load(request.get_json(force = True), transient=True)
+        _note = app.services.note_service().add_note(payload)
+        return jsonify(NoteResponse().dump(_note))
+    except ValidationError as err:
+        app.logger.error(f'Invalid request ${err.messages}')
+        return jsonify(err.messages), 400
+    except:
+        app.logger.error(
+            f'Unexpected error adding note: ${traceback.format_exc()}')
+    return jsonify(code=500, error='internal error'), 500
