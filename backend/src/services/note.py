@@ -14,7 +14,7 @@ class NoteService:
     def add_note(self, note: Note):
         note.id = uuid.uuid4()
         note.created_at = datetime.datetime.now()
-        created_by = g.user_id
+        note.created_by = g.user_id
         self.session.add(note)
         self.session.commit()
         return note
