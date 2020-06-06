@@ -51,8 +51,8 @@ const NewPropForm = (props) => {
           </div>
           <div className="control">
             <button className="button is-light" title="Return home">
-                Cancel
-              </button>
+              Cancel
+            </button>
           </div>
         </div>
       </form>

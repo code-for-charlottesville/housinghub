@@ -5,15 +5,13 @@ import "bulma/css/bulma.css";
 import { connect } from "react-redux";
 import MainContent from "./containers/MainContent";
 import { setJwtStatus } from "./actions/login";
-import { Footer } from "./components/Footer"
-import Logout from "./components/Logout"
-import "./style/App.css"
-
+import { Footer } from "./components/Footer";
+import Logout from "./components/Logout";
+import "./style/App.css";
 
 class App extends React.Component {
-
   componentDidMount() {
-    setJwtStatus()
+    setJwtStatus();
   }
 
   render() {
@@ -25,7 +23,7 @@ class App extends React.Component {
           <Route path="/" component={MainContent} />
           <Route>Page not found :(</Route>
         </Switch>
-        <Footer/>
+        <Footer />
       </div>
     );
   }
@@ -33,7 +31,7 @@ class App extends React.Component {
 
 function mapStateToProps(state) {
   return {
-    isLoggedIn: state.login.isLoggedIn
+    isLoggedIn: state.login.isLoggedIn,
   };
 }
 
