@@ -1,5 +1,5 @@
 import React from "react";
-import "bulma/css/bulma.css";
+
 import "../style/PropertySearch.css";
 import "../style/CheckBox.css";
 export default function ZipCode(props) {

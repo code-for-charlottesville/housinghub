@@ -1,5 +1,5 @@
 import React from "react";
-import "bulma/css/bulma.css";
+
 import { connect } from "react-redux";
 import { setAddPropertyField } from "../actions/property";
 

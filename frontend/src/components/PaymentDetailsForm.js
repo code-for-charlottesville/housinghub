@@ -1,5 +1,5 @@
 import React from "react";
-import "bulma/css/bulma.css";
+
 import { InputField } from "./InputField";
 import { InputFieldNum } from "./InputFieldNum";
 import VoucherInputs from "./VoucherInputs";

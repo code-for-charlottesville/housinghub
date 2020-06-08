@@ -1,5 +1,5 @@
 import React from "react";
-import "bulma/css/bulma.css";
+
 import { connect } from "react-redux";
 import { Redirect } from "react-router-dom";
 import { setLoginField, loginUser } from "../actions/login";

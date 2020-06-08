@@ -1,5 +1,5 @@
 import React from "react";
-import "bulma/css/bulma.css";
+
 import "../style/App.css";
 import { connect } from "react-redux";
 import { InputField } from "./InputField";

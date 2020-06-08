@@ -1,5 +1,5 @@
 import React from "react";
-import "bulma/css/bulma.css";
+
 import "../style/App.css";
 import "../style/PropertySearch.css";
 const Table = (props) => {

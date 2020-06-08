@@ -1,5 +1,5 @@
 import React from "react";
-import "bulma/css/bulma.css";
+
 
 import ZipCode from "./ZipCode.js";
 import "../style/CheckBox.css";

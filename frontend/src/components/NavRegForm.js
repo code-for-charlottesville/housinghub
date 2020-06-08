@@ -1,6 +1,6 @@
 import React from "react";
 import { InputField } from "./InputField";
-import "bulma/css/bulma.css";
+
 
 export const NavRegForm = () => {
   return (

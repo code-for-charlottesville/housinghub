@@ -9,7 +9,6 @@
     "axios": "^0.19.2",
     "lodash": "^4.17.15",
     "react": "^16.13.1",
-    "react-bulma-components": "^3.2.0",
     "react-burger-menu": "^2.6.13",
     "react-dom": "^16.13.1",
     "react-redux": "^7.2.0",

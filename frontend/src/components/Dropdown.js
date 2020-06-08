@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import "bulma/css/bulma.css";
+
 import "../style/App.css";
 import "../style/PropertySearch.css";
 const Dropdown = (props) => {
