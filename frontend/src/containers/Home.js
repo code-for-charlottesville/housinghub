@@ -10,7 +10,12 @@ class Home extends React.Component {
   }
 
   render() {
-    if (this.props.loading) return <LoadingSpinner />;
+    if (this.props.loading)
+      return (
+        <div className="container App-header">
+          <LoadingSpinner />
+        </div>
+      );
 
     return (
       <div>

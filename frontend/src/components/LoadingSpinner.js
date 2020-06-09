@@ -1,5 +1,10 @@
 import React from "react";
+import { Spinner } from "react-bootstrap";
 
 export const LoadingSpinner = ({ inputName, inputType, inputPh }) => {
-  return <progress className="progress is-large is is-primary" max="100" />;
+  return (
+    <Spinner animation="border" role="status">
+      <span className="sr-only">Loading...</span>
+    </Spinner>
+  );
 };

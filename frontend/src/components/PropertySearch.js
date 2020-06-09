@@ -97,11 +97,7 @@ const PropertySearch = (props) => {
           />
         </Col>
         <Col>
-          <Button
-            onClick={() => searchProperties()}
-          >
-            Search
-          </Button>
+          <Button onClick={() => searchProperties()}>Search</Button>
         </Col>
       </Row>
     </Container>
