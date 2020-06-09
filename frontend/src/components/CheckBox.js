@@ -1,6 +1,5 @@
 import React from "react";
 
-
 import ZipCode from "./ZipCode.js";
 import "../style/CheckBox.css";
 
