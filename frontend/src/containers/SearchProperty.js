@@ -38,6 +38,11 @@ const SearchProperty = (props) => {
     ];
     rows.push(r);
   }
+
+  rows = [["Apartment", "520 E Main Street", "$2500", 5, 1, "Test"]];
+
+  console.log(columns);
+  console.log(rows);
   return (
     <>
       <PropertySearch />

@@ -1,5 +1,6 @@
 import React from "react";
 import store from "../reducers";
+import { FormControl } from "react-bootstrap";
 
 export const InputField = ({
   inputName,
@@ -10,11 +11,10 @@ export const InputField = ({
   onChangeFld,
 }) => {
   return (
-    <div className="field">
-      <label className="label">{inputName}</label>
-      <div className="control">
+    <div>
+      <label>{inputName}</label>
+      <div>
         <input
-          className="input"
           type={inputType}
           placeholder={inputPh}
           onChange={(e) => {

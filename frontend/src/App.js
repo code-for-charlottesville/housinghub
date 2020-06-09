@@ -1,7 +1,7 @@
 import React from "react";
 import { Switch, Route } from "react-router-dom";
 import Login from "./components/Login";
-import "bulma/css/bulma.css";
+
 import { connect } from "react-redux";
 import MainContent from "./containers/MainContent";
 import { setJwtStatus } from "./actions/login";

@@ -1,5 +1,5 @@
 import React from "react";
-import "bulma/css/bulma.css";
+
 import { InputField } from "./InputField";
 import { InputFieldNum } from "./InputFieldNum";
 import VoucherInputs from "./VoucherInputs";
@@ -35,11 +35,11 @@ const PaymentDetailsForm = (props) => {
         onChangeFld="deposit"
         inputValue={props.addProperty.fields.deposit}
       />
-      <div className="field">
-        <label className="label" htmlFor="lastMonthBool">
+      <div>
+        <label htmlFor="lastMonthBool">
           Is the last month's rent required for the property?
         </label>
-        <div className="select">
+        <div>
           <select
             id="lastMonthBool"
             onChange={(e) =>
@@ -73,11 +73,11 @@ const PaymentDetailsForm = (props) => {
         onChangeFld="background_screening_company"
         inputValue={props.addProperty.fields.background_screening_company}
       />
-      <div className="field">
+      <div>
         <label className="label" htmlFor="backgroundBool">
           Does the property require applicants to have a clean criminal record?
         </label>
-        <div className="select">
+        <div>
           <select
             id="backgroundBool"
             onChange={(e) =>
