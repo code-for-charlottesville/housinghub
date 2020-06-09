@@ -8,8 +8,8 @@ from app.api import NoteSchema, AddNoteRequest, NoteResponse
 from app.auth import authenticate
 from app.spec import DocumentedBlueprint
 
-
 note_module = DocumentedBlueprint('note', __name__)
+
 
 @note_module.route('/note', methods=['POST'])
 @authenticate
