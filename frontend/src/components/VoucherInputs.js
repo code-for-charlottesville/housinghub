@@ -1,5 +1,5 @@
 import React from "react";
-import "bulma/css/bulma.css";
+
 import { connect } from "react-redux";
 import { setAddPropertyField } from "../actions/property";
 
@@ -25,15 +25,15 @@ const VoucherInputs = (props) => {
     }
   }
   return (
-    <div className="field">
-      <label className="label" htmlFor="vouchersAccepted">
+    <div>
+      <label htmlFor="vouchersAccepted">
         Please specify 'Yes' or 'No' for the vouchers accepted as payment for
         the property.
       </label>
-      <div className="radioBox">
-        <label className="label radioLabel">CSRAP</label>
-        <div className="control">
-          <label className="radio">
+      <div>
+        <label>CSRAP</label>
+        <div>
+          <label>
             <input
               type="radio"
               name="CSRAP"
@@ -44,7 +44,7 @@ const VoucherInputs = (props) => {
             />
             Yes
           </label>
-          <label className="radio">
+          <label>
             <input
               type="radio"
               name="CSRAP"
@@ -57,10 +57,10 @@ const VoucherInputs = (props) => {
           </label>
         </div>
       </div>
-      <div className="radioBox">
-        <label className="label radioLabel">HCV</label>
-        <div className="control">
-          <label className="radio">
+      <div>
+        <label>HCV</label>
+        <div>
+          <label>
             <input
               type="radio"
               name="HCV"
@@ -71,7 +71,7 @@ const VoucherInputs = (props) => {
             />
             Yes
           </label>
-          <label className="radio">
+          <label>
             <input
               type="radio"
               name="HCV"
@@ -84,10 +84,10 @@ const VoucherInputs = (props) => {
           </label>
         </div>
       </div>
-      <div className="radioBox">
-        <label className="label radioLabel">MSV</label>
-        <div className="control">
-          <label className="radio">
+      <div>
+        <label>MSV</label>
+        <div>
+          <label>
             <input
               type="radio"
               name="MSV"
@@ -98,7 +98,7 @@ const VoucherInputs = (props) => {
             />
             Yes
           </label>
-          <label className="radio">
+          <label>
             <input
               type="radio"
               name="MSV"
@@ -111,10 +111,10 @@ const VoucherInputs = (props) => {
           </label>
         </div>
       </div>
-      <div className="radioBox">
-        <label className="label radioLabel">Voucher 4</label>
-        <div className="control">
-          <label className="radio">
+      <div>
+        <label>Voucher 4</label>
+        <div>
+          <label>
             <input
               type="radio"
               name="Voucher 4"
@@ -125,7 +125,7 @@ const VoucherInputs = (props) => {
             />
             Yes
           </label>
-          <label className="radio">
+          <label>
             <input
               type="radio"
               name="Voucher 4"
@@ -138,10 +138,10 @@ const VoucherInputs = (props) => {
           </label>
         </div>
       </div>
-      <div className="radioBox">
-        <label className="label radioLabel">Voucher 5</label>
-        <div className="control">
-          <label className="radio">
+      <div>
+        <label>Voucher 5</label>
+        <div>
+          <label>
             <input
               type="radio"
               name="Voucher 5"
@@ -152,7 +152,7 @@ const VoucherInputs = (props) => {
             />
             Yes
           </label>
-          <label className="radio">
+          <label>
             <input
               type="radio"
               name="Voucher 5"

@@ -15,6 +15,7 @@ note_module = DocumentedBlueprint('note', __name__)
 @authenticate
 def post_note():
     """
+
     adds a new Note to the database and returns response
     ---
     post:
@@ -42,7 +43,6 @@ def post_note():
                 content:
                     application/json:
                         schema: ErrorResponse
-    """
     try:
         payload = AddNoteRequest().load(request.get_json(force = True), transient=True)
         _note = app.services.note_service().add_note(payload)
@@ -54,3 +54,4 @@ def post_note():
         app.logger.error(
             f'Unexpected error adding note: ${traceback.format_exc()}')
     return jsonify(code=500, error='internal error'), 500
+

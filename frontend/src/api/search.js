@@ -1,12 +1,12 @@
 import axios from "axios";
 
 /**
- * makes POST request to /backend/property with property
+ * makes POST request to /backend/property/search with query
  **/
 
-export function postProperty(property) {
+export function postQuery(query) {
   return axios
-    .post("/backend/property", property)
+    .post("/backend/property/search", query)
     .then((r) => {
       return Promise.resolve(r.data);
     })

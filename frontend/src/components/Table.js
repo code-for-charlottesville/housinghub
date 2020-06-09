@@ -1,8 +1,8 @@
 import React from "react";
-import "bulma/css/bulma.css";
-import "../style/App.css";
 
-const Table = (props) => {
+import "../style/App.css";
+import { Table } from "react-bootstrap";
+const LocalTable = (props) => {
   let _renderTableHeader = (column, columnIndex) => {
     return (
       <th
@@ -32,15 +32,20 @@ const Table = (props) => {
   );
 
   return (
-    <div className="table-container">
-      <table className="table is-bordered is-striped is-hoverable is-fullwidth HoverPointer">
-        <thead>
-          <tr>{props.columns.map((c, i) => _renderTableHeader(c, i))}</tr>
-        </thead>
-        <tbody>{props.rows.map((r, i) => _renderRow(r, i))}</tbody>
-      </table>
-    </div>
+    <Table table bordered hover striped>
+      <thead className="head">
+        <tr>
+          <th>Property Type</th>
+          <th>Address</th>
+          <th>Rent</th>
+          <th>Bedrooms</th>
+          <th>Bathrooms</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>{props.rows.map((r, i) => _renderRow(r, i))}</tbody>
+    </Table>
   );
 };
 
-export default Table;
+export default LocalTable;

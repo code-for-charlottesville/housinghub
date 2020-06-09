@@ -8,18 +8,26 @@ export const InputFieldNum = ({
   inputValue,
   onChangeFn,
   onChangeFld,
+  isFloat,
 }) => {
   return (
-    <div className="field">
-      <label className="label">{inputName}</label>
-      <div className="control">
+    <div>
+      <label>{inputName}</label>
+      <div>
         <input
-          className="input"
           type={inputType}
           placeholder={inputPh}
+          min="0"
           onChange={(e) => {
-            e.target.value >= 0 &&
-              store.dispatch(onChangeFn(onChangeFld, e.target.value));
+            isFloat
+              ? e.target.value >= 0 &&
+                store.dispatch(
+                  onChangeFn(onChangeFld, parseFloat(e.target.value))
+                )
+              : e.target.value >= 0 &&
+                store.dispatch(
+                  onChangeFn(onChangeFld, parseInt(e.target.value))
+                );
           }}
           value={inputValue}
         />
