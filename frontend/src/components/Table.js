@@ -1,7 +1,6 @@
 import React from "react";
 
 import "../style/App.css";
-import "../style/PropertySearch.css";
 import { Table } from "react-bootstrap";
 const LocalTable = (props) => {
   let _renderTableHeader = (column, columnIndex) => {

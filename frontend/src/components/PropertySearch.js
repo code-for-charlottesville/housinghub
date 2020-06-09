@@ -1,6 +1,5 @@
 import React from "react";
 
-import "../style/PropertySearch.css";
 import { connect } from "react-redux";
 import { InputField } from "./InputField";
 import { InputFieldNum } from "./InputFieldNum";
@@ -99,7 +98,6 @@ const PropertySearch = (props) => {
         </Col>
         <Col>
           <Button
-            className="propertySearchButton"
             onClick={() => searchProperties()}
           >
             Search

@@ -1,6 +1,5 @@
 import React from "react";
 
-import "../style/PropertySearch.css";
 import { setSearchfieldsQuery } from "../actions/search";
 import { connect } from "react-redux";
 
