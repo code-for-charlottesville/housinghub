@@ -42,6 +42,9 @@
     ]
   },
   "devDependencies": {
-    "prettier": "^2.0.4"
+    "axios-mock-adapter": "^1.18.1",
+    "moxios": "^0.4.0",
+    "prettier": "^2.0.4",
+    "sinon": "^9.0.2"
   }
 }
