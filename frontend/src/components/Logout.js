@@ -18,7 +18,7 @@ class Logout extends React.Component {
     if (this.props.isLoggedIn) return <LoadingSpinner />;
 
     return (
-      <div>You have been successfully logged out. Returning to main page..</div>
+      <div>You have been successfuly logged out. Returning to main page..</div>
     );
   }
 }

@@ -11,7 +11,6 @@ export function postQuery(query) {
       return Promise.resolve(r.data);
     })
     .catch((err) => {
-      console.error(err.response);
       return Promise.resolve(err.response.data);
     });
 }

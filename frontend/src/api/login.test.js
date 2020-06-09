@@ -15,7 +15,7 @@ describe("api/login", () => {
   describe("postAuthLogin", () => {
     let testTable = [
       {
-        name: "successfull response",
+        name: "successful response",
         url: "/backend/auth/login",
         args: { email: "user@gmail.com", password: "password" },
         statusCode: 200,
@@ -54,7 +54,7 @@ describe("api/login", () => {
   describe("getStatus", () => {
     let testTable = [
       {
-        name: "successfull response",
+        name: "successful response",
         url: "/backend/auth/status",
         args: "sdflkjsdlfkjsdlfkjsdf",
         statusCode: 200,
