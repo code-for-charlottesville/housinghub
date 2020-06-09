@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`reducers/appState set sidebar open 1`] = `
+Object {
+  "loading": false,
+  "sidebarOpen": true,
+}
+`;
+
+exports[`reducers/appState sets loading 1`] = `
+Object {
+  "loading": true,
+  "sidebarOpen": false,
+}
+`;
