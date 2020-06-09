@@ -8,7 +8,7 @@ import Nav from "react-bootstrap/Nav";
 
 const LocalNavbar = (props) => {
   return (
-    <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
+    <Navbar expand="true" bg="dark" variant="dark">
       <Navbar.Toggle
         aria-controls="responsive-navbar-nav"
         onClick={() => props.dispatch(setSidebarOpen(!props.sidebarOpen))}

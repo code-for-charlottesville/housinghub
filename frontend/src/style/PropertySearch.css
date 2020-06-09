@@ -23,3 +23,8 @@
 .dropdown {
     flex-direction: row;
 }
+
+.propertySearchButton { 
+  margin: 30px;
+
+}

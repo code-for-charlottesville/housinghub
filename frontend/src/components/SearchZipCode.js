@@ -17,7 +17,7 @@ const SearchZipCode = (props) => {
               props.dispatch(setSearchfieldsQuery("zip_code", e.target.value));
             }}
           />
-          Charlottesville, VA 22903
+          22903
         </label>
         <br />
         <label className="checkbox">
@@ -28,7 +28,7 @@ const SearchZipCode = (props) => {
               props.dispatch(setSearchfieldsQuery("zip_code", e.target.value));
             }}
           />
-          Charlottesville, VA 22904
+          22904
         </label>
         <br />
         <label className="checkbox">
@@ -39,7 +39,7 @@ const SearchZipCode = (props) => {
               props.dispatch(setSearchfieldsQuery("zip_code", e.target.value));
             }}
           />
-          Greene, VA 22935
+          22935
         </label>
         <br />
         <label className="checkbox">
@@ -50,7 +50,7 @@ const SearchZipCode = (props) => {
               props.dispatch(setSearchfieldsQuery("zip_code", e.target.value));
             }}
           />
-          Albemarle, VA 22987
+          22987
         </label>
       </div>
     </div>
