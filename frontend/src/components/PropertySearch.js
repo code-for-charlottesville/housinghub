@@ -7,10 +7,7 @@ import { InputFieldNum } from "./InputFieldNum";
 import { setSearchfieldsQuery, searchProperties } from "../actions/search";
 import SearchZipCode from "./SearchZipCode";
 import SearchHousingType from "./SearchHousingType";
-import Container from "react-bootstrap/Container";
-import Row from "react-bootstrap/Row";
-import Col from "react-bootstrap/Col";
-import Button from "react-bootstrap/Button";
+import { Container, Row, Col, Button } from "react-bootstrap";
 
 const PropertySearch = (props) => {
   return (

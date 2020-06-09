@@ -1,8 +1,7 @@
 import React from "react";
 import _ from "lodash";
 import "../style/App.css";
-import ButtonGroup from "react-bootstrap/ButtonGroup";
-import Button from "react-bootstrap/Button";
+import { ButtonGroup, Button } from "react-bootstrap";
 
 const Pagination = (props) => {
   let renderPaginationBox = (content, pageIndex) => (

@@ -3,8 +3,7 @@ import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import { setSidebarOpen } from "../actions/appState";
 import "../style/Sidebar.css";
-import Navbar from "react-bootstrap/Navbar";
-import Nav from "react-bootstrap/Nav";
+import { Navbar, Nav } from "react-bootstrap";
 
 const LocalNavbar = (props) => {
   return (

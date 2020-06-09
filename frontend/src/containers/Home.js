@@ -2,7 +2,7 @@ import React from "react";
 import "../style/App.css";
 import { connect } from "react-redux";
 import { LoadingSpinner } from "../components/LoadingSpinner";
-import Media from "react-bootstrap/Media";
+import { Media } from "react-bootstrap";
 
 class Home extends React.Component {
   componentDidMount() {
