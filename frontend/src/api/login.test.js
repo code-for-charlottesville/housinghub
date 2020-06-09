@@ -46,9 +46,45 @@ describe("api/login", () => {
         let onFulfilled = sinon.spy();
         login.postAuthLogin(t.args).then((r) => {
           expect(r).toEqual(t.expectedResponse);
+          done();
         });
-        moxios.wait(function () {
-          expect(onFulfilled.getCall(0)).not.toBeUndefined();
+      });
+    });
+  });
+  describe("getStatus", () => {
+    let testTable = [
+      {
+        name: "successfull response",
+        url: "/backend/auth/status",
+        args: "sdflkjsdlfkjsdlfkjsdf",
+        statusCode: 200,
+        response: {
+          jwt: "sdfsdfsdfsdf",
+        },
+        expectedResponse: { jwt: "sdfsdfsdfsdf" },
+      },
+      {
+        name: "error from server",
+        url: "/backend/auth/status",
+        args: "sdflkjsdlfkjsdlfkjsdf",
+        statusCode: 500,
+        response: {
+          code: 500,
+          error: "invalid jwt",
+        },
+        expectedResponse: { error: "invalid jwt" },
+      },
+    ];
+
+    testTable.forEach((t) => {
+      it(t.name, (done) => {
+        moxios.stubRequest(t.url, {
+          status: t.statusCode,
+          response: t.response,
+        });
+        let onFulfilled = sinon.spy();
+        login.getStatus(t.args).then((r) => {
+          expect(r).toEqual(t.expectedResponse);
           done();
         });
       });

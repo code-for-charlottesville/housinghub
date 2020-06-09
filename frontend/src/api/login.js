@@ -33,7 +33,6 @@ export function getStatus(jwt) {
       return Promise.resolve(r.data);
     })
     .catch((error) => {
-      console.error(error.response);
       return Promise.resolve({
         error:
           (error.response.data && error.response.data.error) ||
