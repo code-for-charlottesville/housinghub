@@ -1,0 +1,120 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`components renders full media when not loading 1`] = `
+<div>
+  <section
+    className="section"
+  >
+    <div
+      className="container"
+    >
+      <h1
+        className="title"
+      >
+        Welcome, 2ad0a95a-8e94-4c2b-b6aa-4c07fb7a1575
+      </h1>
+    </div>
+  </section>
+  <section
+    className="section"
+  >
+    <div
+      className="container"
+    >
+      <h1
+        className="title"
+      >
+        My Properties
+      </h1>
+      <div
+        className="media"
+      >
+        <img
+          alt="Generic placeholder"
+          className="mr-3"
+          height={64}
+          src="https://cdngeneral.rentcafe.com/dmslivecafe/3/317695/Exterior%20View%20of%20Oxmoor%20Apartments.jpg?crop=(0,20,300,200)&cropxunits=300&cropyunits=200&quality=85&scale=both&"
+          width={64}
+        />
+        <div
+          className="media-body"
+        >
+          <h5>
+            525 West Main Street
+          </h5>
+          <p>
+            Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
+          </p>
+        </div>
+      </div>
+       
+    </div>
+  </section>
+  <section
+    className="section"
+  >
+    <div
+      className="container"
+    >
+      <h1
+        className="title"
+      >
+        Recent Properties
+      </h1>
+      <div
+        className="media"
+      >
+        <img
+          alt="Generic placeholder"
+          className="mr-3"
+          height={64}
+          src="https://www.brac.com/photos/30/xlarge/30_111128_031732_9694.jpg"
+          width={64}
+        />
+        <div
+          className="media-body"
+        >
+          <h5>
+            5254 Ridge Street
+          </h5>
+          <p>
+            Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
+          </p>
+        </div>
+      </div>
+      <div
+        className="media"
+      >
+        <img
+          alt="Generic placeholder"
+          className="mr-3"
+          height={64}
+          src="https://lh3.googleusercontent.com/proxy/OeVKE4Q0tMvsVsbshykH5CGiTicQ-0vqNobrsNhPZwGAOwL5G158dZuzAZaf2oE6O-D6-b4dzFF242rhmXbQa8yXXSVeGDxXS-DBkaOiNBygn_E3FfVAltO4"
+          width={64}
+        />
+        <div
+          className="media-body"
+        >
+          <h5>
+            99 Avon Street
+          </h5>
+          <p>
+            Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+`;
+
+exports[`components renders spinner if loading 1`] = `
+<div
+  className="container App-header"
+>
+  <div
+    className="spinner-border"
+    role="status"
+  />
+</div>
+`;
