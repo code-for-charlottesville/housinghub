@@ -19,10 +19,8 @@ const PropertySearch = (props) => {
           <SearchHousingType />
         </Col>
         <Col>
-          <div className="field">
-            <label className="label" htmlFor="numBeds">
-              Bedrooms
-            </label>
+          <div>
+            <label htmlFor="numBeds">Bedrooms</label>
             <div className="select">
               <select
                 id="numBeds"
@@ -46,10 +44,8 @@ const PropertySearch = (props) => {
               </select>
             </div>
           </div>
-          <div className="field">
-            <label className="label" htmlFor="numBath">
-              Bathrooms
-            </label>
+          <div>
+            <label htmlFor="numBath">Bathrooms</label>
             <div className="select">
               <select
                 id="numBath"

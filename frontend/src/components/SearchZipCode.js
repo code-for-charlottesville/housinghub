@@ -5,10 +5,10 @@ import { connect } from "react-redux";
 
 const SearchZipCode = (props) => {
   return (
-    <div className="column">
-      <div className="field">
-        <label className="label">Zip Codes</label>
-        <label className="checkbox">
+    <div>
+      <div>
+        <label>Zip Codes</label>
+        <label>
           <input
             type="checkbox"
             value="22903"
@@ -19,7 +19,7 @@ const SearchZipCode = (props) => {
           22903
         </label>
         <br />
-        <label className="checkbox">
+        <label>
           <input
             type="checkbox"
             value="22904"
@@ -30,7 +30,7 @@ const SearchZipCode = (props) => {
           22904
         </label>
         <br />
-        <label className="checkbox">
+        <label>
           <input
             type="checkbox"
             value="22935"
@@ -41,7 +41,7 @@ const SearchZipCode = (props) => {
           22935
         </label>
         <br />
-        <label className="checkbox">
+        <label>
           <input
             type="checkbox"
             value="22987"

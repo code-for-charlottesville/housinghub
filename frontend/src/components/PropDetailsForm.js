@@ -7,7 +7,7 @@ import { setAddPropertyField } from "../actions/property";
 
 const PropDetailsForm = (props) => {
   return (
-    <div className="box">
+    <div>
       <InputField
         inputName="Property Name (if multi-unit complex): "
         inputType="text"
@@ -56,11 +56,9 @@ const PropDetailsForm = (props) => {
         onChangeFld="housing_type"
         inputValue={props.addProperty.fields.housing_type}
       />
-      <div className="field">
-        <label className="label" htmlFor="numBeds">
-          Number of Bedrooms:
-        </label>
-        <div className="select">
+      <div>
+        <label htmlFor="numBeds">Number of Bedrooms:</label>
+        <div>
           <select
             id="numBeds"
             onChange={(e) =>
@@ -80,11 +78,9 @@ const PropDetailsForm = (props) => {
           </select>
         </div>
       </div>
-      <div className="field">
-        <label className="label" htmlFor="numBath">
-          Number of Bathrooms:
-        </label>
-        <div className="select">
+      <div>
+        <label htmlFor="numBath">Number of Bathrooms:</label>
+        <div>
           <select
             id="numBath"
             onChange={(e) =>
@@ -106,11 +102,11 @@ const PropDetailsForm = (props) => {
           </select>
         </div>
       </div>
-      <div className="field">
-        <label className="label" htmlFor="numBathsShared">
+      <div>
+        <label htmlFor="numBathsShared">
           Number of Shared Bathrooms (with another property):
         </label>
-        <div className="select">
+        <div>
           <select
             id="numBathsShared"
             onChange={(e) =>
@@ -132,11 +128,9 @@ const PropDetailsForm = (props) => {
           </select>
         </div>
       </div>
-      <div className="field">
-        <label className="label" htmlFor="basementBool">
-          Does the Property Have a Basement?
-        </label>
-        <div className="select">
+      <div>
+        <label htmlFor="basementBool">Does the Property Have a Basement?</label>
+        <div>
           <select
             id="basementBool"
             onChange={(e) =>
@@ -159,11 +153,9 @@ const PropDetailsForm = (props) => {
         onChangeFld="school_district"
         inputValue={props.addProperty.fields.school_district}
       />
-      <div className="field">
-        <label className="label" htmlFor="busLineBool">
-          Is the Property Near a Bus Stop?
-        </label>
-        <div className="select">
+      <div>
+        <label htmlFor="busLineBool">Is the Property Near a Bus Stop?</label>
+        <div>
           <select
             id="busLineBool"
             onChange={(e) =>
@@ -176,11 +168,11 @@ const PropDetailsForm = (props) => {
           </select>
         </div>
       </div>
-      <div className="field">
-        <label className="label" htmlFor="wheelchairBool">
+      <div>
+        <label htmlFor="wheelchairBool">
           Is the Property Wheelchair Accessible?
         </label>
-        <div className="select">
+        <div>
           <select
             id="wheelchairBool"
             onChange={(e) =>
@@ -195,11 +187,11 @@ const PropDetailsForm = (props) => {
           </select>
         </div>
       </div>
-      <div className="field">
-        <label className="label" htmlFor="elevatorBool">
+      <div>
+        <label htmlFor="elevatorBool">
           Does the Property Have an Elevator?
         </label>
-        <div className="select">
+        <div>
           <select
             id="elevatorBool"
             onChange={(e) =>
@@ -236,11 +228,11 @@ const PropDetailsForm = (props) => {
         onChangeFn={setAddPropertyField}
         onChangeFld="listing_date"
       ></InputField>
-      <div className="field">
-        <label className="label" htmlFor="whereListed">
+      <div>
+        <label htmlFor="whereListed">
           Please check the locations where this property was listed.
         </label>
-        <label className="checkbox">
+        <label>
           <input
             type="checkbox"
             onChange={(e) =>
@@ -253,7 +245,7 @@ const PropDetailsForm = (props) => {
           Trulia
         </label>
         <br />
-        <label className="checkbox">
+        <label>
           <input
             type="checkbox"
             onChange={(e) =>
@@ -266,7 +258,7 @@ const PropDetailsForm = (props) => {
           Zillow
         </label>
         <br />
-        <label className="checkbox">
+        <label>
           <input
             type="checkbox"
             onChange={(e) =>
@@ -279,12 +271,12 @@ const PropDetailsForm = (props) => {
           Other
         </label>
       </div>
-      <div className="field">
-        <label className="label" htmlFor="contactMethod">
+      <div>
+        <label htmlFor="contactMethod">
           Please check the preferred contact methods for the property's
           landlord.
         </label>
-        <label className="checkbox">
+        <label>
           <input
             type="checkbox"
             onChange={(e) =>
@@ -297,7 +289,7 @@ const PropDetailsForm = (props) => {
           Phone
         </label>
         <br />
-        <label className="checkbox">
+        <label>
           <input
             type="checkbox"
             onChange={(e) =>
@@ -310,7 +302,7 @@ const PropDetailsForm = (props) => {
           Email
         </label>
         <br />
-        <label className="checkbox">
+        <label>
           <input
             type="checkbox"
             onChange={(e) =>

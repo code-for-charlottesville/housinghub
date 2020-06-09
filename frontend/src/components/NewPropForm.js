@@ -21,24 +21,23 @@ const NewPropForm = (props) => {
   }
 
   return (
-    <div className="container column is-half">
-      <h1 className="title">Add New Property</h1>
+    <div className="container">
+      <h1>Add New Property</h1>
       <hr />
-      <h2 className="subtitle">Property Details</h2>
+      <h2>Property Details</h2>
       <form action="" onSubmit={(e) => e.preventDefault()}>
         <PropDetailsForm />
 
-        <h2 className="subtitle">Payment Details</h2>
+        <h2>Payment Details</h2>
         <PaymentDetailsForm />
 
-        <label className="label">
+        <label>
           If all fields above are filled out correctly press 'Submit' to add
           this listing.
         </label>
-        <div className="field is-grouped">
-          <div className="control">
+        <div>
+          <div>
             <button
-              className="button is-link"
               title="Add property"
               onClick={() => {
                 handleSetYearAvailable();
@@ -49,10 +48,8 @@ const NewPropForm = (props) => {
               Submit
             </button>
           </div>
-          <div className="control">
-            <button className="button is-light" title="Return home">
-              Cancel
-            </button>
+          <div>
+            <button title="Return home">Cancel</button>
           </div>
         </div>
       </form>

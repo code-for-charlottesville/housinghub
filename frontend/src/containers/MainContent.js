@@ -10,7 +10,7 @@ import SearchProperty from "./SearchProperty";
 const MainContent = (props) => {
   if (!props.isLoggedIn) return <Redirect to="/login" />;
   return (
-    <div className="is-centered">
+    <div>
       <Navbar />
       <Sidebar />
       <Switch>

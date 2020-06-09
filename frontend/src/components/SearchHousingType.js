@@ -5,12 +5,11 @@ import { connect } from "react-redux";
 // import "../style/CheckBox.css"
 const SearchHousingType = (props) => {
   return (
-    <div className="column">
-      <div className="field">
-        <label className="label">Housing Type</label>
-        <label className="checkbox">
+    <div>
+      <div>
+        <label>Housing Type</label>
+        <label>
           <input
-            className="checkbox-custom"
             type="checkbox"
             value="Single Family Home"
             onChange={(e) => {
@@ -22,7 +21,7 @@ const SearchHousingType = (props) => {
           Single Family Home
         </label>
         <br />
-        <label className="checkbox">
+        <label>
           <input
             type="checkbox"
             value="Apartment"
@@ -35,7 +34,7 @@ const SearchHousingType = (props) => {
           Apartment
         </label>
         <br />
-        <label className="checkbox">
+        <label>
           <input
             type="checkbox"
             value="Shared Apartment"
