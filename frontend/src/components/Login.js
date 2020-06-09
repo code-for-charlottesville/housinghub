@@ -1,98 +1,72 @@
 import React from "react";
 
+import "../style/App.css";
 import { connect } from "react-redux";
 import { Redirect } from "react-router-dom";
 import { setLoginField, loginUser } from "../actions/login";
 import { LoadingSpinner } from "./LoadingSpinner";
+import Container from "react-bootstrap/Container";
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
+import Form from "react-bootstrap/Form";
+import Button from "react-bootstrap/Button";
 
 const Login = (props) => {
   if (props.isLoggedIn) return <Redirect to="/home" />;
   return (
-    <div className="hero-body">
-      <div className="container">
-        <div className="columns is-centered">
-          <div className="column is-5-tablet is-4-desktop is-3-widescreen">
-            {props.loading && <LoadingSpinner />}
-            {!props.loading && (
-              <form
-                action=""
-                className="box"
-                onSubmit={(e) => e.preventDefault()}
+    <Container>
+      <Row className="login">
+        <Col>
+          <h1>Housing Hub</h1>
+          {props.loading && <LoadingSpinner />}
+          {!props.loading && (
+            <Form>
+              <Form.Group controlId="formBasicEmail">
+                <Form.Control
+                  type="email"
+                  placeholder="Email"
+                  value={props.fields.email}
+                  onChange={(e) =>
+                    props.dispatch(setLoginField("email", e.target.value))
+                  }
+                />
+              </Form.Group>
+
+              <Form.Group controlId="formBasicPassword">
+                <Form.Control
+                  type="password"
+                  placeholder="Password"
+                  value={props.fields.password}
+                  className="input"
+                  onChange={(e) =>
+                    props.dispatch(setLoginField("password", e.target.value))
+                  }
+                />
+              </Form.Group>
+              <Form.Group controlId="formBasicCheckbox">
+                <Form.Check
+                  type="checkbox"
+                  label="Remember Me"
+                  checked={props.fields.rememberMe}
+                  onChange={() =>
+                    props.dispatch(
+                      setLoginField("rememberMe", !props.fields.rememberMe)
+                    )
+                  }
+                />
+              </Form.Group>
+              <Button
+                variant="primary"
+                type="submit"
+                onClick={() => loginUser()}
               >
-                <div className="field">
-                  <label htmlFor="" className="label">
-                    Email
-                  </label>
-                  <div className="control has-icons-left">
-                    <input
-                      type="email"
-                      placeholder="e.g. bobsmith@gmail.com"
-                      className="input"
-                      onChange={(e) =>
-                        props.dispatch(setLoginField("email", e.target.value))
-                      }
-                      value={props.fields.email}
-                      required
-                    />
-                    <span className="icon is-small is-left" />
-                  </div>
-                </div>
-                <div className="field">
-                  <label htmlFor="" className="label">
-                    Password
-                  </label>
-                  <div className="control has-icons-left">
-                    <input
-                      type="password"
-                      placeholder="*******"
-                      className="input"
-                      onChange={(e) =>
-                        props.dispatch(
-                          setLoginField("password", e.target.value)
-                        )
-                      }
-                      value={props.fields.password}
-                      required
-                    />
-                    <span className="icon is-small is-left" />
-                  </div>
-                </div>
-                <div className="field">
-                  <label htmlFor="" className="checkbox">
-                    <input
-                      type="checkbox"
-                      checked={props.fields.rememberMe}
-                      onChange={(e) =>
-                        props.dispatch(
-                          setLoginField("rememberMe", !props.fields.rememberMe)
-                        )
-                      }
-                    />
-                    Remember me
-                  </label>
-                </div>
-                {props.error && (
-                  <div className="field">
-                    <span className="tag is-danger is-light">
-                      {"Could Not Log In: " + props.error}
-                    </span>
-                  </div>
-                )}
-                <div className="field is-grouped">
-                  <button
-                    className="button is-success"
-                    onClick={() => loginUser()}
-                  >
-                    Login
-                  </button>
-                  <div className="control" />
-                </div>
-              </form>
-            )}
-          </div>
-        </div>
-      </div>
-    </div>
+                Login
+              </Button>
+            </Form>
+          )}
+        </Col>
+      </Row>
+    </Container>
   );
 };
 
