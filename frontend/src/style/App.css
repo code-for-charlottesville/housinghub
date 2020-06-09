@@ -91,3 +91,8 @@
 .radioBox > .radioLabel {
   margin-right: 1em;
 }
+
+.login {
+  margin: 150px;
+  text-align: center;
+}

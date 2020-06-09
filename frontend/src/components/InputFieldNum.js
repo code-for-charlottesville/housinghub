@@ -11,11 +11,10 @@ export const InputFieldNum = ({
   isFloat,
 }) => {
   return (
-    <div className="field">
-      <label className="label">{inputName}</label>
-      <div className="control">
+    <div>
+      <label>{inputName}</label>
+      <div>
         <input
-          className="input"
           type={inputType}
           placeholder={inputPh}
           min="0"
