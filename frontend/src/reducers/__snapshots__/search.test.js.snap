@@ -1,0 +1,113 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`reducers/appState set pagination query 1`] = `
+Object {
+  "errors": "",
+  "query": Object {
+    "pagination": Object {
+      "page": 3,
+      "results_per_page": 0,
+    },
+    "searchFields": Object {
+      "bathrooms": 0,
+      "bedrooms": 0,
+      "date_available": "",
+      "housing_type": Array [],
+      "max_rent": 0,
+      "zip_code": Array [],
+    },
+  },
+  "searchResults": Object {
+    "pagination": Object {
+      "page": 0,
+      "results_per_page": 0,
+      "totalNumberOfResults": 0,
+    },
+    "results": Array [],
+  },
+}
+`;
+
+exports[`reducers/appState set pagination results 1`] = `
+Object {
+  "errors": "",
+  "query": Object {
+    "pagination": Object {
+      "page": 0,
+      "results_per_page": 0,
+    },
+    "searchFields": Object {
+      "bathrooms": 0,
+      "bedrooms": 0,
+      "date_available": "",
+      "housing_type": Array [],
+      "max_rent": 0,
+      "zip_code": Array [],
+    },
+  },
+  "searchResults": Object {
+    "pagination": Object {
+      "page": 5,
+      "results_per_page": 0,
+      "totalNumberOfResults": 0,
+    },
+    "results": Array [],
+  },
+}
+`;
+
+exports[`reducers/appState set query results 1`] = `
+Object {
+  "errors": "",
+  "query": Object {
+    "pagination": Object {
+      "page": 0,
+      "results_per_page": 0,
+    },
+    "searchFields": Object {
+      "bathrooms": 0,
+      "bedrooms": 0,
+      "date_available": "",
+      "housing_type": Array [],
+      "max_rent": 0,
+      "zip_code": Array [],
+    },
+  },
+  "searchResults": Object {
+    "pagination": Object {
+      "page": 0,
+      "results_per_page": 0,
+      "totalNumberOfResults": 0,
+    },
+    "results": Array [],
+  },
+}
+`;
+
+exports[`reducers/appState set search fields query 1`] = `
+Object {
+  "errors": "",
+  "query": Object {
+    "pagination": Object {
+      "page": 0,
+      "results_per_page": 0,
+    },
+    "searchFields": Object {
+      "bathrooms": 2,
+      "bedrooms": 0,
+      "date_available": "",
+      "housing_type": Array [],
+      "max_rent": 0,
+      "zip_code": Array [],
+    },
+  },
+  "searchResults": Object {
+    "pagination": Object {
+      "page": 0,
+      "results_per_page": 0,
+      "totalNumberOfResults": 0,
+    },
+    "results": Array [],
+  },
+}
+`;

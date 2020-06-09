@@ -1,0 +1,50 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`reducers/appState login error 1`] = `
+Object {
+  "error": "sample error",
+  "fields": Object {
+    "email": "",
+    "password": "",
+    "rememberMe": true,
+  },
+  "isLoggedIn": false,
+}
+`;
+
+exports[`reducers/appState login success 1`] = `
+Object {
+  "error": "",
+  "fields": Object {
+    "email": "",
+    "password": "",
+    "rememberMe": true,
+  },
+  "isLoggedIn": true,
+}
+`;
+
+exports[`reducers/appState logout 1`] = `
+Object {
+  "error": "",
+  "fields": Object {
+    "email": "",
+    "password": "",
+    "rememberMe": true,
+  },
+  "isLoggedIn": false,
+}
+`;
+
+exports[`reducers/appState set login field 1`] = `
+Object {
+  "error": "",
+  "fields": Object {
+    "email": "",
+    "password": "",
+    "rememberMe": true,
+    "testField": "new value",
+  },
+  "isLoggedIn": false,
+}
+`;
