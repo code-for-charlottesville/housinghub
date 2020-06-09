@@ -1,6 +1,6 @@
 import React from "react";
 import { Switch, Route } from "react-router-dom";
-import Login from "./components/Login";
+import Login from "./containers/Login";
 
 import { connect } from "react-redux";
 import MainContent from "./containers/MainContent";
@@ -29,10 +29,4 @@ class App extends React.Component {
   }
 }
 
-function mapStateToProps(state) {
-  return {
-    isLoggedIn: state.login.isLoggedIn,
-  };
-}
-
-export default connect(mapStateToProps)(App);
+export default App;

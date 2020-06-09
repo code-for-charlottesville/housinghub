@@ -6,7 +6,6 @@ import { Footer } from "./Footer";
 import { InputField } from "./InputField";
 import { InputFieldNum } from "./InputFieldNum";
 import { LoadingSpinner } from "./LoadingSpinner";
-import Login from "./Login";
 import Logout from "./Logout";
 import Navbar from "./Navbar";
 import NewPropForm from "./NewPropForm";
@@ -21,6 +20,7 @@ import Table from "./Table";
 import VoucherInputs from "./VoucherInputs";
 import { Provider } from "react-redux";
 import { MemoryRouter } from "react-router-dom";
+import App from "../App"
 
 const mockStore = configureStore([]);
 
@@ -61,12 +61,6 @@ describe("components", () => {
       component: LoadingSpinner,
       props: {},
     },
-    // {
-    //   "name": "Login",
-    //   component : Login,
-    //   route : "/"
-    //   props : {},
-    // },
     {
       name: "Logout",
       component: Logout,
@@ -130,6 +124,11 @@ describe("components", () => {
       component: VoucherInputs,
       props: {},
     },
+    {
+      name: "App",
+      component: App,
+      props: {},
+    },    
   ];
 
   testTable.forEach((t) => {
