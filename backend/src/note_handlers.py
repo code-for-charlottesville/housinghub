@@ -43,6 +43,8 @@ def post_note():
                 content:
                     application/json:
                         schema: ErrorResponse
+    """
+    
     try:
         payload = AddNoteRequest().load(request.get_json(force = True), transient=True)
         _note = app.services.note_service().add_note(payload)
