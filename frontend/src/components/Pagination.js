@@ -1,25 +1,28 @@
 import React from "react";
 import _ from "lodash";
 import "../style/App.css";
+import ButtonGroup from "react-bootstrap/ButtonGroup";
+import Button from "react-bootstrap/Button";
 
 const Pagination = (props) => {
   let renderPaginationBox = (content, pageIndex) => (
-    <li
+    <Button
       key={`pagination-box-${pageIndex}`}
       className="PaginationBox"
+      variant="secondary"
       onClick={() =>
         pageIndex !== props.currentPageIndex && props.onSetPage(pageIndex)
       }
     >
       {pageIndex !== props.currentPageIndex && <a>{content}</a>}
       {pageIndex === props.currentPageIndex && content}
-    </li>
+    </Button>
   );
 
   let pagesToRender = props.pageIndexEnd - props.pageIndexStart;
   if (!pagesToRender) return <ul />;
   return (
-    <ul className="Sideways container">
+    <ButtonGroup className="Sideways container">
       {props.currentPageIndex !== 0 && renderPaginationBox("First", 0)}
       {_.times(pagesToRender, (i) =>
         renderPaginationBox(
@@ -31,7 +34,7 @@ const Pagination = (props) => {
         renderPaginationBox("Next", props.currentPageIndex + 1)}
       {props.currentPageIndex !== props.numberOfPages - 1 &&
         renderPaginationBox("Last", props.numberOfPages - 1)}
-    </ul>
+    </ButtonGroup>
   );
 };
 
