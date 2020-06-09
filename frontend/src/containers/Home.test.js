@@ -2,13 +2,13 @@ import React from "react";
 import renderer from "react-test-renderer";
 import configureStore from "redux-mock-store";
 import sampleMockStore from "../../test/mockStore.js";
-import Home from "./home";
+import Home from "./Home";
 import { Provider } from "react-redux";
 import { MemoryRouter } from "react-router-dom";
 
 const mockStore = configureStore([]);
 
-describe("components", () => {
+describe("containers/Home", () => {
   let _matchesSnapshot = (C, props = {}) => {
     let store = mockStore({
       ...sampleMockStore,

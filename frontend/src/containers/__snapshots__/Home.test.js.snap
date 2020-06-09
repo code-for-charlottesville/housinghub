@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`components renders full media when not loading 1`] = `
+exports[`containers/Home renders full media when not loading 1`] = `
 <div>
   <section
     className="section"
@@ -108,7 +108,7 @@ exports[`components renders full media when not loading 1`] = `
 </div>
 `;
 
-exports[`components renders spinner if loading 1`] = `
+exports[`containers/Home renders spinner if loading 1`] = `
 <div
   className="container App-header"
 >
