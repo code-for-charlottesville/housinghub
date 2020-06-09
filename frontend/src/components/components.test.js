@@ -20,7 +20,7 @@ import Table from "./Table";
 import VoucherInputs from "./VoucherInputs";
 import { Provider } from "react-redux";
 import { MemoryRouter } from "react-router-dom";
-import App from "../App"
+import App from "../App";
 
 const mockStore = configureStore([]);
 
@@ -128,7 +128,7 @@ describe("components", () => {
       name: "App",
       component: App,
       props: {},
-    },    
+    },
   ];
 
   testTable.forEach((t) => {
