@@ -2,6 +2,8 @@ import * as search from "./search";
 import moxios from "moxios";
 import sinon from "sinon";
 import axios from "axios";
+import apiEndpoint from "./endpoint";
+
 
 describe("api/search", () => {
   beforeEach(() => {
@@ -77,7 +79,7 @@ describe("api/search", () => {
     let testTable = [
       {
         name: "successful response",
-        url: "/backend/property/search",
+        url: `${apiEndpoint}/property/search`,
         args: sampleQuery,
         statusCode: 200,
         response: sampleResult,
@@ -85,7 +87,7 @@ describe("api/search", () => {
       },
       {
         name: "bad request",
-        url: "/backend/property/search",
+        url: `${apiEndpoint}/property/search`,
         args: {},
         statusCode: 400,
         response: {

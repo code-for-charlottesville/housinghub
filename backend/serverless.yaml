@@ -1,7 +1,7 @@
 # serverless.yml
 
 
-service: serverless-flask
+service: housinghub-api
 
 
 plugins:

@@ -1,5 +1,5 @@
 {
-  "name": "frontend",
+  "name": "housinghub-client",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -18,7 +18,8 @@
     "react-scripts": "3.4.1",
     "redux": "^4.0.5",
     "redux-logger": "^3.0.6",
-    "redux-thunk": "^2.3.0"
+    "redux-thunk": "^2.3.0",
+    "serverless-finch": "^2.5.2"
   },
   "scripts": {
     "start": "react-scripts start",
