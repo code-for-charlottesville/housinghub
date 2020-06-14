@@ -1,6 +1,7 @@
 import os
 
 from flask import Flask, g, jsonify, render_template, request, send_file
+from flask_cors import CORS
 
 from app.config import Config, ProductionConfig, DevConfig, TiltConfig, Config
 from auth_handlers import auth_module
@@ -34,6 +35,7 @@ flask_app.register_blueprint(landlord_module)
 flask_app.register_blueprint(navigator_module)
 flask_app.register_blueprint(property_module)
 flask_app.register_blueprint(note_module)
+CORS(flask_app, origins=flask_app.config['ALLOWED_ORIGINS'], supports_credentials=True)
 
 @flask_app.route('/spec', methods=['GET'])
 def get_spec():
@@ -43,3 +45,5 @@ def get_spec():
 def swagger_specs():
   """Serves docs to browser"""
   return render_template('spec.html', spec=housinghub_spec.to_dict())
+
+

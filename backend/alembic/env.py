@@ -1,15 +1,15 @@
 import os
-# from logging.config import fileConfig
-
-# from sqlalchemy import engine_from_config
+import sys
 from sqlalchemy import create_engine
-# from sqlalchemy import pool
+import sqlalchemy_aurora_data_api as aurora
 
 import logging
 
 from alembic import context
 
+aurora.register_dialects()
 logging.basicConfig()
+logging.getLogger("aurora_data_api").setLevel(logging.DEBUG)
 
 log = logging.getLogger('db-migration')
 log.setLevel(logging.DEBUG)
@@ -89,6 +89,7 @@ def run_migrations_online():
 
     """
     db_url = get_db_url()
+    log.info(f'Using DB endpoint {db_url}')
     db_cluster_arn = os.getenv('DB_CLUSTER_ARN', None)
     db_secret_arn = os.getenv('DB_SECRET_ARN', None)
     log.info(f'Starting online migration with DB URL {db_url}')

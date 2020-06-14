@@ -16,6 +16,7 @@ cryptography==2.8
 docutils==0.15.2
 Faker==4.0.3
 Flask==1.1.1
+Flask-Cors==3.0.8
 Flask-RESTful==0.3.8
 HTMLParser==0.0.2
 idna==2.9

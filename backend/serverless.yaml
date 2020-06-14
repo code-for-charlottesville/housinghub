@@ -7,7 +7,6 @@ service: housinghub-api
 plugins:
   - serverless-python-requirements
   - serverless-wsgi
-  - serverless-plugin-scripts
 
 
 custom:
@@ -15,29 +14,30 @@ custom:
     app: src/server.app
     packRequirements: false
   pythonRequirements:
-    slim: true
     dockerizePip: true
     dockerFile: ./Dockerfile.deploy
-  scripts:
-    hooks:
-      'deploy:finalize': sls invoke -f migration --stage ${self:provider.stage}
+    noDeploy:
+      - pytest
+      - faker
 
 
 provider:
   name: aws
   runtime: python3.6
-  stage: ${opt:stage, 'dev'}
+  variableSyntax: "\\${{([ ~:a-zA-Z0-9._@\\'\",\\-\\/\\(\\)]+?)}}"
+  stage: ${{opt:stage, 'dev'}}
   region: us-east-1
   role: housinghubLambdaExecutionRole
 
 package:
-  individually: true
+  exclude:
+    - './venv/**'
 
 functions:
   api:
     handler: wsgi_handler.handler
     environment:
-      APP_ENV: ${self:provider.stage}
+      APP_ENV: ${{self:provider.stage}}
       DB_CLUSTER_ARN:
         !Join
           - ''
@@ -48,28 +48,16 @@ functions:
     events:
       - http: ANY /
       - http: 'ANY {proxy+}'
-  migration:
-    handler: handler.main
-    module: alembic
-    environment:
-      APP_ENV: ${self:provider.stage}
-      DB_CLUSTER_ARN:
-        !Join
-          - ''
-          -
-            - 'arn:aws:rds:us-east-1:130004658718:cluster:'
-            - !Ref housinghubDb
-      DB_SECRET_ARN: !Join ['', [!Ref housinghubDbSecret]]
 
 resources:
   Resources:
     housinghubDb:
       Type: AWS::RDS::DBCluster
       Properties:
-        MasterUsername: admin
+        MasterUsername: app
         MasterUserPassword: pa55w0rd
-        DatabaseName: housinghub${self:provider.stage}
-        Engine: aurora
+        DatabaseName: housinghub${{self:provider.stage}}
+        Engine: aurora-postgresql
         EngineMode: serverless
         EnableHttpEndpoint: true
         ScalingConfiguration:
@@ -78,16 +66,25 @@ resources:
           MinCapacity: 2
           SecondsUntilAutoPause: 500
     housinghubDbSecret:
-      Type: 'AWS::SecretsManager::Secret'
+      Type: AWS::SecretsManager::Secret
       Properties:
-        Name: housinghub-${self:provider.stage}-db-secret
-        Description: This contains the RDS Master user credentials for RDS Aurora Serverless Cluster
-        SecretString:
-          |
-          {
-            "username": "admin",
-            "password": "p@ssw0rd"
-          }
+        Name: "housinghub-${{self:provider.stage}}-db-secret"
+        Description: RDS database auto-generated user password
+        SecretString: !Sub 
+        -
+          '{
+              "dbInstanceIdentifier": "${RDSIdentifier}",
+              "engine": "${RDSEngine}",
+              "host": "${RDSHost}",
+              "port": "${RDSPort}",
+              "username": "app", 
+              "password": "pa55w0rd"
+           }'
+        - 
+          RDSIdentifier: !Ref housinghubDb
+          RDSEngine: aurora-postgresql
+          RDSHost: !GetAtt housinghubDb.Endpoint.Address
+          RDSPort: !GetAtt housinghubDb.Endpoint.Port
     housinghubLambdaExecutionRole:
       Type: "AWS::IAM::Role"
       Properties:
@@ -117,15 +114,7 @@ resources:
               Statement:
                 - Effect: "Allow"
                   Action:
-                    - "rds-data:DeleteItems"
-                    - "rds-data:ExecuteSql"
-                    - "rds-data:GetItems"
-                    - "rds-data:InsertItems"
-                    - "rds-data:UpdateItems"
-                    - "rds-data:BeginTransaction"
-                    - "rds-data:CommitTransaction"
-                    - "rds-data:RollbackTransaction"
-                    - "rds-data:BatchExecuteStatement"
+                    - "rds-data:*"
                   Resource:
                     - !Join ['', ['arn:aws:rds:*:*:cluster:', !Ref housinghubDb]]
                     - !Join ['', ['arn:aws:rds:*:*:cluster:', !Ref housinghubDb, ':*']]
