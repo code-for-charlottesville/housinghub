@@ -19,6 +19,8 @@ custom:
     noDeploy:
       - pytest
       - faker
+      - pytest-cov
+      - autoflake
 
 
 provider:
@@ -32,6 +34,7 @@ provider:
 package:
   exclude:
     - './venv/**'
+    - './node_modules/**'
 
 functions:
   api:
