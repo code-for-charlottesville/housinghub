@@ -96,3 +96,24 @@
   margin: 150px;
   text-align: center;
 }
+
+/*Nav overrides*/
+.h-hub-nav-link {
+  text-decoration: none;
+  color: white;
+}
+
+.h-hub-nav-link:visited {
+  font-weight: bold;
+}
+
+.h-hub-nav-link:hover {
+  text-decoration: none;
+  color: blue;
+}
+
+
+
+/* Nav.Link:hover {
+  font-weight: bold;
+} */
