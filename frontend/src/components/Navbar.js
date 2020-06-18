@@ -12,8 +12,7 @@ const LocalNavbar = (props) => {
 };
 
 function mapStateToProps(state) {
-  return {
-  };
+  return {};
 }
 
 export default connect(mapStateToProps)(LocalNavbar);
