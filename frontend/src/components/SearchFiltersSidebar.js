@@ -3,7 +3,7 @@ import "../style/App.css";
 
 export default function SearchFiltersSidebar() {
   return (
-  	<div>
+  	<div className="search-sidebar">
   		Search Sidebar
   	</div>
   );

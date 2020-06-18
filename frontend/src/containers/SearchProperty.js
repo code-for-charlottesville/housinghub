@@ -42,7 +42,7 @@ const SearchProperty = (props) => {
   rows = [["Apartment", "520 E Main Street", "$2500", 5, 1, "Test"]];
 
   return (
-    <Container className="ListContainer">
+    <Container className="search-container">
       <Row>
         <Col>
           <SearchFiltersSidebar/>
