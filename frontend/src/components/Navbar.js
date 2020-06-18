@@ -13,7 +13,6 @@ const LocalNavbar = (props) => {
 
 function mapStateToProps(state) {
   return {
-    sidebarOpen: state.appState.sidebarOpen,
   };
 }
 

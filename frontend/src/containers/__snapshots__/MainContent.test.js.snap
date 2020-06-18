@@ -41,7 +41,6 @@ exports[`containers/MainContent redirects to login if not logged in 1`] = `
         >
           <table
             className="table table-striped table-hover"
-            table={true}
           >
             <thead
               className="table-header"
@@ -278,7 +277,6 @@ exports[`containers/MainContent renders home when nothing else matches 1`] = `
         >
           <table
             className="table table-striped table-hover"
-            table={true}
           >
             <thead
               className="table-header"
@@ -1295,7 +1293,6 @@ exports[`containers/MainContent renders search prop form on /property/search 1`]
         >
           <table
             className="table table-striped table-hover"
-            table={true}
           >
             <thead
               className="table-header"

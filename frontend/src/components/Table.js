@@ -32,7 +32,7 @@ const LocalTable = (props) => {
   );
 
   return (
-    <Table table hover striped>
+    <Table hover striped>
       <thead className="table-header">
         <tr>
           <th>Property Type</th>

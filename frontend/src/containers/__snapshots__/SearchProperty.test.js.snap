@@ -24,7 +24,6 @@ exports[`containers/SearchProperty redirects to login if not logged in 1`] = `
       >
         <table
           className="table table-striped table-hover"
-          table={true}
         >
           <thead
             className="table-header"

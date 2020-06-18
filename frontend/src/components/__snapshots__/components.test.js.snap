@@ -44,7 +44,6 @@ exports[`components App 1`] = `
           >
             <table
               className="table table-striped table-hover"
-              table={true}
             >
               <thead
                 className="table-header"
@@ -1920,7 +1919,6 @@ exports[`components SearchZipCode 1`] = `
 exports[`components Table 1`] = `
 <table
   className="table table-striped table-hover"
-  table={true}
 >
   <thead
     className="table-header"
