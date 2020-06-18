@@ -6,7 +6,7 @@ import { Navbar, Nav } from "react-bootstrap";
 const LocalNavbar = (props) => {
   return (
     <Navbar expand="true" bg="dark" variant="dark">
-      <Navbar.Toggle/>
+      <Navbar.Toggle />
     </Navbar>
   );
 };

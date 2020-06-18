@@ -1,9 +1,9 @@
 import React from "react";
 import { connect } from "react-redux";
 import "../style/App.css";
-import {Container, Row, Col} from "react-bootstrap"
-import SearchFiltersSidebar from "../components/SearchFiltersSidebar"
-import SearchTable from "../components/SearchTable"
+import { Container, Row, Col } from "react-bootstrap";
+import SearchFiltersSidebar from "../components/SearchFiltersSidebar";
+import SearchTable from "../components/SearchTable";
 
 const SearchProperty = (props) => {
   let columns = [
@@ -45,10 +45,10 @@ const SearchProperty = (props) => {
     <Container className="search-container">
       <Row>
         <Col className="search-filters-container">
-          <SearchFiltersSidebar/>
+          <SearchFiltersSidebar />
         </Col>
         <Col xs={9} className="search-table-container">
-          <SearchTable rows={rows} columns={columns}/>
+          <SearchTable rows={rows} columns={columns} />
         </Col>
       </Row>
     </Container>
@@ -62,4 +62,3 @@ function mapStateToProps(state) {
 }
 
 export default connect(mapStateToProps)(SearchProperty);
-  
