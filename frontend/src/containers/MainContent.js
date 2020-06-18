@@ -6,7 +6,7 @@ import Navbar from "../components/Navbar";
 import SearchProperty from "./SearchProperty";
 
 const MainContent = (props) => {
-  // if (!props.isLoggedIn) return <Redirect to="/login" />;
+  if (!props.isLoggedIn) return <Redirect to="/login" />;
   return (
     <div className="main-content">
       <Navbar />
