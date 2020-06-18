@@ -1,15 +1,4 @@
-.App {
-  display: flexbox;
-  overflow-y: hidden;
-  overflow-x: hidden;
-  background: linear-gradient(to bottom, orange, transparent 100px);
 
-  -webkit-animation: fadein 4s; /* Safari, Chrome and Opera > 12.1 */
-     -moz-animation: fadein 4s; /* Firefox < 16 */
-      -ms-animation: fadein 4s; /* Internet Explorer */
-       -o-animation: fadein 4s; /* Opera < 12.1 */
-          animation: fadein 4s;
-}
 
 .App-header {
   text-align: center;
@@ -32,35 +21,6 @@
 .App-intro {
   font-style: italic;
   font-size: large;
-}
-
-@keyframes fadein {
-    from { opacity: 0; }
-    to   { opacity: 1; }
-}
-
-/* Firefox < 16 */
-@-moz-keyframes fadein {
-    from { opacity: 0; }
-    to   { opacity: 1; }
-}
-
-/* Safari, Chrome and Opera > 12.1 */
-@-webkit-keyframes fadein {
-    from { opacity: 0; }
-    to   { opacity: 1; }
-}
-
-/* Internet Explorer */
-@-ms-keyframes fadein {
-    from { opacity: 0; }
-    to   { opacity: 1; }
-}
-
-/* Opera < 12.1 */
-@-o-keyframes fadein {
-    from { opacity: 0; }
-    to   { opacity: 1; }
 }
 
 .Sideways {
@@ -96,10 +56,25 @@
 .search-container {
   margin-left: 0px;
   padding: 0px;
+  height: 100%;
 }
 
+.search-filters-container {
+  background: white;
+  padding-right: 0px;
+  border-right: 2px solid;
+  border-color: #b9b9b9;
+}
 
+.search-table-container {
+  background: rgb(248,249,250);
+  padding-left: 0px;
+}
 
+.search-table-component {
+  margin: 30px;
+}
 
-
-
+.table-header {
+  background: rgb(75,160,181);
+}

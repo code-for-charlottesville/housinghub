@@ -6,7 +6,7 @@ import Pagination from "../components/Pagination";
 export default function SearchTable(props) {
   return (
   	<>
-      <div className="ListContainer">
+      <div className="search-table-component">
         <Table
           columns={props.columns}
           rows={props.rows}

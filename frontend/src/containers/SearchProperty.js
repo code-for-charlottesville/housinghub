@@ -44,10 +44,10 @@ const SearchProperty = (props) => {
   return (
     <Container className="search-container">
       <Row>
-        <Col>
+        <Col className="search-filters-container">
           <SearchFiltersSidebar/>
         </Col>
-        <Col xs={9}>
+        <Col xs={9} className="search-table-container">
           <SearchTable rows={rows} columns={columns}/>
         </Col>
       </Row>
