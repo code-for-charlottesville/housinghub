@@ -1,6 +1,7 @@
 import React from "react";
 import "../style/App.css";
 import { Link } from "react-router-dom";
+import { setSidebarOpen } from "../actions/appState";
 import { Navbar, Nav, Form, FormControl, Button } from "react-bootstrap";
 
 const LocalNavbar = (props) => {
@@ -37,4 +38,10 @@ const LocalNavbar = (props) => {
   );
 };
 
-export default LocalNavbar;
+function mapStateToProps(state) {
+  return {
+    sidebarOpen: state.appState.sidebarOpen,
+  };
+}
+
+export default connect(mapStateToProps)(LocalNavbar);
