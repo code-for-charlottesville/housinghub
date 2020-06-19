@@ -32,8 +32,8 @@ const LocalTable = (props) => {
   );
 
   return (
-    <Table table bordered hover striped>
-      <thead className="head">
+    <Table hover striped>
+      <thead className="table-header">
         <tr>
           <th>Property Type</th>
           <th>Address</th>
@@ -43,7 +43,7 @@ const LocalTable = (props) => {
           <th>Actions</th>
         </tr>
       </thead>
-      <tbody>{props.rows.map((r, i) => _renderRow(r, i))}</tbody>
+      <tbody bo>{props.rows.map((r, i) => _renderRow(r, i))}</tbody>
     </Table>
   );
 };

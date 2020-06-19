@@ -4,10 +4,3 @@ export function setLoading(loading) {
     loading,
   };
 }
-
-export function setSidebarOpen(sidebarOpen) {
-  return {
-    type: "SET_SIDEBAR_OPEN",
-    sidebarOpen,
-  };
-}
