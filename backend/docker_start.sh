@@ -1,7 +1,7 @@
 #!/bin/sh
 
 # Run Database changesets
-cd alembic && python handler.py
+cd alembic && python migration.py
 
 cd ..
 # Start app server
