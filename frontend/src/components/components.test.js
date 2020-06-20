@@ -12,8 +12,10 @@ import NewPropForm from "./NewPropForm";
 import Pagination from "./Pagination";
 import PaymentDetailsForm from "./PaymentDetailsForm";
 import PropDetailsForm from "./PropDetailsForm";
+import PropertySearch from "./PropertySearch";
 import SearchHousingType from "./SearchHousingType";
 import SearchZipCode from "./SearchZipCode";
+import Sidebar from "./Sidebar";
 import Table from "./Table";
 import VoucherInputs from "./VoucherInputs";
 import { Provider } from "react-redux";
@@ -90,6 +92,11 @@ describe("components", () => {
       props: {},
     },
     {
+      name: "PropertySearch",
+      component: PropertySearch,
+      props: {},
+    },
+    {
       name: "SearchHousingType",
       component: SearchHousingType,
       props: {},
@@ -97,6 +104,11 @@ describe("components", () => {
     {
       name: "SearchZipCode",
       component: SearchZipCode,
+      props: {},
+    },
+    {
+      name: "Sidebar",
+      component: Sidebar,
       props: {},
     },
     {

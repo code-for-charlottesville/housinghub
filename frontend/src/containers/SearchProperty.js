@@ -1,9 +1,9 @@
 import React from "react";
 import { connect } from "react-redux";
+import Table from "../components/Table";
+import Pagination from "../components/Pagination";
 import "../style/App.css";
-import { Container, Row, Col } from "react-bootstrap";
-import SearchFiltersSidebar from "../components/SearchFiltersSidebar";
-import SearchTable from "../components/SearchTable";
+import PropertySearch from "../components/PropertySearch.js";
 
 const SearchProperty = (props) => {
   let columns = [
@@ -12,8 +12,8 @@ const SearchProperty = (props) => {
       title: "Address",
     },
     {
-      field: "property_owner",
-      title: "Property Owner",
+      field: "property_name",
+      title: "Name",
     },
     {
       field: "monthly_rent",
@@ -41,17 +41,32 @@ const SearchProperty = (props) => {
 
   rows = [["Apartment", "520 E Main Street", "$2500", 5, 1, "Test"]];
 
+  console.log(columns);
+  console.log(rows);
   return (
-    <Container className="search-container">
-      <Row>
-        <Col className="search-filters-container">
-          <SearchFiltersSidebar />
-        </Col>
-        <Col xs={9} className="search-table-container">
-          <SearchTable rows={rows} columns={columns} />
-        </Col>
-      </Row>
-    </Container>
+    <>
+      <PropertySearch />
+      <div className="ListContainer">
+        <Table
+          columns={columns}
+          rows={rows}
+          selectedRowIndex={3}
+          onColumnSort={(cName, cIndex) => {
+            console.log(cName, cIndex);
+          }}
+          onRowSelect={(rName, rIndex) => {
+            console.log(rName, rIndex);
+          }}
+        />
+      </div>
+      <Pagination
+        numberOfPages={16}
+        currentPageIndex={11}
+        pageIndexStart={0}
+        pageIndexEnd={10}
+        onSetPage={(i) => console.log("new page: %d", i)}
+      />
+    </>
   );
 };
 
