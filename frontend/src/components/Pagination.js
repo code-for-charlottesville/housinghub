@@ -21,7 +21,7 @@ const Pagination = (props) => {
   let pagesToRender = props.pageIndexEnd - props.pageIndexStart;
   if (!pagesToRender) return <ul />;
   return (
-    <ButtonGroup className="Sideways container">
+    <ButtonGroup>
       {props.currentPageIndex !== 0 && renderPaginationBox("First", 0)}
       {_.times(pagesToRender, (i) =>
         renderPaginationBox(
