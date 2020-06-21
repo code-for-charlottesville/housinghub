@@ -37,8 +37,4 @@ const LocalNavbar = (props) => {
   );
 };
 
-function mapStateToProps(state) {
-  return {};
-}
-
-export default connect(mapStateToProps)(LocalNavbar);
+export default LocalNavbar;
