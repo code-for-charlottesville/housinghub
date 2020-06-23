@@ -42,3 +42,27 @@ docker build . -t codeforcharlottesville/housinghub-ui -f frontend/Dockerfile-pr
 ### Configure
 
 In the production environment, set `backend_outgoing_url` to the URL of the housing hub backend.
+
+### Deployment
+
+The HousingHub frontend is deployed as a static asset to AWS S3 using the [serverless-finch plugin](https://github.com/fernando-mc/serverless-finch).
+
+Deploying the frontend requires the backend API to be deployed already. The build process below needs to pull API endpoints from the backend APIs CloudFormation stack. If the backend stack doesn't exist, it will fail.
+
+The deployment proess is two steps:
+
+
+1. Build the project into a production-optimized bundle:
+
+```sh
+npx sls client build --stage dev
+```
+
+Note here that the stage arg is important. At build time, the frontend must be configured with the correct API endpoints which are pulled from the backend APIs CloudFormation stack. If the stage is not specified correctly then the frontend will not be using the correct API endpoint.
+
+2. Deploy the static bundle:
+
+```sh
+npx sls client deploy --stage dev
+```
+

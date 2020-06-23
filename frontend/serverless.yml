@@ -1,0 +1,22 @@
+service: housinghub-client
+
+plugins:
+  - serverless-finch
+  - serverless-build-client
+
+provider:
+  name: aws
+  runtime: nodejs12.x
+  stage: ${opt:stage, 'dev'}
+  region: us-east-1
+  environment:
+    REACT_APP_API_ENDPOINT: ${cf:housinghub-api-${self:provider.stage}.ServiceEndpoint}
+
+custom:
+  buildClient:
+    packager: npm
+  client:
+    bucketName: housinghub-client-${self:provider.stage}
+    distributionFolder: build
+    indexDocument: index.html
+    errorDocument: index.html
