@@ -151,3 +151,50 @@ $(cd alembic && alembic upgrade head)
 serverless wsgi serve
 ```
 
+### Deployment 
+
+This API is deployed as a serverless application on AWS. The entire stack deployment is handled but the serverless configuration. **However**, the database migrations are not done as part of the deployment and have to be run separately from the serverless deployment (see details below).
+
+#### Serverless Deployment
+
+Ensure that your AWS credentials are setup:
+```sh
+aws configure
+# Follow instructions to setup you ~/.aws/credentials file
+```
+
+For the dev environment:
+```sh
+npx sls deploy --stage dev
+```
+
+For the production environment:
+```sh
+npx sls deploy --stage prod
+```
+
+To deploy new code, just run the above commands again. It will deploy the new code package to our lambda functions and leave existing AWS resources in place. 
+
+#### Database Migration
+
+The serverless deployment will create our RDS instance so it must be deployed prior to running  the databse migration. Once the serverless stack is created though, the DB migrations can be run at any time. 
+
+First, get the RDS DB cluster ARN:
+
+```sh
+# Get the RDS cluster identifier from the cloudformation stack
+db_identifier=$(aws cloudformation describe-stack-resource --stack-name housinghub-api-dev --logical-resource-id housinghubDb --output json | jq -r '.StackResourceDetail.PhysicalResourceId')
+
+# Set the cluster ARN as an env variable
+export DB_CLUSTER_ARN=$(aws rds describe-db-clusters --db-cluster-identifier ${db_identifier} --output json | jq -r '.DBClusters[0].DBClusterArn')
+
+# The Database credentials are stored in AWS Secrets Manager. We need to set the ARN of the secret as an env variable
+export DB_SECRET_ARN=$(aws cloudformation describe-stack-resource --stack-name housinghub-api-dev --logical-resource-id housinghubDbSecret --output json | jq -r '.StackResourceDetail.PhysicalResourceId')
+
+# Now run tht migration script
+cd alembic && python migration.py
+```
+
+**Note** Above commands are for the dev stack. For prod, replace housinghub-api-dev with housinghub-api-prod
+
+
