@@ -153,7 +153,7 @@ serverless wsgi serve
 
 ### Deployment 
 
-This API is deployed as a serverless application on AWS. The entire stack deployment is handled but the serverless configuration. **However**, the database migrations are not done as part of the deployment and have to be run separately from the serverless deployment (see details below).
+This API is deployed as a serverless application on AWS. The entire stack deployment is handled by the serveress framework. **However**, the database migrations are not done as part of the deployment and have to be run separately from the serverless deployment (see details below).
 
 #### Serverless Deployment
 
