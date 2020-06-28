@@ -1,7 +1,7 @@
-import React from 'react'
-import { SEARCH_TABLE_COLUMNS } from '../constants/globalConstants'
-import '../style/App.css'
-import { Table } from 'react-bootstrap'
+import React from "react";
+import { SEARCH_TABLE_COLUMNS } from "../constants/globalConstants"
+import "../style/App.css";
+import { Table } from "react-bootstrap";
 const LocalTable = (props) => {
   let _renderTableHeader = (column, columnIndex) => {
     return (
@@ -13,23 +13,23 @@ const LocalTable = (props) => {
       >
         <abbr title={column.title}>{column.title}</abbr>
       </th>
-    )
-  }
+    );
+  };
 
   let _renderCell = (value, rowIndex, columnIndex) => {
-    let key = `$cell-{rowIndex}-${columnIndex}-${value}`
-    return <td key={key}>{value}</td>
-  }
+    let key = `$cell-{rowIndex}-${columnIndex}-${value}`;
+    return <td key={key}>{value}</td>;
+  };
 
   let _renderRow = (r, rowIndex) => (
     <tr
-      className={props.selectedRowIndex === rowIndex ? 'is-selected' : ''}
+      className={props.selectedRowIndex === rowIndex ? "is-selected" : ""}
       onClick={() => props.onRowSelect && props.onRowSelect(r, rowIndex)}
       key={`row-${rowIndex}`}
     >
       {r.map((value, columnIndex) => _renderCell(value, rowIndex, columnIndex))}
     </tr>
-  )
+  );
 
   return (
     <Table hover>
@@ -42,7 +42,7 @@ const LocalTable = (props) => {
       </thead>
       <tbody>{props.rows.map((r, i) => _renderRow(r, i))}</tbody>
     </Table>
-  )
-}
+  );
+};
 
-export default LocalTable
+export default LocalTable;

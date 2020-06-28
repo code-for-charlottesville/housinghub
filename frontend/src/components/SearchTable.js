@@ -2,7 +2,7 @@ import React from "react";
 import "../style/App.css";
 import Table from "../components/Table";
 import Pagination from "../components/Pagination";
-import { Row, Col } from "react-bootstrap"
+import { Row, Col } from "react-bootstrap";
 
 export default function SearchTable(props) {
   return (

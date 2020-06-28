@@ -24,7 +24,7 @@ const Pagination = (props) => {
     <ButtonGroup>
       {props.currentPageIndex !== 0 && renderPaginationBox("First", 0)}
       {_.times(pagesToRender, (i) =>
-        render.PaginationBox(
+        renderPaginationBox(
           props.pageIndexStart + i + 1,
           i + props.pageIndexStart
         )
