@@ -2,11 +2,12 @@ import React from "react";
 import "../style/App.css";
 import Table from "../components/Table";
 import Pagination from "../components/Pagination";
+import { Row, Col } from "react-bootstrap"
 
 export default function SearchTable(props) {
   return (
     <>
-      <div className="search-table-component">
+      <div className="border mb-4">
         <Table
           columns={props.columns}
           rows={props.rows}
@@ -19,13 +20,17 @@ export default function SearchTable(props) {
           }}
         />
       </div>
-      <Pagination
-        numberOfPages={16}
-        currentPageIndex={11}
-        pageIndexStart={0}
-        pageIndexEnd={10}
-        onSetPage={(i) => console.log("new page: %d", i)}
-      />
+      <Row className="text-center">
+        <Col>
+          <Pagination
+            numberOfPages={16}
+            currentPageIndex={11}
+            pageIndexStart={0}
+            pageIndexEnd={10}
+            onSetPage={(i) => console.log("new page: %d", i)}
+          />
+        </Col>
+      </Row>
     </>
   );
 }
