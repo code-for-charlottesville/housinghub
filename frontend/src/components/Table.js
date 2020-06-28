@@ -1,5 +1,5 @@
 import React from "react";
-import { SEARCH_TABLE_COLUMNS } from "../constants/globalConstants"
+import { SEARCH_TABLE_COLUMNS } from "../constants/globalConstants";
 import "../style/App.css";
 import { Table } from "react-bootstrap";
 const LocalTable = (props) => {
