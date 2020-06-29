@@ -12,7 +12,7 @@ class NoteService:
         self.db_session = Session()
 
     def add_note(self, note: Note):
-        note.id = uuid.uuid4()
+        note.id = str(uuid.uuid4())
         note.created_at = datetime.datetime.now()
         note.created_by = g.user_id
         self.session.add(note)

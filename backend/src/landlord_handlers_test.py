@@ -15,10 +15,7 @@ class TestLandlordHandlers(unittest.TestCase):
         mock_auth_service = self.auth_service_patch.start()
         instance = mock_auth_service.return_value
         instance.authenticate_request.return_value = (self.auth_user, None)
-        mock_token = {
-            'uid': self.auth_user.id,
-            'role': self.auth_user.role
-        }
+        mock_token = {'uid': self.auth_user.id, 'role': self.auth_user.role}
         instance.authenticate_request.return_value = (mock_token, None)
         self.app = app.flask_app.test_client()
 
