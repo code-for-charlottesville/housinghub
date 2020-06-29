@@ -95,3 +95,15 @@ class NoteResponse(SQLAlchemyAutoSchema):
       model = Note
       load_instance = True
 housinghub_spec.components.schema("NoteResponse", schema=NoteResponse)
+
+class UpdatePropertyRequest(SQLAlchemyAutoSchema):
+  class Meta:
+    model = Property
+    load_instance = False
+housinghub_spec.components.schema("UpdatePropertyRequest", schema=UpdatePropertyRequest)
+
+class DeletePropertyResponse(SQLAlchemyAutoSchema):
+  class Meta:
+    model = Property
+    load_instance = False
+housinghub_spec.components.schema("DeletePropertyResponse", schema=DeletePropertyResponse)

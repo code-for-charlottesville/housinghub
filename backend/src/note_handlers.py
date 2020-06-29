@@ -57,3 +57,51 @@ def post_note():
             f'Unexpected error adding note: ${traceback.format_exc()}')
     return jsonify(code=500, error='internal error'), 500
 
+
+
+@note_module.route('/note', methods=['PUT'])
+@authenticate
+def put_note():
+    """
+
+     Update a Note in the database and returns response
+    ---
+    post:
+        tags:
+            - authentication
+        summary: Creates a new note
+        requestBody:
+            required: true
+            content:
+                application/json:
+                    schema: UpdateNoteRequest
+        responses:
+            '200':
+                description: newly updated note
+                content:
+                    application/json:
+                        schema: NoteResponse
+            '400':
+                description: Request is invalid
+                content:
+                    application/json:
+                        schema: ErrorResponse
+            '500':
+                description: An error message.
+                content:
+                    application/json:
+                        schema: ErrorResponse
+    """
+
+    try:
+        payload = request.get_json()
+        _note = app.services.note_service().update_note(payload)
+        return jsonify(NoteResponse().dump(_note))
+    except ValidationError as err:
+        app.logger.error(f'Invalid request ${err.messages}')
+        return jsonify(err.messages), 400
+    except:
+        app.logger.error(
+            f'Unexpected error adding property: ${traceback.format_exc()}')
+        return jsonify(code=500, error='internal error'), 500
+    return jsonify(code=500, error='not implemented'), 500
