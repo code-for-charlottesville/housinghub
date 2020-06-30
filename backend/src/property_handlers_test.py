@@ -76,18 +76,3 @@ class TestPropertyHandlers(unittest.TestCase):
             self.assertEqual(result["bedrooms"], bedrooms)
             self.assertEqual(result["bathrooms"], bathrooms)
     
-    def test_put_property(self):
-        response = self.app.put("/property?td=test", json={'name': 'test'})
-        self.assertEqual(response.status_code, 500)
-        self.assertEqual(response.get_json(), {
-            'code': 500,
-            'error': 'not implemented'
-        })
-
-    def test_delete_property(self):
-        response = self.app.delete("/property?id=test")
-        self.assertEqual(response.status_code, 500)
-        self.assertEqual(response.get_json(), {
-            'code': 500,
-            'error': 'not implemented'
-        })

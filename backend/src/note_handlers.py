@@ -60,7 +60,7 @@ def post_note():
 
 
 @note_module.route('/note', methods=['PUT'])
-# @authenticate
+@authenticate
 def put_note():
     try:
         payload = request.get_json()
