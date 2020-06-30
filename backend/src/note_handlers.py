@@ -62,10 +62,38 @@ def post_note():
 @note_module.route('/note', methods=['PUT'])
 @authenticate
 def put_note():
+    """updates a Property in the DB and returns the updated object
+    :param request: flask request object
+    :param request: dictionary of jwtPayload
+    :return tuple (response body (dict), response code (int), error (string))
+    """
     try:
         payload = request.get_json()
         _note = app.services.note_service().update_note(payload)
         return jsonify(NoteResponse().dump(_note))
+    except ValidationError as err:
+        app.logger.error(f'Invalid request ${err.messages}')
+        return jsonify(err.messages), 400
+    except:
+        app.logger.error(
+            f'Unexpected error adding property: ${traceback.format_exc()}')
+        return jsonify(code=500, error='internal error'), 500
+    return jsonify(code=500, error='not implemented'), 500
+
+
+
+@note_module.route('/note', methods=['DELETE'])
+@authenticate
+def delete_note():
+    """deletes a note in the DB and returns the deleted object
+    :param request: flask request object
+    :param request: dictionary of jwtPayload
+    :return tuple (response body (dict), response code (int), error (string))
+    """
+    try:
+        payload = request.get_json()
+        deleted_note = app.services.note_service().delete_note(payload)
+        return jsonify(NoteResponse().dump(deleted_note))
     except ValidationError as err:
         app.logger.error(f'Invalid request ${err.messages}')
         return jsonify(err.messages), 400

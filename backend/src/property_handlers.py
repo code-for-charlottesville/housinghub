@@ -115,6 +115,11 @@ def post_property():
 @property_module.route('/property', methods=['PUT'])
 @authenticate
 def put_property():
+    """updates a Property in the DB and returns the updated object
+    :param request: flask request object
+    :param request: dictionary of jwtPayload
+    :return tuple (response body (dict), response code (int), error (string))
+    """
     try:
         payload = request.get_json()
         new_property = app.services.property_service().update_property(payload)
@@ -130,8 +135,13 @@ def put_property():
 
 
 @property_module.route('/property', methods=['DELETE'])
-# @authenticate
+@authenticate
 def delete_property():
+    """deletes a Property in the DB and returns the deleted object
+    :param request: flask request object
+    :param request: dictionary of jwtPayload
+    :return tuple (response body (dict), response code (int), error (string))
+    """
     try:
         payload = request.get_json()
         deleted_property = app.services.property_service().delete_property(payload)

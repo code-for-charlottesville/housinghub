@@ -28,3 +28,11 @@ class NoteService:
         self.session.query(Note).filter(Note.id == payload["id"]).update(payload)
         self.session.commit()
         return _note
+
+    def delete_note(self, payload):
+        _note = self.session.query(Note).get({"id": payload["id"]})
+        if (_note == None):
+            app.logger.error('Note not found')
+        self.session.delete(_note)
+        self.session.commit()
+        return _note
