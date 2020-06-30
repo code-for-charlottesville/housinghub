@@ -1,13 +1,9 @@
-import json
-import logging
 import os
-import secrets
-import time
-from functools import wraps
 
 from flask import Flask, g, jsonify, render_template, request, send_file
+from flask_cors import CORS
 
-from app.config import Config, ProductionConfig, StagingConfig, TiltConfig
+from app.config import Config, ProductionConfig, DevConfig, TiltConfig, Config
 from auth_handlers import auth_module
 from landlord_handlers import landlord_module
 from navigator_handlers import navigator_module
@@ -22,12 +18,12 @@ flask_app = Flask(__name__)
 logger = flask_app.logger
 
 application_environment = os.getenv('APP_ENV')
-flask_app.logger.info(f'APP_ENV is {application_environment}')
-if (application_environment == 'tilt'):
+logger.info(f'APP_ENV is {application_environment}')
+if application_environment == 'tilt':
   flask_app.config.from_object(TiltConfig)
-elif (application_environment == 'staging'):
-  flask_app.config.from_object(StagingConfig)
-elif (application_environment == 'production'):
+elif application_environment == 'dev':
+  flask_app.config.from_object(DevConfig)
+elif application_environment == 'prod':
   flask_app.config.from_object(ProductionConfig)
 else:
   flask_app.config.from_object(Config)
@@ -39,6 +35,7 @@ flask_app.register_blueprint(landlord_module)
 flask_app.register_blueprint(navigator_module)
 flask_app.register_blueprint(property_module)
 flask_app.register_blueprint(note_module)
+CORS(flask_app, origins=flask_app.config['ALLOWED_ORIGINS'], supports_credentials=True)
 
 @flask_app.route('/spec', methods=['GET'])
 def get_spec():
@@ -48,3 +45,5 @@ def get_spec():
 def swagger_specs():
   """Serves docs to browser"""
   return render_template('spec.html', spec=housinghub_spec.to_dict())
+
+

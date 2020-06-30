@@ -2,6 +2,7 @@ import * as property from "./property";
 import moxios from "moxios";
 import sinon from "sinon";
 import axios from "axios";
+import apiEndpoint from "./endpoint";
 
 describe("api/property", () => {
   beforeEach(() => {
@@ -53,7 +54,7 @@ describe("api/property", () => {
     let testTable = [
       {
         name: "successful response",
-        url: "/backend/property",
+        url: `${apiEndpoint}/property`,
         args: sampleProperty,
         statusCode: 200,
         response: sampleProperty,
@@ -61,7 +62,7 @@ describe("api/property", () => {
       },
       {
         name: "bad request",
-        url: "/backend/property",
+        url: `${apiEndpoint}/property`,
         args: {},
         statusCode: 400,
         response: {
