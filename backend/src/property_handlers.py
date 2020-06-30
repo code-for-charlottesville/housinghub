@@ -4,7 +4,7 @@ from flask import Blueprint, jsonify, request
 from marshmallow import ValidationError, pprint
 import json
 import app
-from app.api import AddPropertyRequest, PropertyResponse, GetPropertyRequest, GetPropertyResponse, PaginationResponse, PropertySchema, UpdatePropertyRequest, DeletePropertyResponse
+from app.api import AddPropertyRequest, PropertyResponse, GetPropertyRequest, GetPropertyResponse, PaginationResponse, PropertySchema, UpdatePropertyRequest, UpdatePropertyResponse, DeletePropertyResponse
 from app.auth import authenticate
 from app.spec import DocumentedBlueprint
 
@@ -115,38 +115,10 @@ def post_property():
 @property_module.route('/property', methods=['PUT'])
 @authenticate
 def put_property():
-    """updates a Property in the DB and returns the updated object
-    ---
-    put:
-        tags: 
-            - authentication    
-        summary: Updates a Property in the DB
-        requestBody:
-            required: true
-            content:
-                application/json:
-                    schema: UpdatePropertyRequest
-        responses:
-            '200':
-                description: newly created property
-                content:
-                    application/json:
-                        schema: UpdatePropertyResponse
-            '400':
-                description: Request is invalid
-                content:
-                    application/json:
-                        schema: ErrorResponse
-            '500':
-                description: An error message.
-                content:
-                    application/json:
-                        schema: ErrorResponse
-    """
     try:
         payload = request.get_json()
         new_property = app.services.property_service().update_property(payload)
-        return jsonify(UpdatePropertyRequest().dump(new_property))
+        return jsonify(UpdatePropertyResponse().dump(new_property))
     except ValidationError as err:
         app.logger.error(f'Invalid request ${err.messages}')
         return jsonify(err.messages), 400
@@ -160,34 +132,6 @@ def put_property():
 @property_module.route('/property', methods=['DELETE'])
 # @authenticate
 def delete_property():
-    """Delete a Property in the DB and returns the deleted object
-    ---
-    delete:
-        tags: 
-            - authentication    
-        summary: Delete a Property in the DB
-        requestBody:
-            required: true
-            content:
-                application/json:
-        responses:
-            '200':
-                description: newly created property
-                content:
-                    application/json:
-                        schema: DeletePropertyResponse
-            '400':
-                description: Request is invalid
-                content:
-                    application/json:
-                        schema: ErrorResponse
-            '500':
-                description: An error message.
-                content:
-                    application/json:
-                        schema: ErrorResponse
-    """
-
     try:
         payload = request.get_json()
         deleted_property = app.services.property_service().delete_property(payload)
