@@ -4,7 +4,7 @@ from flask import Blueprint, jsonify, request
 from marshmallow import ValidationError, pprint
 import json
 import app
-from app.api import AddPropertyRequest, PropertyResponse, GetPropertyRequest, GetPropertyResponse, PaginationResponse, PropertySchema
+from app.api import AddPropertyRequest, PropertyResponse, GetPropertyRequest, GetPropertyResponse, PaginationResponse, PropertySchema, UpdatePropertyRequest, UpdatePropertyResponse, DeletePropertyResponse
 from app.auth import authenticate
 from app.spec import DocumentedBlueprint
 
@@ -120,6 +120,17 @@ def put_property():
     :param request: dictionary of jwtPayload
     :return tuple (response body (dict), response code (int), error (string))
     """
+    try:
+        payload = request.get_json()
+        new_property = app.services.property_service().update_property(payload)
+        return jsonify(UpdatePropertyResponse().dump(new_property))
+    except ValidationError as err:
+        app.logger.error(f'Invalid request ${err.messages}')
+        return jsonify(err.messages), 400
+    except:
+        app.logger.error(
+            f'Unexpected error adding property: ${traceback.format_exc()}')
+        return jsonify(code=500, error='internal error'), 500
     return jsonify(code=500, error='not implemented'), 500
 
 
@@ -131,4 +142,15 @@ def delete_property():
     :param request: dictionary of jwtPayload
     :return tuple (response body (dict), response code (int), error (string))
     """
+    try:
+        payload = request.get_json()
+        deleted_property = app.services.property_service().delete_property(payload)
+        return jsonify(DeletePropertyResponse().dump(deleted_property))
+    except ValidationError as err:
+        app.logger.error(f'Invalid request ${err.messages}')
+        return jsonify(err.messages), 400
+    except:
+        app.logger.error(
+            f'Unexpected error adding property: ${traceback.format_exc()}')
+        return jsonify(code=500, error='internal error'), 500
     return jsonify(code=500, error='not implemented'), 500

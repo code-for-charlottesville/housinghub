@@ -1,7 +1,7 @@
 import uuid
-
+import app 
 from sqlalchemy.orm import sessionmaker
-
+from sqlalchemy import update
 from models.property import Property
 
 
@@ -39,7 +39,23 @@ class PropertyService:
 
         _properties = _properties.all()
         return _properties
-    
+
+    def update_property(self, payload):
+        _property = self.session.query(Property).get({"id": payload["id"]})
+        if (_property == None):
+            app.logger.error('Property not found')
+        self.session.query(Property).filter(Property.id == payload["id"]).update(payload)
+        self.session.commit()
+        return _property
+
+    def delete_property(self, payload):
+        _property = self.session.query(Property).get({"id": payload["id"]})
+        if (_property == None):
+            app.logger.error('Property not found')
+        self.session.delete(_property)
+        self.session.commit()
+        return _property
+
     def get_all_property(self):
         # TO DO : changes corresponding to search property API
         return self.db_session.query(Property).all()
