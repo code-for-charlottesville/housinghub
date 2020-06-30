@@ -7,7 +7,6 @@ import MainContent from "./containers/MainContent";
 import { setJwtStatus } from "./actions/login";
 import { Footer } from "./components/Footer";
 import Logout from "./components/Logout";
-import SearchTool from "./components/SearchTool";
 import "./style/App.css";
 
 class App extends React.Component {
@@ -17,14 +16,14 @@ class App extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className="App">
         <Switch>
           <Route path="/logout" component={Logout} />
           <Route path="/login" component={Login} />
-          <Route path="/" component={SearchTool} />
+          <Route path="/" component={MainContent} />
           <Route>Page not found :(</Route>
         </Switch>
-        {/*<Footer /> */}
+        <Footer />
       </div>
     );
   }
