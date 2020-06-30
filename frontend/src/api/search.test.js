@@ -24,6 +24,7 @@ describe("api/search", () => {
         date_available: "string",
         housing_type: ["string"],
         max_rent: 0,
+        min_rent: 0,
         zip_code: ["string"],
       },
     };

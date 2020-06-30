@@ -1,6 +1,8 @@
 import React from "react";
 import "../style/SearchTool.css";
 import { Container, Row, Col, Form } from "react-bootstrap";
+import { setSearchfieldsQuery, searchProperties } from "../actions/search";
+import { connect } from "react-redux";
 
 const SearchTool = (props) => {
   return (
@@ -41,10 +43,25 @@ const SearchTool = (props) => {
             }}
           >
             <Col>
-              <Form.Control placeholder="Min" />
+              <Form.Control
+                placeholder="Min"
+                placeholder="Max"
+                onChange={(e) =>
+                  props.dispatch(
+                    setSearchfieldsQuery("min_rent", parseInt(e.target.value))
+                  )
+                }
+              />
             </Col>
             <Col>
-              <Form.Control placeholder="Max" />
+              <Form.Control
+                placeholder="Max"
+                onChange={(e) =>
+                  props.dispatch(
+                    setSearchfieldsQuery("max_rent", parseInt(e.target.value))
+                  )
+                }
+              />
             </Col>
           </Form.Row>
           <Row>
@@ -78,8 +95,18 @@ const SearchTool = (props) => {
               marginTop: "17px",
             }}
           >
-            <Form.Label>Date Available</Form.Label>
-            <Form.Control type="date"></Form.Control>
+            <div className="col-12">
+              <Form.Label>Date Available</Form.Label>
+              <Form.Control
+                type="date"
+                placeholder="MM-dd-YYYY"
+                onChange={(e) =>
+                  props.dispatch(
+                    setSearchfieldsQuery("date_available", e.target.value)
+                  )
+                }
+              ></Form.Control>
+            </div>
           </Form.Row>
 
           <Form.Group
@@ -91,12 +118,24 @@ const SearchTool = (props) => {
             }}
           >
             <Form.Label>Bedrooms</Form.Label>
-            <Form.Control as="select" custom>
+            <Form.Control
+              as="select"
+              id="numBeds"
+              onChange={(e) =>
+                props.dispatch(
+                  setSearchfieldsQuery("bedrooms", parseInt(e.target.value))
+                )
+              }
+              value={props.query.searchFields.bedrooms}
+              custom
+            >
               <option>1</option>
               <option>2</option>
               <option>3</option>
               <option>4</option>
               <option>5</option>
+              <option>6</option>
+              <option>7</option>
             </Form.Control>
           </Form.Group>
           <Form.Group
@@ -108,11 +147,25 @@ const SearchTool = (props) => {
             }}
           >
             <Form.Label>Bathrooms</Form.Label>
-            <Form.Control as="select" custom>
+            <Form.Control
+              as="select"
+              custom
+              id="numBath"
+              onChange={(e) =>
+                props.dispatch(
+                  setSearchfieldsQuery("bathrooms", parseFloat(e.target.value))
+                )
+              }
+              value={props.query.searchFields.bathrooms}
+            >
               <option>1</option>
+              <option>1.5</option>
               <option>2</option>
+              <option>2.5</option>
               <option>3</option>
+              <option>3.5</option>
               <option>4</option>
+              <option>4.5</option>
               <option>5</option>
             </Form.Control>
           </Form.Group>
@@ -121,7 +174,14 @@ const SearchTool = (props) => {
               Deposit Needed
             </Col>
             <Col xs="1">
-              <Form.Check aria-label="deposit" />
+              <Form.Check
+                onChange={(e) =>
+                  props.dispatch(
+                    setSearchfieldsQuery("deposit_needed", e.target.value)
+                  )
+                }
+                aria-label="deposit"
+              />
             </Col>
           </Form.Row>
           <Form.Row style={{ marginTop: "4px" }}>
@@ -129,7 +189,14 @@ const SearchTool = (props) => {
               Credit Report Needed
             </Col>
             <Col xs="1">
-              <Form.Check aria-label="creditReport" />
+              <Form.Check
+                onChange={(e) =>
+                  props.dispatch(
+                    setSearchfieldsQuery("credit_report_needed", e.target.value)
+                  )
+                }
+                aria-label="creditReport"
+              />
             </Col>
           </Form.Row>
           <Form.Row style={{ marginTop: "4px" }}>
@@ -137,7 +204,14 @@ const SearchTool = (props) => {
               Near Bus Stop
             </Col>
             <Col xs="1">
-              <Form.Check aria-label="bus" />
+              <Form.Check
+                onChange={(e) =>
+                  props.dispatch(
+                    setSearchfieldsQuery("near_bus_stop", e.target.value)
+                  )
+                }
+                aria-label="bus"
+              />
             </Col>
           </Form.Row>
           <Form.Row style={{ marginTop: "4px", marginBottom: "30px" }}>
@@ -145,7 +219,14 @@ const SearchTool = (props) => {
               Pets allowed
             </Col>
             <Col xs="1">
-              <Form.Check aria-label="pets" />
+              <Form.Check
+                onChange={(e) =>
+                  props.dispatch(
+                    setSearchfieldsQuery("pets_allowed", e.target.value)
+                  )
+                }
+                aria-label="pets"
+              />
             </Col>
           </Form.Row>
 
@@ -164,12 +245,18 @@ const SearchTool = (props) => {
             }}
           >
             <Form.Label>School District</Form.Label>
-            <Form.Control as="select" custom>
-              <option>Venable</option>
-              <option>2</option>
-              <option>3</option>
-              <option>4</option>
-              <option>5</option>
+            <Form.Control
+              onChange={(e) =>
+                props.dispatch(
+                  setSearchfieldsQuery("school_district", e.target.value)
+                )
+              }
+              as="select"
+              custom
+            >
+              <option>Alemarle</option>
+              <option>City of Charlottesville</option>
+              <option>University of Virginia</option>
             </Form.Control>
           </Form.Group>
           <hr
@@ -210,7 +297,15 @@ const SearchTool = (props) => {
             }}
           >
             <Form.Label>Vouchers Accepted</Form.Label>
-            <Form.Control as="select" custom>
+            <Form.Control
+              onChange={(e) =>
+                props.dispatch(
+                  setSearchfieldsQuery("school_district", e.target.value)
+                )
+              }
+              as="select"
+              custom
+            >
               <option>Any</option>
               <option>2</option>
               <option>3</option>
@@ -224,4 +319,16 @@ const SearchTool = (props) => {
   );
 };
 
-export default SearchTool;
+function mapStateToProps(state) {
+  return {
+    query: {
+      pagination: state.search.query.pagination,
+      searchFields: state.search.query.searchFields,
+    },
+    searchResults: {
+      ...state.search.searchResults,
+      pagination: state.search.searchResults.pagination,
+    },
+  };
+}
+export default connect(mapStateToProps)(SearchTool);
