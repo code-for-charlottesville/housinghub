@@ -81,17 +81,7 @@
 }
 /*Nav styles*/
 
-.h-hub-brand {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-}
-
-.h-hub-nav-link {
-  text-decoration: none;
-  color: white;
-}
-
 .h-hub-nav-link:hover {
-  text-decoration: none;
   color: rgb(75,160,181);
 }
 
