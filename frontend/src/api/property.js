@@ -1,4 +1,5 @@
 import axios from "axios";
+import apiEndpoint from "./endpoint";
 
 /**
  * makes POST request to /backend/property with property
@@ -6,12 +7,11 @@ import axios from "axios";
 
 export function postProperty(property) {
   return axios
-    .post("/backend/property", property)
+    .post(`${apiEndpoint}/property`, property)
     .then((r) => {
       return Promise.resolve(r.data);
     })
     .catch((err) => {
-      console.error(err.response);
       return Promise.resolve(err.response.data);
     });
 }

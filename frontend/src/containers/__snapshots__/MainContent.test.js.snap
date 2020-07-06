@@ -1,0 +1,1443 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`containers/MainContent redirects to login if not logged in 1`] = `null`;
+
+exports[`containers/MainContent renders home when nothing else matches 1`] = `
+<div
+  className="main-content"
+>
+  <nav
+    className="navbar navbar-expand-true navbar-dark bg-dark"
+  >
+    <button
+      aria-label="Toggle navigation"
+      className="navbar-toggler collapsed"
+      onClick={[Function]}
+      type="button"
+    >
+      <span
+        className="navbar-toggler-icon"
+      />
+    </button>
+  </nav>
+  <div
+    className="search-page row"
+  >
+    <div
+      className="pr-0 border col-xl-2 col-lg-3 col-12"
+    >
+      <div
+        className="search-sidebar"
+      >
+        Search Sidebar
+      </div>
+    </div>
+    <div
+      className="pl-0 search-table col-xl-10 col-lg-9 col-12"
+    >
+      <div
+        className="border mb-4"
+      >
+        <table
+          className="table table-hover"
+        >
+          <thead
+            className="bg-info text-white"
+          >
+            <tr>
+              <th>
+                Property Type
+              </th>
+              <th>
+                Address
+              </th>
+              <th>
+                Rent
+              </th>
+              <th>
+                Bedrooms
+              </th>
+              <th>
+                Bathrooms
+              </th>
+              <th>
+                Actions
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr
+              className=""
+              onClick={[Function]}
+            >
+              <td>
+                Apartment
+              </td>
+              <td>
+                520 E Main Street
+              </td>
+              <td>
+                $2500
+              </td>
+              <td>
+                5
+              </td>
+              <td>
+                1
+              </td>
+              <td>
+                Test
+              </td>
+            </tr>
+            <tr
+              className=""
+              onClick={[Function]}
+            >
+              <td>
+                Apartment 2
+              </td>
+              <td>
+                520 E Main Street
+              </td>
+              <td>
+                $2500
+              </td>
+              <td>
+                5
+              </td>
+              <td>
+                1
+              </td>
+              <td>
+                Test
+              </td>
+            </tr>
+            <tr
+              className=""
+              onClick={[Function]}
+            >
+              <td>
+                Apartment 3
+              </td>
+              <td>
+                123 E Main Street Apt 406
+              </td>
+              <td>
+                $1200
+              </td>
+              <td>
+                5
+              </td>
+              <td>
+                1
+              </td>
+              <td>
+                Test
+              </td>
+            </tr>
+            <tr
+              className="is-selected"
+              onClick={[Function]}
+            >
+              <td>
+                Apartment 4
+              </td>
+              <td>
+                123 ABC Street
+              </td>
+              <td>
+                $800
+              </td>
+              <td>
+                5
+              </td>
+              <td>
+                1
+              </td>
+              <td>
+                Test
+              </td>
+            </tr>
+            <tr
+              className=""
+              onClick={[Function]}
+            >
+              <td>
+                Apartment 5
+              </td>
+              <td>
+                948 Water Street
+              </td>
+              <td>
+                $1200
+              </td>
+              <td>
+                3
+              </td>
+              <td>
+                1
+              </td>
+              <td>
+                Test
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div
+        className="text-center row"
+      >
+        <div
+          className="col"
+        >
+          <div
+            className="btn-group"
+            role="group"
+          >
+            <button
+              className="PaginationBox btn btn-secondary"
+              disabled={false}
+              onClick={[Function]}
+              type="button"
+            >
+              <a>
+                First
+              </a>
+            </button>
+            <button
+              className="PaginationBox btn btn-secondary"
+              disabled={false}
+              onClick={[Function]}
+              type="button"
+            >
+              <a>
+                1
+              </a>
+            </button>
+            <button
+              className="PaginationBox btn btn-secondary"
+              disabled={false}
+              onClick={[Function]}
+              type="button"
+            >
+              <a>
+                2
+              </a>
+            </button>
+            <button
+              className="PaginationBox btn btn-secondary"
+              disabled={false}
+              onClick={[Function]}
+              type="button"
+            >
+              <a>
+                3
+              </a>
+            </button>
+            <button
+              className="PaginationBox btn btn-secondary"
+              disabled={false}
+              onClick={[Function]}
+              type="button"
+            >
+              <a>
+                4
+              </a>
+            </button>
+            <button
+              className="PaginationBox btn btn-secondary"
+              disabled={false}
+              onClick={[Function]}
+              type="button"
+            >
+              <a>
+                5
+              </a>
+            </button>
+            <button
+              className="PaginationBox btn btn-secondary"
+              disabled={false}
+              onClick={[Function]}
+              type="button"
+            >
+              <a>
+                6
+              </a>
+            </button>
+            <button
+              className="PaginationBox btn btn-secondary"
+              disabled={false}
+              onClick={[Function]}
+              type="button"
+            >
+              <a>
+                7
+              </a>
+            </button>
+            <button
+              className="PaginationBox btn btn-secondary"
+              disabled={false}
+              onClick={[Function]}
+              type="button"
+            >
+              <a>
+                8
+              </a>
+            </button>
+            <button
+              className="PaginationBox btn btn-secondary"
+              disabled={false}
+              onClick={[Function]}
+              type="button"
+            >
+              <a>
+                9
+              </a>
+            </button>
+            <button
+              className="PaginationBox btn btn-secondary"
+              disabled={false}
+              onClick={[Function]}
+              type="button"
+            >
+              <a>
+                10
+              </a>
+            </button>
+            <button
+              className="PaginationBox btn btn-secondary"
+              disabled={false}
+              onClick={[Function]}
+              type="button"
+            >
+              <a>
+                Next
+              </a>
+            </button>
+            <button
+              className="PaginationBox btn btn-secondary"
+              disabled={false}
+              onClick={[Function]}
+              type="button"
+            >
+              <a>
+                Last
+              </a>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`containers/MainContent renders new prop form on /property/new 1`] = `
+<div
+  className="main-content"
+>
+  <nav
+    className="navbar navbar-expand-true navbar-dark bg-dark"
+  >
+    <button
+      aria-label="Toggle navigation"
+      className="navbar-toggler collapsed"
+      onClick={[Function]}
+      type="button"
+    >
+      <span
+        className="navbar-toggler-icon"
+      />
+    </button>
+  </nav>
+  <div
+    className="container"
+  >
+    <h1>
+      Add New Property
+    </h1>
+    <hr />
+    <h2>
+      Property Details
+    </h2>
+    <form
+      action=""
+      onSubmit={[Function]}
+    >
+      <div>
+        <div>
+          <label>
+            Property Name (if multi-unit complex): 
+          </label>
+          <div>
+            <input
+              onChange={[Function]}
+              placeholder="Ex. Flats"
+              type="text"
+              value=""
+            />
+          </div>
+        </div>
+        <div>
+          <label>
+            Address: 
+          </label>
+          <div>
+            <input
+              onChange={[Function]}
+              placeholder="Ex. 1111 Main Street"
+              type="text"
+              value=""
+            />
+          </div>
+        </div>
+        <div>
+          <label>
+            Unit / Apt no. (if applicable): 
+          </label>
+          <div>
+            <input
+              onChange={[Function]}
+              placeholder="Ex. Apt B"
+              type="text"
+              value=""
+            />
+          </div>
+        </div>
+        <div>
+          <label>
+            Floor no. (if applicable): 
+          </label>
+          <div>
+            <input
+              min="0"
+              onChange={[Function]}
+              placeholder="Ex. 2"
+              type="number"
+              value={0}
+            />
+          </div>
+        </div>
+        <div>
+          <label>
+            Zip Code: 
+          </label>
+          <div>
+            <input
+              onChange={[Function]}
+              placeholder="Ex. 22902"
+              type="text"
+              value=""
+            />
+          </div>
+        </div>
+        <div>
+          <label>
+            Type of Housing: 
+          </label>
+          <div>
+            <input
+              onChange={[Function]}
+              placeholder="Ex. Apartment"
+              type="text"
+              value=""
+            />
+          </div>
+        </div>
+        <div>
+          <label
+            htmlFor="numBeds"
+          >
+            Number of Bedrooms:
+          </label>
+          <div>
+            <select
+              id="numBeds"
+              onChange={[Function]}
+              value={0}
+            >
+              <option
+                value="1"
+              >
+                1
+              </option>
+              <option
+                value="2"
+              >
+                2
+              </option>
+              <option
+                value="3"
+              >
+                3
+              </option>
+              <option
+                value="4"
+              >
+                4
+              </option>
+              <option
+                value="5"
+              >
+                5
+              </option>
+              <option
+                value="6"
+              >
+                6
+              </option>
+              <option
+                value="7"
+              >
+                7
+              </option>
+            </select>
+          </div>
+        </div>
+        <div>
+          <label
+            htmlFor="numBath"
+          >
+            Number of Bathrooms:
+          </label>
+          <div>
+            <select
+              id="numBath"
+              onChange={[Function]}
+              value={0}
+            >
+              <option
+                value="1"
+              >
+                1
+              </option>
+              <option
+                value="1.5"
+              >
+                1.5
+              </option>
+              <option
+                value="2"
+              >
+                2
+              </option>
+              <option
+                value="2.5"
+              >
+                2.5
+              </option>
+              <option
+                value="3"
+              >
+                3
+              </option>
+              <option
+                value="3.5"
+              >
+                3.5
+              </option>
+              <option
+                value="4"
+              >
+                4
+              </option>
+              <option
+                value="4.5"
+              >
+                4.5
+              </option>
+              <option
+                value="5"
+              >
+                5
+              </option>
+            </select>
+          </div>
+        </div>
+        <div>
+          <label
+            htmlFor="numBathsShared"
+          >
+            Number of Shared Bathrooms (with another property):
+          </label>
+          <div>
+            <select
+              id="numBathsShared"
+              onChange={[Function]}
+              value={0}
+            >
+              <option
+                value="0"
+              >
+                0
+              </option>
+              <option
+                value="1"
+              >
+                1
+              </option>
+              <option
+                value="2"
+              >
+                2
+              </option>
+              <option
+                value="3"
+              >
+                3
+              </option>
+              <option
+                value="4"
+              >
+                4
+              </option>
+              <option
+                value="5"
+              >
+                5
+              </option>
+            </select>
+          </div>
+        </div>
+        <div>
+          <label
+            htmlFor="basementBool"
+          >
+            Does the Property Have a Basement?
+          </label>
+          <div>
+            <select
+              id="basementBool"
+              onChange={[Function]}
+              value={false}
+            >
+              <option
+                value="false"
+              >
+                No
+              </option>
+              <option
+                value="true"
+              >
+                Yes
+              </option>
+            </select>
+          </div>
+        </div>
+        <div>
+          <label>
+            Property's School District: 
+          </label>
+          <div>
+            <input
+              onChange={[Function]}
+              placeholder="Ex. Albermale"
+              type="text"
+              value=""
+            />
+          </div>
+        </div>
+        <div>
+          <label
+            htmlFor="busLineBool"
+          >
+            Is the Property Near a Bus Stop?
+          </label>
+          <div>
+            <select
+              id="busLineBool"
+              onChange={[Function]}
+              value={false}
+            >
+              <option
+                value="false"
+              >
+                No
+              </option>
+              <option
+                value="true"
+              >
+                Yes
+              </option>
+            </select>
+          </div>
+        </div>
+        <div>
+          <label
+            htmlFor="wheelchairBool"
+          >
+            Is the Property Wheelchair Accessible?
+          </label>
+          <div>
+            <select
+              id="wheelchairBool"
+              onChange={[Function]}
+              value={false}
+            >
+              <option
+                value="false"
+              >
+                No
+              </option>
+              <option
+                value="true"
+              >
+                Yes
+              </option>
+            </select>
+          </div>
+        </div>
+        <div>
+          <label
+            htmlFor="elevatorBool"
+          >
+            Does the Property Have an Elevator?
+          </label>
+          <div>
+            <select
+              id="elevatorBool"
+              onChange={[Function]}
+              value={false}
+            >
+              <option
+                value="false"
+              >
+                No
+              </option>
+              <option
+                value="true"
+              >
+                Yes
+              </option>
+            </select>
+          </div>
+        </div>
+        <div>
+          <label>
+            If not yet available, please specify below when the property will be available using the format MM-dd-YYYY. The default will be the current date if left as is.
+          </label>
+          <div>
+            <input
+              onChange={[Function]}
+              placeholder="MM-dd-YYYY"
+              type="date"
+            />
+          </div>
+        </div>
+        <div>
+          <label>
+            Please specify the potential months available for the property.
+          </label>
+          <div>
+            <input
+              min="0"
+              onChange={[Function]}
+              placeholder="Ex. 12"
+              type="number"
+              value={0}
+            />
+          </div>
+        </div>
+        <div>
+          <label>
+            Please specify below when the property was first listed using the format MM-dd-YYYY. The default will be the current date if left as is.
+          </label>
+          <div>
+            <input
+              onChange={[Function]}
+              placeholder="Ex. 01-15-2020"
+              type="date"
+            />
+          </div>
+        </div>
+        <div>
+          <label
+            htmlFor="whereListed"
+          >
+            Please check the locations where this property was listed.
+          </label>
+          <label>
+            <input
+              onChange={[Function]}
+              type="checkbox"
+              value="Trulia"
+            />
+            Trulia
+          </label>
+          <br />
+          <label>
+            <input
+              onChange={[Function]}
+              type="checkbox"
+              value="Zillow"
+            />
+            Zillow
+          </label>
+          <br />
+          <label>
+            <input
+              onChange={[Function]}
+              type="checkbox"
+              value="Other"
+            />
+            Other
+          </label>
+        </div>
+        <div>
+          <label
+            htmlFor="contactMethod"
+          >
+            Please check the preferred contact methods for the property's landlord.
+          </label>
+          <label>
+            <input
+              onChange={[Function]}
+              type="checkbox"
+              value="Phone"
+            />
+            Phone
+          </label>
+          <br />
+          <label>
+            <input
+              onChange={[Function]}
+              type="checkbox"
+              value="Email"
+            />
+            Email
+          </label>
+          <br />
+          <label>
+            <input
+              onChange={[Function]}
+              type="checkbox"
+              value="Registered sites"
+            />
+            Registered Site
+          </label>
+        </div>
+        <div>
+          <label>
+            Please specify below when the property's landlord was last contacted.  The default will be the current date if left as is.
+          </label>
+          <div>
+            <input
+              onChange={[Function]}
+              placeholder="MM-dd-YYY"
+              type="date"
+            />
+          </div>
+        </div>
+      </div>
+      <h2>
+        Payment Details
+      </h2>
+      <div
+        className="box"
+      >
+        <div>
+          <label>
+            What is the Monthly Rent of the Property?
+          </label>
+          <div>
+            <input
+              min="0"
+              onChange={[Function]}
+              placeholder="Ex. 1200"
+              type="number"
+              value={0}
+            />
+          </div>
+        </div>
+        <div>
+          <label>
+            Please specify the application fee, if any, for the property.
+          </label>
+          <div>
+            <input
+              min="0"
+              onChange={[Function]}
+              placeholder="Ex. 250"
+              type="number"
+              value={0}
+            />
+          </div>
+        </div>
+        <div>
+          <label>
+            Please specify the deposit amount for the property
+          </label>
+          <div>
+            <input
+              min="0"
+              onChange={[Function]}
+              placeholder="Ex. 800"
+              type="number"
+              value={0}
+            />
+          </div>
+        </div>
+        <div>
+          <label
+            htmlFor="lastMonthBool"
+          >
+            Is the last month's rent required for the property?
+          </label>
+          <div>
+            <select
+              id="lastMonthBool"
+              onChange={[Function]}
+              value={false}
+            >
+              <option
+                value="false"
+              >
+                No
+              </option>
+              <option
+                value="true"
+              >
+                Yes
+              </option>
+            </select>
+          </div>
+        </div>
+        <div>
+          <label
+            htmlFor="vouchersAccepted"
+          >
+            Please specify 'Yes' or 'No' for the vouchers accepted as payment for the property.
+          </label>
+          <div>
+            <label>
+              CSRAP
+            </label>
+            <div>
+              <label>
+                <input
+                  name="CSRAP"
+                  onChange={[Function]}
+                  type="radio"
+                  value="CSRAP"
+                />
+                Yes
+              </label>
+              <label>
+                <input
+                  name="CSRAP"
+                  onChange={[Function]}
+                  type="radio"
+                  value="CSRAP"
+                />
+                No
+              </label>
+            </div>
+          </div>
+          <div>
+            <label>
+              HCV
+            </label>
+            <div>
+              <label>
+                <input
+                  name="HCV"
+                  onChange={[Function]}
+                  type="radio"
+                  value="HCV"
+                />
+                Yes
+              </label>
+              <label>
+                <input
+                  name="HCV"
+                  onChange={[Function]}
+                  type="radio"
+                  value="HCV"
+                />
+                No
+              </label>
+            </div>
+          </div>
+          <div>
+            <label>
+              MSV
+            </label>
+            <div>
+              <label>
+                <input
+                  name="MSV"
+                  onChange={[Function]}
+                  type="radio"
+                  value="MSV"
+                />
+                Yes
+              </label>
+              <label>
+                <input
+                  name="MSV"
+                  onChange={[Function]}
+                  type="radio"
+                  value="MSV"
+                />
+                No
+              </label>
+            </div>
+          </div>
+          <div>
+            <label>
+              Voucher 4
+            </label>
+            <div>
+              <label>
+                <input
+                  name="Voucher 4"
+                  onChange={[Function]}
+                  type="radio"
+                  value="Voucher 4"
+                />
+                Yes
+              </label>
+              <label>
+                <input
+                  name="Voucher 4"
+                  onChange={[Function]}
+                  type="radio"
+                  value="Voucher 4"
+                />
+                No
+              </label>
+            </div>
+          </div>
+          <div>
+            <label>
+              Voucher 5
+            </label>
+            <div>
+              <label>
+                <input
+                  name="Voucher 5"
+                  onChange={[Function]}
+                  type="radio"
+                  value="Voucher 5"
+                />
+                Yes
+              </label>
+              <label>
+                <input
+                  name="Voucher 5"
+                  onChange={[Function]}
+                  type="radio"
+                  value="Voucher 5"
+                />
+                No
+              </label>
+            </div>
+          </div>
+        </div>
+        <div>
+          <label>
+            If the property requires a credit screening, please specify the credit screening company used.
+          </label>
+          <div>
+            <input
+              onChange={[Function]}
+              placeholder="Ex. Creditrating.com"
+              type="text"
+              value=""
+            />
+          </div>
+        </div>
+        <div>
+          <label>
+            Please specify the company typically used to conduct background checks for the property.
+          </label>
+          <div>
+            <input
+              onChange={[Function]}
+              placeholder="Ex. background-screening.com"
+              type="text"
+              value=""
+            />
+          </div>
+        </div>
+        <div>
+          <label
+            className="label"
+            htmlFor="backgroundBool"
+          >
+            Does the property require applicants to have a clean criminal record?
+          </label>
+          <div>
+            <select
+              id="backgroundBool"
+              onChange={[Function]}
+              value={false}
+            >
+              <option
+                value="false"
+              >
+                No
+              </option>
+              <option
+                value="true"
+              >
+                Yes
+              </option>
+            </select>
+          </div>
+        </div>
+      </div>
+      <label>
+        If all fields above are filled out correctly press 'Submit' to add this listing.
+      </label>
+      <div>
+        <div>
+          <button
+            onClick={[Function]}
+            title="Add property"
+          >
+            Submit
+          </button>
+        </div>
+        <div>
+          <button
+            title="Return home"
+          >
+            Cancel
+          </button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+`;
+
+exports[`containers/MainContent renders search prop form on /property/search 1`] = `
+<div
+  className="main-content"
+>
+  <nav
+    className="navbar navbar-expand-true navbar-dark bg-dark"
+  >
+    <button
+      aria-label="Toggle navigation"
+      className="navbar-toggler collapsed"
+      onClick={[Function]}
+      type="button"
+    >
+      <span
+        className="navbar-toggler-icon"
+      />
+    </button>
+  </nav>
+  <div
+    className="search-page row"
+  >
+    <div
+      className="pr-0 border col-xl-2 col-lg-3 col-12"
+    >
+      <div
+        className="search-sidebar"
+      >
+        Search Sidebar
+      </div>
+    </div>
+    <div
+      className="pl-0 search-table col-xl-10 col-lg-9 col-12"
+    >
+      <div
+        className="border mb-4"
+      >
+        <table
+          className="table table-hover"
+        >
+          <thead
+            className="bg-info text-white"
+          >
+            <tr>
+              <th>
+                Property Type
+              </th>
+              <th>
+                Address
+              </th>
+              <th>
+                Rent
+              </th>
+              <th>
+                Bedrooms
+              </th>
+              <th>
+                Bathrooms
+              </th>
+              <th>
+                Actions
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr
+              className=""
+              onClick={[Function]}
+            >
+              <td>
+                Apartment
+              </td>
+              <td>
+                520 E Main Street
+              </td>
+              <td>
+                $2500
+              </td>
+              <td>
+                5
+              </td>
+              <td>
+                1
+              </td>
+              <td>
+                Test
+              </td>
+            </tr>
+            <tr
+              className=""
+              onClick={[Function]}
+            >
+              <td>
+                Apartment 2
+              </td>
+              <td>
+                520 E Main Street
+              </td>
+              <td>
+                $2500
+              </td>
+              <td>
+                5
+              </td>
+              <td>
+                1
+              </td>
+              <td>
+                Test
+              </td>
+            </tr>
+            <tr
+              className=""
+              onClick={[Function]}
+            >
+              <td>
+                Apartment 3
+              </td>
+              <td>
+                123 E Main Street Apt 406
+              </td>
+              <td>
+                $1200
+              </td>
+              <td>
+                5
+              </td>
+              <td>
+                1
+              </td>
+              <td>
+                Test
+              </td>
+            </tr>
+            <tr
+              className="is-selected"
+              onClick={[Function]}
+            >
+              <td>
+                Apartment 4
+              </td>
+              <td>
+                123 ABC Street
+              </td>
+              <td>
+                $800
+              </td>
+              <td>
+                5
+              </td>
+              <td>
+                1
+              </td>
+              <td>
+                Test
+              </td>
+            </tr>
+            <tr
+              className=""
+              onClick={[Function]}
+            >
+              <td>
+                Apartment 5
+              </td>
+              <td>
+                948 Water Street
+              </td>
+              <td>
+                $1200
+              </td>
+              <td>
+                3
+              </td>
+              <td>
+                1
+              </td>
+              <td>
+                Test
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div
+        className="text-center row"
+      >
+        <div
+          className="col"
+        >
+          <div
+            className="btn-group"
+            role="group"
+          >
+            <button
+              className="PaginationBox btn btn-secondary"
+              disabled={false}
+              onClick={[Function]}
+              type="button"
+            >
+              <a>
+                First
+              </a>
+            </button>
+            <button
+              className="PaginationBox btn btn-secondary"
+              disabled={false}
+              onClick={[Function]}
+              type="button"
+            >
+              <a>
+                1
+              </a>
+            </button>
+            <button
+              className="PaginationBox btn btn-secondary"
+              disabled={false}
+              onClick={[Function]}
+              type="button"
+            >
+              <a>
+                2
+              </a>
+            </button>
+            <button
+              className="PaginationBox btn btn-secondary"
+              disabled={false}
+              onClick={[Function]}
+              type="button"
+            >
+              <a>
+                3
+              </a>
+            </button>
+            <button
+              className="PaginationBox btn btn-secondary"
+              disabled={false}
+              onClick={[Function]}
+              type="button"
+            >
+              <a>
+                4
+              </a>
+            </button>
+            <button
+              className="PaginationBox btn btn-secondary"
+              disabled={false}
+              onClick={[Function]}
+              type="button"
+            >
+              <a>
+                5
+              </a>
+            </button>
+            <button
+              className="PaginationBox btn btn-secondary"
+              disabled={false}
+              onClick={[Function]}
+              type="button"
+            >
+              <a>
+                6
+              </a>
+            </button>
+            <button
+              className="PaginationBox btn btn-secondary"
+              disabled={false}
+              onClick={[Function]}
+              type="button"
+            >
+              <a>
+                7
+              </a>
+            </button>
+            <button
+              className="PaginationBox btn btn-secondary"
+              disabled={false}
+              onClick={[Function]}
+              type="button"
+            >
+              <a>
+                8
+              </a>
+            </button>
+            <button
+              className="PaginationBox btn btn-secondary"
+              disabled={false}
+              onClick={[Function]}
+              type="button"
+            >
+              <a>
+                9
+              </a>
+            </button>
+            <button
+              className="PaginationBox btn btn-secondary"
+              disabled={false}
+              onClick={[Function]}
+              type="button"
+            >
+              <a>
+                10
+              </a>
+            </button>
+            <button
+              className="PaginationBox btn btn-secondary"
+              disabled={false}
+              onClick={[Function]}
+              type="button"
+            >
+              <a>
+                Next
+              </a>
+            </button>
+            <button
+              className="PaginationBox btn btn-secondary"
+              disabled={false}
+              onClick={[Function]}
+              type="button"
+            >
+              <a>
+                Last
+              </a>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;

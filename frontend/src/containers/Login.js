@@ -4,7 +4,7 @@ import "../style/App.css";
 import { connect } from "react-redux";
 import { Redirect } from "react-router-dom";
 import { setLoginField, loginUser } from "../actions/login";
-import { LoadingSpinner } from "./LoadingSpinner";
+import { LoadingSpinner } from "../components/LoadingSpinner";
 import { Container, Row, Col, Form, Button } from "react-bootstrap";
 
 const Login = (props) => {

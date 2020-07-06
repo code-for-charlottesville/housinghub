@@ -47,13 +47,14 @@ def get_property():
         _property = app.services.property_service().get_property(payload)
         _property_response = GetPropertyResponse()
         _property_response.pagination = PaginationResponse()
-        _property_response.pagination = PaginationResponse(partial=True).load(
-        {
-            "results_per_page": len(_property),
-            "page": 1,
-            "totalNumberOfResults": len(_property)
-        }
-    )
+        _property_response.pagination = PaginationResponse(partial=True).load({
+            "results_per_page":
+            len(_property),
+            "page":
+            1,
+            "totalNumberOfResults":
+            len(_property)
+        })
         _property_response.results = _property
         return jsonify(GetPropertyResponse().dump(_property_response))
     except ValidationError as err:
@@ -65,7 +66,6 @@ def get_property():
         return jsonify(code=500, error='internal error'), 500
 
     return jsonify(code=500, error='not implemented'), 500
-
 
 
 @property_module.route('/property', methods=['POST'])

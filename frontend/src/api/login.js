@@ -1,11 +1,12 @@
 import axios from "axios";
+import apiEndpoint from "./endpoint";
 
 /**
  * makes POST request to /auth/login with username and password
  **/
 export function postAuthLogin({ email, password }) {
   return axios
-    .post("/backend/auth/login", {
+    .post(`${apiEndpoint}/auth/login`, {
       username: email,
       password,
     })
@@ -13,7 +14,6 @@ export function postAuthLogin({ email, password }) {
       return Promise.resolve(r.data);
     })
     .catch((error) => {
-      console.error(error.response);
       return Promise.resolve({
         error:
           (error.response.data && error.response.data.error) ||
@@ -27,14 +27,13 @@ export function postAuthLogin({ email, password }) {
  **/
 export function getStatus(jwt) {
   return axios
-    .get("/backend/auth/status", {
+    .get(`${apiEndpoint}/auth/status`, {
       headers: { Authorization: `Bearer ${jwt}` },
     })
     .then((r) => {
       return Promise.resolve(r.data);
     })
     .catch((error) => {
-      console.error(error.response);
       return Promise.resolve({
         error:
           (error.response.data && error.response.data.error) ||

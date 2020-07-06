@@ -1,0 +1,102 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`containers/Login loading spinner if loading 1`] = `
+<div
+  className="container"
+>
+  <div
+    className="login row"
+  >
+    <div
+      className="col"
+    >
+      <h1>
+        Housing Hub
+      </h1>
+      <div
+        className="spinner-border"
+        role="status"
+      />
+    </div>
+  </div>
+</div>
+`;
+
+exports[`containers/Login renders fields 1`] = `
+<div
+  className="container"
+>
+  <div
+    className="login row"
+  >
+    <div
+      className="col"
+    >
+      <h1>
+        Housing Hub
+      </h1>
+      <form
+        className=""
+      >
+        <div
+          className="form-group"
+        >
+          <input
+            className="form-control"
+            id="formBasicEmail"
+            onChange={[Function]}
+            placeholder="Email"
+            type="email"
+            value="user@gmail.com"
+          />
+        </div>
+        <div
+          className="form-group"
+        >
+          <input
+            className="input form-control"
+            id="formBasicPassword"
+            onChange={[Function]}
+            placeholder="Password"
+            type="password"
+            value="test"
+          />
+        </div>
+        <div
+          className="form-group"
+        >
+          <div
+            className="form-check"
+          >
+            <input
+              checked={true}
+              className="form-check-input"
+              disabled={false}
+              id="formBasicCheckbox"
+              onChange={[Function]}
+              type="checkbox"
+            />
+            <label
+              className="form-check-label"
+              htmlFor="formBasicCheckbox"
+              title=""
+            >
+              Remember Me
+            </label>
+          </div>
+        </div>
+        <button
+          className="btn btn-primary"
+          disabled={false}
+          onClick={[Function]}
+          type="submit"
+        >
+          Login
+        </button>
+      </form>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`containers/Login renders nothing is already logged in 1`] = `null`;

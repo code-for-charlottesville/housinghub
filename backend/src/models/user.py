@@ -14,7 +14,7 @@ class User(Base):
   username = Column(VARCHAR)
   password_hash = Column(VARCHAR)
   role = Column(VARCHAR)
-  role_id = Column(VARCHAR)
+  role_id = Column(UUID)
   is_admin = Column(BOOLEAN)
 
   def __repr__(self):

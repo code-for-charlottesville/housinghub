@@ -15,7 +15,6 @@ note_module = DocumentedBlueprint('note', __name__)
 @authenticate
 def post_note():
     """
-
     adds a new Note to the database and returns response
     ---
     post:
