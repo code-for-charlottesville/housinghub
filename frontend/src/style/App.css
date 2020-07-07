@@ -63,9 +63,8 @@ body {
 }
 
 /*Nav styles*/
-
 .h-hub-nav-link:hover {
-  color: rgb(75,160,181);
+  color: #5bc0de
 }
 
 .search-button {
@@ -76,4 +75,12 @@ body {
 
 .search-input {
   border-radius: .25rem 0 0 .25rem;
+}
+
+#Navbar-user-dropdown {
+  color: white;
+}
+
+#Navbar-user-dropdown:hover {
+  color: #5bc0de
 }
