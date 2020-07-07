@@ -1,462 +1,313 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`containers/SearchProperty redirects to login if not logged in 1`] = `
-Array [
+<div
+  className="search-page row"
+>
   <div
-    className="container"
+    className="pr-0 border col-xl-2 col-lg-3 col-12"
   >
     <div
-      className="row"
+      className="search-sidebar"
+    >
+      Search Sidebar
+    </div>
+  </div>
+  <div
+    className="pl-0 search-table col-xl-10 col-lg-9 col-12"
+  >
+    <div
+      className="border mb-4"
+    >
+      <table
+        className="table table-hover"
+      >
+        <thead
+          className="bg-info text-white"
+        >
+          <tr>
+            <th>
+              Property Type
+            </th>
+            <th>
+              Address
+            </th>
+            <th>
+              Rent
+            </th>
+            <th>
+              Bedrooms
+            </th>
+            <th>
+              Bathrooms
+            </th>
+            <th>
+              Actions
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr
+            className=""
+            onClick={[Function]}
+          >
+            <td>
+              Apartment
+            </td>
+            <td>
+              520 E Main Street
+            </td>
+            <td>
+              $2500
+            </td>
+            <td>
+              5
+            </td>
+            <td>
+              1
+            </td>
+            <td>
+              Test
+            </td>
+          </tr>
+          <tr
+            className=""
+            onClick={[Function]}
+          >
+            <td>
+              Apartment 2
+            </td>
+            <td>
+              520 E Main Street
+            </td>
+            <td>
+              $2500
+            </td>
+            <td>
+              5
+            </td>
+            <td>
+              1
+            </td>
+            <td>
+              Test
+            </td>
+          </tr>
+          <tr
+            className=""
+            onClick={[Function]}
+          >
+            <td>
+              Apartment 3
+            </td>
+            <td>
+              123 E Main Street Apt 406
+            </td>
+            <td>
+              $1200
+            </td>
+            <td>
+              5
+            </td>
+            <td>
+              1
+            </td>
+            <td>
+              Test
+            </td>
+          </tr>
+          <tr
+            className="is-selected"
+            onClick={[Function]}
+          >
+            <td>
+              Apartment 4
+            </td>
+            <td>
+              123 ABC Street
+            </td>
+            <td>
+              $800
+            </td>
+            <td>
+              5
+            </td>
+            <td>
+              1
+            </td>
+            <td>
+              Test
+            </td>
+          </tr>
+          <tr
+            className=""
+            onClick={[Function]}
+          >
+            <td>
+              Apartment 5
+            </td>
+            <td>
+              948 Water Street
+            </td>
+            <td>
+              $1200
+            </td>
+            <td>
+              3
+            </td>
+            <td>
+              1
+            </td>
+            <td>
+              Test
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div
+      className="text-center row"
     >
       <div
         className="col"
       >
-        <div>
-          <div>
-            <label>
-              Zip Codes
-            </label>
-            <label>
-              <input
-                onChange={[Function]}
-                type="checkbox"
-                value="22903"
-              />
-              22903
-            </label>
-            <br />
-            <label>
-              <input
-                onChange={[Function]}
-                type="checkbox"
-                value="22904"
-              />
-              22904
-            </label>
-            <br />
-            <label>
-              <input
-                onChange={[Function]}
-                type="checkbox"
-                value="22935"
-              />
-              22935
-            </label>
-            <br />
-            <label>
-              <input
-                onChange={[Function]}
-                type="checkbox"
-                value="22987"
-              />
-              22987
-            </label>
-          </div>
-        </div>
-      </div>
-      <div
-        className="col"
-      >
-        <div>
-          <div>
-            <label>
-              Housing Type
-            </label>
-            <label>
-              <input
-                onChange={[Function]}
-                type="checkbox"
-                value="Single Family Home"
-              />
-              Single Family Home
-            </label>
-            <br />
-            <label>
-              <input
-                onChange={[Function]}
-                type="checkbox"
-                value="Apartment"
-              />
-              Apartment
-            </label>
-            <br />
-            <label>
-              <input
-                onChange={[Function]}
-                type="checkbox"
-                value="Shared Apartment"
-              />
-              Shared Apartment
-            </label>
-          </div>
-        </div>
-      </div>
-      <div
-        className="col"
-      >
-        <div>
-          <label
-            htmlFor="numBeds"
-          >
-            Bedrooms
-          </label>
-          <div
-            className="select"
-          >
-            <select
-              id="numBeds"
-              onChange={[Function]}
-              value={4}
-            >
-              <option
-                hidden={true}
-                value={true}
-              >
-                Select
-              </option>
-              <option
-                value="1"
-              >
-                1
-              </option>
-              <option
-                value="2"
-              >
-                2
-              </option>
-              <option
-                value="3"
-              >
-                3
-              </option>
-              <option
-                value="4"
-              >
-                4
-              </option>
-              <option
-                value="5"
-              >
-                5
-              </option>
-              <option
-                value="6"
-              >
-                6
-              </option>
-              <option
-                value="7"
-              >
-                7
-              </option>
-            </select>
-          </div>
-        </div>
-        <div>
-          <label
-            htmlFor="numBath"
-          >
-            Bathrooms
-          </label>
-          <div
-            className="select"
-          >
-            <select
-              id="numBath"
-              onChange={[Function]}
-              value={3.5}
-            >
-              <option
-                hidden={true}
-                value={true}
-              >
-                Select
-              </option>
-              <option
-                value="1"
-              >
-                1
-              </option>
-              <option
-                value="1.5"
-              >
-                1.5
-              </option>
-              <option
-                value="2"
-              >
-                2
-              </option>
-              <option
-                value="2.5"
-              >
-                2.5
-              </option>
-              <option
-                value="3"
-              >
-                3
-              </option>
-              <option
-                value="3.5"
-              >
-                3.5
-              </option>
-              <option
-                value="4"
-              >
-                4
-              </option>
-              <option
-                value="4.5"
-              >
-                4.5
-              </option>
-              <option
-                value="5"
-              >
-                5
-              </option>
-            </select>
-          </div>
-        </div>
-      </div>
-      <div
-        className="col"
-      >
-        <div>
-          <label>
-            Date Available
-          </label>
-          <div>
-            <input
-              onChange={[Function]}
-              placeholder="MM-dd-YYYY"
-              type="date"
-            />
-          </div>
-        </div>
-        <div>
-          <label>
-            Max Rent
-          </label>
-          <div>
-            <input
-              min="0"
-              onChange={[Function]}
-              placeholder="1200"
-              type="number"
-              value={0}
-            />
-          </div>
-        </div>
-      </div>
-      <div
-        className="col"
-      >
-        <button
-          className="btn btn-primary"
-          disabled={false}
-          onClick={[Function]}
-          type="button"
+        <div
+          className="btn-group"
+          role="group"
         >
-          Search
-        </button>
+          <button
+            className="PaginationBox btn btn-secondary"
+            disabled={false}
+            onClick={[Function]}
+            type="button"
+          >
+            <a>
+              First
+            </a>
+          </button>
+          <button
+            className="PaginationBox btn btn-secondary"
+            disabled={false}
+            onClick={[Function]}
+            type="button"
+          >
+            <a>
+              1
+            </a>
+          </button>
+          <button
+            className="PaginationBox btn btn-secondary"
+            disabled={false}
+            onClick={[Function]}
+            type="button"
+          >
+            <a>
+              2
+            </a>
+          </button>
+          <button
+            className="PaginationBox btn btn-secondary"
+            disabled={false}
+            onClick={[Function]}
+            type="button"
+          >
+            <a>
+              3
+            </a>
+          </button>
+          <button
+            className="PaginationBox btn btn-secondary"
+            disabled={false}
+            onClick={[Function]}
+            type="button"
+          >
+            <a>
+              4
+            </a>
+          </button>
+          <button
+            className="PaginationBox btn btn-secondary"
+            disabled={false}
+            onClick={[Function]}
+            type="button"
+          >
+            <a>
+              5
+            </a>
+          </button>
+          <button
+            className="PaginationBox btn btn-secondary"
+            disabled={false}
+            onClick={[Function]}
+            type="button"
+          >
+            <a>
+              6
+            </a>
+          </button>
+          <button
+            className="PaginationBox btn btn-secondary"
+            disabled={false}
+            onClick={[Function]}
+            type="button"
+          >
+            <a>
+              7
+            </a>
+          </button>
+          <button
+            className="PaginationBox btn btn-secondary"
+            disabled={false}
+            onClick={[Function]}
+            type="button"
+          >
+            <a>
+              8
+            </a>
+          </button>
+          <button
+            className="PaginationBox btn btn-secondary"
+            disabled={false}
+            onClick={[Function]}
+            type="button"
+          >
+            <a>
+              9
+            </a>
+          </button>
+          <button
+            className="PaginationBox btn btn-secondary"
+            disabled={false}
+            onClick={[Function]}
+            type="button"
+          >
+            <a>
+              10
+            </a>
+          </button>
+          <button
+            className="PaginationBox btn btn-secondary"
+            disabled={false}
+            onClick={[Function]}
+            type="button"
+          >
+            <a>
+              Next
+            </a>
+          </button>
+          <button
+            className="PaginationBox btn btn-secondary"
+            disabled={false}
+            onClick={[Function]}
+            type="button"
+          >
+            <a>
+              Last
+            </a>
+          </button>
+        </div>
       </div>
     </div>
-  </div>,
-  <div
-    className="ListContainer"
-  >
-    <table
-      className="table table-striped table-bordered table-hover"
-      table={true}
-    >
-      <thead
-        className="head"
-      >
-        <tr>
-          <th>
-            Property Type
-          </th>
-          <th>
-            Address
-          </th>
-          <th>
-            Rent
-          </th>
-          <th>
-            Bedrooms
-          </th>
-          <th>
-            Bathrooms
-          </th>
-          <th>
-            Actions
-          </th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr
-          className=""
-          onClick={[Function]}
-        >
-          <td>
-            Apartment
-          </td>
-          <td>
-            520 E Main Street
-          </td>
-          <td>
-            $2500
-          </td>
-          <td>
-            5
-          </td>
-          <td>
-            1
-          </td>
-          <td>
-            Test
-          </td>
-        </tr>
-      </tbody>
-    </table>
-  </div>,
-  <div
-    className="Sideways container btn-group"
-    role="group"
-  >
-    <button
-      className="PaginationBox btn btn-secondary"
-      disabled={false}
-      onClick={[Function]}
-      type="button"
-    >
-      <a>
-        First
-      </a>
-    </button>
-    <button
-      className="PaginationBox btn btn-secondary"
-      disabled={false}
-      onClick={[Function]}
-      type="button"
-    >
-      <a>
-        1
-      </a>
-    </button>
-    <button
-      className="PaginationBox btn btn-secondary"
-      disabled={false}
-      onClick={[Function]}
-      type="button"
-    >
-      <a>
-        2
-      </a>
-    </button>
-    <button
-      className="PaginationBox btn btn-secondary"
-      disabled={false}
-      onClick={[Function]}
-      type="button"
-    >
-      <a>
-        3
-      </a>
-    </button>
-    <button
-      className="PaginationBox btn btn-secondary"
-      disabled={false}
-      onClick={[Function]}
-      type="button"
-    >
-      <a>
-        4
-      </a>
-    </button>
-    <button
-      className="PaginationBox btn btn-secondary"
-      disabled={false}
-      onClick={[Function]}
-      type="button"
-    >
-      <a>
-        5
-      </a>
-    </button>
-    <button
-      className="PaginationBox btn btn-secondary"
-      disabled={false}
-      onClick={[Function]}
-      type="button"
-    >
-      <a>
-        6
-      </a>
-    </button>
-    <button
-      className="PaginationBox btn btn-secondary"
-      disabled={false}
-      onClick={[Function]}
-      type="button"
-    >
-      <a>
-        7
-      </a>
-    </button>
-    <button
-      className="PaginationBox btn btn-secondary"
-      disabled={false}
-      onClick={[Function]}
-      type="button"
-    >
-      <a>
-        8
-      </a>
-    </button>
-    <button
-      className="PaginationBox btn btn-secondary"
-      disabled={false}
-      onClick={[Function]}
-      type="button"
-    >
-      <a>
-        9
-      </a>
-    </button>
-    <button
-      className="PaginationBox btn btn-secondary"
-      disabled={false}
-      onClick={[Function]}
-      type="button"
-    >
-      <a>
-        10
-      </a>
-    </button>
-    <button
-      className="PaginationBox btn btn-secondary"
-      disabled={false}
-      onClick={[Function]}
-      type="button"
-    >
-      <a>
-        Next
-      </a>
-    </button>
-    <button
-      className="PaginationBox btn btn-secondary"
-      disabled={false}
-      onClick={[Function]}
-      type="button"
-    >
-      <a>
-        Last
-      </a>
-    </button>
-  </div>,
-]
+  </div>
+</div>
 `;

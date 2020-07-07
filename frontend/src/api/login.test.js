@@ -2,6 +2,7 @@ import * as login from "./login";
 import moxios from "moxios";
 import sinon from "sinon";
 import axios from "axios";
+import apiEndpoint from "./endpoint"
 
 describe("api/login", () => {
   beforeEach(() => {
@@ -16,7 +17,7 @@ describe("api/login", () => {
     let testTable = [
       {
         name: "successful response",
-        url: "/backend/auth/login",
+        url: `${apiEndpoint}/auth/login`,
         args: { email: "user@gmail.com", password: "password" },
         statusCode: 200,
         response: {
@@ -26,7 +27,7 @@ describe("api/login", () => {
       },
       {
         name: "bad response from server",
-        url: "/backend/auth/login",
+        url: `${apiEndpoint}/auth/login`,
         args: { email: "user@gmail.com", password: "password" },
         statusCode: 500,
         response: {
@@ -55,7 +56,7 @@ describe("api/login", () => {
     let testTable = [
       {
         name: "successful response",
-        url: "/backend/auth/status",
+        url: `${apiEndpoint}/auth/status`,
         args: "sdflkjsdlfkjsdlfkjsdf",
         statusCode: 200,
         response: {
@@ -65,7 +66,7 @@ describe("api/login", () => {
       },
       {
         name: "error from server",
-        url: "/backend/auth/status",
+        url: `${apiEndpoint}/auth/status`,
         args: "sdflkjsdlfkjsdlfkjsdf",
         statusCode: 500,
         response: {

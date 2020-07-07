@@ -1,4 +1,5 @@
 import uuid
+import traceback
 
 from passlib.hash import pbkdf2_sha256
 from sqlalchemy.exc import DBAPIError
@@ -14,13 +15,13 @@ class UserService:
     self.logger = logger
 
   def add_user(self, username: str, password: str, role: str, is_admin: bool = False) -> User:
-    _new_user = User(id = uuid.uuid4(), username = username, password_hash = pbkdf2_sha256.hash(password), role = role, role_id = uuid.uuid4(), is_admin = is_admin)
+    _new_user = User(id = str(uuid.uuid4()), username = username, password_hash = pbkdf2_sha256.hash(password), role = role, role_id = str(uuid.uuid4()), is_admin = is_admin)
     try:
       self.session.add(_new_user)
       self.session.commit()
       return _new_user
     except DBAPIError as err:
-      self.logger.error('Error adding user to database')
+      self.logger.error(f'Error adding user to database\n:{traceback.format_exc()}')
       return None
 
   def get_user_by_id(self, uid) -> User:

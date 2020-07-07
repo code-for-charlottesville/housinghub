@@ -8,8 +8,8 @@ from app.api import NoteSchema, AddNoteRequest, NoteResponse
 from app.auth import authenticate
 from app.spec import DocumentedBlueprint
 
-
 note_module = DocumentedBlueprint('note', __name__)
+
 
 @note_module.route('/note', methods=['POST'])
 @authenticate
@@ -44,9 +44,10 @@ def post_note():
                     application/json:
                         schema: ErrorResponse
     """
-    
+
     try:
-        payload = AddNoteRequest().load(request.get_json(force = True), transient=True)
+        payload = AddNoteRequest().load(request.get_json(force=True),
+                                        transient=True)
         _note = app.services.note_service().add_note(payload)
         return jsonify(NoteResponse().dump(_note))
     except ValidationError as err:
@@ -56,4 +57,3 @@ def post_note():
         app.logger.error(
             f'Unexpected error adding note: ${traceback.format_exc()}')
     return jsonify(code=500, error='internal error'), 500
-

@@ -1,4 +1,5 @@
 import axios from "axios";
+import apiEndpoint from "./endpoint";
 
 /**
  * makes POST request to /backend/property/search with query
@@ -6,7 +7,7 @@ import axios from "axios";
 
 export function postQuery(query) {
   return axios
-    .post("/backend/property/search", query)
+    .post(`${apiEndpoint}/property/search`, query)
     .then((r) => {
       return Promise.resolve(r.data);
     })

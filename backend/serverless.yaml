@@ -1,7 +1,7 @@
 # serverless.yml
 
 
-service: serverless-flask
+service: housinghub-api
 
 
 plugins:
@@ -15,20 +15,118 @@ custom:
     packRequirements: false
   pythonRequirements:
     dockerizePip: true
+    dockerFile: ./Dockerfile.deploy
+    noDeploy:
+      - pytest
+      - faker
+      - pytest-cov
+      - autoflake
 
 
 provider:
   name: aws
   runtime: python3.6
-  stage: dev
+  variableSyntax: "\\${{([ ~:a-zA-Z0-9._@\\'\",\\-\\/\\(\\)]+?)}}"
+  stage: ${{opt:stage, 'dev'}}
   region: us-east-1
+  role: housinghubLambdaExecutionRole
 
+package:
+  exclude:
+    - './venv/**'
+    - './node_modules/**'
 
 functions:
   api:
     handler: wsgi_handler.handler
     environment:
-      APP_ENV: ${env:APP_ENV}
+      APP_ENV: ${{self:provider.stage}}
+      DB_CLUSTER_ARN:
+        !Join
+          - ''
+          -
+            - 'arn:aws:rds:us-east-1:130004658718:cluster:'
+            - !Ref housinghubDb
+      DB_SECRET_ARN: !Join ['', [!Ref housinghubDbSecret]]
     events:
       - http: ANY /
       - http: 'ANY {proxy+}'
+
+resources:
+  Resources:
+    housinghubDb:
+      Type: AWS::RDS::DBCluster
+      Properties:
+        MasterUsername: app
+        MasterUserPassword: pa55w0rd
+        DatabaseName: housinghub${{self:provider.stage}}
+        Engine: aurora-postgresql
+        EngineMode: serverless
+        EnableHttpEndpoint: true
+        ScalingConfiguration:
+          AutoPause: true
+          MaxCapacity: 16
+          MinCapacity: 2
+          SecondsUntilAutoPause: 500
+    housinghubDbSecret:
+      Type: AWS::SecretsManager::Secret
+      Properties:
+        Name: "housinghub-${{self:provider.stage}}-db-secret"
+        Description: RDS database auto-generated user password
+        SecretString: !Sub 
+        -
+          '{
+              "dbInstanceIdentifier": "${RDSIdentifier}",
+              "engine": "${RDSEngine}",
+              "host": "${RDSHost}",
+              "port": "${RDSPort}",
+              "username": "app", 
+              "password": "pa55w0rd"
+           }'
+        - 
+          RDSIdentifier: !Ref housinghubDb
+          RDSEngine: aurora-postgresql
+          RDSHost: !GetAtt housinghubDb.Endpoint.Address
+          RDSPort: !GetAtt housinghubDb.Endpoint.Port
+    housinghubLambdaExecutionRole:
+      Type: "AWS::IAM::Role"
+      Properties:
+        AssumeRolePolicyDocument:
+          Version: '2012-10-17'
+          Statement:
+            - Effect: Allow
+              Principal:
+                Service:
+                  - lambda.amazonaws.com
+              Action:
+                - sts:AssumeRole
+        Path: "/"
+        Policies:
+          - PolicyName: "LambdaToCloudWatchLogs"
+            PolicyDocument:
+              Version: "2012-10-17"
+              Statement:
+                - Effect: "Allow"
+                  Action:
+                    - "logs:*"
+                  Resource:
+                    - arn:aws:logs:*:*:*
+          - PolicyName: "LambdaToRDSAuroraServerless"
+            PolicyDocument:
+              Version: "2012-10-17"
+              Statement:
+                - Effect: "Allow"
+                  Action:
+                    - "rds-data:*"
+                  Resource:
+                    - !Join ['', ['arn:aws:rds:*:*:cluster:', !Ref housinghubDb]]
+                    - !Join ['', ['arn:aws:rds:*:*:cluster:', !Ref housinghubDb, ':*']]
+          - PolicyName: "LambdaToAWSSecrets"
+            PolicyDocument:
+              Version: "2012-10-17"
+              Statement:
+                - Effect: "Allow"
+                  Action: "secretsmanager:GetSecretValue"
+                  Resource:
+                    - !Join ['', [!Ref housinghubDbSecret]]
+                    - !Join ['', [!Ref housinghubDbSecret, ':*']]

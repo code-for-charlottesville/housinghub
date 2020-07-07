@@ -58,7 +58,7 @@ class TestAuthHandlers(unittest.TestCase):
         self.assertEqual(response.get_json(), {
             'code': 401,
             'error': "Login invalid"
-        })                       
+        })
 
     @patch('services.container.AuthService')
     @patch('services.container.UserService')
