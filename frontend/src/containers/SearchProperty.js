@@ -4,6 +4,7 @@ import "../style/App.css";
 import { Container, Row, Col } from "react-bootstrap";
 import SearchFiltersSidebar from "../components/SearchFiltersSidebar";
 import SearchTable from "../components/SearchTable";
+import { TEST_ROW_DATA } from "../constants/globalConstants"
 
 const SearchProperty = (props) => {
   let columns = [
@@ -39,19 +40,17 @@ const SearchProperty = (props) => {
     rows.push(r);
   }
 
-  rows = [["Apartment", "520 E Main Street", "$2500", 5, 1, "Test"]];
+  rows = TEST_ROW_DATA;
 
   return (
-    <Container className="search-container">
-      <Row>
-        <Col className="search-filters-container">
-          <SearchFiltersSidebar />
-        </Col>
-        <Col xs={9} className="search-table-container">
-          <SearchTable rows={rows} columns={columns} />
-        </Col>
-      </Row>
-    </Container>
+    <Row className="search-page">
+      <Col xs={12} lg={3} xl={2} className="pr-0 border">
+        <SearchFiltersSidebar />
+      </Col>
+      <Col xs={12} lg={9} xl={10} className="pl-0 search-table">
+        <SearchTable rows={rows} columns={columns}/>
+      </Col>
+    </Row>
   );
 };
 
