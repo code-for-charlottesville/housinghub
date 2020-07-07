@@ -16,7 +16,10 @@ class TestPropertyHandlers(unittest.TestCase):
         instance = mock_auth_service.return_value
         self.auth_user = test.generate_user()
         instance.authenticate_request.return_value = (self.auth_user, None)
-        mock_token = {'uid': self.auth_user.id, 'role': self.auth_user.role}
+        mock_token = {
+            'uid': self.auth_user.id,
+            'role': self.auth_user.role
+        }
         instance.authenticate_request.return_value = (mock_token, None)
         self.app = app.flask_app.test_client()
 
@@ -41,7 +44,7 @@ class TestPropertyHandlers(unittest.TestCase):
         }
         response = self.app.post("/property/search", json=_search_request)
         self.assertEqual(response.status_code, 200)
-
+    
     @patch('services.container.PropertyService')
     def test_get_property_2(self, MockPropertyService):
         bathrooms = 1
@@ -72,19 +75,4 @@ class TestPropertyHandlers(unittest.TestCase):
             self.assertEqual(result["housing_type"] in housing_type, True)
             self.assertEqual(result["bedrooms"], bedrooms)
             self.assertEqual(result["bathrooms"], bathrooms)
-
-    def test_put_property(self):
-        response = self.app.put("/property?td=test", json={'name': 'test'})
-        self.assertEqual(response.status_code, 500)
-        self.assertEqual(response.get_json(), {
-            'code': 500,
-            'error': 'not implemented'
-        })
-
-    def test_delete_property(self):
-        response = self.app.delete("/property?id=test")
-        self.assertEqual(response.status_code, 500)
-        self.assertEqual(response.get_json(), {
-            'code': 500,
-            'error': 'not implemented'
-        })
+    

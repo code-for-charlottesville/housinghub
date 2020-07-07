@@ -1,5 +1,5 @@
 import React from "react";
-
+import { SEARCH_TABLE_COLUMNS } from "../constants/globalConstants";
 import "../style/App.css";
 import { Table } from "react-bootstrap";
 const LocalTable = (props) => {
@@ -32,18 +32,15 @@ const LocalTable = (props) => {
   );
 
   return (
-    <Table hover striped>
-      <thead className="table-header">
+    <Table hover>
+      <thead className="bg-info text-white">
         <tr>
-          <th>Property Type</th>
-          <th>Address</th>
-          <th>Rent</th>
-          <th>Bedrooms</th>
-          <th>Bathrooms</th>
-          <th>Actions</th>
+          {SEARCH_TABLE_COLUMNS.map((column, index) => {
+            return <th key={index}>{column}</th>
+          })}
         </tr>
       </thead>
-      <tbody bo>{props.rows.map((r, i) => _renderRow(r, i))}</tbody>
+      <tbody>{props.rows.map((r, i) => _renderRow(r, i))}</tbody>
     </Table>
   );
 };
