@@ -85,15 +85,13 @@ body {
   color: #5bc0de
 }
 
+.nav-toggle {
+  justify-content: start;
+}
 
-
-
-  .nav-toggle {
-    justify-content: start;
-  }
-  .form-inline .form-control {
-    width: 90vw;
-  }
+.form-inline .form-control {
+  width: 90vw;
+}
 
 @media (min-width: 992px) {
   .nav-toggle {
