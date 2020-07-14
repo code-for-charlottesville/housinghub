@@ -8,9 +8,17 @@ exports[`components App 1`] = `
     className="main-content"
   >
     <nav
-      className="navbar navbar-expand-true navbar-dark bg-dark"
+      className="container-fluid navbar navbar-expand-lg navbar-dark bg-dark"
     >
+      <a
+        className="navbar-brand"
+        href="/home"
+        title="Home"
+      >
+        Housing Hub
+      </a>
       <button
+        aria-controls="responsive-navbar-nav"
         aria-label="Toggle navigation"
         className="navbar-toggler collapsed"
         onClick={[Function]}
@@ -20,6 +28,85 @@ exports[`components App 1`] = `
           className="navbar-toggler-icon"
         />
       </button>
+      <div
+        aria-expanded={null}
+        className="navbar-collapse collapse"
+        id="responsive-navbar-nav"
+      >
+        <div
+          className="flex-lg-fill navbar-nav"
+          onKeyDown={[Function]}
+        >
+          <a
+            className="nav-link"
+            data-rb-event-key={null}
+            href="#"
+            onClick={[Function]}
+            onKeyDown={[Function]}
+            role="button"
+          >
+            <a
+              className="text-white text-decoration-none h-hub-nav-link"
+              href="/about"
+              onClick={[Function]}
+              title="Learn more about Code-For-Charlottesville!"
+            >
+              About
+            </a>
+          </a>
+          <form
+            className="flex-fill nav-toggle form-inline"
+          >
+            <input
+              className="search-input form-control"
+              id="nav-search"
+              placeholder="Search"
+              searchtype="text"
+            />
+            <button
+              className="search-button btn btn-light"
+              disabled={false}
+              type="button"
+            >
+              <svg
+                className="bi bi-search"
+                fill="currentColor"
+                height="1em"
+                viewBox="0 0 16 16"
+                width="1em"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M10.442 10.442a1 1 0 0 1 1.415 0l3.85 3.85a1 1 0 0 1-1.414 1.415l-3.85-3.85a1 1 0 0 1 0-1.415z"
+                  fill-rule="evenodd"
+                />
+                <path
+                  d="M6.5 12a5.5 5.5 0 1 0 0-11 5.5 5.5 0 0 0 0 11zM13 6.5a6.5 6.5 0 1 1-13 0 6.5 6.5 0 0 1 13 0z"
+                  fill-rule="evenodd"
+                />
+              </svg>
+            </button>
+          </form>
+          <div
+            className="dropdown nav-item"
+            onKeyDown={[Function]}
+          >
+            <a
+              aria-expanded={false}
+              aria-haspopup={true}
+              className="dropdown-toggle nav-link"
+              data-rb-event-key={null}
+              href="#"
+              id="Navbar-user-dropdown"
+              onClick={[Function]}
+              onKeyDown={[Function]}
+              role="button"
+            >
+              2ad0a95a-8e94-4c2b-b6aa-4c07fb7a1575
+            </a>
+          </div>
+        </div>
+      </div>
     </nav>
     <div
       className="search-page row"
@@ -424,9 +511,17 @@ exports[`components Logout 1`] = `
 
 exports[`components Navbar 1`] = `
 <nav
-  className="navbar navbar-expand-true navbar-dark bg-dark"
+  className="container-fluid navbar navbar-expand-lg navbar-dark bg-dark"
 >
+  <a
+    className="navbar-brand"
+    href="/home"
+    title="Home"
+  >
+    Housing Hub
+  </a>
   <button
+    aria-controls="responsive-navbar-nav"
     aria-label="Toggle navigation"
     className="navbar-toggler collapsed"
     onClick={[Function]}
@@ -436,6 +531,85 @@ exports[`components Navbar 1`] = `
       className="navbar-toggler-icon"
     />
   </button>
+  <div
+    aria-expanded={null}
+    className="navbar-collapse collapse"
+    id="responsive-navbar-nav"
+  >
+    <div
+      className="flex-lg-fill navbar-nav"
+      onKeyDown={[Function]}
+    >
+      <a
+        className="nav-link"
+        data-rb-event-key={null}
+        href="#"
+        onClick={[Function]}
+        onKeyDown={[Function]}
+        role="button"
+      >
+        <a
+          className="text-white text-decoration-none h-hub-nav-link"
+          href="/about"
+          onClick={[Function]}
+          title="Learn more about Code-For-Charlottesville!"
+        >
+          About
+        </a>
+      </a>
+      <form
+        className="flex-fill nav-toggle form-inline"
+      >
+        <input
+          className="search-input form-control"
+          id="nav-search"
+          placeholder="Search"
+          searchtype="text"
+        />
+        <button
+          className="search-button btn btn-light"
+          disabled={false}
+          type="button"
+        >
+          <svg
+            className="bi bi-search"
+            fill="currentColor"
+            height="1em"
+            viewBox="0 0 16 16"
+            width="1em"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M10.442 10.442a1 1 0 0 1 1.415 0l3.85 3.85a1 1 0 0 1-1.414 1.415l-3.85-3.85a1 1 0 0 1 0-1.415z"
+              fill-rule="evenodd"
+            />
+            <path
+              d="M6.5 12a5.5 5.5 0 1 0 0-11 5.5 5.5 0 0 0 0 11zM13 6.5a6.5 6.5 0 1 1-13 0 6.5 6.5 0 0 1 13 0z"
+              fill-rule="evenodd"
+            />
+          </svg>
+        </button>
+      </form>
+      <div
+        className="dropdown nav-item"
+        onKeyDown={[Function]}
+      >
+        <a
+          aria-expanded={false}
+          aria-haspopup={true}
+          className="dropdown-toggle nav-link"
+          data-rb-event-key={null}
+          href="#"
+          id="Navbar-user-dropdown"
+          onClick={[Function]}
+          onKeyDown={[Function]}
+          role="button"
+        >
+          2ad0a95a-8e94-4c2b-b6aa-4c07fb7a1575
+        </a>
+      </div>
+    </div>
+  </div>
 </nav>
 `;
 
