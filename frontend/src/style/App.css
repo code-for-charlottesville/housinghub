@@ -84,3 +84,22 @@ body {
 #Navbar-user-dropdown:hover {
   color: #5bc0de
 }
+
+
+
+
+  .nav-toggle {
+    justify-content: start;
+  }
+  .form-inline .form-control {
+    width: 90vw;
+  }
+
+@media (min-width: 992px) {
+  .nav-toggle {
+    justify-content: center;
+  }
+  .form-inline .form-control {
+    width: 30vw;
+  }
+}
