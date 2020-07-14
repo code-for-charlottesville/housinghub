@@ -2,8 +2,6 @@ import React from "react";
 import { Modal, Button } from 'react-bootstrap'
 
 const PropertyModal = ({showModal, setShowModal}) => {
-  console.log(showModal);
-  console.log(setShowModal);
   return (
     <>
       <Modal show={showModal} onHide={() => setShowModal(false)}>
