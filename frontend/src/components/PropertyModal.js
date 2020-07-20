@@ -1,20 +1,23 @@
 import React from "react";
 import { Modal, Button } from 'react-bootstrap'
+import PropertyForm from './PropertyForm'
 
-const PropertyModal = ({showModal, setShowModal}) => {
+const PropertyModal = ({ showModal, setShowModal }) => {
   return (
     <>
-      <Modal show={showModal} onHide={() => setShowModal(false)}>
-        <Modal.Header closeButton>
-          <Modal.Title>Modal heading</Modal.Title>
+      <Modal size="lg" show={showModal} onHide={() => setShowModal(false)}>
+        <Modal.Header className="bg-info" closeButton>
+          <Modal.Title className="text-light">Property Details</Modal.Title>
         </Modal.Header>
-        <Modal.Body>Woohoo, you're reading this text in a modal!</Modal.Body>
+        <Modal.Body>
+          <PropertyForm />
+        </Modal.Body>
         <Modal.Footer>
-          <Button variant="secondary" onClick={() => setShowModal(false)}>
-            Close
-          </Button>
           <Button variant="primary" onClick={() => setShowModal(false)}>
-            Save Changes
+            Cancel
+          </Button>
+          <Button variant="success" onClick={() => setShowModal(false)}>
+            Save
           </Button>
         </Modal.Footer>
       </Modal>
