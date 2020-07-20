@@ -52,9 +52,9 @@ const PropertyForm = ({ showModal, setShowModal }) => {
             <option>All</option>
           </Form.Control>
         </Form.Group>
-        <Form.Group controlId="propertyForm.primaryContact">
+        <Form.Group controlId="propertyForm.propertyContact">
           <Form.Label>Location</Form.Label>
-          <Form.Control type="text" placeholder="Primary Contact" />
+          <Form.Control type="text" placeholder="Property Contact" />
         </Form.Group>
         <Form.Group controlId="propertyForm.contactPhoneNumber">
           <Form.Label>Location</Form.Label>
