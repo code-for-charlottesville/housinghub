@@ -1,6 +1,5 @@
 import React from "react";
 import { Button, Form } from "react-bootstrap";
-import House from "../images/house.svg";
 
 const PropertyForm = ({ showModal, setShowModal }) => {
   return (
@@ -15,7 +14,7 @@ const PropertyForm = ({ showModal, setShowModal }) => {
           <Form.Control type="text" placeholder="Example Address" />
         </Form.Group>
         <Form.Group controlId="exampleForm.housingType">
-          <Form.Label><Image src={ House } thumbnail />Housing Type</Form.Label>
+          <Form.Label>Housing Type</Form.Label>
           <Form.Control as="select">
             <option>Apartment</option>
             <option>Shared House</option>
