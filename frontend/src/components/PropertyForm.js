@@ -1,5 +1,6 @@
 import React from "react";
-import { Button, Form } from 'react-bootstrap'
+import { Button, Form } from "react-bootstrap";
+import House from "../images/house.svg";
 
 const PropertyForm = ({ showModal, setShowModal }) => {
   return (
@@ -14,7 +15,7 @@ const PropertyForm = ({ showModal, setShowModal }) => {
           <Form.Control type="text" placeholder="Example Address" />
         </Form.Group>
         <Form.Group controlId="exampleForm.housingType">
-          <Form.Label>Housing Type</Form.Label>
+          <Form.Label><Image src={ House } thumbnail />Housing Type</Form.Label>
           <Form.Control as="select">
             <option>Apartment</option>
             <option>Shared House</option>
@@ -53,19 +54,49 @@ const PropertyForm = ({ showModal, setShowModal }) => {
           </Form.Control>
         </Form.Group>
         <Form.Group controlId="propertyForm.propertyContact">
-          <Form.Label>Location</Form.Label>
-          <Form.Control type="text" placeholder="Property Contact" />
+          <Form.Label>Property Contact</Form.Label>
+          <Form.Control type="text" placeholder="Example Property Contact" />
         </Form.Group>
         <Form.Group controlId="propertyForm.contactPhoneNumber">
-          <Form.Label>Location</Form.Label>
-          <Form.Control type="text" placeholder="Contact Phone Number" />
+          <Form.Label>Contact Phone Number</Form.Label>
+          <Form.Control type="text" placeholder="Example Phone Number" />
         </Form.Group>
         <Form.Group controlId="propertyForm.landlord">
-          <Form.Label>Lan</Form.Label>
-          <Form.Control type="text" placeholder="Contact Phone Number" />
+          <Form.Label>Landlord</Form.Label>
+          <Form.Control type="text" placeholder="Example Landlord" />
         </Form.Group>
+        <Form.Check 
+          type="switch"
+          id="bus-switch"
+          label="Near Bus Stop"
+        />
+        <Form.Check 
+          type="switch"
+          id="basement-switch"
+          label="Basement"
+        />
+        <Form.Check 
+          type="switch"
+          id="wheelchair-switch"
+          label="Wheelchair Accessible"
+        />
+        <Form.Check 
+          type="switch"
+          id="background-check-switch"
+          label="No Background Check"
+        />
+        <Form.Check 
+          type="switch"
+          id="pets-switch"
+          label="Pets Allowed"
+        />
+        <Form.Check 
+          type="switch"
+          id="elevator-switch"
+          label="Elevator"
+        />
         <Form.Group controlId="exampleForm.ControlTextarea1">
-          <Form.Label>Example textarea</Form.Label>
+          <Form.Label>Additional Notes</Form.Label>
           <Form.Control as="textarea" rows="3" />
         </Form.Group>
       </Form>
