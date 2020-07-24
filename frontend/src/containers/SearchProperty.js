@@ -1,7 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import "../style/App.css";
-import { Container, Row, Col } from "react-bootstrap";
+import { Modal, Row, Col } from "react-bootstrap";
 import SearchFiltersSidebar from "../components/SearchFiltersSidebar";
 import SearchTable from "../components/SearchTable";
 import { TEST_ROW_DATA } from "../constants/globalConstants"
@@ -43,14 +43,16 @@ const SearchProperty = (props) => {
   rows = TEST_ROW_DATA;
 
   return (
-    <Row className="search-page">
-      <Col xs={12} lg={3} xl={2} className="pr-0 border">
-        <SearchFiltersSidebar />
-      </Col>
-      <Col xs={12} lg={9} xl={10} className="pl-0 search-table">
-        <SearchTable rows={rows} columns={columns}/>
-      </Col>
-    </Row>
+    <div>
+      <Row className="search-page">
+        <Col xs={12} lg={3} xl={2} className="pr-0 border">
+          <SearchFiltersSidebar />
+        </Col>
+        <Col xs={12} lg={9} xl={10} className="pl-0 search-table">
+          <SearchTable rows={rows} columns={columns}/>
+        </Col>
+      </Row>
+    </div>
   );
 };
 
