@@ -4,28 +4,9 @@ import "../style/App.css";
 import { Modal, Row, Col } from "react-bootstrap";
 import SearchFiltersSidebar from "../components/SearchFiltersSidebar";
 import SearchTable from "../components/SearchTable";
-import { TEST_ROW_DATA } from "../constants/globalConstants"
+import { SEARCH_COLUMNS } from "../constants/global";
 
 const SearchProperty = (props) => {
-  let columns = [
-    {
-      field: "address",
-      title: "Address",
-    },
-    {
-      field: "property_owner",
-      title: "Property Owner",
-    },
-    {
-      field: "monthly_rent",
-      title: "Rent",
-    },
-    {
-      field: "voucher_type_accepted",
-      title: "Vouchers Accepted",
-    },
-  ];
-
   //Populate rows
   let rows = [];
   for (let i = 0; i < props.searchResults.results.length; i++) {
@@ -40,8 +21,6 @@ const SearchProperty = (props) => {
     rows.push(r);
   }
 
-  rows = TEST_ROW_DATA;
-
   return (
     <div>
       <Row className="search-page">
@@ -49,7 +28,7 @@ const SearchProperty = (props) => {
           <SearchFiltersSidebar />
         </Col>
         <Col xs={12} lg={9} xl={10} className="pl-0 search-table">
-          <SearchTable rows={rows} columns={columns}/>
+          <SearchTable rows={rows} columns={SEARCH_COLUMNS} />
         </Col>
       </Row>
     </div>

@@ -1,5 +1,4 @@
-import React, {useState} from "react";
-import { SEARCH_TABLE_COLUMNS } from "../constants/globalConstants";
+import React, { useState } from "react";
 import "../style/App.css";
 import { Table } from "react-bootstrap";
 const LocalTable = (props) => {
@@ -35,8 +34,8 @@ const LocalTable = (props) => {
     <Table hover>
       <thead className="bg-info text-white">
         <tr>
-          {SEARCH_TABLE_COLUMNS.map((column, index) => {
-            return <th key={index}>{column}</th>
+          {props.columns.map(({ field, title }, index) => {
+            return <th key={index}>{title}</th>;
           })}
         </tr>
       </thead>

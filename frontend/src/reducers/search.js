@@ -25,7 +25,7 @@ const initialState = {
       credit_report_needed: false,
       near_bus_stop: false,
       pets_allowed: false,
-      school_district: ""
+      school_district: "",
     },
   },
 };
