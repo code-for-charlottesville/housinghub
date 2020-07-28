@@ -19,8 +19,4 @@ export const SEARCH_COLUMNS = [
     field: "bathrooms",
     title: "Bathrooms",
   },
-  {
-    field: "Actions",
-    title: "Actions",
-  },
 ];

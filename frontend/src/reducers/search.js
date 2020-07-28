@@ -11,7 +11,7 @@ const initialState = {
   query: {
     pagination: {
       page: 0,
-      results_per_page: 0,
+      results_per_page: 15,
     },
     searchFields: {},
   },
