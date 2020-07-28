@@ -18,7 +18,7 @@ class ServicesContainer:
                                     connect_args=dict(aurora_cluster_arn=config['DB_CLUSTER_ARN'],
                                                       secret_arn=config['DB_SECRET_ARN']))
         else:
-            _engine = create_engine(config['DATABASE_URL'], pool_size = 2)
+            _engine = create_engine(config['DATABASE_URL'], pool_size = 20)
         self.Session = sessionmaker(_engine)
         self.config = config
 
