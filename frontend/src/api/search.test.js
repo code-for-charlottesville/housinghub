@@ -4,7 +4,6 @@ import sinon from "sinon";
 import axios from "axios";
 import apiEndpoint from "./endpoint";
 
-
 describe("api/search", () => {
   beforeEach(() => {
     moxios.install();

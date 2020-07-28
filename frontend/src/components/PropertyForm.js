@@ -64,36 +64,20 @@ const PropertyForm = ({ showModal, setShowModal }) => {
           <Form.Label>Landlord</Form.Label>
           <Form.Control type="text" placeholder="Example Landlord" />
         </Form.Group>
-        <Form.Check 
-          type="switch"
-          id="bus-switch"
-          label="Near Bus Stop"
-        />
-        <Form.Check 
-          type="switch"
-          id="basement-switch"
-          label="Basement"
-        />
-        <Form.Check 
+        <Form.Check type="switch" id="bus-switch" label="Near Bus Stop" />
+        <Form.Check type="switch" id="basement-switch" label="Basement" />
+        <Form.Check
           type="switch"
           id="wheelchair-switch"
           label="Wheelchair Accessible"
         />
-        <Form.Check 
+        <Form.Check
           type="switch"
           id="background-check-switch"
           label="No Background Check"
         />
-        <Form.Check 
-          type="switch"
-          id="pets-switch"
-          label="Pets Allowed"
-        />
-        <Form.Check 
-          type="switch"
-          id="elevator-switch"
-          label="Elevator"
-        />
+        <Form.Check type="switch" id="pets-switch" label="Pets Allowed" />
+        <Form.Check type="switch" id="elevator-switch" label="Elevator" />
         <Form.Group controlId="exampleForm.ControlTextarea1">
           <Form.Label>Additional Notes</Form.Label>
           <Form.Control as="textarea" rows="3" />
@@ -103,4 +87,4 @@ const PropertyForm = ({ showModal, setShowModal }) => {
   );
 };
 
-export default PropertyForm
+export default PropertyForm;
