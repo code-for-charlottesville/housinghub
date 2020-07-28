@@ -32,10 +32,18 @@ export default function SearchTable(props) {
       <Row className="text-center">
         <Col>
           <Pagination
-            numberOfPages={16}
-            currentPageIndex={11}
-            pageIndexStart={0}
-            pageIndexEnd={10}
+            numberOfPages={
+              props.pagination.totalNumberOfResults /
+              props.pagination.results_per_page
+            }
+            currentPageIndex={props.pagination.page}
+            pageIndexStart={
+              props.pagination.page * props.pagination.results_per_page
+            }
+            pageIndexEnd={
+              props.pagination.page * (props.pagination.results_per_page + 1) -
+              1
+            }
             onSetPage={(i) => console.log("new page: %d", i)}
           />
         </Col>

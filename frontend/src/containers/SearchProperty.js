@@ -23,6 +23,7 @@ class SearchProperty extends React.Component {
             <SearchTable
               rows={this.props.searchResults.results}
               columns={SEARCH_COLUMNS}
+              pagination={this.props.searchResults.pagination}
             />
           </Col>
         </Row>

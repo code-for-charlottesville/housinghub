@@ -97,12 +97,7 @@ const searchState = (state = initialState, action) => {
     case "SET_SEARCH_RESULTS":
       return Object.assign({}, state, {
         ...state,
-        searchResults: {
-          results: [...action.resultList],
-          pagination: {
-            ...state.searchResults.pagination,
-          },
-        },
+        searchResults: action.response,
       });
     default:
       return state;
