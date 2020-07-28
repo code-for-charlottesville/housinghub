@@ -13,20 +13,7 @@ const initialState = {
       page: 0,
       results_per_page: 0,
     },
-    searchFields: {
-      min_rent: 0,
-      bathrooms: 0,
-      bedrooms: 0,
-      date_available: "",
-      housing_type: [],
-      max_rent: 0,
-      zip_code: [],
-      deposit_needed: false,
-      credit_report_needed: false,
-      near_bus_stop: false,
-      pets_allowed: false,
-      school_district: "",
-    },
+    searchFields: {},
   },
 };
 
