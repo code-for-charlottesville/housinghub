@@ -26,7 +26,9 @@ const LocalTable = (props) => {
       onClick={() => props.onRowSelect && props.onRowSelect(r, rowIndex)}
       key={`row-${rowIndex}`}
     >
-      {r.map((value, columnIndex) => _renderCell(value, rowIndex, columnIndex))}
+      {props.columns.map((c, columnIndex) =>
+        _renderCell(r[c.field], rowIndex, columnIndex)
+      )}
     </tr>
   );
 

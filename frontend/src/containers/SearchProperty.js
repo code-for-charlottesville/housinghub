@@ -13,20 +13,6 @@ class SearchProperty extends React.Component {
   }
 
   render() {
-    //Populate rows
-    let rows = [];
-    for (let i = 0; i < this.props.searchResults.results.length; i++) {
-      let r = [
-        this.props.searchResults.results[i].address,
-        this.props.searchResults.results[i].property_name,
-        this.props.searchResults.results[i].monthly_rent,
-        this.props.searchResults.results[i].bedrooms,
-        this.props.searchResults.results[i].bathrooms,
-        <a href="">See More</a>,
-      ];
-      rows.push(r);
-    }
-
     return (
       <div>
         <Row className="search-page">
@@ -34,7 +20,10 @@ class SearchProperty extends React.Component {
             <SearchFiltersSidebar />
           </Col>
           <Col xs={12} lg={9} xl={10} className="pl-0 search-table">
-            <SearchTable rows={rows} columns={SEARCH_COLUMNS} />
+            <SearchTable
+              rows={this.props.searchResults.results}
+              columns={SEARCH_COLUMNS}
+            />
           </Col>
         </Row>
       </div>
