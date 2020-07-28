@@ -2,7 +2,7 @@ import * as login from "./login";
 import moxios from "moxios";
 import sinon from "sinon";
 import axios from "axios";
-import apiEndpoint from "./endpoint"
+import apiEndpoint from "./endpoint";
 
 describe("api/login", () => {
   beforeEach(() => {

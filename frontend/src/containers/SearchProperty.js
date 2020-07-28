@@ -4,57 +4,33 @@ import "../style/App.css";
 import { Modal, Row, Col } from "react-bootstrap";
 import SearchFiltersSidebar from "../components/SearchFiltersSidebar";
 import SearchTable from "../components/SearchTable";
-import { TEST_ROW_DATA } from "../constants/globalConstants"
+import { SEARCH_COLUMNS } from "../constants/global";
+import { searchProperties } from "../actions/search";
 
-const SearchProperty = (props) => {
-  let columns = [
-    {
-      field: "address",
-      title: "Address",
-    },
-    {
-      field: "property_owner",
-      title: "Property Owner",
-    },
-    {
-      field: "monthly_rent",
-      title: "Rent",
-    },
-    {
-      field: "voucher_type_accepted",
-      title: "Vouchers Accepted",
-    },
-  ];
-
-  //Populate rows
-  let rows = [];
-  for (let i = 0; i < props.searchResults.results.length; i++) {
-    let r = [
-      props.searchResults.results[i].address,
-      props.searchResults.results[i].property_name,
-      props.searchResults.results[i].monthly_rent,
-      props.searchResults.results[i].bedrooms,
-      props.searchResults.results[i].bathrooms,
-      <a href="">See More</a>,
-    ];
-    rows.push(r);
+class SearchProperty extends React.Component {
+  componentDidMount() {
+    searchProperties();
   }
 
-  rows = TEST_ROW_DATA;
-
-  return (
-    <div>
-      <Row className="search-page">
-        <Col xs={12} lg={3} xl={2} className="pr-0 border">
-          <SearchFiltersSidebar />
-        </Col>
-        <Col xs={12} lg={9} xl={10} className="pl-0 search-table">
-          <SearchTable rows={rows} columns={columns}/>
-        </Col>
-      </Row>
-    </div>
-  );
-};
+  render() {
+    return (
+      <div>
+        <Row className="search-page">
+          <Col xs={12} lg={3} xl={2} className="pr-0 border">
+            <SearchFiltersSidebar />
+          </Col>
+          <Col xs={12} lg={9} xl={10} className="pl-0 search-table">
+            <SearchTable
+              rows={this.props.searchResults.results}
+              columns={SEARCH_COLUMNS}
+              pagination={this.props.searchResults.pagination}
+            />
+          </Col>
+        </Row>
+      </div>
+    );
+  }
+}
 
 function mapStateToProps(state) {
   return {

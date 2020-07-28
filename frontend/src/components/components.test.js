@@ -19,6 +19,7 @@ import VoucherInputs from "./VoucherInputs";
 import { Provider } from "react-redux";
 import { MemoryRouter } from "react-router-dom";
 import App from "../App";
+import {SEARCH_COLUMNS } from "../constants/global"
 
 const mockStore = configureStore([]);
 
@@ -104,7 +105,7 @@ describe("components", () => {
       component: Table,
       props: {
         rows: [],
-        cols: [],
+        columns: SEARCH_COLUMNS,
       },
     },
     {

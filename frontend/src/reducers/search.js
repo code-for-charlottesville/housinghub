@@ -11,22 +11,9 @@ const initialState = {
   query: {
     pagination: {
       page: 0,
-      results_per_page: 0,
+      results_per_page: 15,
     },
-    searchFields: {
-      min_rent: 0,
-      bathrooms: 0,
-      bedrooms: 0,
-      date_available: "",
-      housing_type: [],
-      max_rent: 0,
-      zip_code: [],
-      deposit_needed: false,
-      credit_report_needed: false,
-      near_bus_stop: false,
-      pets_allowed: false,
-      school_district: ""
-    },
+    searchFields: {},
   },
 };
 
@@ -110,12 +97,7 @@ const searchState = (state = initialState, action) => {
     case "SET_SEARCH_RESULTS":
       return Object.assign({}, state, {
         ...state,
-        searchResults: {
-          results: [...action.resultList],
-          pagination: {
-            ...state.searchResults.pagination,
-          },
-        },
+        searchResults: action.response,
       });
     default:
       return state;

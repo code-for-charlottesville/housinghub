@@ -26,10 +26,10 @@ export function setPaginationResults(fieldName, newValue) {
   };
 }
 
-export function setSearchResults(resultList) {
+export function setSearchResults(response) {
   return {
     type: "SET_SEARCH_RESULTS",
-    resultList,
+    response,
   };
 }
 
@@ -43,7 +43,8 @@ export function searchProperties() {
     store.dispatch(setLoading(false));
     if (response && response.results) {
       if (response.results.length > 0) {
-        store.dispatch(setSearchResults(response.results));
+        console.log(response);
+        store.dispatch(setSearchResults(response));
       } else {
         alert("No matches found");
       }
