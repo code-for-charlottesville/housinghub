@@ -43,9 +43,6 @@ exports[`containers/SearchProperty redirects to login if not logged in 1`] = `
               <th>
                 Bathrooms
               </th>
-              <th>
-                Actions
-              </th>
             </tr>
           </thead>
           <tbody>
@@ -54,114 +51,19 @@ exports[`containers/SearchProperty redirects to login if not logged in 1`] = `
               onClick={[Function]}
             >
               <td>
-                Apartment
+                string
               </td>
               <td>
-                520 E Main Street
+                string
               </td>
               <td>
-                $2500
+                0
               </td>
               <td>
-                5
+                0
               </td>
               <td>
-                1
-              </td>
-              <td>
-                Test
-              </td>
-            </tr>
-            <tr
-              className=""
-              onClick={[Function]}
-            >
-              <td>
-                Apartment 2
-              </td>
-              <td>
-                520 E Main Street
-              </td>
-              <td>
-                $2500
-              </td>
-              <td>
-                5
-              </td>
-              <td>
-                1
-              </td>
-              <td>
-                Test
-              </td>
-            </tr>
-            <tr
-              className=""
-              onClick={[Function]}
-            >
-              <td>
-                Apartment 3
-              </td>
-              <td>
-                123 E Main Street Apt 406
-              </td>
-              <td>
-                $1200
-              </td>
-              <td>
-                5
-              </td>
-              <td>
-                1
-              </td>
-              <td>
-                Test
-              </td>
-            </tr>
-            <tr
-              className="is-selected"
-              onClick={[Function]}
-            >
-              <td>
-                Apartment 4
-              </td>
-              <td>
-                123 ABC Street
-              </td>
-              <td>
-                $800
-              </td>
-              <td>
-                5
-              </td>
-              <td>
-                1
-              </td>
-              <td>
-                Test
-              </td>
-            </tr>
-            <tr
-              className=""
-              onClick={[Function]}
-            >
-              <td>
-                Apartment 5
-              </td>
-              <td>
-                948 Water Street
-              </td>
-              <td>
-                $1200
-              </td>
-              <td>
-                3
-              </td>
-              <td>
-                1
-              </td>
-              <td>
-                Test
+                0
               </td>
             </tr>
           </tbody>
@@ -177,116 +79,6 @@ exports[`containers/SearchProperty redirects to login if not logged in 1`] = `
             className="btn-group"
             role="group"
           >
-            <button
-              className="PaginationBox btn btn-secondary"
-              disabled={false}
-              onClick={[Function]}
-              type="button"
-            >
-              <a>
-                First
-              </a>
-            </button>
-            <button
-              className="PaginationBox btn btn-secondary"
-              disabled={false}
-              onClick={[Function]}
-              type="button"
-            >
-              <a>
-                1
-              </a>
-            </button>
-            <button
-              className="PaginationBox btn btn-secondary"
-              disabled={false}
-              onClick={[Function]}
-              type="button"
-            >
-              <a>
-                2
-              </a>
-            </button>
-            <button
-              className="PaginationBox btn btn-secondary"
-              disabled={false}
-              onClick={[Function]}
-              type="button"
-            >
-              <a>
-                3
-              </a>
-            </button>
-            <button
-              className="PaginationBox btn btn-secondary"
-              disabled={false}
-              onClick={[Function]}
-              type="button"
-            >
-              <a>
-                4
-              </a>
-            </button>
-            <button
-              className="PaginationBox btn btn-secondary"
-              disabled={false}
-              onClick={[Function]}
-              type="button"
-            >
-              <a>
-                5
-              </a>
-            </button>
-            <button
-              className="PaginationBox btn btn-secondary"
-              disabled={false}
-              onClick={[Function]}
-              type="button"
-            >
-              <a>
-                6
-              </a>
-            </button>
-            <button
-              className="PaginationBox btn btn-secondary"
-              disabled={false}
-              onClick={[Function]}
-              type="button"
-            >
-              <a>
-                7
-              </a>
-            </button>
-            <button
-              className="PaginationBox btn btn-secondary"
-              disabled={false}
-              onClick={[Function]}
-              type="button"
-            >
-              <a>
-                8
-              </a>
-            </button>
-            <button
-              className="PaginationBox btn btn-secondary"
-              disabled={false}
-              onClick={[Function]}
-              type="button"
-            >
-              <a>
-                9
-              </a>
-            </button>
-            <button
-              className="PaginationBox btn btn-secondary"
-              disabled={false}
-              onClick={[Function]}
-              type="button"
-            >
-              <a>
-                10
-              </a>
-            </button>
             <button
               className="PaginationBox btn btn-secondary"
               disabled={false}
