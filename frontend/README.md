@@ -24,6 +24,60 @@ Now go to the app's main page by opening http://localhost:8443 in your browser a
 email: user@gmail.com
 password: password
 
+To add properties to the database, run the following command:
+
+```bash
+curl -XPOST \
+ "http://localhost:8443/backend/property" \
+ -H "content-type: application/json" \
+ -H "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE1OTU5NjQzNDMsInVpZCI6Ijg0MmZiYjczLWUzNzctNDkxNC1iZmM3LWI0NDJhM2VlZjViYSIsInJvbGUiOiJuYXZpZ2F0b3IifQ.TCtKenywqBx6E9CbjzJ6Ot69k30Niy431NLRyHDNxik" \
+ -d '{"address":"520 East Main Street","allow_criminal_records":true,"application_fee":5000,"background_screening_company":"Cville Background Screening","bathrooms":1,"bedrooms":2,"bus_line":true,"contact_method":["phone"],"credit_screening_company":"Cville Credit Screening","date_first_available":"2020-06-30","deposit":500,"elevator":false,"floor":3,"has_basement":true,"housing_type":"apartment","is_available":true,"landlord_id":"842fbb73-e377-4914-bfc7-b442a3eef5ba","last_contact_date":"2020-03-20","last_contacted_by":"842fbb73-e377-4914-bfc7-b442a3eef5ba","last_month_rent_required":true,"listing_date":"2020-03-20","monthly_rent":1000,"navigator_id":"842fbb73-e377-4914-bfc7-b442a3eef5ba","potential_month_available":5,"property_name":"Davids Apartment","school_district":"CHS","shared_bathrooms":0,"unit_apt_no":"9","voucher_type_accepted":[],"voucher_type_not_accepted":[],"wheelchair_accessibility":true,"where_listed":["Zillow"],"year_available":2020,"zip_code":"22902"}'
+
+ # response:
+
+ {
+  "address": "520 East Main Street",
+  "allow_criminal_records": true,
+  "application_fee": 5000.0,
+  "background_screening_company": "Cville Background Screening",
+  "bathrooms": 1,
+  "bedrooms": 2,
+  "bus_line": true,
+  "contact_method": [
+    "phone"
+  ],
+  "credit_screening_company": "Cville Credit Screening",
+  "date_first_available": "2020-06-30",
+  "deposit": 500.0,
+  "elevator": false,
+  "floor": 3,
+  "has_basement": true,
+  "housing_type": "apartment",
+  "id": "487b01aa-d060-4892-8352-0d154b1dafb7",
+  "is_available": true,
+  "landlord_id": "842fbb73-e377-4914-bfc7-b442a3eef5ba",
+  "last_contact_date": "2020-03-20",
+  "last_contacted_by": "842fbb73-e377-4914-bfc7-b442a3eef5ba",
+  "last_month_rent_required": true,
+  "listing_date": "2020-03-20",
+  "monthly_rent": 1000,
+  "navigator_id": "842fbb73-e377-4914-bfc7-b442a3eef5ba",
+  "potential_month_available": 5,
+  "property_name": "Davids Apartment",
+  "school_district": "CHS",
+  "shared_bathrooms": 0,
+  "unit_apt_no": "9",
+  "voucher_type_accepted": [],
+  "voucher_type_not_accepted": [],
+  "wheelchair_accessibility": true,
+  "where_listed": [
+    "Zillow"
+  ],
+  "year_available": 2020,
+  "zip_code": "22902"
+}
+```
+
 ## How to format Code
 
 ```bash
