@@ -5,8 +5,13 @@ import { Modal, Row, Col } from "react-bootstrap";
 import SearchFiltersSidebar from "../components/SearchFiltersSidebar";
 import SearchTable from "../components/SearchTable";
 import { SEARCH_COLUMNS } from "../constants/global";
+import { searchProperties } from "../actions/search";
 
 class SearchProperty extends React.Component {
+  componentDidMount() {
+    searchProperties();
+  }
+
   render() {
     //Populate rows
     let rows = [];
