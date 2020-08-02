@@ -44,17 +44,18 @@ def get_property():
     """
     try:
         payload = GetPropertyRequest().load(request.get_json())
-        _property = app.services.property_service().get_property(payload)
+        _property, count = app.services.property_service().get_property(payload)
         _property_response = GetPropertyResponse()
-        _property_response.pagination = PaginationResponse()
-        _property_response.pagination = PaginationResponse(partial=True).load({
-            "results_per_page":
-            len(_property),
-            "page":
-            1,
-            "totalNumberOfResults":
-            len(_property)
-        })
+        if payload.get("pagination",None):
+            _property_response.pagination = PaginationResponse()
+            _property_response.pagination = PaginationResponse(partial=True).load({
+                "results_per_page":
+                payload["pagination"]["results_per_page"],
+                "page":
+                payload["pagination"]["page"],
+                "totalNumberOfResults":
+                count
+            })
         _property_response.results = _property
         return jsonify(GetPropertyResponse().dump(_property_response))
     except ValidationError as err:
