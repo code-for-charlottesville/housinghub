@@ -1,5 +1,6 @@
 import React from "react";
 import { Button, Form, Image } from 'react-bootstrap'
+
 import AddressImage from "../images/address.svg"
 import DateImage from "../images/date.svg"
 import DollarsignImage from "../images/dollarsign.svg"
@@ -11,6 +12,9 @@ import TicketImage from "../images/ticket.svg"
 import PersonImage from "../images/person.svg"
 import PhoneImage from "../images/phone.svg"
 import LocationImage from "../images/location.png"
+import BusImage from "../images/bus.svg"
+import BasementImage from "../images/basement.svg"
+
 
 const PropertyForm = ({ showModal, setShowModal }) => {
   return (
@@ -72,24 +76,62 @@ const PropertyForm = ({ showModal, setShowModal }) => {
             <option>All</option>
           </Form.Control>
         </Form.Group>
-        <Form.Group controlId="propertyForm.primaryContact">
+        <Form.Group controlId="propertyForm.propertyContact">
           <Form.Label>
-            <Image src={PersonImage} className="mr-2" />Primary Contact</Form.Label>
-          <Form.Control type="text" placeholder="Primary Contact" />
+            <Image src={PersonImage} className="mr-2" />Property Contact</Form.Label>
+          <Form.Control type="text" placeholder="Example Property Contact" />
         </Form.Group>
         <Form.Group controlId="propertyForm.contactPhoneNumber">
           <Form.Label>
             <Image src={PhoneImage} className="mr-2" />Contact Phone Number</Form.Label>
-          <Form.Control type="text" placeholder="Contact Phone Number" />
+          <Form.Control type="text" placeholder="Example Phone Number" />
         </Form.Group>
         <Form.Group controlId="propertyForm.landlord">
           <Form.Label>
             <Image src={HouseImage} className="mr-2" />Landlord</Form.Label>
-          <Form.Control type="text" placeholder="Landlord<" />
+          <Form.Control type="text" placeholder="Example Landlord<" />
         </Form.Group>
-        <Form.Group controlId="exampleForm.ControlTextarea1">
-          <Form.Label>
-            <Image src={AddressImage} className="mr-2" />Example textarea</Form.Label>
+        <Form.Label>Test Label</Form.Label>
+        <Form.Check
+          className="mt-2 mb-2"
+          type="switch"
+          id="bus-switch"
+          label="Bus Nearby"
+        />
+        <Form.Check
+          className="mt-2 mb-2"
+
+          type="switch"
+          id="basement-switch"
+          label="Basement"
+        />
+        <Form.Check
+          className="mt-2 mb-2"
+          type="switch"
+          id="wheelchair-switch"
+          label="Wheelchair Accessible"
+        />
+        <Form.Check
+          className="mt-2 mb-2"
+          type="switch"
+          id="background-check-switch"
+          label="No Background Check"
+        />
+        <Form.Check
+          className="mt-2 mb-2"
+          type="switch"
+          id="pets-switch"
+          label="Pets Allowed"
+        />
+        <Form.Check
+          className="mt-2 mb-2"
+          type="switch"
+          id="elevator-switch"
+          label="Elevator"
+        />
+        <Form.Group className="mt-4" controlId="exampleForm.ControlTextarea1">
+          <Form.Label className="mb-2">
+            <Image src={AddressImage} className="mr-2" />Additional Notes</Form.Label>
           <Form.Control as="textarea" rows="3" />
         </Form.Group>
       </Form>
