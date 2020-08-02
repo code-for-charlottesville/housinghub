@@ -42,8 +42,14 @@ class TestPropertyHandlers(unittest.TestCase):
                 "zip_code": ["22456"]
             }
         }
+        instance = MockPropertyService.return_value
+        instance.get_property.return_value = ([],0)
         response = self.app.post("/property/search", json=_search_request)
         self.assertEqual(response.status_code, 200)
+        pagination_response = response.get_json()["pagination"]
+        self.assertEqual(pagination_response["page"],1)
+        self.assertEqual(pagination_response["results_per_page"],10)
+        self.assertEqual(pagination_response["totalNumberOfResults"],0)
     
     @patch('services.container.PropertyService')
     def test_get_property_2(self, MockPropertyService):
@@ -67,6 +73,8 @@ class TestPropertyHandlers(unittest.TestCase):
                 "zip_code": zip_code
             }
         }
+        instance = MockPropertyService.return_value
+        instance.get_property.return_value = ([],0)
         response = self.app.post("/property/search", json=_search_request)
         self.assertEqual(response.status_code, 200)
         for result in response.get_json()["results"]:
