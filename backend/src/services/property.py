@@ -36,9 +36,14 @@ class PropertyService:
                 _properties = _properties.filter(Property.monthly_rent <= value)
             else:
                 _properties = _properties.filter(getattr(Property, key) == value)
-
-        _properties = _properties.all()
-        return _properties
+        if payload.get("pagination",None):
+            offset = payload["pagination"]["results_per_page"] * payload["pagination"]["page"]
+            limit =  payload["pagination"]["results_per_page"]
+            return _properties.offset(offset).limit(limit).all(), _properties.count()
+        else:
+            result = _properties.all()
+            return _properties.all(), len(result)
+            
 
     def update_property(self, payload):
         _property = self.session.query(Property).get({"id": payload["id"]})

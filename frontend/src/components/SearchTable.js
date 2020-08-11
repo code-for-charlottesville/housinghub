@@ -11,7 +11,11 @@ export default function SearchTable(props) {
 
   return (
     <>
-      {showModal ? <PropertyModal showModal={showModal} setShowModal={setShowModal} /> : ""}
+      {showModal ? (
+        <PropertyModal showModal={showModal} setShowModal={setShowModal} />
+      ) : (
+          ""
+        )}
       <div className="border mb-4">
         <Table
           columns={props.columns}
@@ -22,19 +26,28 @@ export default function SearchTable(props) {
           }}
           onRowSelect={(rName, rIndex) => {
             console.log(rName, rIndex);
-            setShowModal(true)
+            setShowModal(true);
           }}
         />
       </div>
-      <Row className="text-center">
+      <Row className="text-center pagination">
         <Col>
           <Pagination
-            numberOfPages={16}
-            currentPageIndex={11}
-            pageIndexStart={0}
-            pageIndexEnd={10}
-            onSetPage={(i) => console.log("new page: %d", i)}
+            numberOfPages={
+              props.pagination.totalNumberOfResults /
+              props.pagination.results_per_page
+            }
+            currentPageIndex={props.pagination.page}
+            pageIndexStart={
+              props.pagination.page * props.pagination.results_per_page
+            }
+            pageIndexEnd={
+              props.pagination.page * (props.pagination.results_per_page + 1) -
+              1
+            }
+            onSetPage={(index) => console.log("new page: %d", index)}
           />
+          <Button onClick={() => setShowModal(true)}>Add Property</Button>
         </Col>
       </Row>
     </>

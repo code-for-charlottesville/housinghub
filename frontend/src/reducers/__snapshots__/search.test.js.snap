@@ -6,22 +6,9 @@ Object {
   "query": Object {
     "pagination": Object {
       "page": 3,
-      "results_per_page": 0,
+      "results_per_page": 15,
     },
-    "searchFields": Object {
-      "bathrooms": 0,
-      "bedrooms": 0,
-      "credit_report_needed": false,
-      "date_available": "",
-      "deposit_needed": false,
-      "housing_type": Array [],
-      "max_rent": 0,
-      "min_rent": 0,
-      "near_bus_stop": false,
-      "pets_allowed": false,
-      "school_district": "",
-      "zip_code": Array [],
-    },
+    "searchFields": Object {},
   },
   "searchResults": Object {
     "pagination": Object {
@@ -40,22 +27,9 @@ Object {
   "query": Object {
     "pagination": Object {
       "page": 0,
-      "results_per_page": 0,
+      "results_per_page": 15,
     },
-    "searchFields": Object {
-      "bathrooms": 0,
-      "bedrooms": 0,
-      "credit_report_needed": false,
-      "date_available": "",
-      "deposit_needed": false,
-      "housing_type": Array [],
-      "max_rent": 0,
-      "min_rent": 0,
-      "near_bus_stop": false,
-      "pets_allowed": false,
-      "school_district": "",
-      "zip_code": Array [],
-    },
+    "searchFields": Object {},
   },
   "searchResults": Object {
     "pagination": Object {
@@ -74,31 +48,11 @@ Object {
   "query": Object {
     "pagination": Object {
       "page": 0,
-      "results_per_page": 0,
+      "results_per_page": 15,
     },
-    "searchFields": Object {
-      "bathrooms": 0,
-      "bedrooms": 0,
-      "credit_report_needed": false,
-      "date_available": "",
-      "deposit_needed": false,
-      "housing_type": Array [],
-      "max_rent": 0,
-      "min_rent": 0,
-      "near_bus_stop": false,
-      "pets_allowed": false,
-      "school_district": "",
-      "zip_code": Array [],
-    },
+    "searchFields": Object {},
   },
-  "searchResults": Object {
-    "pagination": Object {
-      "page": 0,
-      "results_per_page": 0,
-      "totalNumberOfResults": 0,
-    },
-    "results": Array [],
-  },
+  "searchResults": undefined,
 }
 `;
 
@@ -108,21 +62,10 @@ Object {
   "query": Object {
     "pagination": Object {
       "page": 0,
-      "results_per_page": 0,
+      "results_per_page": 15,
     },
     "searchFields": Object {
       "bathrooms": 2,
-      "bedrooms": 0,
-      "credit_report_needed": false,
-      "date_available": "",
-      "deposit_needed": false,
-      "housing_type": Array [],
-      "max_rent": 0,
-      "min_rent": 0,
-      "near_bus_stop": false,
-      "pets_allowed": false,
-      "school_district": "",
-      "zip_code": Array [],
     },
   },
   "searchResults": Object {

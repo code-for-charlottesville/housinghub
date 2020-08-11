@@ -5,7 +5,6 @@ describe("reducers/appState", () => {
     Date.now = jest.fn(() => Date.parse("2020-06-01"));
   });
 
-
   let testTable = [
     {
       name: "set new prop",
