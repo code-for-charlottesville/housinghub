@@ -156,7 +156,7 @@ exports[`components App 1`] = `
             </table>
           </div>
           <div
-            className="text-center row"
+            className="text-center pagination row"
           >
             <div
               className="col"
@@ -186,6 +186,14 @@ exports[`components App 1`] = `
                   </a>
                 </button>
               </div>
+              <button
+                className="btn btn-primary"
+                disabled={false}
+                onClick={[Function]}
+                type="button"
+              >
+                Add Property
+              </button>
             </div>
           </div>
         </div>

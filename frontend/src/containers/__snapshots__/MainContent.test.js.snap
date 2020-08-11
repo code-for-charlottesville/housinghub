@@ -155,7 +155,7 @@ exports[`containers/MainContent renders home when nothing else matches 1`] = `
           </table>
         </div>
         <div
-          className="text-center row"
+          className="text-center pagination row"
         >
           <div
             className="col"
@@ -185,6 +185,14 @@ exports[`containers/MainContent renders home when nothing else matches 1`] = `
                 </a>
               </button>
             </div>
+            <button
+              className="btn btn-primary"
+              disabled={false}
+              onClick={[Function]}
+              type="button"
+            >
+              Add Property
+            </button>
           </div>
         </div>
       </div>
@@ -1213,7 +1221,7 @@ exports[`containers/MainContent renders search prop form on /property/search 1`]
           </table>
         </div>
         <div
-          className="text-center row"
+          className="text-center pagination row"
         >
           <div
             className="col"
@@ -1243,6 +1251,14 @@ exports[`containers/MainContent renders search prop form on /property/search 1`]
                 </a>
               </button>
             </div>
+            <button
+              className="btn btn-primary"
+              disabled={false}
+              onClick={[Function]}
+              type="button"
+            >
+              Add Property
+            </button>
           </div>
         </div>
       </div>

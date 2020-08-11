@@ -70,7 +70,7 @@ exports[`containers/SearchProperty redirects to login if not logged in 1`] = `
         </table>
       </div>
       <div
-        className="text-center row"
+        className="text-center pagination row"
       >
         <div
           className="col"
@@ -100,6 +100,14 @@ exports[`containers/SearchProperty redirects to login if not logged in 1`] = `
               </a>
             </button>
           </div>
+          <button
+            className="btn btn-primary"
+            disabled={false}
+            onClick={[Function]}
+            type="button"
+          >
+            Add Property
+          </button>
         </div>
       </div>
     </div>
