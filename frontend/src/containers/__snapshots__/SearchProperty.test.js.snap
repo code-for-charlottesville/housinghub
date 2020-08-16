@@ -1,0 +1,108 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`containers/SearchProperty redirects to login if not logged in 1`] = `
+<div>
+  <div
+    className="search-page row"
+  >
+    <div
+      className="pr-0 border col-xl-2 col-lg-3 col-12"
+    >
+      <div
+        className="search-sidebar"
+      >
+        Search Sidebar
+      </div>
+    </div>
+    <div
+      className="pl-0 search-table col-xl-10 col-lg-9 col-12"
+    >
+      
+      <div
+        className="border mb-4"
+      >
+        <table
+          className="table table-hover"
+        >
+          <thead
+            className="bg-info text-white"
+          >
+            <tr>
+              <th>
+                Property Type
+              </th>
+              <th>
+                Address
+              </th>
+              <th>
+                Rent
+              </th>
+              <th>
+                Bedrooms
+              </th>
+              <th>
+                Bathrooms
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr
+              className=""
+              onClick={[Function]}
+            >
+              <td>
+                string
+              </td>
+              <td>
+                string
+              </td>
+              <td>
+                0
+              </td>
+              <td>
+                0
+              </td>
+              <td>
+                0
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div
+        className="text-center row"
+      >
+        <div
+          className="col"
+        >
+          <div
+            className="btn-group"
+            role="group"
+          >
+            <button
+              className="PaginationBox btn btn-secondary"
+              disabled={false}
+              onClick={[Function]}
+              type="button"
+            >
+              <a>
+                Next
+              </a>
+            </button>
+            <button
+              className="PaginationBox btn btn-secondary"
+              disabled={false}
+              onClick={[Function]}
+              type="button"
+            >
+              <a>
+                Last
+              </a>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;

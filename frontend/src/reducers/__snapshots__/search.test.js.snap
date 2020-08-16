@@ -1,0 +1,80 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`reducers/appState set pagination query 1`] = `
+Object {
+  "errors": "",
+  "query": Object {
+    "pagination": Object {
+      "page": 3,
+      "results_per_page": 15,
+    },
+    "searchFields": Object {},
+  },
+  "searchResults": Object {
+    "pagination": Object {
+      "page": 0,
+      "results_per_page": 0,
+      "totalNumberOfResults": 0,
+    },
+    "results": Array [],
+  },
+}
+`;
+
+exports[`reducers/appState set pagination results 1`] = `
+Object {
+  "errors": "",
+  "query": Object {
+    "pagination": Object {
+      "page": 0,
+      "results_per_page": 15,
+    },
+    "searchFields": Object {},
+  },
+  "searchResults": Object {
+    "pagination": Object {
+      "page": 5,
+      "results_per_page": 0,
+      "totalNumberOfResults": 0,
+    },
+    "results": Array [],
+  },
+}
+`;
+
+exports[`reducers/appState set query results 1`] = `
+Object {
+  "errors": "",
+  "query": Object {
+    "pagination": Object {
+      "page": 0,
+      "results_per_page": 15,
+    },
+    "searchFields": Object {},
+  },
+  "searchResults": undefined,
+}
+`;
+
+exports[`reducers/appState set search fields query 1`] = `
+Object {
+  "errors": "",
+  "query": Object {
+    "pagination": Object {
+      "page": 0,
+      "results_per_page": 15,
+    },
+    "searchFields": Object {
+      "bathrooms": 2,
+    },
+  },
+  "searchResults": Object {
+    "pagination": Object {
+      "page": 0,
+      "results_per_page": 0,
+      "totalNumberOfResults": 0,
+    },
+    "results": Array [],
+  },
+}
+`;
