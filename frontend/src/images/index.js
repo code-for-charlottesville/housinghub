@@ -1,6 +1,5 @@
 export const AddressImage = require("./address.svg");
 export const DateImage = require("./date.svg");
-export const DateImage = require("./date.svg");
 export const DollarsignImage = require("./dollarsign.svg");
 export const HouseImage = require("./house.svg");
 export const BedImage = require("./images/bed.svg");
