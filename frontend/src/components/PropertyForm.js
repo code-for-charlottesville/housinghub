@@ -1,19 +1,16 @@
 import React from "react";
-import { Button, Form, Image } from 'react-bootstrap'
-
-import AddressImage from "../images/address.svg"
-import DateImage from "../images/date.svg"
-import DollarsignImage from "../images/dollarsign.svg"
-import HouseImage from "../images/house.svg"
-import BedImage from "../images/bed.svg"
-import BathImage from "../images/bath.svg"
-import SchoolImage from "../images/school.svg"
-import TicketImage from "../images/ticket.svg"
-import PersonImage from "../images/person.svg"
-import PhoneImage from "../images/phone.svg"
-import LocationImage from "../images/location.png"
-import BusImage from "../images/bus.svg"
-import BasementImage from "../images/basement.svg"
+import { Form, Image } from 'react-bootstrap'
+import {
+  HouseImage,
+  AddressImage,
+  DollarsignImage,
+  BedImage,
+  BathImage,
+  SchoolImage,
+  TicketImage,
+  PersonImage,
+  PhoneImage
+} from "../images"
 
 
 const PropertyForm = ({ showModal, setShowModal }) => {
