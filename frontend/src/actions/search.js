@@ -46,7 +46,7 @@ export function searchProperties() {
         console.log(response);
         store.dispatch(setSearchResults(response));
       } else {
-        alert("No matches found");
+        console.log("No matches found");
       }
     } else {
       console.error("Could not search property: %o", response);

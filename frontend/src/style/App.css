@@ -93,6 +93,12 @@ body {
   width: 90vw;
 }
 
+.pagination {
+  margin-top: 70vh;
+
+}
+
+
 @media (min-width: 992px) {
   .nav-toggle {
     justify-content: center;

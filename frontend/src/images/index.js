@@ -1,0 +1,13 @@
+export const AddressImage = require("./address.svg");
+export const DateImage = require("./date.svg");
+export const DollarsignImage = require("./dollarsign.svg");
+export const HouseImage = require("./house.svg");
+export const BedImage = require("./bed.svg");
+export const BathImage = require("./bath.svg");
+export const SchoolImage = require("./school.svg");
+export const TicketImage = require("./ticket.svg");
+export const PersonImage = require("./person.svg");
+export const PhoneImage = require("./phone.svg");
+export const LocationImage = require("./location.png");
+export const BusImage = require("./bus.svg");
+export const BasementImage = require("./basement.svg");
