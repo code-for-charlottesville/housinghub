@@ -8,11 +8,15 @@ import { Row, Col, Modal, Button } from "react-bootstrap";
 
 export default function SearchTable(props) {
   const [showModal, setShowModal] = useState(false);
-
+  const [formValues, setFormValues] = useState({});
   return (
     <>
       {showModal ? (
-        <PropertyModal showModal={showModal} setShowModal={setShowModal} />
+        <PropertyModal
+          showModal={showModal}
+          setShowModal={setShowModal}
+          formValues={formValues}
+          setFormValues={setFormValues} />
       ) : (
           ""
         )}

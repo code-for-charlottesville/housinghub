@@ -14,20 +14,26 @@ import {
 
 
 const PropertyForm = ({ showModal, setShowModal }) => {
+
+  const handleChange = e => {
+
+    console.log(e.target.id);
+  }
+
   return (
     <>
       <Form>
-        <Form.Group controlId="propertyForm.propertyName">
+        <Form.Group controlId="propertyName" >
           <Form.Label>
             <Image src={HouseImage} className="mr-2" />Property Name</Form.Label>
-          <Form.Control type="text" placeholder="Example Property Name" />
+          <Form.Control type="text" placeholder="Property Name" onChange={handleChange}/>
         </Form.Group>
-        <Form.Group controlId="propertyForm.address">
+        <Form.Group controlId="address">
           <Form.Label>
             <Image src={AddressImage} className="mr-2" />Address</Form.Label>
-          <Form.Control type="text" placeholder="Example Address" />
+          <Form.Control type="text" placeholder="Address" onChange={handleChange}/>
         </Form.Group>
-        <Form.Group controlId="exampleForm.housingType">
+        <Form.Group controlId="housingType">
           <Form.Label>
             <Image src={HouseImage} className="mr-2" />Housing Type</Form.Label>
           <Form.Control as="select">
@@ -38,32 +44,32 @@ const PropertyForm = ({ showModal, setShowModal }) => {
             <option>Duplex</option>
           </Form.Control>
         </Form.Group>
-        <Form.Group controlId="propertyForm.rent">
+        <Form.Group controlId="rent">
           <Form.Label>
             <Image src={DollarsignImage} className="mr-2" />Rent</Form.Label>
           <Form.Control type="text" placeholder="placeholder" />
         </Form.Group>
-        <Form.Group controlId="propertyForm.bedrooms">
+        <Form.Group controlId="bedrooms">
           <Form.Label>
             <Image src={BedImage} className="mr-2" />Bedrooms</Form.Label>
           <Form.Control type="number" placeholder="1" />
         </Form.Group>
-        <Form.Group controlId="propertyForm.bathrooms">
+        <Form.Group controlId="bathrooms">
           <Form.Label>
             <Image src={BathImage} className="mr-2" />Bathrooms</Form.Label>
           <Form.Control type="number" placeholder="1" />
         </Form.Group>
-        <Form.Group controlId="propertyForm.sharedBathrooms">
+        <Form.Group controlId="sharedBathrooms">
           <Form.Label>
             <Image src={BathImage} className="mr-2" />Shared Bathrooms</Form.Label>
           <Form.Control type="number" placeholder="0" />
         </Form.Group>
-        <Form.Group controlId="propertyForm.location">
+        <Form.Group controlId="location">
           <Form.Label>
             <Image src={SchoolImage} className="mr-2" />Location</Form.Label>
           <Form.Control type="text" placeholder="Charlottesville" />
         </Form.Group>
-        <Form.Group controlId="exampleForm.vouchers">
+        <Form.Group controlId="vouchers">
           <Form.Label>
             <Image src={TicketImage} className="mr-2" />Vouchers Accepted</Form.Label>
           <Form.Control as="select">
@@ -73,17 +79,17 @@ const PropertyForm = ({ showModal, setShowModal }) => {
             <option>All</option>
           </Form.Control>
         </Form.Group>
-        <Form.Group controlId="propertyForm.propertyContact">
+        <Form.Group controlId="propertyContact">
           <Form.Label>
             <Image src={PersonImage} className="mr-2" />Property Contact</Form.Label>
           <Form.Control type="text" placeholder="Example Property Contact" />
         </Form.Group>
-        <Form.Group controlId="propertyForm.contactPhoneNumber">
+        <Form.Group controlId="contactPhoneNumber">
           <Form.Label>
             <Image src={PhoneImage} className="mr-2" />Contact Phone Number</Form.Label>
           <Form.Control type="text" placeholder="Example Phone Number" />
         </Form.Group>
-        <Form.Group controlId="propertyForm.landlord">
+        <Form.Group controlId="landlord">
           <Form.Label>
             <Image src={HouseImage} className="mr-2" />Landlord</Form.Label>
           <Form.Control type="text" placeholder="Example Landlord<" />
