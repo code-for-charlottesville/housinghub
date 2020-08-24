@@ -1,6 +1,6 @@
 import React from "react";
-import { Modal, Button } from "react-bootstrap";
-import PropertyForm from "./PropertyForm";
+import { Modal, Button } from 'react-bootstrap'
+import PropertyForm from './PropertyForm'
 
 const PropertyModal = ({ showModal, setShowModal }) => {
   return (
@@ -25,4 +25,4 @@ const PropertyModal = ({ showModal, setShowModal }) => {
   );
 };
 
-export default PropertyModal;
+export default PropertyModal
