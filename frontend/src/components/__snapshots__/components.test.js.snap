@@ -156,10 +156,13 @@ exports[`components App 1`] = `
             </table>
           </div>
           <div
-            className="text-center pagination row"
+            className="text-center pagination ml-3 row"
           >
             <div
-              className="col"
+              className="col-sm-1"
+            />
+            <div
+              className="col-sm-9"
             >
               <div
                 className="btn-group"
@@ -186,8 +189,12 @@ exports[`components App 1`] = `
                   </a>
                 </button>
               </div>
+            </div>
+            <div
+              className="col-sm-2"
+            >
               <button
-                className="btn btn-primary"
+                className="justify-end btn btn-primary"
                 disabled={false}
                 onClick={[Function]}
                 type="button"
