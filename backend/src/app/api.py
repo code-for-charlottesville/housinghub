@@ -53,6 +53,10 @@ class SearchCriteria(Schema):
   bathrooms = fields.Integer(required=False)
   date_available = fields.Date(required=False)
   housing_type = fields.List(fields.String)
+  bus_line = fields.Boolean(required=False)
+  pets_allowed = fields.Boolean(required=False)
+  wheelchair_accessibility = fields.Boolean(required=False)
+  background_check_required = fields.Boolean(required=False)
 
 class Pagination(Schema):
   results_per_page = fields.Integer(required=True)
