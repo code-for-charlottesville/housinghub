@@ -64,6 +64,3 @@ class PropertyService:
     def get_all_property(self):
         # TO DO : changes corresponding to search property API
         return self.db_session.query(Property).all()
-    
-    
-    
