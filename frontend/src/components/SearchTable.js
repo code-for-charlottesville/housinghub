@@ -26,7 +26,8 @@ export default function SearchTable(props) {
           rows={props.rows}
           selectedRowIndex={3}
           onColumnSort={(cName, cIndex) => {
-            console.log(cName, cIndex);
+            console.log("cname is ", cName);
+            console.log("cIndex is ", cIndex);
           }}
           onRowSelect={(rName, rIndex) => {
             console.log(rName, rIndex);
