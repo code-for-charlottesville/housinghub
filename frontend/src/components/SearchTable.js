@@ -3,7 +3,7 @@ import "../style/App.css";
 import Table from "../components/Table";
 import Pagination from "../components/Pagination";
 import PropertyModal from "./PropertyModal";
-import { Row, Col, Container, Button } from "react-bootstrap";
+import { Row, Col, Button } from "react-bootstrap";
 
 
 export default function SearchTable(props) {

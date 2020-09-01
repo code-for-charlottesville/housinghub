@@ -1,19 +1,7 @@
-import React, { useState } from "react";
+import React from "react";
 import "../style/App.css";
 import { Table, Button } from "react-bootstrap";
 const LocalTable = (props) => {
-  let _renderTableHeader = (column, columnIndex) => {
-    return (
-      <th
-        key={`col-header-${column.field}-${columnIndex}`}
-        onClick={() =>
-          props.onColumnSort && props.onColumnSort(column, columnIndex)
-        }
-      >
-        <abbr title={column.title}>{column.title}</abbr>
-      </th>
-    );
-  };
 
   let _renderCell = (value, rowIndex, columnIndex) => {
     let key = `$cell-{rowIndex}-${columnIndex}-${value}`;

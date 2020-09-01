@@ -1,7 +1,6 @@
 import React from "react";
 import { Modal, Button } from 'react-bootstrap'
 import PropertyForm from './PropertyForm'
-import { getJwtFromLocalStorage } from "../reducers/login";
 import { postProperty } from '../api/property'
 
 

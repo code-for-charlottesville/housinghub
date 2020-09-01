@@ -1,8 +1,6 @@
 import React from "react";
 import { Switch, Route } from "react-router-dom";
 import Login from "./containers/Login";
-
-import { connect } from "react-redux";
 import MainContent from "./containers/MainContent";
 import { setJwtStatus } from "./actions/login";
 import { Footer } from "./components/Footer";
