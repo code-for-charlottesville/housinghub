@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "../style/App.css";
-import { Table } from "react-bootstrap";
+import { Table, Button } from "react-bootstrap";
 const LocalTable = (props) => {
   let _renderTableHeader = (column, columnIndex) => {
     return (
@@ -29,16 +29,22 @@ const LocalTable = (props) => {
       {props.columns.map((c, columnIndex) =>
         _renderCell(r[c.field], rowIndex, columnIndex)
       )}
+      <Button>Delete</Button>
     </tr>
   );
+
+  const TableHead = ({ columns }) => {
+    return columns.map(({ field, title }, index) => {
+      return <th key={index}>{title}</th>;
+    })
+  };
 
   return (
     <Table hover>
       <thead className="bg-info text-white">
         <tr>
-          {props.columns.map(({ field, title }, index) => {
-            return <th key={index}>{title}</th>;
-          })}
+          <TableHead columns={props.columns} />
+          <th >Delete</th>
         </tr>
       </thead>
       <tbody>{props.rows.map((r, i) => _renderRow(r, i))}</tbody>
