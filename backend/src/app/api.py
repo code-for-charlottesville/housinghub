@@ -111,10 +111,3 @@ class UpdatePropertyResponse(SQLAlchemyAutoSchema):
     model = Property
     load_instance = True
 housinghub_spec.components.schema("UpdatePropertyResponse", schema=UpdatePropertyResponse)
-
-
-class DeletePropertyResponse(SQLAlchemyAutoSchema):
-  class Meta:
-    model = Property
-    load_instance = True
-housinghub_spec.components.schema("DeletePropertyResponse", schema=DeletePropertyResponse)
