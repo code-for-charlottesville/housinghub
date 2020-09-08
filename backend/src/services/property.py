@@ -49,14 +49,16 @@ class PropertyService:
         _property = self.session.query(Property).get({"id": payload["id"]})
         if (_property == None):
             app.logger.error('Property not found')
+            return None
         self.session.query(Property).filter(Property.id == payload["id"]).update(payload)
         self.session.commit()
         return _property
 
-    def delete_property(self, payload):
-        _property = self.session.query(Property).get({"id": payload["id"]})
+    def delete_property(self, id):
+        _property = self.session.query(Property).get({"id": id})
         if (_property == None):
             app.logger.error('Property not found')
+            return None
         self.session.delete(_property)
         self.session.commit()
         return _property

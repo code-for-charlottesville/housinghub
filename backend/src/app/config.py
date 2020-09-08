@@ -12,7 +12,7 @@ class Config(object):
     TOKEN_TTL = 10800
     TOKEN_ALG = 'HS256'
     TOKEN_SECRET = f"{secrets.token_hex(64)}-{time.time()}"
-    ALLOWED_ORIGINS = ['http://localhost:8443']
+    ALLOWED_ORIGINS = ['*']
 
 
 class TiltConfig(Config):
