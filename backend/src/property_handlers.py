@@ -113,18 +113,54 @@ def post_property():
         return jsonify(code=500, error='internal error'), 500
 
 
-@property_module.route('/property', methods=['PUT'])
+@property_module.route('/property/<id>', methods=['PUT'])
 @authenticate
-def put_property():
-    """updates a Property in the DB and returns the updated object
-    :param request: flask request object
-    :param request: dictionary of jwtPayload
-    :return tuple (response body (dict), response code (int), error (string))
+def put_property(id):
+    """Updates a Property in the database and returns response
+    ---
+    put:
+        tags: 
+            - authentication    
+        summary: Updates an existing property
+        parameters:
+            - in: path
+              name: id
+              schema:
+                type: string
+                format: uuid
+              required: true
+              description: ID of property to delete
+        requestBody:
+            required: true
+            content:
+                application/json:
+                    schema: UpdatePropertyRequest
+        responses:
+            '200':
+                description: newly created property
+                content:
+                    application/json:
+                        schema: UpdatePropertyResponse
+            '400':
+                description: Request is invalid
+                content:
+                    application/json:
+                        schema: ErrorResponse
+            '404':
+                description: No property exists with the provided ID
+            '500':
+                description: An error message.
+                content:
+                    application/json:
+                        schema: ErrorResponse
     """
     try:
-        payload = request.get_json()
-        new_property = app.services.property_service().update_property(payload)
-        return jsonify(UpdatePropertyResponse().dump(new_property))
+        payload = UpdatePropertyRequest().load(request.get_json(), transient=True)
+        new_property = app.services.property_service().update_property(id,payload)
+        if new_property:
+            return jsonify(UpdatePropertyResponse().dump(new_property))
+        else:
+            return jsonify(None), 404
     except ValidationError as err:
         app.logger.error(f'Invalid request ${err.messages}')
         return jsonify(err.messages), 400
