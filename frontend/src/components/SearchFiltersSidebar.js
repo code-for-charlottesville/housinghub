@@ -3,5 +3,5 @@ import "../style/App.css";
 import SearchTool from "./SearchTool";
 
 export default function SearchFiltersSidebar() {
-  return (<SearchTool />);
+  return <SearchTool />;
 }
