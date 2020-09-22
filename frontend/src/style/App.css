@@ -54,11 +54,56 @@
 body {
   font-family: "Roboto", "sans-serif";
 }
-
 .search-page {
   height: 90vh;
 }
 
 .search-table {
   height: 80vh;
+}
+
+/*Nav styles*/
+.h-hub-nav-link:hover {
+  color: #5bc0de
+}
+
+.search-button {
+  border-radius: 0 .25rem .25rem 0;
+  border-left-style: none;
+  border-left-width: 0;
+}
+
+.search-input {
+  border-radius: .25rem 0 0 .25rem;
+}
+
+#Navbar-user-dropdown {
+  color: white;
+}
+
+#Navbar-user-dropdown:hover {
+  color: #5bc0de
+}
+
+.nav-toggle {
+  justify-content: start;
+}
+
+.form-inline .form-control {
+  width: 90vw;
+}
+
+.pagination {
+  margin-top: 70vh;
+
+}
+
+
+@media (min-width: 992px) {
+  .nav-toggle {
+    justify-content: center;
+  }
+  .form-inline .form-control {
+    width: 30vw;
+  }
 }

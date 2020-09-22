@@ -37,6 +37,20 @@ $ curl -H "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOj
 curl -XPOST -H "content-type: application/json" -d '{"username" : "user@gmail.com", "password" : "password", "role" : "navigator", "is_admin": true}' http://localhost:8443/backend/auth/register
 ```
 
+post a new property: 
+
+```bash
+$ curl -XPOST "http://localhost:8443/backend/property" -H "content-type: application/json" -H "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE1OTgzOTY5MTgsInVpZCI6IjE4YmNiODA4LThkNTEtNDNmOS05N2NkLThhNzNkOGNhOWRhOCIsInJvbGUiOiJuYXZpZ2F0b3IifQ.S2qB5YPLPnikvIQmxA1_WVwVOZrnSILMGUJfGvF5oq0" -d '{"address":"2101 JPA", "allow_criminal_records":true, "application_fee":5000,"background_screening_company":"Cville Background Screening","bathrooms":3,"bedrooms":4,"near_busstop":true,"contact_method":["phone"],"credit_screening_company":"Cville Credit Screening","date_first_available":"2020-06-30","deposit":700,"elevator":false,"floor":3,"has_basement":false,"housing_type":"apartment","is_available":true,"landlord_id":"842fbb73-e377-4914-bfc7-b442a3eef5ba","last_contact_date":"2020-03-20","last_contacted_by":"842fbb73-e377-4914-bfc7-b442a3eef5ba","last_month_rent_required":true,"listing_date":"2020-03-20","monthly_rent":700,"navigator_id":"842fbb73-e377-4914-bfc7-b442a3eef5ba","potential_month_available":5,"property_name":"Maywood Apartment","school_district":"CHS","shared_bathrooms":1,"unit_apt_no":"4","voucher_type_accepted":[],"voucher_type_not_accepted":[],"wheelchair_accessibility":true,"where_listed":["Zillow"],"year_available":2020,"zip_code":"22903"}'
+```
+
+post a search request: 
+
+```bash
+$ curl -XPOST "http://localhost:8443/backend/property/search" -H "content-type: application/json" -H "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE1OTgzOTgyMjIsInVpZCI6IjE4YmNiODA4LThkNTEtNDNmOS05N2NkLThhNzNkOGNhOWRhOCIsInJvbGUiOiJuYXZpZ2F0b3IifQ.JCLGyQ3LwT-vJjmLmL6_RFSzmM0V-4JKPyyb7iUDvFU" -d '{ "pagination": { "page": 0, "results_per_page": 25}, "searchFields": { "bathrooms": 2, "bedrooms": 2, "date_available": "2008-10-11", "housing_type": ["apartment", "shared house"], "max_rent": 1000, "zip_code": ["22456", "22903", "22902"], "bus_line": true, "pets_allowed": true, "wheelchair_accessibility": true, "background_check_required": true} }'
+```
+
+
+
 ## Generating New Data
 
 Data can be generated in the `data` directory. You will need [npm](https://www.npmjs.com/get-npm) installed for this to work

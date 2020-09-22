@@ -39,7 +39,7 @@ const initialState = () => {
         is_available: false,
       },
     },
-  }
+  };
 };
 
 const propertyState = (state = initialState(), action) => {

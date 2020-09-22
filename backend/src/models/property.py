@@ -46,7 +46,11 @@ class Property(Base):
   credit_screening_company = Column(VARCHAR)
   background_screening_company = Column(VARCHAR)
   last_contacted_by = Column(UUID)
-
+  pets_allowed = Column(BOOLEAN)
+  background_check_required = Column(BOOLEAN)
+  near_busstop = Column(BOOLEAN)
+  primary_contact = Column(VARCHAR)
+  contact_phone_number = Column(VARCHAR)
 
   def __repr__(self):
     _dict = PropertySchema().dump(self)

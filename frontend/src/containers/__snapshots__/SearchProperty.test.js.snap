@@ -1,309 +1,620 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`containers/SearchProperty redirects to login if not logged in 1`] = `
-<div
-  className="search-page row"
->
+<div>
   <div
-    className="pr-0 border col-xl-2 col-lg-3 col-12"
+    className="search-page row"
   >
     <div
-      className="search-sidebar"
-    >
-      Search Sidebar
-    </div>
-  </div>
-  <div
-    className="pl-0 search-table col-xl-10 col-lg-9 col-12"
-  >
-    <div
-      className="border mb-4"
-    >
-      <table
-        className="table table-hover"
-      >
-        <thead
-          className="bg-info text-white"
-        >
-          <tr>
-            <th>
-              Property Type
-            </th>
-            <th>
-              Address
-            </th>
-            <th>
-              Rent
-            </th>
-            <th>
-              Bedrooms
-            </th>
-            <th>
-              Bathrooms
-            </th>
-            <th>
-              Actions
-            </th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr
-            className=""
-            onClick={[Function]}
-          >
-            <td>
-              Apartment
-            </td>
-            <td>
-              520 E Main Street
-            </td>
-            <td>
-              $2500
-            </td>
-            <td>
-              5
-            </td>
-            <td>
-              1
-            </td>
-            <td>
-              Test
-            </td>
-          </tr>
-          <tr
-            className=""
-            onClick={[Function]}
-          >
-            <td>
-              Apartment 2
-            </td>
-            <td>
-              520 E Main Street
-            </td>
-            <td>
-              $2500
-            </td>
-            <td>
-              5
-            </td>
-            <td>
-              1
-            </td>
-            <td>
-              Test
-            </td>
-          </tr>
-          <tr
-            className=""
-            onClick={[Function]}
-          >
-            <td>
-              Apartment 3
-            </td>
-            <td>
-              123 E Main Street Apt 406
-            </td>
-            <td>
-              $1200
-            </td>
-            <td>
-              5
-            </td>
-            <td>
-              1
-            </td>
-            <td>
-              Test
-            </td>
-          </tr>
-          <tr
-            className="is-selected"
-            onClick={[Function]}
-          >
-            <td>
-              Apartment 4
-            </td>
-            <td>
-              123 ABC Street
-            </td>
-            <td>
-              $800
-            </td>
-            <td>
-              5
-            </td>
-            <td>
-              1
-            </td>
-            <td>
-              Test
-            </td>
-          </tr>
-          <tr
-            className=""
-            onClick={[Function]}
-          >
-            <td>
-              Apartment 5
-            </td>
-            <td>
-              948 Water Street
-            </td>
-            <td>
-              $1200
-            </td>
-            <td>
-              3
-            </td>
-            <td>
-              1
-            </td>
-            <td>
-              Test
-            </td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-    <div
-      className="text-center row"
+      className="pr-0 border col-xl-2 col-lg-3 col-12"
     >
       <div
-        className="col"
+        className="size border"
       >
         <div
-          className="btn-group"
-          role="group"
+          style={
+            Object {
+              "alignItems": "center",
+              "display": "flex",
+              "height": "50px",
+            }
+          }
+        >
+          <h5
+            style={
+              Object {
+                "color": "grey",
+                "fontFamily": "Roboto",
+                "fontSize": "16px",
+                "fontWeight": "bold",
+                "paddingLeft": "12px",
+                "paddingTop": "50px",
+              }
+            }
+          >
+            Search Fields
+          </h5>
+        </div>
+        <hr
+          style={
+            Object {
+              "borderWidth": "3px",
+            }
+          }
+        />
+        <div>
+          <p
+            style={
+              Object {
+                "fontFamily": "Roboto",
+                "fontSize": "14px",
+                "marginBottom": "5px",
+                "paddingLeft": "15px",
+              }
+            }
+          >
+            Rent per unit
+          </p>
+          <form
+            className=""
+          >
+            <div
+              className="form-row"
+              style={
+                Object {
+                  "marginBottom": "5px",
+                  "paddingLeft": "15px",
+                  "paddingRight": "15px",
+                }
+              }
+            >
+              <div
+                className="col"
+              >
+                <input
+                  className="form-control"
+                  onChange={[Function]}
+                  placeholder="Max"
+                />
+              </div>
+              <div
+                className="col"
+              >
+                <input
+                  className="form-control"
+                  onChange={[Function]}
+                  placeholder="Max"
+                />
+              </div>
+            </div>
+            <div
+              className="row"
+            >
+              <div
+                className="col"
+              >
+                <p
+                  style={
+                    Object {
+                      "fontFamily": "Roboto",
+                      "fontSize": "13px",
+                      "paddingLeft": "20px",
+                    }
+                  }
+                >
+                  Min
+                </p>
+              </div>
+              <div
+                className="col"
+              >
+                <p
+                  style={
+                    Object {
+                      "fontFamily": "Roboto",
+                      "fontSize": "13px",
+                      "paddingLeft": "0px",
+                    }
+                  }
+                >
+                  Max
+                </p>
+              </div>
+            </div>
+            <div
+              className="form-row"
+              style={
+                Object {
+                  "marginTop": "17px",
+                  "paddingLeft": "15px",
+                  "paddingRight": "15px",
+                }
+              }
+            >
+              <div
+                className="col-12"
+              >
+                <label
+                  className="form-label"
+                >
+                  Date Available
+                </label>
+                <input
+                  className="form-control"
+                  onChange={[Function]}
+                  placeholder="MM-dd-YYYY"
+                  type="date"
+                />
+              </div>
+            </div>
+            <div
+              className="form-group"
+              style={
+                Object {
+                  "marginTop": "24px",
+                  "paddingLeft": "9px",
+                  "paddingRight": "9px",
+                }
+              }
+            >
+              <label
+                className="form-label"
+                htmlFor="bedrooms"
+              >
+                Bedrooms
+              </label>
+              <select
+                className="custom-select"
+                id="numBeds"
+                onChange={[Function]}
+                value={4}
+              >
+                <option>
+                  1
+                </option>
+                <option>
+                  2
+                </option>
+                <option>
+                  3
+                </option>
+                <option>
+                  4
+                </option>
+                <option>
+                  5
+                </option>
+                <option>
+                  6
+                </option>
+                <option>
+                  7
+                </option>
+              </select>
+            </div>
+            <div
+              className="form-group"
+              style={
+                Object {
+                  "marginTop": "15px",
+                  "paddingLeft": "9px",
+                  "paddingRight": "9px",
+                }
+              }
+            >
+              <label
+                className="form-label"
+                htmlFor="bathrooms"
+              >
+                Bathrooms
+              </label>
+              <select
+                className="custom-select"
+                id="numBath"
+                onChange={[Function]}
+                value={3.5}
+              >
+                <option>
+                  1
+                </option>
+                <option>
+                  1.5
+                </option>
+                <option>
+                  2
+                </option>
+                <option>
+                  2.5
+                </option>
+                <option>
+                  3
+                </option>
+                <option>
+                  3.5
+                </option>
+                <option>
+                  4
+                </option>
+                <option>
+                  4.5
+                </option>
+                <option>
+                  5
+                </option>
+              </select>
+            </div>
+            <div
+              className="form-row"
+              style={
+                Object {
+                  "marginTop": "20px",
+                }
+              }
+            >
+              <div
+                className="col-10"
+                style={
+                  Object {
+                    "paddingLeft": "15px",
+                  }
+                }
+              >
+                Deposit Needed
+              </div>
+              <div
+                className="col-1"
+              >
+                <div
+                  className="form-check"
+                >
+                  <input
+                    aria-label="deposit"
+                    className="form-check-input position-static"
+                    disabled={false}
+                    onChange={[Function]}
+                    type="checkbox"
+                  />
+                </div>
+              </div>
+            </div>
+            <div
+              className="form-row"
+              style={
+                Object {
+                  "marginTop": "4px",
+                }
+              }
+            >
+              <div
+                className="col-10"
+                style={
+                  Object {
+                    "paddingLeft": "15px",
+                  }
+                }
+              >
+                Credit Report Needed
+              </div>
+              <div
+                className="col-1"
+              >
+                <div
+                  className="form-check"
+                >
+                  <input
+                    aria-label="creditReport"
+                    className="form-check-input position-static"
+                    disabled={false}
+                    onChange={[Function]}
+                    type="checkbox"
+                  />
+                </div>
+              </div>
+            </div>
+            <div
+              className="form-row"
+              style={
+                Object {
+                  "marginTop": "4px",
+                }
+              }
+            >
+              <div
+                className="col-10"
+                style={
+                  Object {
+                    "paddingLeft": "15px",
+                  }
+                }
+              >
+                Near Bus Stop
+              </div>
+              <div
+                className="col-1"
+              >
+                <div
+                  className="form-check"
+                >
+                  <input
+                    aria-label="bus"
+                    className="form-check-input position-static"
+                    disabled={false}
+                    onChange={[Function]}
+                    type="checkbox"
+                  />
+                </div>
+              </div>
+            </div>
+            <div
+              className="form-row"
+              style={
+                Object {
+                  "marginBottom": "30px",
+                  "marginTop": "4px",
+                }
+              }
+            >
+              <div
+                className="col-10"
+                style={
+                  Object {
+                    "paddingLeft": "15px",
+                  }
+                }
+              >
+                Pets allowed
+              </div>
+              <div
+                className="col-1"
+              >
+                <div
+                  className="form-check"
+                >
+                  <input
+                    aria-label="pets"
+                    className="form-check-input position-static"
+                    disabled={false}
+                    onChange={[Function]}
+                    type="checkbox"
+                  />
+                </div>
+              </div>
+            </div>
+            <hr
+              style={
+                Object {
+                  "borderWidth": "2px",
+                  "margin": "15px",
+                }
+              }
+            />
+            <div
+              className="form-group"
+              style={
+                Object {
+                  "marginTop": "15px",
+                  "paddingLeft": "9px",
+                  "paddingRight": "9px",
+                }
+              }
+            >
+              <label
+                className="form-label"
+                htmlFor="schoolDistrict"
+              >
+                School District
+              </label>
+              <select
+                className="custom-select"
+                id="schoolDistrict"
+                onChange={[Function]}
+              >
+                <option>
+                  Alemarle
+                </option>
+                <option>
+                  City of Charlottesville
+                </option>
+                <option>
+                  University of Virginia
+                </option>
+              </select>
+            </div>
+            <hr
+              style={
+                Object {
+                  "borderWidth": "2px",
+                  "margin": "15px",
+                }
+              }
+            />
+            <div
+              className="form-group"
+              style={
+                Object {
+                  "marginTop": "15px",
+                  "paddingLeft": "9px",
+                  "paddingRight": "9px",
+                }
+              }
+            >
+              <label
+                className="form-label"
+                htmlFor="leaseType"
+              >
+                Lease Type
+              </label>
+              <select
+                className="custom-select"
+                id="leaseType"
+              >
+                <option>
+                  Month to Month
+                </option>
+                <option>
+                  2
+                </option>
+                <option>
+                  3
+                </option>
+                <option>
+                  4
+                </option>
+                <option>
+                  5
+                </option>
+              </select>
+            </div>
+            <hr
+              style={
+                Object {
+                  "borderWidth": "2px",
+                  "margin": "15px",
+                }
+              }
+            />
+            <div
+              className="form-group"
+              style={
+                Object {
+                  "marginTop": "15px",
+                  "paddingLeft": "9px",
+                  "paddingRight": "9px",
+                }
+              }
+            >
+              <label
+                className="form-label"
+                htmlFor="vouchers"
+              >
+                Vouchers Accepted
+              </label>
+              <select
+                className="custom-select"
+                id="vouchers"
+                onChange={[Function]}
+              >
+                <option>
+                  Any
+                </option>
+                <option>
+                  2
+                </option>
+                <option>
+                  3
+                </option>
+                <option>
+                  4
+                </option>
+                <option>
+                  5
+                </option>
+              </select>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    <div
+      className="pl-0 search-table col-xl-10 col-lg-9 col-12"
+    >
+      
+      <div
+        className="border mb-4"
+      >
+        <table
+          className="table table-hover"
+        >
+          <thead
+            className="bg-info text-white"
+          >
+            <tr>
+              <th>
+                Property Type
+              </th>
+              <th>
+                Address
+              </th>
+              <th>
+                Rent
+              </th>
+              <th>
+                Bedrooms
+              </th>
+              <th>
+                Bathrooms
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr
+              className=""
+              onClick={[Function]}
+            >
+              <td>
+                string
+              </td>
+              <td>
+                string
+              </td>
+              <td>
+                0
+              </td>
+              <td>
+                0
+              </td>
+              <td>
+                0
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div
+        className="text-center pagination ml-3 row"
+      >
+        <div
+          className="col-sm-1"
+        />
+        <div
+          className="col-sm-9"
+        >
+          <div
+            className="btn-group"
+            role="group"
+          >
+            <button
+              className="PaginationBox btn btn-secondary"
+              disabled={false}
+              onClick={[Function]}
+              type="button"
+            >
+              <a>
+                Next
+              </a>
+            </button>
+            <button
+              className="PaginationBox btn btn-secondary"
+              disabled={false}
+              onClick={[Function]}
+              type="button"
+            >
+              <a>
+                Last
+              </a>
+            </button>
+          </div>
+        </div>
+        <div
+          className="col-sm-2"
         >
           <button
-            className="PaginationBox btn btn-secondary"
+            className="justify-end btn btn-primary"
             disabled={false}
             onClick={[Function]}
             type="button"
           >
-            <a>
-              First
-            </a>
-          </button>
-          <button
-            className="PaginationBox btn btn-secondary"
-            disabled={false}
-            onClick={[Function]}
-            type="button"
-          >
-            <a>
-              1
-            </a>
-          </button>
-          <button
-            className="PaginationBox btn btn-secondary"
-            disabled={false}
-            onClick={[Function]}
-            type="button"
-          >
-            <a>
-              2
-            </a>
-          </button>
-          <button
-            className="PaginationBox btn btn-secondary"
-            disabled={false}
-            onClick={[Function]}
-            type="button"
-          >
-            <a>
-              3
-            </a>
-          </button>
-          <button
-            className="PaginationBox btn btn-secondary"
-            disabled={false}
-            onClick={[Function]}
-            type="button"
-          >
-            <a>
-              4
-            </a>
-          </button>
-          <button
-            className="PaginationBox btn btn-secondary"
-            disabled={false}
-            onClick={[Function]}
-            type="button"
-          >
-            <a>
-              5
-            </a>
-          </button>
-          <button
-            className="PaginationBox btn btn-secondary"
-            disabled={false}
-            onClick={[Function]}
-            type="button"
-          >
-            <a>
-              6
-            </a>
-          </button>
-          <button
-            className="PaginationBox btn btn-secondary"
-            disabled={false}
-            onClick={[Function]}
-            type="button"
-          >
-            <a>
-              7
-            </a>
-          </button>
-          <button
-            className="PaginationBox btn btn-secondary"
-            disabled={false}
-            onClick={[Function]}
-            type="button"
-          >
-            <a>
-              8
-            </a>
-          </button>
-          <button
-            className="PaginationBox btn btn-secondary"
-            disabled={false}
-            onClick={[Function]}
-            type="button"
-          >
-            <a>
-              9
-            </a>
-          </button>
-          <button
-            className="PaginationBox btn btn-secondary"
-            disabled={false}
-            onClick={[Function]}
-            type="button"
-          >
-            <a>
-              10
-            </a>
-          </button>
-          <button
-            className="PaginationBox btn btn-secondary"
-            disabled={false}
-            onClick={[Function]}
-            type="button"
-          >
-            <a>
-              Next
-            </a>
-          </button>
-          <button
-            className="PaginationBox btn btn-secondary"
-            disabled={false}
-            onClick={[Function]}
-            type="button"
-          >
-            <a>
-              Last
-            </a>
+            Add Property
           </button>
         </div>
       </div>
