@@ -119,13 +119,15 @@ yapf -ri ./**/*.py
 
 We recommend using `tilt` for development. This section serves as a reference for non-tilt development (if needed) and building the app locally.
 
-### Requirements
+### Requirements 
+(Mac Users - you might need to use 'sudo' if you run into permissions issues)
 
 - [install python 3.6.x](https://realpython.com/installing-python/)
 - [install npm](https://www.npmjs.com/get-npm)
 - [install the Serverless framework](https://serverless.com/framework/docs/providers/aws/guide/installation/)
 - [install the psql CLI](https://www.pgcli.com/install)
 - [docker](https://docs.docker.com/get-docker/)
+
 
 - configure dev environment:
 
