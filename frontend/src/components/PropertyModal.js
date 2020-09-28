@@ -1,6 +1,7 @@
 import React from "react";
 import { Modal, Button } from 'react-bootstrap'
 import PropertyForm from './PropertyForm'
+import "../style/App.css";
 
 const PropertyModal = ({ showModal, setShowModal, formValues, setFormValues }) => {
   return (
