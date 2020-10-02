@@ -5,7 +5,7 @@ import { connect } from "react-redux";
 import { Redirect } from "react-router-dom";
 import { setLoginField, loginUser } from "../actions/login";
 import { LoadingSpinner } from "../components/LoadingSpinner";
-import { Container, Row, Col, Form, Button } from "react-bootstrap";
+import { Alert, Container, Row, Col, Form, Button } from "react-bootstrap";
 
 const Login = (props) => {
   if (props.isLoggedIn) return <Redirect to="/home" />;
@@ -14,6 +14,12 @@ const Login = (props) => {
       <Row className="login">
         <Col>
           <h1>Housing Hub</h1>
+          {props.error ? 
+            <Alert variant='primary'> 
+              Invalid Email or Password
+            </Alert>
+            : ""
+          }
           {props.loading && <LoadingSpinner />}
           {!props.loading && (
             <Form>
