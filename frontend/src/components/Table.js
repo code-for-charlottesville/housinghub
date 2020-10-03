@@ -1,8 +1,9 @@
-import React, { useState } from "react";
+import React, { useState } from 'react';
+import { connect } from 'react-redux'
 import "../style/App.css";
-import { Table } from "react-bootstrap";
+import { Table } from 'react-bootstrap';
 const LocalTable = (props) => {
-  let _renderTableHeader = (column, columnIndex) => {
+  const _renderTableHeader = (column, columnIndex) => {
     return (
       <th
         key={`col-header-${column.field}-${columnIndex}`}
@@ -15,12 +16,12 @@ const LocalTable = (props) => {
     );
   };
 
-  let _renderCell = (value, rowIndex, columnIndex) => {
-    let key = `$cell-{rowIndex}-${columnIndex}-${value}`;
+  const _renderCell = (value, rowIndex, columnIndex) => {
+    const key = `$cell-${rowIndex}-${columnIndex}-${value}`;
     return <td key={key}>{value}</td>;
   };
 
-  let _renderRow = (r, rowIndex) => (
+  const _renderRow = (r, rowIndex) => (
     <tr
       className={props.selectedRowIndex === rowIndex ? "is-selected" : ""}
       onClick={() => props.onRowSelect && props.onRowSelect(r, rowIndex)}
@@ -32,6 +33,28 @@ const LocalTable = (props) => {
     </tr>
   );
 
+  const filterResults = (r) => {
+    const map = new Map();
+    map.set("min_rent", min_rent => min_rent <= r.monthly_rent);
+    map.set("max_rent", max_rent => max_rent >= r.monthly_rent);
+    map.set("date_available", date_available => date_available.getTime() == r.date_available.getTime());
+    map.set("bedrooms", bedrooms => bedrooms === r.bedrooms);
+    map.set("deposit_needed", deposit_needed => deposit_needed === r.deposit);
+    // map.set("credit_report_needed", credit_report_needed => credit_report_needed === r.???);
+    map.set("near_bus_stop", near_bus_stop => near_bus_stop === r.bus_line);
+    // map.set("pets_allowed", pets_allowed => pets_allowed === r.???)
+    map.set("school_district", school_district => school_district === r.school_district);
+    // map.set("lease_type", lease_type => lease_type === r.???)
+    // map.set("voucher_accepted", voucher_accepted => voucher_accepted === r.voucher_type_accepted???)
+
+    for (const rule in props.searchFields) {
+      if(!map.get(rule)(props.searchFields[rule])) {
+        return false;
+      };  
+    };
+    return true;
+  };
+
   return (
     <Table hover>
       <thead className="bg-info text-white">
@@ -41,9 +64,15 @@ const LocalTable = (props) => {
           })}
         </tr>
       </thead>
-      <tbody>{props.rows.map((r, i) => _renderRow(r, i))}</tbody>
+      <tbody>{props.rows.filter(filterResults).map((r, i) => _renderRow(r, i))}</tbody>
     </Table>
   );
 };
 
-export default LocalTable;
+function mapStateToProps(state) {
+  return {
+    searchFields: state.search.query.searchFields,
+  };
+}
+
+export default connect(mapStateToProps)(LocalTable);

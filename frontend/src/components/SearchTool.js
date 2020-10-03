@@ -45,7 +45,6 @@ const SearchTool = (props) => {
             <Col>
               <Form.Control
                 placeholder="Min"
-                placeholder="Max"
                 onChange={(e) =>
                   props.dispatch(
                     setSearchfieldsQuery("min_rent", parseInt(e.target.value))
@@ -254,7 +253,7 @@ const SearchTool = (props) => {
               as="select"
               custom
             >
-              <option>Alemarle</option>
+              <option>Albemarle</option>
               <option>City of Charlottesville</option>
               <option>University of Virginia</option>
             </Form.Control>
@@ -266,7 +265,7 @@ const SearchTool = (props) => {
             }}
           />
           <Form.Group
-            controlId="leaseType"
+            controlId="lease_type"
             style={{
               marginTop: "15px",
               paddingLeft: "9px",
@@ -300,7 +299,7 @@ const SearchTool = (props) => {
             <Form.Control
               onChange={(e) =>
                 props.dispatch(
-                  setSearchfieldsQuery("school_district", e.target.value)
+                  setSearchfieldsQuery("voucher_accepted", e.target.value)
                 )
               }
               as="select"
