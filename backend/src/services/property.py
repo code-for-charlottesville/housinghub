@@ -45,18 +45,21 @@ class PropertyService:
             return _properties.all(), len(result)
             
 
-    def update_property(self, payload):
-        _property = self.session.query(Property).get({"id": payload["id"]})
+    def update_property(self, id, payload):
+        _property = self.session.query(Property).get({"id": id})
         if (_property == None):
             app.logger.error('Property not found')
-        self.session.query(Property).filter(Property.id == payload["id"]).update(payload)
+            return None
+        payload.id = id
+        self.session.merge(payload)
         self.session.commit()
         return _property
 
-    def delete_property(self, payload):
-        _property = self.session.query(Property).get({"id": payload["id"]})
+    def delete_property(self, id):
+        _property = self.session.query(Property).get({"id": id})
         if (_property == None):
             app.logger.error('Property not found')
+            return None
         self.session.delete(_property)
         self.session.commit()
         return _property
@@ -64,6 +67,3 @@ class PropertyService:
     def get_all_property(self):
         # TO DO : changes corresponding to search property API
         return self.db_session.query(Property).all()
-    
-    
-    
