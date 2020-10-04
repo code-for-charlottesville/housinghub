@@ -1,6 +1,5 @@
 import React from "react";
 import store from "../reducers";
-import { FormControl } from "react-bootstrap";
 
 export const InputField = ({
   inputName,

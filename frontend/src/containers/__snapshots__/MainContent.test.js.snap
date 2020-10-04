@@ -650,6 +650,9 @@ exports[`containers/MainContent renders home when nothing else matches 1`] = `
                 <th>
                   Bathrooms
                 </th>
+                <th>
+                  Delete
+                </th>
               </tr>
             </thead>
             <tbody />
@@ -2223,6 +2226,9 @@ exports[`containers/MainContent renders search prop form on /property/search 1`]
                 </th>
                 <th>
                   Bathrooms
+                </th>
+                <th>
+                  Delete
                 </th>
               </tr>
             </thead>

@@ -544,6 +544,9 @@ exports[`containers/SearchProperty redirects to login if not logged in 1`] = `
               <th>
                 Bathrooms
               </th>
+              <th>
+                Delete
+              </th>
             </tr>
           </thead>
           <tbody>
@@ -566,6 +569,13 @@ exports[`containers/SearchProperty redirects to login if not logged in 1`] = `
               <td>
                 0
               </td>
+              <button
+                className="btn btn-primary"
+                disabled={false}
+                type="button"
+              >
+                Delete
+              </button>
             </tr>
           </tbody>
         </table>

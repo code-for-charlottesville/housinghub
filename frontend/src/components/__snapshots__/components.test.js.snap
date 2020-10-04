@@ -651,6 +651,9 @@ exports[`components App 1`] = `
                   <th>
                     Bathrooms
                   </th>
+                  <th>
+                    Delete
+                  </th>
                 </tr>
               </thead>
               <tbody />
@@ -2496,6 +2499,9 @@ exports[`components Table 1`] = `
       </th>
       <th>
         Bathrooms
+      </th>
+      <th>
+        Delete
       </th>
     </tr>
   </thead>
