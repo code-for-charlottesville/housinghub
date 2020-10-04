@@ -3,16 +3,20 @@ import "../style/App.css";
 import Table from "../components/Table";
 import Pagination from "../components/Pagination";
 import PropertyModal from "./PropertyModal";
-import { Row, Col, Modal, Button } from "react-bootstrap";
+import { Row, Col, Container, Button } from "react-bootstrap";
 
 
 export default function SearchTable(props) {
   const [showModal, setShowModal] = useState(false);
-
+  const [formValues, setFormValues] = useState({});
   return (
     <>
       {showModal ? (
-        <PropertyModal showModal={showModal} setShowModal={setShowModal} />
+        <PropertyModal
+          showModal={showModal}
+          setShowModal={setShowModal}
+          formValues={formValues}
+          setFormValues={setFormValues} />
       ) : (
           ""
         )}
@@ -30,8 +34,9 @@ export default function SearchTable(props) {
           }}
         />
       </div>
-      <Row className="text-center pagination">
-        <Col>
+      <Row className="text-center pagination ml-3">
+        <Col sm={1} />
+        <Col sm={9}>
           <Pagination
             numberOfPages={
               props.pagination.totalNumberOfResults /
@@ -47,7 +52,9 @@ export default function SearchTable(props) {
             }
             onSetPage={(index) => console.log("new page: %d", index)}
           />
-          <Button onClick={() => setShowModal(true)}>Add Property</Button>
+        </Col>
+        <Col sm={2}>
+          <Button className="justify-end" onClick={() => setShowModal(true)}>Add Property</Button>
         </Col>
       </Row>
     </>

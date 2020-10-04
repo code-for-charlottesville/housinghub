@@ -4,7 +4,7 @@ from flask import Blueprint, jsonify, request
 from marshmallow import ValidationError, pprint
 import json
 import app
-from app.api import AddPropertyRequest, PropertyResponse, GetPropertyRequest, GetPropertyResponse, PaginationResponse, PropertySchema, UpdatePropertyRequest, UpdatePropertyResponse, DeletePropertyResponse
+from app.api import AddPropertyRequest, PropertyResponse, GetPropertyRequest, GetPropertyResponse, PaginationResponse, PropertySchema, UpdatePropertyRequest, UpdatePropertyResponse
 from app.auth import authenticate
 from app.spec import DocumentedBlueprint
 
@@ -113,18 +113,54 @@ def post_property():
         return jsonify(code=500, error='internal error'), 500
 
 
-@property_module.route('/property', methods=['PUT'])
+@property_module.route('/property/<id>', methods=['PUT'])
 @authenticate
-def put_property():
-    """updates a Property in the DB and returns the updated object
-    :param request: flask request object
-    :param request: dictionary of jwtPayload
-    :return tuple (response body (dict), response code (int), error (string))
+def put_property(id):
+    """Updates a Property in the database and returns response
+    ---
+    put:
+        tags: 
+            - authentication    
+        summary: Updates an existing property
+        parameters:
+            - in: path
+              name: id
+              schema:
+                type: string
+                format: uuid
+              required: true
+              description: ID of property to delete
+        requestBody:
+            required: true
+            content:
+                application/json:
+                    schema: UpdatePropertyRequest
+        responses:
+            '200':
+                description: newly created property
+                content:
+                    application/json:
+                        schema: UpdatePropertyResponse
+            '400':
+                description: Request is invalid
+                content:
+                    application/json:
+                        schema: ErrorResponse
+            '404':
+                description: No property exists with the provided ID
+            '500':
+                description: An error message.
+                content:
+                    application/json:
+                        schema: ErrorResponse
     """
     try:
-        payload = request.get_json()
-        new_property = app.services.property_service().update_property(payload)
-        return jsonify(UpdatePropertyResponse().dump(new_property))
+        payload = UpdatePropertyRequest().load(request.get_json(), transient=True)
+        new_property = app.services.property_service().update_property(id,payload)
+        if new_property:
+            return jsonify(UpdatePropertyResponse().dump(new_property))
+        else:
+            return jsonify(None), 404
     except ValidationError as err:
         app.logger.error(f'Invalid request ${err.messages}')
         return jsonify(err.messages), 400
@@ -135,18 +171,40 @@ def put_property():
     return jsonify(code=500, error='not implemented'), 500
 
 
-@property_module.route('/property', methods=['DELETE'])
+@property_module.route('/property/<id>', methods=['DELETE'])
 @authenticate
-def delete_property():
-    """deletes a Property in the DB and returns the deleted object
-    :param request: flask request object
-    :param request: dictionary of jwtPayload
-    :return tuple (response body (dict), response code (int), error (string))
+def delete_property(id):
+    """deletes a Property from the database by ID
+    ---
+    delete:
+        tags: 
+            - authentication    
+        summary: Delete property
+        parameters:
+            - in: path
+              name: id
+              schema:
+                type: string
+                format: uuid
+              required: true
+              description: ID of property to delete
+        responses:
+            '204':
+                description: Property successfully deleted
+            '404':
+                description: No property exists with the provided ID
+            '500':
+                description: An error message.
+                content:
+                    application/json:
+                        schema: ErrorResponse
     """
     try:
-        payload = request.get_json()
-        deleted_property = app.services.property_service().delete_property(payload)
-        return jsonify(DeletePropertyResponse().dump(deleted_property))
+        deleted_property = app.services.property_service().delete_property(id)
+        if deleted_property:
+            return jsonify(None), 204
+        else:
+            return jsonify(None), 404
     except ValidationError as err:
         app.logger.error(f'Invalid request ${err.messages}')
         return jsonify(err.messages), 400
