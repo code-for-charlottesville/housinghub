@@ -2,7 +2,6 @@ import React from "react";
 import "../style/App.css";
 import { Table, Button } from "react-bootstrap";
 const LocalTable = (props) => {
-
   let _renderCell = (value, rowIndex, columnIndex) => {
     let key = `$cell-{rowIndex}-${columnIndex}-${value}`;
     return <td key={key}>{value}</td>;
@@ -24,7 +23,7 @@ const LocalTable = (props) => {
   const TableHead = ({ columns }) => {
     return columns.map(({ field, title }, index) => {
       return <th key={index}>{title}</th>;
-    })
+    });
   };
 
   return (
@@ -32,7 +31,7 @@ const LocalTable = (props) => {
       <thead className="bg-info text-white">
         <tr>
           <TableHead columns={props.columns} />
-          <th >Delete</th>
+          <th>Delete</th>
         </tr>
       </thead>
       <tbody>{props.rows.map((r, i) => _renderRow(r, i))}</tbody>

@@ -6,6 +6,7 @@ import apiEndpoint from "./endpoint";
  **/
 
 export function postQuery(query) {
+  console.log("postQuery");
   return axios
     .post(`${apiEndpoint}/property/search`, query)
     .then((r) => {

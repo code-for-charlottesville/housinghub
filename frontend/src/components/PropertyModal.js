@@ -1,17 +1,20 @@
 import React from "react";
-import { Modal, Button } from 'react-bootstrap'
-import PropertyForm from './PropertyForm'
-import { postProperty } from '../api/property'
-
+import { Modal, Button } from "react-bootstrap";
+import PropertyForm from "./PropertyForm";
+import { postProperty } from "../api/property";
 
 const addProperty = (formValues, setFormValues, setShowModal) => {
-  postProperty(formValues)
-  setFormValues({})
-  setShowModal(false)
-}
+  postProperty(formValues);
+  setFormValues({});
+  setShowModal(false);
+};
 
-const PropertyModal = ({ showModal, setShowModal, formValues, setFormValues }) => {
-
+const PropertyModal = ({
+  showModal,
+  setShowModal,
+  formValues,
+  setFormValues,
+}) => {
   return (
     <>
       <Modal size="lg" show={showModal} onHide={() => setShowModal(false)}>
@@ -25,7 +28,10 @@ const PropertyModal = ({ showModal, setShowModal, formValues, setFormValues }) =
           <Button variant="primary" onClick={() => setShowModal(false)}>
             Cancel
           </Button>
-          <Button variant="success" onClick={() => addProperty(formValues, setFormValues, setShowModal)}>
+          <Button
+            variant="success"
+            onClick={() => addProperty(formValues, setFormValues, setShowModal)}
+          >
             Save
           </Button>
         </Modal.Footer>
@@ -34,4 +40,4 @@ const PropertyModal = ({ showModal, setShowModal, formValues, setFormValues }) =
   );
 };
 
-export default PropertyModal
+export default PropertyModal;

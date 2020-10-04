@@ -5,7 +5,6 @@ import Pagination from "../components/Pagination";
 import PropertyModal from "./PropertyModal";
 import { Row, Col, Button } from "react-bootstrap";
 
-
 export default function SearchTable(props) {
   const [showModal, setShowModal] = useState(false);
   const [formValues, setFormValues] = useState({});
@@ -16,10 +15,11 @@ export default function SearchTable(props) {
           showModal={showModal}
           setShowModal={setShowModal}
           formValues={formValues}
-          setFormValues={setFormValues} />
+          setFormValues={setFormValues}
+        />
       ) : (
-          ""
-        )}
+        ""
+      )}
       <div className="border mb-4">
         <Table
           columns={props.columns}
@@ -55,7 +55,9 @@ export default function SearchTable(props) {
           />
         </Col>
         <Col sm={2}>
-          <Button className="justify-end" onClick={() => setShowModal(true)}>Add Property</Button>
+          <Button className="justify-end" onClick={() => setShowModal(true)}>
+            Add Property
+          </Button>
         </Col>
       </Row>
     </>
