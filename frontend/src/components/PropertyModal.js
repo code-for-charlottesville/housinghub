@@ -2,6 +2,7 @@ import React from "react";
 import { Modal, Button } from "react-bootstrap";
 import PropertyForm from "./PropertyForm";
 import { postProperty } from "../api/property";
+import "../style/App.css";
 
 const addProperty = (formValues, setFormValues, setShowModal) => {
   postProperty(formValues);
