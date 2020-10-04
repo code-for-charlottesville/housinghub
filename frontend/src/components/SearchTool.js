@@ -120,7 +120,7 @@ const SearchTool = (props) => {
             <Form.Label>Bedrooms</Form.Label>
             <Form.Control
               as="select"
-              id="numBeds"
+              // id="numBeds"
               onChange={(e) =>
                 props.dispatch(
                   setSearchfieldsQuery("bedrooms", parseInt(e.target.value))
@@ -150,7 +150,7 @@ const SearchTool = (props) => {
             <Form.Control
               as="select"
               custom
-              id="numBath"
+              // id="numBath"
               onChange={(e) =>
                 props.dispatch(
                   setSearchfieldsQuery("bathrooms", parseFloat(e.target.value))

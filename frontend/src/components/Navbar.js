@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import "../style/App.css";
 import BootstrapSearch from "../images/bootstrap-search";
 import { Link } from "react-router-dom";
+import { setSearchfieldsQuery, searchProperties } from "../actions/search";
 import {
   Navbar,
   NavDropdown,
@@ -13,6 +14,13 @@ import {
 } from "react-bootstrap";
 
 const LocalNavbar = (props) => {
+  const onChange = (e) =>
+    props.dispatch(setSearchfieldsQuery("bedrooms", e.target.value));
+  
+  const onClick = (e) => {
+    e.preventDefault();
+    searchProperties();
+  }
   return (
     <Navbar
       collapseOnSelect
@@ -42,8 +50,9 @@ const LocalNavbar = (props) => {
               searchtype="text"
               placeholder="Search"
               className="search-input"
+              onChange={onChange}
             />
-            <Button className="search-button" variant="light">
+            <Button className="search-button" variant="light" onClick={onClick}>
               <BootstrapSearch />
             </Button>
           </Form>

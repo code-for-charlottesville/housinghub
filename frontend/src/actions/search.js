@@ -37,6 +37,7 @@ export function setSearchResults(response) {
  * fires when user attempts to POST new query
  **/
 export function searchProperties() {
+  console.log('called')
   store.dispatch(setLoading(true));
   // Make API call to backend/property/search
   postQuery(store.getState().search.query).then((response) => {
@@ -46,6 +47,7 @@ export function searchProperties() {
         console.log(response);
         store.dispatch(setSearchResults(response));
       } else {
+        // TODO: Should change the state here.
         console.log("No matches found");
       }
     } else {
