@@ -1,11 +1,12 @@
 import React from "react";
 import { Modal, Button } from 'react-bootstrap'
 import PropertyForm from './PropertyForm'
+import "../style/App.css";
 
 const PropertyModal = ({ showModal, setShowModal, formValues, setFormValues }) => {
   return (
     <>
-      <Modal size="lg" show={showModal} onHide={() => setShowModal(false)}>
+      <Modal size="lg" scrollable show={showModal} onHide={() => setShowModal(false)}>
         <Modal.Header className="bg-info" closeButton>
           <Modal.Title className="text-light">Property Details</Modal.Title>
         </Modal.Header>

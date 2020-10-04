@@ -107,3 +107,9 @@ body {
     width: 30vw;
   }
 }
+
+/* Close Button style */
+.close {
+  color: #f8f9fa;
+  opacity: 1;
+}
