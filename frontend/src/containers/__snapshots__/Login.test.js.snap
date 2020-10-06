@@ -13,6 +13,7 @@ exports[`containers/Login loading spinner if loading 1`] = `
       <h1>
         Housing Hub
       </h1>
+      
       <div
         className="spinner-border"
         role="status"
@@ -35,6 +36,12 @@ exports[`containers/Login renders fields 1`] = `
       <h1>
         Housing Hub
       </h1>
+      <div
+        className="fade alert alert-primary show"
+        role="alert"
+      >
+        Invalid Email or Password
+      </div>
       <form
         className=""
       >
