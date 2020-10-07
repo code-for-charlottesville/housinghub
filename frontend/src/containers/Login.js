@@ -1,12 +1,10 @@
 import React from "react";
-
 import "../style/App.css";
 import { connect } from "react-redux";
 import { Redirect } from "react-router-dom";
 import { setLoginField, loginUser } from "../actions/login";
 import { LoadingSpinner } from "../components/LoadingSpinner";
-import { Container, Row, Col, Form, Button } from "react-bootstrap";
-
+import { Alert, Container, Row, Col, Form, Button } from "react-bootstrap";
 const Login = (props) => {
   if (props.isLoggedIn) return <Redirect to="/home" />;
   return (
@@ -14,6 +12,11 @@ const Login = (props) => {
       <Row className="login">
         <Col>
           <h1>Housing Hub</h1>
+          {props.error ? (
+            <Alert variant="primary">Invalid Email or Password</Alert>
+          ) : (
+            ""
+          )}
           {props.loading && <LoadingSpinner />}
           {!props.loading && (
             <Form>
@@ -27,7 +30,6 @@ const Login = (props) => {
                   }
                 />
               </Form.Group>
-
               <Form.Group controlId="formBasicPassword">
                 <Form.Control
                   type="password"
@@ -65,7 +67,6 @@ const Login = (props) => {
     </Container>
   );
 };
-
 function mapStateToProps(state) {
   return {
     fields: state.login.fields,
@@ -74,5 +75,4 @@ function mapStateToProps(state) {
     error: state.login.error,
   };
 }
-
 export default connect(mapStateToProps)(Login);
