@@ -8,8 +8,6 @@
     "@testing-library/user-event": "^7.2.1",
     "axios": "^0.19.2",
     "bootstrap": "^4.5.0",
-    "eslint": "^7.10.0",
-    "eslint-config-react-app": "^5.2.1",
     "lodash": "^4.17.15",
     "react": "^16.13.1",
     "react-bootstrap": "^1.0.1",
