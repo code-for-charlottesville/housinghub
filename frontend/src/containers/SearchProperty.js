@@ -1,7 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import "../style/App.css";
-import { Modal, Row, Col } from "react-bootstrap";
+import { Row, Col } from "react-bootstrap";
 import SearchFiltersSidebar from "../components/SearchFiltersSidebar";
 import SearchTable from "../components/SearchTable";
 import { SEARCH_COLUMNS } from "../constants/global";

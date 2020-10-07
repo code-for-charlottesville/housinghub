@@ -3,8 +3,7 @@ import "../style/App.css";
 import Table from "../components/Table";
 import Pagination from "../components/Pagination";
 import PropertyModal from "./PropertyModal";
-import { Row, Col, Container, Button } from "react-bootstrap";
-
+import { Row, Col, Button } from "react-bootstrap";
 
 export default function SearchTable(props) {
   const [showModal, setShowModal] = useState(false);
@@ -16,17 +15,19 @@ export default function SearchTable(props) {
           showModal={showModal}
           setShowModal={setShowModal}
           formValues={formValues}
-          setFormValues={setFormValues} />
+          setFormValues={setFormValues}
+        />
       ) : (
-          ""
-        )}
+        ""
+      )}
       <div className="border mb-4">
         <Table
           columns={props.columns}
           rows={props.rows}
           selectedRowIndex={3}
           onColumnSort={(cName, cIndex) => {
-            console.log(cName, cIndex);
+            console.log("cname is ", cName);
+            console.log("cIndex is ", cIndex);
           }}
           onRowSelect={(rName, rIndex) => {
             console.log(rName, rIndex);
@@ -54,7 +55,9 @@ export default function SearchTable(props) {
           />
         </Col>
         <Col sm={2}>
-          <Button className="justify-end" onClick={() => setShowModal(true)}>Add Property</Button>
+          <Button className="justify-end" onClick={() => setShowModal(true)}>
+            Add Property
+          </Button>
         </Col>
       </Row>
     </>
