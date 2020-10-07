@@ -1268,7 +1268,8 @@ exports[`components NewPropForm 1`] = `
       </div>
       <div>
         <label>
-          If not yet available, please specify below when the property will be available using the format MM-dd-YYYY. The default will be the current date if left as is.
+          If not yet available, please specify below when the property will be available using the
+ format MM-dd-YYYY. The default will be the current date if left as is.
         </label>
         <div>
           <input
@@ -1294,7 +1295,8 @@ exports[`components NewPropForm 1`] = `
       </div>
       <div>
         <label>
-          Please specify below when the property was first listed using the format MM-dd-YYYY. The default will be the current date if left as is.
+          Please specify below when the property was first listed using the format MM-dd-YYYY.
+ The default will be the current date if left as is.
         </label>
         <div>
           <input
@@ -1372,7 +1374,8 @@ exports[`components NewPropForm 1`] = `
       </div>
       <div>
         <label>
-          Please specify below when the property's landlord was last contacted.  The default will be the current date if left as is.
+          Please specify below when the property's landlord was last contacted. 
+ The default will be the current date if left as is.
         </label>
         <div>
           <input
@@ -1590,7 +1593,8 @@ exports[`components NewPropForm 1`] = `
       </div>
       <div>
         <label>
-          If the property requires a credit screening, please specify the credit screening company used.
+          If the property requires a credit screening, please specify the
+ credit screening company used.
         </label>
         <div>
           <input
@@ -1603,7 +1607,8 @@ exports[`components NewPropForm 1`] = `
       </div>
       <div>
         <label>
-          Please specify the company typically used to conduct background checks for the property.
+          Please specify the company typically used to conduct background
+ checks for the property.
         </label>
         <div>
           <input
@@ -1872,7 +1877,8 @@ exports[`components PaymentDetailsForm 1`] = `
   </div>
   <div>
     <label>
-      If the property requires a credit screening, please specify the credit screening company used.
+      If the property requires a credit screening, please specify the
+ credit screening company used.
     </label>
     <div>
       <input
@@ -1885,7 +1891,8 @@ exports[`components PaymentDetailsForm 1`] = `
   </div>
   <div>
     <label>
-      Please specify the company typically used to conduct background checks for the property.
+      Please specify the company typically used to conduct background
+ checks for the property.
     </label>
     <div>
       <input
@@ -2276,7 +2283,8 @@ exports[`components PropDetailsForm 1`] = `
   </div>
   <div>
     <label>
-      If not yet available, please specify below when the property will be available using the format MM-dd-YYYY. The default will be the current date if left as is.
+      If not yet available, please specify below when the property will be available using the
+ format MM-dd-YYYY. The default will be the current date if left as is.
     </label>
     <div>
       <input
@@ -2302,7 +2310,8 @@ exports[`components PropDetailsForm 1`] = `
   </div>
   <div>
     <label>
-      Please specify below when the property was first listed using the format MM-dd-YYYY. The default will be the current date if left as is.
+      Please specify below when the property was first listed using the format MM-dd-YYYY.
+ The default will be the current date if left as is.
     </label>
     <div>
       <input
@@ -2380,7 +2389,8 @@ exports[`components PropDetailsForm 1`] = `
   </div>
   <div>
     <label>
-      Please specify below when the property's landlord was last contacted.  The default will be the current date if left as is.
+      Please specify below when the property's landlord was last contacted. 
+ The default will be the current date if left as is.
     </label>
     <div>
       <input
