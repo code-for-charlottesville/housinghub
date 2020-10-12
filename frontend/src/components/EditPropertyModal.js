@@ -1,52 +1,37 @@
 import React from "react";
 import { Modal, Button } from "react-bootstrap";
-import EditPropertyForm from "./EditPropertyForm";
-import { editProperty } from "../api/property";
+import PropertyForm from "./PropertyForm";
+import { postProperty } from "../api/property"; //fix with update
 import "../style/App.css";
 
 const updateProperty = (formValues, setFormValues, setShowEditModal) => {
-  let formValues_withoutID = { ...formValues };
-  delete formValues_withoutID.id;
-  editProperty(formValues_withoutID, formValues.id); 
+  postProperty(formValues);
   setFormValues({});
   setShowEditModal(false);
 };
 
 const EditPropertyModal = ({
-  showEditModal,
+  showModal,
   setShowEditModal,
   formValues,
   setFormValues,
 }) => {
-const originalFormValues = { ...formValues }; {/**/}
-  console.log(originalFormValues); {/**/}
-
   return (
     <>
-      <Modal size="lg" show={showEditModal} onHide={() => {
-        setShowEditModal(false)
-      }}>
+      <Modal size="lg" show={showModal} onHide={() => setShowEditModal(false)}>
         <Modal.Header className="bg-info" closeButton>
-          <Modal.Title className="text-light">Edit Property</Modal.Title>
+          <Modal.Title className="text-light">EDITING PROPERTY</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <EditPropertyForm formValues={formValues} setFormValues={setFormValues} /> 
+          <PropertyForm formValues={formValues} setFormValues={setFormValues} />
         </Modal.Body>
         <Modal.Footer>
-          <Button variant="primary" onClick={(e) => {
-            setFormValues(originalFormValues); {/**/}
-            setShowEditModal(false); 
-            console.log(originalFormValues); {/**/}
-            console.log(formValues); {/**/}
-          }}>
+          <Button variant="primary" onClick={() => setShowEditModal(false)}>
             Cancel
           </Button>
           <Button
             variant="success"
-            onClick={() => {
-              updateProperty(formValues, setFormValues, setShowEditModal)
-              window.location.reload()
-            }}
+            onClick={() => updateProperty(formValues, setFormValues, setShowEditModal)}
           >
             Save
           </Button>
