@@ -600,7 +600,7 @@ exports[`containers/SearchProperty redirects to login if not logged in 1`] = `
               type="button"
             >
               <a>
-                Next
+                Back
               </a>
             </button>
             <button
@@ -610,7 +610,7 @@ exports[`containers/SearchProperty redirects to login if not logged in 1`] = `
               type="button"
             >
               <a>
-                Last
+                Next
               </a>
             </button>
           </div>

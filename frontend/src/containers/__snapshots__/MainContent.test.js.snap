@@ -678,7 +678,7 @@ exports[`containers/MainContent renders home when nothing else matches 1`] = `
                 type="button"
               >
                 <a>
-                  Next
+                  Back
                 </a>
               </button>
               <button
@@ -688,7 +688,7 @@ exports[`containers/MainContent renders home when nothing else matches 1`] = `
                 type="button"
               >
                 <a>
-                  Last
+                  Next
                 </a>
               </button>
             </div>
@@ -2255,7 +2255,7 @@ exports[`containers/MainContent renders search prop form on /property/search 1`]
                 type="button"
               >
                 <a>
-                  Next
+                  Back
                 </a>
               </button>
               <button
@@ -2265,7 +2265,7 @@ exports[`containers/MainContent renders search prop form on /property/search 1`]
                 type="button"
               >
                 <a>
-                  Last
+                  Next
                 </a>
               </button>
             </div>
