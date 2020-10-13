@@ -102,6 +102,7 @@ def post_property():
     """
     try:
         payload = AddPropertyRequest().load(request.get_json(), transient=True)
+        app.logger.error(payload)
         _property = app.services.property_service().add_property(payload)
         return jsonify(PropertyResponse().dump(_property))
     except ValidationError as err:

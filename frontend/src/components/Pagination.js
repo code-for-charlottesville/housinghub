@@ -30,9 +30,9 @@ const Pagination = (props) => {
         )
       )}
       {props.currentPageIndex !== props.numberOfPages - 1 &&
-        renderPaginationBox("Next", props.currentPageIndex + 1)}
+        renderPaginationBox("Back", props.currentPageIndex + 1)}
       {props.currentPageIndex !== props.numberOfPages - 1 &&
-        renderPaginationBox("Last", props.numberOfPages - 1)}
+        renderPaginationBox("Next", props.numberOfPages - 1)}
     </ButtonGroup>
   );
 };
