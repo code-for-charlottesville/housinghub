@@ -167,6 +167,52 @@ $(cd alembic && alembic upgrade head)
 serverless wsgi serve
 ```
 
+### Windows Installation 
+
+- When you need to use a terminal for some of these installs, use Windows Command Prompt Terminal, UNLESS it says otherwise. 
+
+- [install python 3.6.x](https://realpython.com/installing-python/)
+- [install npm](https://www.npmjs.com/get-npm)
+- [install the Serverless framework](https://serverless.com/framework/docs/providers/aws/guide/installation/)
+- [install the psql CLI](https://www.pgcli.com/install)
+
+- [docker](https://docs.docker.com/get-docker/) 
+- This is where it gets tricky.  When you select to download for Windows, if you are using the version Windows Home, there is a seperate link to click on that will take you to the Windows Home installation.  Its in the first paragraph on the page. Most people will have Windows Home.  Make sure to read all of the directions carefully for installing Docker (and everything else of course).  There is a lot of good info and trouble shooting tips but remeber, we are always here to help.
+
+- [install Unbutu 20.04 LTS](https://ubuntu.com/wsl) MAKE SURE IT'S THE 20.04 LTS VERSION.
+- This is Windows Linux server and will help with the other apps out when they need to use Linux commands.
+
+- [install Tilt for Windows](https://docs.tilt.dev/install.html)
+
+After all of these wonderful programs have been installed you will need to run this command in your Visual Studio Code terminal which will configure the dev enviornment (make sure the command is all on one line.  Also, the file path should be to the housinghub-main folder):
+```bash
+python3 -m venv venv . venv/bin/activate
+```
+- If it worked, you should get nothing, just a new blank line.
+
+- Then run this command in the Visual Studio Code terminal:
+```bash
+pip install -r requirements.txt npm i
+```
+- It will give you an error saying that it cannot find the 'requirements.txt' file.  That's ok!  The next error it will probably give you will be that you pip is an older version and that you should upgrade it.  It will give you directions on how to do it, follow and execute those directions to upgrade to the latest pip.
+
+- Then run this command in the Visual Studio Code terminal (Make sure Docker is up and running):
+```sh
+docker run -d -p 5432:5432 -e POSTGRES_DB=housinghub -e POSTGRES_USER=app -e POSTGRES_PASSWORD=apppassword postgres:11.7
+```
+- I'm pretty sure this will install, let it do its thing.
+
+- Once that has been done, go to Visual Studio Code and make sure the housing-hub folder is open and the file path in the terminal is the housing-hub main folder.  In the VS Code terminal, type in but replace user with your user folder name:
+```sh
+c:\users\user\bin\tilt.exe up
+```
+- If the root path is different, find the correct root path and type that in instead BUT that should be the root path.
+- It should pop up some directions about how to start the Tilt server in the command line, hit the space bar and that will open Tilt in your browser.  When you first get Tilt running, it will take about 10-15 mins to fully set itself up.  It won't take that long every time you open it up after this.  If everything was set up correctly, you will get all green on the links that are on the right side of the Tilt app page.
+
+- To set up a user profile, go to the housing-hub api link, then in the top center right part of the screen it should say http://localhost:5000/, click on that local host link which will take you to the Swagger UI.  Go down to the 'POST auth/register/' (second choice down) and click on it.  Then click 'Try it Out' which should be to the top right of the section.  Change the username and password to what ever you want and then click Execute.  It should go through but if it doesn't, click Execute again and it should go through.  Then go back to the Tilt app and click on the Edge link, then click the localhost link in the top center right part of the page.  That should take you to the Housing Hub app login page.  Use the username and password you just made to login and you should be in the app!
+
+- If you are having any trouble please let Adam Lutz or David Cooke know and they can help work out and kinks.
+
 ### Deployment 
 
 This API is deployed as a serverless application on AWS. The entire stack deployment is handled by the serveress framework. **However**, the database migrations are not done as part of the deployment and have to be run separately from the serverless deployment (see details below).
