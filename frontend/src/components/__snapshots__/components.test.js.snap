@@ -668,31 +668,7 @@ exports[`components App 1`] = `
             <div
               className="col-sm-9"
             >
-              <div
-                className="btn-group"
-                role="group"
-              >
-                <button
-                  className="PaginationBox btn btn-secondary"
-                  disabled={false}
-                  onClick={[Function]}
-                  type="button"
-                >
-                  <a>
-                    Next
-                  </a>
-                </button>
-                <button
-                  className="PaginationBox btn btn-secondary"
-                  disabled={false}
-                  onClick={[Function]}
-                  type="button"
-                >
-                  <a>
-                    Last
-                  </a>
-                </button>
-              </div>
+              <ul />
             </div>
             <div
               className="col-sm-2"
@@ -712,7 +688,47 @@ exports[`components App 1`] = `
     </div>
   </div>
   <footer
-    className="App-footer"
+    className="container-fluid navbar-dark bg-dark text-center align-middle App-footer"
+  >
+    <div
+      className="footer-text"
+    >
+      ©Code for Charlottesville |
+       
+      <a
+        href="https://brigade.codeforamerica.org/brigades/Code-for-Charlottesville/"
+      >
+        Brigade Website
+      </a>
+       
+      | 
+      <a
+        href="/LICENSE"
+      >
+        License
+      </a>
+       | 
+      <a
+        href="/VERSION"
+      >
+        Version
+      </a>
+    </div>
+    <span
+      className="text-right"
+    >
+       Copyright Housing Hub 
+    </span>
+  </footer>
+</div>
+`;
+
+exports[`components Footer 1`] = `
+<footer
+  className="container-fluid navbar-dark bg-dark text-center align-middle App-footer"
+>
+  <div
+    className="footer-text"
   >
     ©Code for Charlottesville |
      
@@ -734,34 +750,12 @@ exports[`components App 1`] = `
     >
       Version
     </a>
-  </footer>
-</div>
-`;
-
-exports[`components Footer 1`] = `
-<footer
-  className="App-footer"
->
-  ©Code for Charlottesville |
-   
-  <a
-    href="https://brigade.codeforamerica.org/brigades/Code-for-Charlottesville/"
+  </div>
+  <span
+    className="text-right"
   >
-    Brigade Website
-  </a>
-   
-  | 
-  <a
-    href="/LICENSE"
-  >
-    License
-  </a>
-   | 
-  <a
-    href="/VERSION"
-  >
-    Version
-  </a>
+     Copyright Housing Hub 
+  </span>
 </footer>
 `;
 
