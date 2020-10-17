@@ -589,7 +589,31 @@ exports[`containers/SearchProperty redirects to login if not logged in 1`] = `
         <div
           className="col-sm-9"
         >
-          <ul />
+          <div
+            className="btn-group"
+            role="group"
+          >
+            <button
+              className="PaginationBox btn btn-secondary"
+              disabled={false}
+              onClick={[Function]}
+              type="button"
+            >
+              <a>
+                Next
+              </a>
+            </button>
+            <button
+              className="PaginationBox btn btn-secondary"
+              disabled={false}
+              onClick={[Function]}
+              type="button"
+            >
+              <a>
+                Last
+              </a>
+            </button>
+          </div>
         </div>
         <div
           className="col-sm-2"
