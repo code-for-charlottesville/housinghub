@@ -5,11 +5,14 @@
 }
 
 .App-footer {
-  text-align: center;
-  position: relative;
-  bottom: 0;
-  margin:  0 10px;
-  width: 100%;
+  color: white;
+  height: 5vh;
+  display: flex;
+  align-items: center;
+}
+
+.footer-text {
+  margin: auto;
 }
 
 .App-title {
@@ -54,13 +57,6 @@
 body {
   font-family: "Roboto", "sans-serif";
 }
-.search-page {
-  height: 90vh;
-}
-
-.search-table {
-  height: 80vh;
-}
 
 /*Nav styles*/
 .h-hub-nav-link:hover {
@@ -94,8 +90,7 @@ body {
 }
 
 .pagination {
-  margin-top: 70vh;
-
+  margin-top: 2vh;
 }
 
 
