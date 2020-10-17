@@ -35,23 +35,23 @@ export default function SearchTable(props) {
           }}
         />
       </div>
+
       <Row className="text-center pagination ml-3">
         <Col sm={1} />
         <Col sm={9}>
           <Pagination
             numberOfPages={
-              props.pagination.totalNumberOfResults /
-              props.pagination.results_per_page
+              Math.ceil(props.pagination.totalNumberOfResults /
+              props.pagination.results_per_page)
             }
             currentPageIndex={props.pagination.page}
-            pageIndexStart={
+            resultsIndexStart={
               props.pagination.page * props.pagination.results_per_page
             }
-            pageIndexEnd={
-              props.pagination.page * (props.pagination.results_per_page + 1) -
-              1
+            resultsIndexEnd={
+              (props.pagination.page + 1) * (props.pagination.results_per_page) - 1
             }
-            onSetPage={(index) => console.log("new page: %d", index)}
+            onSetPage={(index) => props.pagination.page = index}
           />
         </Col>
         <Col sm={2}>
