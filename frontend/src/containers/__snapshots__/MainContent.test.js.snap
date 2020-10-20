@@ -667,6 +667,7 @@ exports[`containers/MainContent renders home when nothing else matches 1`] = `
           <div
             className="col-sm-9"
           >
+<<<<<<< HEAD
             <div
               className="btn-group"
               role="group"
@@ -692,6 +693,9 @@ exports[`containers/MainContent renders home when nothing else matches 1`] = `
                 </a>
               </button>
             </div>
+=======
+            <ul />
+>>>>>>> e64c493fcfb01400faba87e88bf6d0bcccba08c6
           </div>
           <div
             className="col-sm-2"
@@ -2244,6 +2248,7 @@ exports[`containers/MainContent renders search prop form on /property/search 1`]
           <div
             className="col-sm-9"
           >
+<<<<<<< HEAD
             <div
               className="btn-group"
               role="group"
@@ -2269,6 +2274,9 @@ exports[`containers/MainContent renders search prop form on /property/search 1`]
                 </a>
               </button>
             </div>
+=======
+            <ul />
+>>>>>>> e64c493fcfb01400faba87e88bf6d0bcccba08c6
           </div>
           <div
             className="col-sm-2"

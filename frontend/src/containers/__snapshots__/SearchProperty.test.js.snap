@@ -589,6 +589,7 @@ exports[`containers/SearchProperty redirects to login if not logged in 1`] = `
         <div
           className="col-sm-9"
         >
+<<<<<<< HEAD
           <div
             className="btn-group"
             role="group"
@@ -614,6 +615,9 @@ exports[`containers/SearchProperty redirects to login if not logged in 1`] = `
               </a>
             </button>
           </div>
+=======
+          <ul />
+>>>>>>> e64c493fcfb01400faba87e88bf6d0bcccba08c6
         </div>
         <div
           className="col-sm-2"
