@@ -13,7 +13,7 @@ Object {
   "searchResults": Object {
     "pagination": Object {
       "page": 0,
-      "results_per_page": 0,
+      "results_per_page": 15,
       "totalNumberOfResults": 0,
     },
     "results": Array [],
@@ -34,7 +34,7 @@ Object {
   "searchResults": Object {
     "pagination": Object {
       "page": 5,
-      "results_per_page": 0,
+      "results_per_page": 15,
       "totalNumberOfResults": 0,
     },
     "results": Array [],
@@ -71,7 +71,7 @@ Object {
   "searchResults": Object {
     "pagination": Object {
       "page": 0,
-      "results_per_page": 0,
+      "results_per_page": 15,
       "totalNumberOfResults": 0,
     },
     "results": Array [],

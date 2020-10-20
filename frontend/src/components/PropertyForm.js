@@ -13,6 +13,7 @@ import {
 } from "../images";
 
 const PropertyForm = ({ formValues, setFormValues }) => {
+
   const handleChange = (e) => {
     let localFormValues = formValues;
     localFormValues[e.target.id] =
@@ -29,7 +30,7 @@ const PropertyForm = ({ formValues, setFormValues }) => {
             <Image src={HouseImage} className="mr-2" />
             Property Name
           </Form.Label>
-          <Form.Control type="text" placeholder="Property Name" />
+          <Form.Control type="text" placeholder="Property Name" onChange={handleChange} />
         </Form.Group>
         <Form.Group controlId="address">
           <Form.Label>
@@ -47,7 +48,8 @@ const PropertyForm = ({ formValues, setFormValues }) => {
             <Image src={HouseImage} className="mr-2" />
             Housing Type
           </Form.Label>
-          <Form.Control as="select" onChange={handleChange}>
+          <Form.Control as="select" onChange={handleChange} >
+            <option></option>
             <option>Apartment</option>
             <option>Shared House</option>
             <option>Basement Apartment</option>
@@ -144,37 +146,37 @@ const PropertyForm = ({ formValues, setFormValues }) => {
           />
         </Form.Group>
         <Form.Label>Test Label</Form.Label>
-        <Form.Switch
+        <Form.Switch controlId="near_busstop"
           className="mt-2 mb-2"
           id="near_busstop"
           label="Bus Nearby"
           onChange={handleChange}
         />
-        <Form.Switch
+        <Form.Switch controlId="has_basement"
           className="mt-2 mb-2"
           id="has_basement"
           label="Basement"
           onChange={handleChange}
         />
-        <Form.Switch
+        <Form.Switch controlId="wheelchair_accessibility"
           className="mt-2 mb-2"
           id="wheelchair_accessibility"
           label="ADA Complient"
           onChange={handleChange}
         />
-        <Form.Switch
+        <Form.Switch controlId="background_check_required"
           className="mt-2 mb-2"
           id="background_check_required"
           label="No Background Check"
           onChange={handleChange}
         />
-        <Form.Switch
+        <Form.Switch controlId="pets_allowed"
           className="mt-2 mb-2"
           id="pets_allowed"
           label="Pets Allowed"
           onChange={handleChange}
         />
-        <Form.Switch
+        <Form.Switch controlId="elevator"
           className="mt-2 mb-2"
           id="elevator"
           label="Elevator"
