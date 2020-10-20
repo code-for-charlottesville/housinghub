@@ -667,31 +667,7 @@ exports[`containers/MainContent renders home when nothing else matches 1`] = `
           <div
             className="col-sm-9"
           >
-            <div
-              className="btn-group"
-              role="group"
-            >
-              <button
-                className="PaginationBox btn btn-secondary"
-                disabled={false}
-                onClick={[Function]}
-                type="button"
-              >
-                <a>
-                  Next
-                </a>
-              </button>
-              <button
-                className="PaginationBox btn btn-secondary"
-                disabled={false}
-                onClick={[Function]}
-                type="button"
-              >
-                <a>
-                  Last
-                </a>
-              </button>
-            </div>
+            <ul />
           </div>
           <div
             className="col-sm-2"
@@ -2244,31 +2220,7 @@ exports[`containers/MainContent renders search prop form on /property/search 1`]
           <div
             className="col-sm-9"
           >
-            <div
-              className="btn-group"
-              role="group"
-            >
-              <button
-                className="PaginationBox btn btn-secondary"
-                disabled={false}
-                onClick={[Function]}
-                type="button"
-              >
-                <a>
-                  Next
-                </a>
-              </button>
-              <button
-                className="PaginationBox btn btn-secondary"
-                disabled={false}
-                onClick={[Function]}
-                type="button"
-              >
-                <a>
-                  Last
-                </a>
-              </button>
-            </div>
+            <ul />
           </div>
           <div
             className="col-sm-2"
