@@ -1,18 +1,14 @@
-.size {
-  height: 100%;
-  width: 251px;
-}
-.center {
+/* .center {
   margin: 0;
   position: absolute;
   top: 50%;
   left: 50%;
   -ms-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%);
-}
+} */
 
-.borderLine {
+/* .borderLine {
   border-left: 1px solid grey;
   border-right: 1px solid grey;
   height: 920px;
-}
+} */
