@@ -49,7 +49,7 @@ const SearchTool = (props) => {
                   )
                 }
               />
-              <Form.Text id="minHelp" muted style={{paddingLeft: '0.5em'}}>
+              <Form.Text id="minHelp" muted style={{ paddingLeft: "0.5em" }}>
                 Min
               </Form.Text>
             </Col>
@@ -62,7 +62,7 @@ const SearchTool = (props) => {
                   )
                 }
               />
-              <Form.Text id="maxHelp" muted style={{paddingLeft: '0.5em'}}>
+              <Form.Text id="maxHelp" muted style={{ paddingLeft: "0.5em" }}>
                 Max
               </Form.Text>
             </Col>
@@ -82,7 +82,7 @@ const SearchTool = (props) => {
                     setSearchfieldsQuery("date_available", e.target.value)
                   )
                 }
-              ></Form.Control>
+              />
             </div>
           </Form.Row>
 
@@ -95,7 +95,6 @@ const SearchTool = (props) => {
             <Form.Label>Bedrooms</Form.Label>
             <Form.Control
               as="select"
-              id="numBeds"
               onChange={(e) =>
                 props.dispatch(
                   setSearchfieldsQuery("bedrooms", parseInt(e.target.value))
@@ -123,7 +122,6 @@ const SearchTool = (props) => {
             <Form.Control
               as="select"
               custom
-              id="numBath"
               onChange={(e) =>
                 props.dispatch(
                   setSearchfieldsQuery("bathrooms", parseFloat(e.target.value))
@@ -143,9 +141,7 @@ const SearchTool = (props) => {
             </Form.Control>
           </Form.Group>
           <Form.Row style={{ marginTop: "20px" }}>
-            <Col xs="10">
-              Deposit Needed
-            </Col>
+            <Col xs="10">Deposit Needed</Col>
             <Col xs="1">
               <Form.Check
                 onChange={(e) =>
@@ -158,9 +154,7 @@ const SearchTool = (props) => {
             </Col>
           </Form.Row>
           <Form.Row style={{ marginTop: "4px" }}>
-            <Col xs="10">
-              Credit Report Needed
-            </Col>
+            <Col xs="10">Credit Report Needed</Col>
             <Col xs="1">
               <Form.Check
                 onChange={(e) =>
@@ -173,9 +167,7 @@ const SearchTool = (props) => {
             </Col>
           </Form.Row>
           <Form.Row style={{ marginTop: "4px" }}>
-            <Col xs="10">
-              Near Bus Stop
-            </Col>
+            <Col xs="10">Near Bus Stop</Col>
             <Col xs="1">
               <Form.Check
                 onChange={(e) =>
@@ -188,9 +180,7 @@ const SearchTool = (props) => {
             </Col>
           </Form.Row>
           <Form.Row style={{ marginTop: "4px", marginBottom: "30px" }}>
-            <Col xs="10">
-              Pets allowed
-            </Col>
+            <Col xs="10">Pets allowed</Col>
             <Col xs="1">
               <Form.Check
                 onChange={(e) =>
@@ -261,18 +251,21 @@ const SearchTool = (props) => {
             }}
           >
             <Form.Label>Vouchers Accepted</Form.Label>
-            {/* onChange={(e) => console.log('test')
-                // props.dispatch(
-                //   setSearchfieldsQuery("school_district", e.target.value)
-                // )
-              }
-              as="select"
-              custom */}
             <Form.Row>
-              <Form.Check inline checked label="2" id="voucher-2" />
-              <Form.Check inline checked label="3" id="voucher-3" />
-              <Form.Check inline checked label="4" id="voucher-4" />
-              <Form.Check inline checked label="5" id="voucher-5" />
+              <Form.Check
+                onChange={(e) =>
+                  props.dispatch(
+                    setSearchfieldsQuery("school_district", e.target.value)
+                  )
+                }
+                inline
+                defaultChecked={true}
+                label="2"
+                id="voucher-2"
+              />
+              <Form.Check inline defaultChecked={true} label="3" id="voucher-3" />
+              <Form.Check inline defaultChecked={true} label="4" id="voucher-4" />
+              <Form.Check inline defaultChecked={true} label="5" id="voucher-5" />
             </Form.Row>
           </Form.Group>
         </Form>

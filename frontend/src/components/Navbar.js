@@ -27,15 +27,14 @@ const LocalNavbar = (props) => {
       <Navbar.Toggle aria-controls="responsive-navbar-nav" />
       <Navbar.Collapse id="responsive-navbar-nav">
         <Nav className="flex-lg-fill">
-          <Nav.Link>
-            <Link
+            <Nav.Link
+              as={Link}
               to="/about"
               className="text-white text-decoration-none h-hub-nav-link"
               title="Learn more about Code-For-Charlottesville!"
             >
               About
-            </Link>
-          </Nav.Link>
+            </Nav.Link>
           <Form className="flex-fill nav-toggle" inline>
             <FormControl
               id="nav-search"

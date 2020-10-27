@@ -16,7 +16,9 @@ const LocalTable = (props) => {
       {props.columns.map((c, columnIndex) =>
         _renderCell(r[c.field], rowIndex, columnIndex)
       )}
-      <Button>Delete</Button>
+      <td>
+        <Button>Delete</Button>
+      </td>
     </tr>
   );
 
