@@ -1,32 +1,44 @@
 import React from "react";
 import { Modal, Button } from "react-bootstrap";
-import PropertyForm from "./PropertyForm";
-import { postProperty } from "../api/property"; //fix with update
+import EditPropertyForm from "./EditPropertyForm";
+import { editProperty } from "../api/property"; //fix with update
 import "../style/App.css";
 
 const updateProperty = (formValues, setFormValues, setShowEditModal) => {
-  postProperty(formValues);
+  let formValues_withoutID = { ...formValues };
+  delete formValues_withoutID.id;
+  editProperty(formValues_withoutID, formValues.id); 
   setFormValues({});
   setShowEditModal(false);
 };
 
 const EditPropertyModal = ({
-  showModal,
+  showEditModal,
   setShowEditModal,
   formValues,
   setFormValues,
 }) => {
+const originalFormValues = { ...formValues }; {/**/}
+  console.log(originalFormValues); {/**/}
+
   return (
     <>
-      <Modal size="lg" show={showModal} onHide={() => setShowEditModal(false)}>
+      <Modal size="lg" show={showEditModal} onHide={() => {
+        setShowEditModal(false)
+      }}>
         <Modal.Header className="bg-info" closeButton>
-          <Modal.Title className="text-light">EDITING PROPERTY</Modal.Title>
+          <Modal.Title className="text-light">Edit Property</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <PropertyForm formValues={formValues} setFormValues={setFormValues} />
+          <EditPropertyForm formValues={formValues} setFormValues={setFormValues} /> 
         </Modal.Body>
         <Modal.Footer>
-          <Button variant="primary" onClick={() => setShowEditModal(false)}>
+          <Button variant="primary" onClick={(e) => {
+            setFormValues(originalFormValues); {/**/}
+            setShowEditModal(false); 
+            console.log(originalFormValues); {/**/}
+            console.log(formValues); {/**/}
+          }}>
             Cancel
           </Button>
           <Button

@@ -24,7 +24,7 @@ export default function SearchTable(props) {
       )}
       {showEditModal ? (
         <EditPropertyModal
-          showModal={showModal}
+          showEditModal={showEditModal}
           setShowEditModal={setShowEditModal}
           formValues={formValues}
           setFormValues={setFormValues}
@@ -41,13 +41,13 @@ export default function SearchTable(props) {
             console.log("cname is ", cName);
             console.log("cIndex is ", cIndex);
           }}
-          onRowSelect={(rName, rIndex) => {
-            console.log(rName, rIndex);
-            setShowModal(true);
-          }}
           onEditClick={(r) => {
             setFormValues(r);
             setShowEditModal(true);
+          }}
+          onRowSelect={(rName, rIndex) => {
+            console.log(rName, rIndex);
+            // setShowModal(true);
           }}
         />
       </div>
