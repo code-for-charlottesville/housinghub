@@ -1,5 +1,4 @@
 import React from "react";
-import "../style/SearchTool.css";
 import { Container, Row, Col, Form, InputGroup } from "react-bootstrap";
 import { setSearchfieldsQuery, searchProperties } from "../actions/search";
 import { connect } from "react-redux";
