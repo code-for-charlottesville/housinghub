@@ -1,7 +1,7 @@
 import React from "react";
 import { Modal, Button } from "react-bootstrap";
 import EditPropertyForm from "./EditPropertyForm";
-import { editProperty } from "../api/property"; //fix with update
+import { editProperty } from "../api/property";
 import "../style/App.css";
 
 const updateProperty = (formValues, setFormValues, setShowEditModal) => {
@@ -43,7 +43,10 @@ const originalFormValues = { ...formValues }; {/**/}
           </Button>
           <Button
             variant="success"
-            onClick={() => updateProperty(formValues, setFormValues, setShowEditModal)}
+            onClick={() => {
+              updateProperty(formValues, setFormValues, setShowEditModal)
+              window.location.reload()
+            }}
           >
             Save
           </Button>
