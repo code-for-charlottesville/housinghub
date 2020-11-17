@@ -625,6 +625,7 @@ exports[`containers/MainContent renders home when nothing else matches 1`] = `
         className="pl-0 search-table col-xl-10 col-lg-9 col-12"
       >
         
+        
         <div
           className="border mb-4"
         >
@@ -1157,7 +1158,8 @@ exports[`containers/MainContent renders new prop form on /property/new 1`] = `
         </div>
         <div>
           <label>
-            If not yet available, please specify below when the property will be available using the format MM-dd-YYYY. The default will be the current date if left as is.
+            If not yet available, please specify below when the property will be available using the
+ format MM-dd-YYYY. The default will be the current date if left as is.
           </label>
           <div>
             <input
@@ -1183,7 +1185,8 @@ exports[`containers/MainContent renders new prop form on /property/new 1`] = `
         </div>
         <div>
           <label>
-            Please specify below when the property was first listed using the format MM-dd-YYYY. The default will be the current date if left as is.
+            Please specify below when the property was first listed using the format MM-dd-YYYY.
+ The default will be the current date if left as is.
           </label>
           <div>
             <input
@@ -1261,7 +1264,8 @@ exports[`containers/MainContent renders new prop form on /property/new 1`] = `
         </div>
         <div>
           <label>
-            Please specify below when the property's landlord was last contacted.  The default will be the current date if left as is.
+            Please specify below when the property's landlord was last contacted. 
+ The default will be the current date if left as is.
           </label>
           <div>
             <input
@@ -1479,7 +1483,8 @@ exports[`containers/MainContent renders new prop form on /property/new 1`] = `
         </div>
         <div>
           <label>
-            If the property requires a credit screening, please specify the credit screening company used.
+            If the property requires a credit screening, please specify the
+ credit screening company used.
           </label>
           <div>
             <input
@@ -1492,7 +1497,8 @@ exports[`containers/MainContent renders new prop form on /property/new 1`] = `
         </div>
         <div>
           <label>
-            Please specify the company typically used to conduct background checks for the property.
+            Please specify the company typically used to conduct background
+ checks for the property.
           </label>
           <div>
             <input
@@ -2177,6 +2183,7 @@ exports[`containers/MainContent renders search prop form on /property/search 1`]
       <div
         className="pl-0 search-table col-xl-10 col-lg-9 col-12"
       >
+        
         
         <div
           className="border mb-4"
