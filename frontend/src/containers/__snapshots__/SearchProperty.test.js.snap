@@ -519,6 +519,7 @@ exports[`containers/SearchProperty redirects to login if not logged in 1`] = `
       className="pl-0 search-table col-xl-10 col-lg-9 col-12"
     >
       
+      
       <div
         className="border mb-4"
       >
@@ -570,7 +571,15 @@ exports[`containers/SearchProperty redirects to login if not logged in 1`] = `
                 0
               </td>
               <button
-                className="btn btn-primary"
+                className="btn btn-warning"
+                disabled={false}
+                onClick={[Function]}
+                type="button"
+              >
+                Edit
+              </button>
+              <button
+                className="btn btn-danger"
                 disabled={false}
                 type="button"
               >
