@@ -2,6 +2,8 @@ import React from "react";
 import "../style/App.css";
 import { Table, Button } from "react-bootstrap";
 const LocalTable = (props) => {
+
+
   let _renderCell = (value, rowIndex, columnIndex) => {
     let key = `$cell-{rowIndex}-${columnIndex}-${value}`;
     return <td key={key}>{value}</td>;
@@ -17,7 +19,8 @@ const LocalTable = (props) => {
         _renderCell(r[c.field], rowIndex, columnIndex)
       )}
       <td>
-        <Button>Delete</Button>
+        <Button variant="warning" onClick={() => props.onEditClick && props.onEditClick(r)}>Edit</Button>
+        <Button variant="danger">Delete</Button>
       </td>
     </tr>
   );

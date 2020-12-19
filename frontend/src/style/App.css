@@ -1,110 +1,113 @@
 .App-header {
-  text-align: center;
-  height: 200px;
-  padding: 100px;
+	text-align: center;
+	height: 200px;
+	padding: 100px;
 }
 
 .App-footer {
-  color: white;
-  height: 5vh;
-  display: flex;
-  align-items: center;
-}
-
-.footer-text {
-  margin: auto;
+	text-align: center;
+	position: relative;
+	bottom: 0;
+	margin: 0 10px;
+	width: 100%;
 }
 
 .App-title {
-  font-size: 10em;
+	font-size: 10em;
 }
 
 .App-intro {
-  font-style: italic;
-  font-size: large;
+	font-style: italic;
+	font-size: large;
 }
 
 .Sideways {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 50%;
-  text-align: center;
-  margin-top: 2%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 50%;
+	text-align: center;
+	margin-top: 2%;
 }
 
 .HoverPointer {
-  cursor: pointer;
+	cursor: pointer;
 }
 
 .PaginationBox {
-  margin: 3px;
+	margin: 3px;
 }
 
 .radioBox {
-  display: flex;
+	display: flex;
 }
 
 .radioBox > .radioLabel {
-  margin-right: 1em;
+	margin-right: 1em;
 }
 
 .login {
-  margin: 150px;
-  text-align: center;
+	margin: 150px;
+	text-align: center;
 }
 
 body {
-  font-family: "Roboto", "sans-serif";
+	font-family: "Roboto", "sans-serif";
+}
+.search-page {
+	height: 90vh;
+}
+
+.search-table {
+	height: 80vh;
 }
 
 /*Nav styles*/
 .h-hub-nav-link:hover {
-  color: #5bc0de
+	color: #5bc0de;
 }
 
 .search-button {
-  border-radius: 0 .25rem .25rem 0;
-  border-left-style: none;
-  border-left-width: 0;
+	border-radius: 0 0.25rem 0.25rem 0;
+	border-left-style: none;
+	border-left-width: 0;
 }
 
 .search-input {
-  border-radius: .25rem 0 0 .25rem;
+	border-radius: 0.25rem 0 0 0.25rem;
 }
 
 #Navbar-user-dropdown {
-  color: white;
+	color: white;
 }
 
 #Navbar-user-dropdown:hover {
-  color: #5bc0de
+	color: #5bc0de;
 }
 
 .nav-toggle {
-  justify-content: start;
+	justify-content: start;
 }
 
 .form-inline .form-control {
-  width: 90vw;
+	width: 90vw;
 }
 
 .pagination {
-  margin-top: 2vh;
+	margin-top: 70vh;
 }
 
-
 @media (min-width: 992px) {
-  .nav-toggle {
-    justify-content: center;
-  }
-  .form-inline .form-control {
-    width: 30vw;
-  }
+	.nav-toggle {
+		justify-content: center;
+	}
+	.form-inline .form-control {
+		width: 30vw;
+	}
 }
 
 /* Modal Close Button style */
 .close {
-  color: #f8f9fa;
-  opacity: 1;
+	color: #f8f9fa;
+	opacity: 1;
 }

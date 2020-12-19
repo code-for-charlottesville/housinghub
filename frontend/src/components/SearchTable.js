@@ -3,10 +3,12 @@ import "../style/App.css";
 import Table from "../components/Table";
 import Pagination from "../components/Pagination";
 import PropertyModal from "./PropertyModal";
+import EditPropertyModal from "./EditPropertyModal";
 import { Row, Col, Button } from "react-bootstrap";
 
 export default function SearchTable(props) {
   const [showModal, setShowModal] = useState(false);
+  const [showEditModal, setShowEditModal] = useState(false);
   const [formValues, setFormValues] = useState({});
   return (
     <>
@@ -14,6 +16,16 @@ export default function SearchTable(props) {
         <PropertyModal
           showModal={showModal}
           setShowModal={setShowModal}
+          formValues={formValues}
+          setFormValues={setFormValues}
+        />
+      ) : (
+        ""
+      )}
+      {showEditModal ? (
+        <EditPropertyModal
+          showEditModal={showEditModal}
+          setShowEditModal={setShowEditModal}
           formValues={formValues}
           setFormValues={setFormValues}
         />
@@ -30,14 +42,18 @@ export default function SearchTable(props) {
               console.log("cname is ", cName);
               console.log("cIndex is ", cIndex);
             }}
+            onEditClick={(r) => {
+              setFormValues(r);
+              setShowEditModal(true);
+            }}
             onRowSelect={(rName, rIndex) => {
               console.log(rName, rIndex);
-              setShowModal(true);
+              // setShowModal(true);
             }}
           />
         </Col>
       </Row>
-      <Row className="text-center pagination">
+      <Row className="text-center pagination ml-3">
         <Col sm={1} />
         <Col sm={9}>
           <Pagination

@@ -17,3 +17,16 @@ export function postProperty(property) {
       return Promise.resolve(err.response.data);
     });
 }
+
+export function editProperty(property, id) {
+  return axios
+    .put(`${apiEndpoint}/property/${id}`, property)
+    .then((r) => {
+      console.log(property);
+      return Promise.resolve(r.data);
+    })
+    .catch((err) => {
+      console.log(err);
+      return Promise.resolve(err.response.data);
+    });
+}
