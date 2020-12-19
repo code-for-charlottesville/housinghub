@@ -14,20 +14,25 @@ class SearchProperty extends React.Component {
 
   render() {
     return (
-      <div>
-        <Row className="search-page">
-          <Col xs={12} lg={3} xl={2} className="pr-0 border">
-            <SearchFiltersSidebar />
-          </Col>
-          <Col xs={12} lg={9} xl={10} className="pl-0 search-table">
-            <SearchTable
-              rows={this.props.searchResults.results}
-              columns={SEARCH_COLUMNS}
-              pagination={this.props.searchResults.pagination}
-            />
-          </Col>
-        </Row>
-      </div>
+      <Row className="mr-0">
+        <Col
+          xs={12}
+          sm={6}
+          md={4}
+          lg={3}
+          xl={2}
+          className="pr-0 border"
+        >
+          <SearchFiltersSidebar />
+        </Col>
+        <Col xs={12} sm={6} md={8} lg={9} xl={10} className="pl-0 pr-0 border">
+          <SearchTable
+            rows={this.props.searchResults.results}
+            columns={SEARCH_COLUMNS}
+            pagination={this.props.searchResults.pagination}
+          />
+        </Col>
+      </Row>
     );
   }
 }

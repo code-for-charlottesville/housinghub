@@ -18,7 +18,7 @@ const PropertyModal = ({
 }) => {
   return (
     <>
-      <Modal size="lg" show={showModal} onHide={() => setShowModal(false)}>
+      <Modal size="lg" scrollable show={showModal} onHide={() => setShowModal(false)}>
         <Modal.Header className="bg-info" closeButton>
           <Modal.Title className="text-light">Property Details</Modal.Title>
         </Modal.Header>
