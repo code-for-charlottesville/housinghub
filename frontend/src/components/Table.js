@@ -18,8 +18,8 @@ const LocalTable = (props) => {
       {props.columns.map((c, columnIndex) =>
         _renderCell(r[c.field], rowIndex, columnIndex)
       )}
-      <Button variant="warning" onClick={() => props.onEditClick && props.onEditClick(r)}>Edit</Button>
-      <Button variant="danger">Delete</Button>
+      {/* <Button variant="warning" onClick={() => props.onEditClick && props.onEditClick(r)}>Edit</Button> */}
+      <Button variant="danger" onClick={() => props.onDeleteClick()}>Delete</Button>
 
     </tr>
   );

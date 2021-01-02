@@ -10,6 +10,8 @@ export default function SearchTable(props) {
   const [showModal, setShowModal] = useState(false);
   const [showEditModal, setShowEditModal] = useState(false);
   const [formValues, setFormValues] = useState({});
+  let isDeleteClicked = false;
+
   return (
     <>
       {showModal ? (
@@ -41,14 +43,24 @@ export default function SearchTable(props) {
             console.log("cname is ", cName);
             console.log("cIndex is ", cIndex);
           }}
-          onEditClick={(r) => {
-            setFormValues(r);
-            setShowEditModal(true);
-          }}
+          // onEditClick={(r) => {
+          //   setFormValues(r);
+          //   setShowEditModal(true);
+          // }}
           onRowSelect={(rName, rIndex) => {
             console.log(rName, rIndex);
-            // setShowModal(true);
+            console.log(isDeleteClicked);
+            if (!isDeleteClicked) {
+              setFormValues(rName);
+              setShowEditModal(true);
+            }
+            isDeleteClicked = false;
           }}
+          onDeleteClick={() => {
+            isDeleteClicked = true;
+            console.log(isDeleteClicked);
+          }
+          }
         />
       </div>
 
